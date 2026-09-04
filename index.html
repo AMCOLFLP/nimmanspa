@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f2f6f6">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="description" content="NIMMAN Willow &amp; Stone English — a bilingual (English/Thai) mobile course teaching professional workplace English to spa and wellness staff.">
+<title>NIMMAN Willow &amp; Stone English</title>
+<link rel="icon" type="image/png" href="assets/nimman-logo-small.png">
+<link rel="apple-touch-icon" href="assets/nimman-logo.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- =====================================================================
+     AUTH SCREEN — shown until a session exists
+     ===================================================================== -->
+<div class="auth-wrap active" id="authWrap">
+  <div class="auth-top">
+    <div class="lang-toggle">
+      <button class="lang-opt" data-lang="en">EN</button>
+      <button class="lang-opt" data-lang="th">ไทย</button>
+    </div>
+  </div>
+
+  <div class="auth-hero">
+    <div class="auth-brands">
+      <img src="assets/nimman-logo.png" alt="Nimmanoradee International School" loading="eager">
+      <span class="ab-divider"></span>
+      <img class="barter" src="assets/barter-logo.png" alt="Barter Group" loading="eager">
+    </div>
+    <p class="auth-appname" data-i18n="appName">NIMMAN Willow &amp; Stone English</p>
+    <p class="auth-appsub" data-i18n="appTagline">Spa &amp; wellness English &middot; Sriracha</p>
+    <h2 data-i18n="authWelcome">Welcome</h2>
+    <p data-i18n="authTagline">Sign in to save your progress across every device.</p>
+  </div>
+
+  <div class="auth-tabs">
+    <button class="auth-tab active" id="tabLogin" data-i18n="loginTab">Log in</button>
+    <button class="auth-tab" id="tabRegister" data-i18n="registerTab">Register</button>
+  </div>
+
+  <div class="auth-error" id="authError">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
+    <span id="authErrorText"></span>
+  </div>
+
+  <!-- LOGIN -->
+  <form class="auth-form" id="loginForm" novalidate>
+    <div class="field">
+      <label for="loginEmail" data-i18n="fieldEmail">Email</label>
+      <input type="email" id="loginEmail" autocomplete="email" inputmode="email" data-i18n-ph="fieldEmail">
+    </div>
+    <div class="field">
+      <label for="loginPassword" data-i18n="fieldPassword">Password</label>
+      <input type="password" id="loginPassword" autocomplete="current-password" data-i18n-ph="fieldPassword">
+    </div>
+    <button type="submit" class="btn btn-gold btn-block" data-i18n="loginBtn">Log in</button>
+    <div class="auth-alt">
+      <button type="button" id="forgotBtn" data-i18n="forgotPassword">Forgot password?</button>
+    </div>
+    <div class="auth-divider"><span data-i18n="noAccount">New here?</span></div>
+    <button type="button" class="btn btn-line btn-block" id="goRegister" data-i18n="registerBtn">Create account</button>
+  </form>
+
+  <!-- REGISTER -->
+  <form class="auth-form hidden" id="registerForm" novalidate>
+    <div class="field">
+      <label for="regName" data-i18n="fieldName">Full name</label>
+      <input type="text" id="regName" autocomplete="name" data-i18n-ph="fieldName">
+    </div>
+    <div class="field">
+      <label for="regEmail" data-i18n="fieldEmail">Email</label>
+      <input type="email" id="regEmail" autocomplete="email" inputmode="email" data-i18n-ph="fieldEmail">
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label for="regPassword" data-i18n="fieldPassword">Password</label>
+        <input type="password" id="regPassword" autocomplete="new-password">
+      </div>
+      <div class="field">
+        <label for="regConfirm" data-i18n="fieldConfirm">Confirm password</label>
+        <input type="password" id="regConfirm" autocomplete="new-password">
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label for="regRole" data-i18n="fieldRole">Your role</label>
+        <select id="regRole">
+          <option value="therapist" data-i18n="roleTherapist">Therapist</option>
+          <option value="reception" data-i18n="roleReception">Receptionist</option>
+          <option value="manager" data-i18n="roleManager">Manager</option>
+          <option value="other" data-i18n="roleOther">Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="regLang" data-i18n="fieldLanguage">Preferred language</label>
+        <select id="regLang">
+          <option value="en">English</option>
+          <option value="th">ไทย</option>
+        </select>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-gold btn-block" data-i18n="registerBtn">Create account</button>
+    <div class="auth-divider"><span data-i18n="haveAccount">Already have an account?</span></div>
+    <button type="button" class="btn btn-line btn-block" id="goLogin" data-i18n="loginBtn">Log in</button>
+  </form>
+
+  <button type="button" class="btn btn-ghost btn-block" id="guestBtn" data-i18n="continueGuest">Continue as guest</button>
+
+  <p class="demo-note">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><circle cx="12" cy="8" r=".6" fill="currentColor" stroke="none"/></svg>
+    <span data-i18n="demoNote">Demo mode — accounts are stored only on this device, not on a secure server.</span>
+  </p>
+</div>
+
+<!-- =====================================================================
+     MAIN APP
+     ===================================================================== -->
+<div class="app-shell" id="appShell" style="display:none;">
+
+  <header class="topbar">
+    <div class="topbar-row">
+      <div class="brand">
+        <img class="brand-crest" src="assets/nimman-logo-small.png" alt="NIMMAN">
+        <div class="brand-text">
+          <h1 data-i18n="appName">Willow &amp; Stone English</h1>
+          <p data-i18n="appTagline">For spa &amp; wellness professionals</p>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <div class="lang-toggle">
+          <button class="lang-opt" data-lang="en">EN</button>
+          <button class="lang-opt" data-lang="th">ไทย</button>
+        </div>
+        <button class="avatar-btn" id="avatarBtn" aria-label="Account">A</button>
+      </div>
+    </div>
+    <div class="progress-line"><i id="courseProgressFill" style="--pct:0%"></i></div>
+    <p class="progress-caption"><span data-i18n="courseProgress">Course progress</span> &nbsp;·&nbsp; <b id="courseProgressLabel">0%</b></p>
+  </header>
+
+  <main>
+
+  <!-- ============================= HOME ============================= -->
+  <section class="screen active" id="screen-home">
+    <div class="greeting">
+      <p class="eyebrow" id="homeGreetEyebrow" data-i18n="greetingEyebrow">Good to see you</p>
+      <h2 data-i18n="greetingHeading">Ready for today's practice?</h2>
+      <p data-i18n="greetingBody">Fifteen quiet minutes a day is enough to sound calm, warm and confident with every guest who walks through your door.</p>
+      <div class="featured-quote">
+        <p class="fq-label" data-i18n="phraseOfDayLabel">Phrase of the day</p>
+        <p id="potdText">&nbsp;</p>
+        <p class="gloss" id="potdTh">&nbsp;</p>
+        <p class="fq-note" id="potdNote">&nbsp;</p>
+      </div>
+      <div class="cta-row">
+        <button class="btn btn-gold" onclick="Nav.go('vocab')">
+          <span data-i18n="continueLearning">Continue learning</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="daily-cta" id="homeDailyCta" onclick="Nav.go('daily')">
+      <div class="dc-mark" id="homeDailyMark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M8 3.5v3M16 3.5v3M3.5 10h17"/><path d="M9 14.5l2 2 4-4"/></svg>
+      </div>
+      <div class="dc-body">
+        <div class="dc-kicker" id="homeDailyKicker"></div>
+        <h4 id="homeDailyTitle"></h4>
+        <p id="homeDailyBody"></p>
+        <div class="dc-pills" id="homeDailyPills"></div>
+      </div>
+    </div>
+
+    <div class="stat-strip">
+      <div class="stat-cell"><div class="stat-num" id="statWords">0</div><div class="stat-label" data-i18n="statWords">WORDS LEARNED</div></div>
+      <div class="stat-cell"><div class="stat-num" id="statQuiz">—</div><div class="stat-label" data-i18n="statQuiz">QUIZ AVERAGE</div></div>
+      <div class="stat-cell"><div class="stat-num" id="statLessons">0</div><div class="stat-label" data-i18n="statLessons">ACTIVITIES DONE</div></div>
+    </div>
+
+    <div class="menu-heading"><h3 data-i18n="exploreCourse">Explore the course</h3><span data-i18n="modulesCount">6 modules</span></div>
+    <div class="menu-list">
+      <div class="menu-row" onclick="Nav.go('daily')">
+        <div class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M8 3.5v3M16 3.5v3M3.5 10h17"/><path d="M9 14.5l2 2 4-4"/></svg></div>
+        <div class="menu-body"><h4 data-i18n="menuDailyTitle">Daily Five</h4><p data-i18n="menuDailyDesc">Five words a day, swiped and checked</p></div>
+        <div class="menu-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="menu-row" onclick="Nav.go('vocab')">
+        <div class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5C10.4 5.4 8.3 4.9 5 4.9v13.1c3.3 0 5.4.5 7 1.6 1.6-1.1 3.7-1.6 7-1.6V4.9c-3.3 0-5.4.5-7 1.6Z"/><path d="M12 6.5v13"/></svg></div>
+        <div class="menu-body"><h4 data-i18n="menuVocabTitle">Vocabulary &amp; practice</h4><p data-i18n="menuVocabDesc">Flashcards and a matching game for spa terminology</p></div>
+        <div class="menu-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="menu-row" onclick="Nav.go('pron')">
+        <div class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="4" y2="12"/><line x1="8" y1="7" x2="8" y2="17"/><line x1="12" y1="4" x2="12" y2="20"/><line x1="16" y1="7" x2="16" y2="17"/><line x1="20" y1="12" x2="20" y2="12"/></svg></div>
+        <div class="menu-body"><h4 data-i18n="menuPronTitle">Pronunciation</h4><p data-i18n="menuPronDesc">Hear and repeat the industry's trickiest words</p></div>
+        <div class="menu-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="menu-row" onclick="Nav.go('phrases')">
+        <div class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-9.5L6 21v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/></svg></div>
+        <div class="menu-body"><h4 data-i18n="menuPhrasesTitle">Useful phrases</h4><p data-i18n="menuPhrasesDesc">Ready phrase banks for real guest scenarios</p></div>
+        <div class="menu-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="menu-row" onclick="Nav.go('saythis')">
+        <div class="menu-icon sage"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="17" y2="8"/><path d="M14 5l3 3-3 3"/><line x1="20" y1="16" x2="7" y2="16"/><path d="M10 13l-3 3 3 3"/></svg></div>
+        <div class="menu-body"><h4 data-i18n="menuSaythisTitle">Say this, not that</h4><p data-i18n="menuSaythisDesc">Turn blunt phrases into polished, guest-ready ones</p></div>
+        <div class="menu-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="menu-row" onclick="Nav.go('assess')">
+        <div class="menu-icon sage"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="16" rx="2"/><rect x="9" y="2.6" width="6" height="3" rx="1"/><path d="M9 12.5l2 2 4-4.5"/></svg></div>
+        <div class="menu-body"><h4 data-i18n="menuAssessTitle">Knowledge assessment</h4><p data-i18n="menuAssessDesc">Five activities with instant, constructive feedback</p></div>
+        <div class="menu-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+    </div>
+
+    <div class="tip-block">
+      <div class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3C12 3 6.5 9.5 6.5 13.5a5.5 5.5 0 0 0 11 0C17.5 9.5 12 3 12 3Z"/></svg></div>
+      <div><h5 data-i18n="tipOfDay">Tip of the day</h5><p data-i18n="tipOfDayBody"></p></div>
+    </div>
+
+    <div class="home-divider"></div>
+    <p class="partner-caption" data-i18n="partnerCaption">A programme by</p>
+    <div class="partner-strip">
+      <img src="assets/nimman-logo.png" alt="Nimmanoradee International School" loading="lazy">
+      <span class="ps-divider"></span>
+      <img class="barter" src="assets/barter-logo.png" alt="Barter Group" loading="lazy">
+    </div>
+  </section>
+
+  <!-- ============================= ACCOUNT ============================= -->
+  <section class="screen" id="screen-account">
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="accountHeading">Your account</h2></div>
+
+    <div class="account-card">
+      <div class="account-avatar" id="accAvatar">A</div>
+      <div class="account-id">
+        <h4 id="accName">—</h4>
+        <p id="accEmail">—</p>
+        <span class="role-chip" id="accRole">—</span>
+      </div>
+    </div>
+
+    <div class="menu-heading"><h3 data-i18n="accountStats">Your progress</h3></div>
+    <div class="progress-bars" id="accProgressBars"></div>
+
+    <div class="menu-list" style="margin-bottom:16px;">
+      <div class="setting-row">
+        <div><h5 data-i18n="accountLanguage">App language</h5><p id="accLangName">English</p></div>
+        <div class="lang-toggle">
+          <button class="lang-opt" data-lang="en">EN</button>
+          <button class="lang-opt" data-lang="th">ไทย</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-list" style="margin-bottom:16px;">
+      <div class="menu-row" onclick="Nav.go('settings')">
+        <div class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg></div>
+        <div class="menu-body"><h4 data-i18n="settingsHeading">Settings</h4><p data-i18n="settingsDesc">Voice, text size and language</p></div>
+        <div class="menu-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+    </div>
+
+    <button class="btn btn-line btn-block" id="accRegisterCta" style="display:none;margin-bottom:10px;" data-i18n="accountRegisterCta">Create a free account to save this progress</button>
+    <button class="btn btn-ghost btn-block" id="logoutBtn" data-i18n="accountLogout">Log out</button>
+
+    <div class="home-divider"></div>
+    <p class="partner-caption" data-i18n="partnerCaption">A programme by</p>
+    <div class="partner-strip">
+      <img src="assets/nimman-logo.png" alt="Nimmanoradee International School" loading="lazy">
+      <span class="ps-divider"></span>
+      <img class="barter" src="assets/barter-logo.png" alt="Barter Group" loading="lazy">
+    </div>
+  </section>
+
+  <!-- ============================= SETTINGS ============================= -->
+  <section class="screen" id="screen-settings">
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('account')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="settingsHeading">Settings</h2></div>
+
+    <p class="settings-title" data-i18n="setAudioGroup">AUDIO</p>
+    <div class="settings-group">
+      <div class="set-row">
+        <div class="sr-head">
+          <div><h5 data-i18n="setVoiceTitle">Pronunciation voice</h5><p data-i18n="setVoiceDesc">We pick a neutral female English voice automatically.</p></div>
+          <span class="voice-badge" id="voiceBadge">—</span>
+        </div>
+        <select id="voiceSelect"></select>
+        <button class="voice-test" id="voiceTest">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6.5 9H4v6h2.5L11 19V5Z"/><path d="M15.5 9.5a3.5 3.5 0 0 1 0 5"/><path d="M18 7a7 7 0 0 1 0 10"/></svg>
+          <span data-i18n="setVoiceTest">Test this voice</span>
+        </button>
+      </div>
+      <div class="set-row">
+        <div class="sr-head">
+          <div><h5 data-i18n="setSpeedTitle">Speaking speed</h5><p data-i18n="setSpeedDesc">Slower is easier to copy when practising.</p></div>
+        </div>
+        <select id="speedSelect">
+          <option value="0.72" data-i18n="setSpeedSlow">Slow</option>
+          <option value="0.88" data-i18n="setSpeedNormal">Normal</option>
+          <option value="1" data-i18n="setSpeedNatural">Natural</option>
+        </select>
+      </div>
+    </div>
+
+    <p class="settings-title" data-i18n="setDisplayGroup">DISPLAY</p>
+    <div class="settings-group">
+      <div class="set-row">
+        <div class="sr-head">
+          <div><h5 data-i18n="setTextSizeTitle">Text size</h5><p data-i18n="setTextSizeDesc">Applies to reading content.</p></div>
+          <div class="size-toggle" id="sizeToggle">
+            <button class="size-opt" data-size="sm">A</button>
+            <button class="size-opt active" data-size="md">A</button>
+            <button class="size-opt" data-size="lg">A</button>
+          </div>
+        </div>
+      </div>
+      <div class="set-row">
+        <div class="sr-head">
+          <div><h5 data-i18n="accountLanguage">App language</h5><p id="setLangName">English</p></div>
+          <div class="lang-toggle">
+            <button class="lang-opt" data-lang="en">EN</button>
+            <button class="lang-opt" data-lang="th">ไทย</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="settings-title" data-i18n="setDataGroup">YOUR DATA</p>
+    <div class="settings-group">
+      <div class="set-row">
+        <div class="sr-head">
+          <div><h5 data-i18n="setResetTitle">Reset my progress</h5><p data-i18n="setResetDesc">Clears known words and all scores. This cannot be undone.</p></div>
+        </div>
+        <button class="btn btn-line btn-block" id="resetProgressBtn" style="margin-top:11px;" data-i18n="setResetBtn">Reset progress</button>
+      </div>
+    </div>
+
+    <div class="home-divider"></div>
+    <p class="partner-caption" data-i18n="partnerCaption">A programme by</p>
+    <div class="partner-strip">
+      <img src="assets/nimman-logo.png" alt="Nimmanoradee International School" loading="lazy">
+      <span class="ps-divider"></span>
+      <img class="barter" src="assets/barter-logo.png" alt="Barter Group" loading="lazy">
+    </div>
+  </section>
+
+  <!-- ============================= DAILY FIVE ============================= -->
+  <section class="screen" id="screen-daily">
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="dailyHeading">Daily Five</h2></div>
+    <p class="lede" data-i18n="dailyLede"></p>
+
+    <div class="daily-head">
+      <div class="daily-pills" id="dailyPills"></div>
+      <div class="daily-count" id="dailyCount">0 / 5</div>
+    </div>
+
+    <div class="sr-live" id="dailyLive" aria-live="polite"></div>
+
+    <!-- swiping -->
+    <div id="dailySwipe">
+      <div class="swipe-stage" id="swipeStage"></div>
+      <p class="swipe-hint" id="swipeHint"></p>
+      <div class="swipe-actions">
+        <button class="swipe-btn nope" id="swipeLeft">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5l-7 7 7 7"/><path d="M20 12H5"/></svg>
+          <span data-i18n="swipeNotYet">Not yet</span>
+        </button>
+        <button class="swipe-btn like" id="swipeRight">
+          <span data-i18n="swipeGotIt">I understand</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="M13 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- all five understood, check unlocked -->
+    <div id="dailyReady" style="display:none;">
+      <div class="daily-panel">
+        <div class="dp-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+        <h3 id="dailyReadyTitle"></h3>
+        <p id="dailyReadyBody"></p>
+      </div>
+      <div class="daily-wordlist" id="dailyReadyList"></div>
+      <button class="btn btn-gold btn-block" id="dailyStartCheck"></button>
+    </div>
+
+    <!-- day complete -->
+    <div id="dailyDone" style="display:none;">
+      <div class="daily-panel">
+        <div class="daily-ring" id="dailyDoneRing" style="--pct:0"><span id="dailyDonePct">0%</span></div>
+        <h3 id="dailyDoneTitle"></h3>
+        <p id="dailyDoneBody"></p>
+      </div>
+      <div class="daily-wordlist" id="dailyDoneList"></div>
+      <button class="btn btn-line btn-block" id="dailyRetake"></button>
+    </div>
+  </section>
+
+  <!-- ============================= VOCABULARY ============================= -->
+  <section class="screen" id="screen-vocab">
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="vocabHeading">Vocabulary &amp; practice</h2></div>
+    <p class="lede" data-i18n="vocabLede"></p>
+
+    <div id="vocabHint"></div>
+    <div class="chip-scroll" id="vocabModeChips"></div>
+    <div class="chip-scroll" id="vocabCatChips"></div>
+    <div class="search-wrap" id="vocabSearchWrap">
+      <span class="s-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></span>
+      <input type="search" id="vocabSearch" autocomplete="off" data-i18n-ph="searchVocabPh">
+      <button class="search-clear" id="vocabSearchClear" aria-label="Clear search">&times;</button>
+    </div>
+    <p class="search-count" id="vocabSearchCount" style="display:none;"></p>
+
+    <!-- flashcards -->
+    <div class="vocab-pane" id="pane-flash">
+      <div class="deck-meta">
+        <span><span data-i18n="cardOf">Card</span> <b id="fcPos">1</b> <span data-i18n="of">of</span> <b id="fcTotal">102</b></span>
+        <span><b id="fcKnownCount">0</b> <span data-i18n="known">known</span></span>
+      </div>
+      <div class="flip-stage">
+        <div class="flashcard" id="flashcard">
+          <div class="flashcard-face-wrap">
+            <div class="fc-face fc-front">
+              <div class="fc-tag" id="fcCategory"></div>
+              <div class="fc-word" id="fcWord"></div>
+              <div class="fc-phon" id="fcPhon"></div>
+              <div class="fc-th" id="fcThFront"></div>
+              <div class="fc-hint" data-i18n="tapReveal">TAP TO REVEAL THE DEFINITION</div>
+            </div>
+            <div class="fc-face fc-back">
+              <div class="fc-tag" data-i18n="definition">DEFINITION</div>
+              <div class="fc-def" id="fcDef"></div>
+              <div class="fc-th" id="fcThBack"></div>
+              <div class="fc-hint" data-i18n="tapFlip">TAP TO FLIP BACK</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flash-controls">
+        <button class="round-btn" id="fcPrev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <div class="flash-index-strip" id="fcIndexStrip"></div>
+        <button class="round-btn" id="fcSpeak" aria-label="Hear word"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6.5 9H4v6h2.5L11 19V5Z"/><path d="M15.5 9.5a3.5 3.5 0 0 1 0 5"/><path d="M18 7a7 7 0 0 1 0 10"/></svg></button>
+        <button class="round-btn" id="fcNext" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="know-row">
+        <button class="know-btn again" id="fcAgain"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5l5 5M14.5 9.5l-5 5"/></svg><span data-i18n="stillLearning">Still learning</span></button>
+        <button class="know-btn got-it" id="fcKnow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.5 2.5L16 9"/></svg><span data-i18n="iKnowThis">I know this</span></button>
+      </div>
+    </div>
+
+    <!-- matching -->
+    <div class="vocab-pane" id="pane-match" style="display:none;">
+      <p class="match-status" id="matchStatus"></p>
+      <div class="match-grid" id="matchGrid"></div>
+      <button class="btn btn-line btn-block" id="matchNew"><span data-i18n="newRound">New round</span></button>
+    </div>
+
+    <!-- scramble -->
+    <div class="vocab-pane" id="pane-scramble" style="display:none;">
+      <div class="q-progress"><div class="q-dots" id="scrDots"></div><div class="q-score" id="scrScore">0 / 8</div></div>
+      <div class="scramble-clue">
+        <div class="sc-cat" id="scrCat"></div>
+        <div class="sc-def" id="scrClue"></div>
+        <div class="gloss" id="scrClueTh"></div>
+      </div>
+      <div class="answer-slots" id="scrSlots"></div>
+      <div class="letter-bank" id="scrLetters"></div>
+      <div id="scrFeedback"></div>
+      <button class="btn btn-gold btn-block" id="scrNext" disabled></button>
+    </div>
+
+    <!-- thai recall -->
+    <div class="vocab-pane" id="pane-thai" style="display:none;">
+      <div class="q-progress"><div class="q-dots" id="thDots"></div><div class="q-score" id="thScore">0 / 12</div></div>
+      <div class="builder-prompt">
+        <div class="bp-label" id="thPromptLabel"></div>
+        <div class="bp-th" id="thPrompt"></div>
+      </div>
+      <div id="thOptions"></div>
+      <div id="thFeedback"></div>
+      <button class="btn btn-gold btn-block" id="thNext" disabled></button>
+    </div>
+
+    <!-- category sort -->
+    <div class="vocab-pane" id="pane-sort" style="display:none;">
+      <p class="match-status" id="sortStatus"></p>
+      <div class="sort-terms" id="sortTerms"></div>
+      <div id="sortBuckets"></div>
+      <button class="btn btn-line btn-block" id="sortNew" style="margin-top:6px;"><span data-i18n="newRound">New round</span></button>
+    </div>
+
+    <!-- speed round -->
+    <div class="vocab-pane" id="pane-speed" style="display:none;">
+      <div id="speedIntro" class="speed-start">
+        <h3 id="speedIntroTitle"></h3>
+        <p id="speedIntroBody"></p>
+        <button class="btn btn-gold btn-block" id="speedStart"></button>
+      </div>
+      <div id="speedPlay" style="display:none;">
+        <div class="speed-hud">
+          <div class="speed-cell"><div class="speed-num" id="speedTime">60</div><div class="speed-label" id="speedTimeLabel"></div></div>
+          <div class="speed-cell"><div class="speed-num" id="speedScore">0</div><div class="speed-label" id="speedScoreLabel"></div></div>
+          <div class="speed-cell"><div class="speed-num" id="speedStreak">0</div><div class="speed-label" id="speedStreakLabel"></div></div>
+        </div>
+        <div class="q-question" id="speedPrompt"></div>
+        <div id="speedOptions"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= PRONUNCIATION ============================= -->
+  <section class="screen" id="screen-pron">
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="pronHeading">Pronunciation guide</h2></div>
+    <p class="lede" data-i18n="pronLede"></p>
+    <p class="audio-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="8" r=".6" fill="currentColor" stroke="none"/></svg>
+      <span data-i18n="pronAudioNote"></span>
+    </p>
+    <div id="pronList"></div>
+  </section>
+
+  <!-- ============================= PHRASES ============================= -->
+  <section class="screen" id="screen-phrases">
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="phrasesHeading">Useful phrases</h2></div>
+    <p class="lede" data-i18n="phrasesLede"></p>
+    <div class="chip-scroll" id="phraseCatChips"></div>
+    <div class="search-wrap">
+      <span class="s-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></span>
+      <input type="search" id="phraseSearch" autocomplete="off" data-i18n-ph="searchPhrasePh">
+      <button class="search-clear" id="phraseSearchClear" aria-label="Clear search">&times;</button>
+    </div>
+    <p class="search-count" id="phraseSearchCount" style="display:none;"></p>
+    <div class="phrase-list" id="phraseList"></div>
+    <div id="phraseEmpty"></div>
+  </section>
+
+  <!-- ============================= SAY THIS NOT THAT ============================= -->
+  <section class="screen" id="screen-saythis">
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="saythisHeading">Say this, not that</h2></div>
+    <p class="lede" data-i18n="saythisLede"></p>
+    <div id="ddList"></div>
+  </section>
+
+  <!-- ============================= ASSESSMENT HUB ============================= -->
+  <section class="screen" id="screen-assess">
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="assessHeading">Knowledge assessment</h2></div>
+    <p class="lede" data-i18n="assessLede"></p>
+    <div class="activity-grid" id="assessGrid"></div>
+  </section>
+
+  <!-- ============================= MULTIPLE CHOICE (shared engine) ============================= -->
+  <section class="screen" id="screen-mcquiz">
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('assess')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 id="mcTitle"></h2></div>
+    <div class="q-progress"><div class="q-dots" id="mcDots"></div><div class="q-score" id="mcScoreChip">0 / 0</div></div>
+    <div class="q-kicker" id="mcKicker"></div>
+    <div class="q-question" id="mcQuestion"></div>
+    <div class="gloss" id="mcQuestionTh"></div>
+    <div id="mcOptions"></div>
+    <div id="mcFeedback"></div>
+    <button class="btn btn-gold btn-block" id="mcNextBtn" disabled></button>
+  </section>
+
+  <!-- ============================= FILL IN THE BLANK ============================= -->
+  <section class="screen" id="screen-fillquiz">
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('assess')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="actFillTitle">Fill-in-the-blank dialogue</h2></div>
+    <div id="fillPicker">
+      <p class="lede" data-i18n="dialoguePicker">Choose a dialogue</p>
+      <div class="menu-list" id="fillDialogueList"></div>
+    </div>
+    <div id="fillPlay" style="display:none;">
+      <div class="q-progress"><div class="q-dots" id="fillDots"></div><div class="q-score" id="fillScoreChip">0 / 0</div></div>
+      <div class="q-kicker" id="fillKicker"></div>
+      <div class="dialogue-script" id="dialogueScript"></div>
+      <p class="lede" style="margin-bottom:10px;" data-i18n="chooseWordBlank"></p>
+      <div class="word-bank" id="fillOptions"></div>
+      <div id="fillFeedback"></div>
+      <button class="btn btn-gold btn-block" id="fillNextBtn" disabled></button>
+    </div>
+  </section>
+
+  <!-- ============================= LISTEN & CHOOSE ============================= -->
+  <section class="screen" id="screen-listen">
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('assess')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="actListenTitle">Listen &amp; choose</h2></div>
+    <p class="lede" data-i18n="listenLede"></p>
+    <div class="q-progress"><div class="q-dots" id="lsDots"></div><div class="q-score" id="lsScore">0 / 10</div></div>
+    <div class="listen-stage">
+      <button class="listen-btn" id="lsPlay" aria-label="Play word"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5Z"/></svg></button>
+      <p id="lsHint"></p>
+      <button class="listen-replay" id="lsReplay"></button>
+    </div>
+    <div id="lsOptions"></div>
+    <div id="lsFeedback"></div>
+    <button class="btn btn-gold btn-block" id="lsNext" disabled></button>
+  </section>
+
+  <!-- ============================= PHRASE BUILDER ============================= -->
+  <section class="screen" id="screen-builder">
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('assess')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="actBuilderTitle">Phrase builder</h2></div>
+    <p class="lede" data-i18n="builderLede"></p>
+    <div class="q-progress"><div class="q-dots" id="bdDots"></div><div class="q-score" id="bdScore">0 / 8</div></div>
+    <div class="builder-prompt">
+      <div class="bp-label" id="bdLabel"></div>
+      <div class="bp-th" id="bdTh"></div>
+    </div>
+    <div class="builder-line" id="bdLine"></div>
+    <div class="word-bank" id="bdBank"></div>
+    <div class="builder-actions">
+      <button class="btn btn-line" id="bdClear"></button>
+      <button class="btn btn-gold" id="bdCheck"></button>
+    </div>
+    <div id="bdFeedback"></div>
+    <button class="btn btn-gold btn-block" id="bdNext" style="display:none;"></button>
+  </section>
+
+  <!-- ============================= TRUE / FALSE ============================= -->
+  <section class="screen" id="screen-truefalse">
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('assess')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 id="tfTitle"></h2></div>
+    <div class="q-progress"><div class="q-dots" id="tfDots"></div><div class="q-score" id="tfScore">0 / 12</div></div>
+    <div class="tf-statement" id="tfStatement"></div>
+    <div class="tf-row">
+      <button class="tf-btn" id="tfTrue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg><span id="tfTrueLabel"></span></button>
+      <button class="tf-btn" id="tfFalse"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg><span id="tfFalseLabel"></span></button>
+    </div>
+    <div id="tfFeedback"></div>
+    <button class="btn btn-gold btn-block" id="tfNext" disabled></button>
+  </section>
+
+  <!-- ============================= ERROR CORRECTION ============================= -->
+  <section class="screen" id="screen-errorfix">
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('assess')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 id="efTitle"></h2></div>
+    <p class="lede" id="efLede"></p>
+    <div class="q-progress"><div class="q-dots" id="efDots"></div><div class="q-score" id="efScore">0 / 8</div></div>
+    <div class="err-original">
+      <div class="eo-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg><span id="efDontLabel"></span></div>
+      <div class="eo-text" id="efWrong"></div>
+    </div>
+    <div id="efOptions"></div>
+    <div id="efFeedback"></div>
+    <button class="btn btn-gold btn-block" id="efNext" disabled></button>
+  </section>
+
+  <!-- ============================= RESULTS ============================= -->
+  <section class="screen" id="screen-results">
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go(App.resultsBackTo)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="resultsHeading">Your results</h2></div>
+    <div class="result-hero">
+      <div class="result-ring" id="resultRing" style="--pct:0"><span id="resultPct">0%</span></div>
+      <h3 id="resultTitle"></h3>
+      <p id="resultSub"></p>
+    </div>
+    <div class="result-grid">
+      <div class="result-cell"><div class="result-num gold" id="rgTotal">0</div><div class="result-label" data-i18n="questions">QUESTIONS</div></div>
+      <div class="result-cell"><div class="result-num sage" id="rgCorrect">0</div><div class="result-label" data-i18n="correctLabel">CORRECT</div></div>
+      <div class="result-cell"><div class="result-num clay" id="rgReview">0</div><div class="result-label" data-i18n="toReview">TO REVIEW</div></div>
+    </div>
+    <div class="tip-block">
+      <div class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3C12 3 6.5 9.5 6.5 13.5a5.5 5.5 0 0 0 11 0C17.5 9.5 12 3 12 3Z"/></svg></div>
+      <div><h5 data-i18n="coachNote">Coach's note</h5><p id="resultFeedback"></p></div>
+    </div>
+    <button class="btn btn-gold btn-block" id="resultsBackBtn" onclick="Nav.go(App.resultsBackTo)" data-i18n="backToAssessments">Back to assessments</button>
+    <button class="btn btn-ghost btn-block" onclick="Nav.go('home')" data-i18n="returnHome">Return home</button>
+  </section>
+
+  </main>
+
+  <nav class="tab-bar six">
+    <button class="tab-item active" data-tab="home" onclick="Nav.go('home')">
+      <div class="tab-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 4l8 7.5"/><path d="M6 10v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-9"/><path d="M10 20v-6h4v6"/></svg></div>
+      <span data-i18n="navHome">Home</span>
+    </button>
+    <button class="tab-item" data-tab="daily" onclick="Nav.go('daily')">
+      <div class="tab-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M8 3.5v3M16 3.5v3M3.5 10h17"/><path d="M9 14.5l2 2 4-4"/></svg></div>
+      <span data-i18n="navDaily">Daily</span>
+    </button>
+    <button class="tab-item" data-tab="vocab" onclick="Nav.go('vocab')">
+      <div class="tab-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.5C10.4 5.4 8.3 4.9 5 4.9v13.1c3.3 0 5.4.5 7 1.6 1.6-1.1 3.7-1.6 7-1.6V4.9c-3.3 0-5.4.5-7 1.6Z"/><path d="M12 6.5v13"/></svg></div>
+      <span data-i18n="navVocab">Vocab</span>
+    </button>
+    <button class="tab-item" data-tab="pron" onclick="Nav.go('pron')">
+      <div class="tab-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="4" y2="12"/><line x1="8" y1="7" x2="8" y2="17"/><line x1="12" y1="4" x2="12" y2="20"/><line x1="16" y1="7" x2="16" y2="17"/><line x1="20" y1="12" x2="20" y2="12"/></svg></div>
+      <span data-i18n="navSpeak">Speak</span>
+    </button>
+    <button class="tab-item" data-tab="phrases" onclick="Nav.go('phrases')">
+      <div class="tab-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-9.5L6 21v-4H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/></svg></div>
+      <span data-i18n="navPhrases">Phrases</span>
+    </button>
+    <button class="tab-item" data-tab="assess" onclick="Nav.go('assess')">
+      <div class="tab-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="16" rx="2"/><rect x="9" y="2.6" width="6" height="3" rx="1"/><path d="M9 12.5l2 2 4-4.5"/></svg></div>
+      <span data-i18n="navAssess">Assess</span>
+    </button>
+  </nav>
+
+</div>
+
+<script src="js/i18n.js"></script>
+<script src="js/data.js"></script>
+<script src="js/activities.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/speech.js"></script>
+<script src="js/vocab.js"></script>
+<script src="js/quiz.js"></script>
+<script src="js/daily.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
