@@ -603,16 +603,42 @@ const Quiz = (() => {
 /* =========================================================================
    ASSESSMENT HUB — the eight activity cards
    ========================================================================= */
-const ASSESS_ACTIVITIES = [
-  { key:'mc',         titleKey:'actMcTitle',       descKey:'actMcDesc',       run:() => Quiz.startMainQuiz(),      icon:'list',   wide:false },
-  { key:'fill',       titleKey:'actFillTitle',     descKey:'actFillDesc',     run:() => Quiz.openFillPicker(),     icon:'chat',   wide:false, sage:true },
-  { key:'definition', titleKey:'actDefTitle',      descKey:'actDefDesc',      run:() => Quiz.startDefinitionQuiz(),icon:'book',   wide:false },
-  { key:'listen',     titleKey:'actListenTitle',   descKey:'actListenDesc',   run:() => Quiz.startListen(),        icon:'wave',   wide:false, sage:true },
-  { key:'builder',    titleKey:'actBuilderTitle',  descKey:'actBuilderDesc',  run:() => Quiz.startBuilder(),       icon:'blocks', wide:false },
-  { key:'truefalse',  titleKey:'actTfTitle',       descKey:'actTfDesc',       run:() => Quiz.startTrueFalse(),     icon:'check',  wide:false, sage:true },
-  { key:'errorfix',   titleKey:'actErrTitle',      descKey:'actErrDesc',      run:() => Quiz.startErrorFix(),      icon:'swap',   wide:false },
-  { key:'scenario',   titleKey:'actScenarioTitle', descKey:'actScenarioDesc', run:() => Quiz.startScenarioQuiz(),  icon:'star',   wide:true,  sage:true },
+/* =========================================================================
+   PRACTICE HUB — every activity in the app, in one grouped list.
+
+   Previously the six vocabulary drills lived on the Vocabulary screen and
+   the quizzes lived on a separate Assessment screen, so a learner had to
+   know which of two tabs held the thing they wanted. Everything now appears
+   here, grouped by what the activity asks of you: recognise it, answer
+   questions about it, or say it out loud.
+   ========================================================================= */
+const PRACTICE_GROUPS = [
+  { titleKey:'grpVocabTitle', descKey:'grpVocabDesc', items:[
+    { key:'flash',     titleKey:'modeFlash',        descKey:'actFlashDesc',    icon:'book',   run:() => Vocab.openMode('flash') },
+    { key:'match',     titleKey:'modeMatch',        descKey:'actMatchDesc',    icon:'blocks', run:() => Vocab.openMode('match'), sage:true },
+    { key:'scramble',  titleKey:'modeScramble',     descKey:'actScrambleDesc', icon:'shuffle',run:() => Vocab.openMode('scramble'), score:'scramble' },
+    { key:'thai',      titleKey:'modeThai',         descKey:'actThaiDesc',     icon:'globe',  run:() => Vocab.openMode('thai'), score:'thai_recall', sage:true },
+    { key:'sort',      titleKey:'modeSort',         descKey:'actSortDesc',     icon:'folder', run:() => Vocab.openMode('sort'), score:'category_sort' },
+    { key:'speed',     titleKey:'modeSpeed',        descKey:'actSpeedDesc',    icon:'bolt',   run:() => Vocab.openMode('speed'), score:'speed_round', sage:true },
+  ]},
+  { titleKey:'grpQuizTitle', descKey:'grpQuizDesc', items:[
+    { key:'mc',         titleKey:'actMcTitle',       descKey:'actMcDesc',       icon:'list',   run:() => Quiz.startMainQuiz(),       score:'mc' },
+    { key:'definition', titleKey:'actDefTitle',      descKey:'actDefDesc',      icon:'book',   run:() => Quiz.startDefinitionQuiz(), score:'definition', sage:true },
+    { key:'fill',       titleKey:'actFillTitle',     descKey:'actFillDesc',     icon:'chat',   run:() => Quiz.openFillPicker(),      score:'fill' },
+    { key:'listen',     titleKey:'actListenTitle',   descKey:'actListenDesc',   icon:'wave',   run:() => Quiz.startListen(),         score:'listen', sage:true },
+    { key:'builder',    titleKey:'actBuilderTitle',  descKey:'actBuilderDesc',  icon:'blocks', run:() => Quiz.startBuilder(),        score:'builder' },
+    { key:'truefalse',  titleKey:'actTfTitle',       descKey:'actTfDesc',       icon:'check',  run:() => Quiz.startTrueFalse(),      score:'truefalse', sage:true },
+    { key:'errorfix',   titleKey:'actErrTitle',      descKey:'actErrDesc',      icon:'swap',   run:() => Quiz.startErrorFix(),       score:'errorfix' },
+    { key:'scenario',   titleKey:'actScenarioTitle', descKey:'actScenarioDesc', icon:'star',   run:() => Quiz.startScenarioQuiz(),   score:'scenario', sage:true },
+  ]},
+  { titleKey:'grpSpeakTitle', descKey:'grpSpeakDesc', items:[
+    { key:'pron',     titleKey:'menuPronTitle',  descKey:'actPronDesc',  icon:'wave', run:() => Nav.go('pron') },
+    { key:'speaking', titleKey:'actSpeakTitle',  descKey:'actSpeakDesc', icon:'mic',  run:() => Nav.go('speaking'), score:'speaking', sage:true },
+  ]},
 ];
+
+/* Flat lookup for the click handler. */
+const PRACTICE_INDEX = PRACTICE_GROUPS.reduce((acc, g) => acc.concat(g.items), []);
 
 const ASSESS_ICONS = {
   list:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 10.5l1.5 1.5L12 9M8 15.5l1.5 1.5L12 14"/><line x1="14.5" y1="10" x2="17" y2="10"/><line x1="14.5" y1="15" x2="17" y2="15"/></svg>',
@@ -623,4 +649,9 @@ const ASSESS_ICONS = {
   check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5l2.5 2.5L11 6"/><path d="M14 7h6"/><path d="M4 17l2.5 2.5L11 15"/><path d="M14 18h6"/></svg>',
   swap:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="17" y2="8"/><path d="M14 5l3 3-3 3"/><line x1="20" y1="16" x2="7" y2="16"/><path d="M10 13l-3 3 3 3"/></svg>',
   star:  '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.8 14.7 9l6.5.6-5 4.4 1.5 6.4L12 17l-5.7 3.4L8 14 3 9.6 9.5 9 12 2.8Z"/></svg>',
+  mic:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0"/><line x1="12" y1="18" x2="12" y2="21"/><line x1="8.5" y1="21" x2="15.5" y2="21"/></svg>',
+  shuffle:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h4l4 10h6"/><path d="M3 17h4l1.5-3.8"/><path d="M14 7h3"/><path d="M15.5 5 18 7l-2.5 2"/><path d="M15.5 15 18 17l-2.5 2"/></svg>',
+  globe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3.5 9.5h17M3.5 14.5h17"/><path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>',
+  folder:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 7.5a2 2 0 0 1 2-2h3.2l1.8 2.2h8a2 2 0 0 1 2 2v7.8a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2Z"/></svg>',
+  bolt:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2.5 5.5 13.5H11l-1 8 8-11.5H12.5Z"/></svg>',
 };

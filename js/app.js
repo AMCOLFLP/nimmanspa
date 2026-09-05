@@ -4,13 +4,14 @@
 
 const Nav = {
   tabFor: {
-    home:'home', account:'home', settings:'home', daily:'daily', vocab:'vocab', pron:'pron',
+    home:'home', account:'home', settings:'home', daily:'daily', vocab:'vocab', pron:'assess',
     phrases:'phrases', saythis:'phrases',
-    assess:'assess', mcquiz:'assess', fillquiz:'assess', listen:'assess',
+    assess:'assess', mcquiz:'assess', fillquiz:'assess', listen:'assess', speaking:'assess',
     builder:'assess', truefalse:'assess', errorfix:'assess', results:'assess',
   },
   go(screen){
     Vocab.stopTimers();
+    Speaking.stopAll();   // never leave a microphone live behind a screen change
     Speech.stop();
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     const target = document.getElementById('screen-' + screen);
@@ -22,7 +23,8 @@ const Nav = {
 
     if (screen === 'daily') Daily.open();
     if (screen === 'settings') App.renderSettings();
-    if (screen === 'vocab') App.renderVocabHint();
+    if (screen === 'speaking') Speaking.open();
+    if (screen === 'vocab'){ App.renderVocabHint(); Vocab.refreshChrome(); }
     if (screen === 'assess') App.renderAssessHub();
     if (screen === 'account') App.renderAccount();
     if (screen === 'home') App.refreshHome();
@@ -239,6 +241,11 @@ const App = (() => {
   /* ---------------- phrases ---------------- */
   let activePhraseCat = 'welcome';
 
+  function renderPhraseLevelChips(){
+    const wrap = document.getElementById('phraseLevelChips');
+    if (wrap) wrap.innerHTML = levelChipsMarkup(phraseLevel);
+  }
+
   function renderPhraseCats(){
     document.getElementById('phraseCatChips').innerHTML = PHRASES.map(c =>
       `<button class="chip ${c.id === activePhraseCat ? 'active' : ''}" data-cat="${c.id}">${I18N.current === 'th' ? c.th : c.en}</button>`
@@ -246,6 +253,7 @@ const App = (() => {
   }
 
   let phraseQuery = '';
+  let phraseLevel = 'all';
 
   /* With a search term, look across every category at once — a learner
      hunting for "allergies" shouldn't have to guess which tab it lives in. */
@@ -266,6 +274,8 @@ const App = (() => {
       rows = cat.items.map(p => ({ ...p, catLabel: null }));
     }
 
+    if (phraseLevel !== 'all') rows = rows.filter(p => String(p.level) === phraseLevel);
+
     const countEl = document.getElementById('phraseSearchCount');
     if (q){
       countEl.style.display = 'block';
@@ -278,22 +288,24 @@ const App = (() => {
       <div class="phrase-row">
         <div class="phrase-index">${i + 1}</div>
         <div class="phrase-copy">
+          <div class="phrase-meta">${levelBadge(p.level, { compact:true })}${p.catLabel ? `<span class="phrase-note" style="margin:0;">${p.catLabel}</span>` : ''}</div>
           <div class="phrase-text">&ldquo;${p.text}&rdquo;</div>
           <div class="gloss">${p.th || ''}</div>
-          <div class="phrase-note">${p.catLabel ? p.catLabel + ' \u00b7 ' : ''}${p.note}</div>
+          <div class="phrase-note">${p.note}</div>
         </div>
         <button class="mini-play" data-text="${p.text.replace(/"/g,'&quot;')}" aria-label="Play">${ICN.play}</button>
       </div>`).join('');
 
-    document.getElementById('phraseEmpty').innerHTML = rows.length ? '' : emptyStateMarkup();
+    document.getElementById('phraseEmpty').innerHTML = rows.length ? '' : emptyStateMarkup(
+      phraseLevel !== 'all' && !q);
     document.getElementById('phraseList').style.display = rows.length ? 'block' : 'none';
   }
 
-  function emptyStateMarkup(){
+  function emptyStateMarkup(byLevel){
     return `<div class="empty-state">
       <div class="es-icon">${ICN.search}</div>
-      <h4>${I18N.t('searchNoResultsTitle')}</h4>
-      <p>${I18N.t('searchNoResultsBody')}</p>
+      <h4>${I18N.t(byLevel ? 'levelNoneTitle' : 'searchNoResultsTitle')}</h4>
+      <p>${I18N.t(byLevel ? 'levelNoneBody' : 'searchNoResultsBody')}</p>
     </div>`;
   }
 
@@ -316,6 +328,12 @@ const App = (() => {
   function bindPhrases(){
     bindSearch('phraseSearch', 'phraseSearchClear', val => {
       phraseQuery = val;
+      renderPhraseList();
+    });
+    document.getElementById('phraseLevelChips').addEventListener('click', e => {
+      const chip = e.target.closest('.chip'); if (!chip) return;
+      phraseLevel = chip.dataset.level;
+      renderPhraseLevelChips();
       renderPhraseList();
     });
     document.getElementById('phraseCatChips').addEventListener('click', e => {
@@ -357,21 +375,39 @@ const App = (() => {
 
   /* ---------------- assessment hub ---------------- */
   function renderAssessHub(){
-    document.getElementById('assessGrid').innerHTML = ASSESS_ACTIVITIES.map(a => {
-      const best = Progress.bestFor(a.key);
-      return `<div class="activity-card ${a.wide ? 'wide' : ''}" data-act="${a.key}">
-        ${best !== null ? `<span class="ac-best">${best}%</span>` : ''}
-        <div class="ac-icon ${a.sage ? 'sage' : ''}">${ASSESS_ICONS[a.icon]}</div>
-        <h4>${I18N.t(a.titleKey)}</h4>
-        <p>${I18N.t(a.descKey)}</p>
-      </div>`;
+    // A sixteen-card list is a long scroll, so offer a jump to each group.
+    document.getElementById('practiceJump').innerHTML = PRACTICE_GROUPS.map((g, i) =>
+      `<button class="chip" data-jump="pg-${i}">${I18N.t(g.titleKey)}</button>`).join('');
+
+    document.getElementById('assessGrid').innerHTML = PRACTICE_GROUPS.map((group, i) => {
+      const cards = group.items.map(a => {
+        const best = a.score ? Progress.bestFor(a.score) : null;
+        return `<div class="activity-card ${a.wide ? 'wide' : ''}" data-act="${a.key}">
+          ${best !== null ? `<span class="ac-best">${best}%</span>` : ''}
+          <div class="ac-icon ${a.sage ? 'sage' : ''}">${ASSESS_ICONS[a.icon] || ''}</div>
+          <h4>${I18N.t(a.titleKey)}</h4>
+          <p>${I18N.t(a.descKey)}</p>
+        </div>`;
+      }).join('');
+      return `<section class="practice-group" id="pg-${i}">
+        <div class="pg-head">
+          <h3>${I18N.t(group.titleKey)}</h3>
+          <p>${I18N.t(group.descKey)}</p>
+        </div>
+        <div class="activity-grid">${cards}</div>
+      </section>`;
     }).join('');
   }
 
   function bindAssess(){
+    document.getElementById('practiceJump').addEventListener('click', e => {
+      const chip = e.target.closest('[data-jump]'); if (!chip) return;
+      const target = document.getElementById(chip.dataset.jump);
+      if (target) target.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
     document.getElementById('assessGrid').addEventListener('click', e => {
       const card = e.target.closest('.activity-card'); if (!card) return;
-      const act = ASSESS_ACTIVITIES.find(a => a.key === card.dataset.act);
+      const act = PRACTICE_INDEX.find(a => a.key === card.dataset.act);
       if (act) act.run();
     });
   }
@@ -427,19 +463,27 @@ const App = (() => {
 
   /* ---------------- settings ---------------- */
   function renderSettings(){
+    // Opening Settings is always the result of a tap, so this is a valid
+    // moment to wake the iOS speech engine if it isn't awake yet.
+    Speech.prime();
+    Speech.refresh();   // iOS populates its voice list late
     const sel = document.getElementById('voiceSelect');
     const badge = document.getElementById('voiceBadge');
-    const voices = Speech.englishVoices();
+    const voices = Speech.englishVoices().filter(v => v.score >= 0);
     const savedUri = localStorage.getItem('spa_voice_uri') || '';
+    const note = document.getElementById('voiceIosNote');
+    const resetBtn = document.getElementById('voiceReset');
 
     if (!voices.length){
+      // On iOS the list stays empty until the engine has been woken by a tap,
+      // so say that plainly rather than showing an empty dropdown.
       sel.innerHTML = `<option value="">${I18N.t('setVoiceNone')}</option>`;
       sel.disabled = true;
       badge.textContent = '\u2014';
       badge.classList.add('warn');
+      if (note) note.style.display = Speech.isIOS ? 'block' : 'none';
     } else {
       sel.disabled = false;
-      badge.classList.remove('warn');
       const best = voices[0];
       sel.innerHTML =
         `<option value="">${I18N.t('setVoiceAuto')}</option>` +
@@ -447,8 +491,13 @@ const App = (() => {
           const tag = (v.uri === best.uri) ? ` \u2014 ${I18N.t('setVoiceRecommended')}` : '';
           return `<option value="${v.uri}"${v.uri === savedUri ? ' selected' : ''}>${v.name} (${v.lang})${tag}</option>`;
         }).join('');
-      badge.textContent = Speech.currentVoiceName || '\u2014';
+      // Green when we're on the intended US female voice, amber otherwise.
+      const locked = Speech.isPreferredVoice();
+      badge.textContent = locked ? I18N.t('setVoiceLocked') : (Speech.currentVoiceName || '\u2014');
+      badge.classList.toggle('warn', !locked);
+      if (note) note.style.display = 'none';
     }
+    if (resetBtn) resetBtn.style.display = savedUri ? 'block' : 'none';
 
     document.getElementById('speedSelect').value = String(speechRate());
     document.getElementById('setLangName').textContent = I18N.current === 'th' ? '\u0e44\u0e17\u0e22' : 'English';
@@ -478,7 +527,20 @@ const App = (() => {
   function bindSettings(){
     document.getElementById('voiceSelect').addEventListener('change', e => {
       Speech.setVoice(e.target.value || null);
-      document.getElementById('voiceBadge').textContent = Speech.currentVoiceName || '\u2014';
+      renderSettings();
+      Speech.speak(I18N.t('voiceSampleText'), { rate: speechRate() });
+    });
+
+    document.getElementById('voiceReset').addEventListener('click', () => {
+      Speech.setVoice(null);          // back to automatic US-female selection
+      renderSettings();
+      Speech.speak(I18N.t('voiceSampleText'), { rate: speechRate() });
+    });
+
+    // The voice list can land after this screen is first drawn (iOS/WebKit).
+    Speech.onReady(() => {
+      if (document.getElementById('screen-settings').classList.contains('active')) renderSettings();
+    Speaking.rerender();
     });
 
     document.getElementById('voiceTest').addEventListener('click', () => {
@@ -486,8 +548,10 @@ const App = (() => {
       btn.classList.add('playing');
       Speech.speak(I18N.t('voiceSampleText'), {
         rate: speechRate(),
-        onend(){ btn.classList.remove('playing'); }
+        onend(){ btn.classList.remove('playing'); renderSettings(); }
       });
+      // iOS fills getVoices() only once speech has been attempted.
+      window.setTimeout(renderSettings, 400);
     });
 
     document.getElementById('speedSelect').addEventListener('change', e => {
@@ -528,6 +592,7 @@ const App = (() => {
     refreshHome();
     renderPron();
     renderPhraseCats();
+    renderPhraseLevelChips();
     renderPhraseList();
     renderSayThis();
     renderAssessHub();
@@ -555,6 +620,7 @@ const App = (() => {
     Vocab.init();
     Quiz.init();
     Daily.init();
+    Speaking.init();
 
     document.getElementById('avatarBtn').addEventListener('click', () => Nav.go('account'));
     document.getElementById('logoutBtn').addEventListener('click', () => {

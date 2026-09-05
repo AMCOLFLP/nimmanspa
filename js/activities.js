@@ -16,6 +16,14 @@ function shuffle(arr){
   return a;
 }
 function sample(arr, n){ return shuffle(arr).slice(0, Math.min(n, arr.length)); }
+/* Shared pool filter: category + difficulty level. `level` is 'all' or
+   '1' | '2' | '3', matching the filter chips. */
+function vocabPool(catId, level){
+  let pool = (catId && catId !== 'all') ? VOCAB.filter(v => v.cat === catId) : VOCAB;
+  if (level && level !== 'all') pool = pool.filter(v => String(v.level) === String(level));
+  return pool;
+}
+
 function catLabel(catId){
   const c = VOCAB_CATEGORIES.find(c => c.id === catId);
   if (!c) return catId;
@@ -297,8 +305,8 @@ const FILL_DIALOGUES = [
 
 /* Term → which definition? (distractors drawn from other categories where
    possible, so the wrong answers are plausible but not confusing.) */
-function genDefinitionQuestions(count, catId){
-  const pool = catId && catId !== 'all' ? VOCAB.filter(v => v.cat === catId) : VOCAB;
+function genDefinitionQuestions(count, catId, level){
+  const pool = vocabPool(catId, level);
   return sample(pool, count).map(word => {
     const others = sample(VOCAB.filter(v => v.word !== word.word), 3);
     const options = shuffle([word, ...others]);
@@ -316,8 +324,8 @@ function genDefinitionQuestions(count, catId){
 /* Definition → which term? Distractors prefer the same category (so the
    choice is a real discrimination), then top up from the wider pool.
    Deduplicated by word, or the same term could appear twice as an option. */
-function genReverseQuestions(count, catId){
-  const pool = catId && catId !== 'all' ? VOCAB.filter(v => v.cat === catId) : VOCAB;
+function genReverseQuestions(count, catId, level){
+  const pool = vocabPool(catId, level);
   return sample(pool, count).map(word => {
     const sameCat = shuffle(VOCAB.filter(v => v.word !== word.word && v.cat === word.cat));
     const wider   = shuffle(VOCAB.filter(v => v.word !== word.word && v.cat !== word.cat));
@@ -338,8 +346,15 @@ function genReverseQuestions(count, catId){
 }
 
 /* Thai → which English term? */
-function genThaiQuestions(count, catId){
-  const pool = catId && catId !== 'all' ? VOCAB.filter(v => v.cat === catId) : VOCAB;
+function genThaiQuestions(count, catId, level){
+  let pool = vocabPool(catId, level);
+  // A narrow category+level combination can leave only one or two words,
+  // which makes for a pointless quiz. Relax the category but keep the
+  // level, so the difficulty the learner asked for still holds.
+  if (pool.length < 4){
+    const wider = vocabPool('all', level);
+    if (wider.length > pool.length) pool = wider;
+  }
   return sample(pool, count).map(word => {
     const others = sample(VOCAB.filter(v => v.word !== word.word), 3);
     const options = shuffle([word, ...others]);
@@ -358,9 +373,16 @@ function genThaiQuestions(count, catId){
 /* Word scramble: letters of the term, shuffled, with the definition as clue.
    Single-word terms only — merging the letters of "lymphatic drainage" into
    one anagram is unsolvable in practice. */
-function genScrambleRounds(count, catId){
-  const pool = (catId && catId !== 'all' ? VOCAB.filter(v => v.cat === catId) : VOCAB)
+function genScrambleRounds(count, catId, level){
+  let pool = vocabPool(catId, level)
     .filter(v => !/[\s-]/.test(v.word) && v.word.length >= 4 && v.word.length <= 14);
+  // A narrow filter can leave too few single-word terms to build a round,
+  // so widen back to the whole level before giving up.
+  if (pool.length < count){
+    const wider = vocabPool('all', level)
+      .filter(v => !/[\s-]/.test(v.word) && v.word.length >= 4 && v.word.length <= 14);
+    if (wider.length > pool.length) pool = wider;
+  }
   return sample(pool, count).map(word => {
     const letters = word.word.toUpperCase().split('');
     let scrambled = shuffle(letters);
@@ -375,6 +397,7 @@ function genScrambleRounds(count, catId){
       clue: word.def,
       clueTh: word.th,
       category: word.cat,
+      level: word.level,
       phon: word.phon,
     };
   });

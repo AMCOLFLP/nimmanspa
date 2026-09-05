@@ -64,6 +64,7 @@ const Daily = (() => {
         <div class="swipe-badge nope">${I18N.t('swipeNotYetStamp')}</div>
         <div class="sc-top">
           <span class="sc-cat">${catLabelFor(v.cat)}</span>
+          ${levelBadge(v.level, { compact:true })}
           <button class="sc-speak" data-speak="${v.word}" aria-label="Hear ${v.word}">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6.5 9H4v6h2.5L11 19V5Z"/><path d="M15.5 9.5a3.5 3.5 0 0 1 0 5"/><path d="M18 7a7 7 0 0 1 0 10"/></svg>
           </button>
@@ -110,7 +111,10 @@ const Daily = (() => {
       if (!v) return '';
       return `<div class="daily-word-row">
         <div>
-          <div class="dwr-word">${v.word}</div>
+          <div class="dwr-head">
+            <div class="dwr-word">${v.word}</div>
+            ${levelBadge(v.level, { compact:true })}
+          </div>
           <div class="dwr-th">${v.th}</div>
         </div>
         <button class="mini-play" data-speak="${v.word}" aria-label="Hear ${v.word}">${ICN.play}</button>

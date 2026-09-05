@@ -15,6 +15,7 @@ const VOCAB_MODES = [
 const Vocab = (() => {
   let mode = 'flash';
   let cat = 'all';
+  let level = 'all';
   let pool = VOCAB;
   let index = 0;
 
@@ -32,9 +33,8 @@ const Vocab = (() => {
     // category filter only applies to the card/word activities
     const usesCat = ['flash','scramble','thai'].includes(mode);
     wrap.style.display = usesCat ? 'flex' : 'none';
-    // search only makes sense while browsing flashcards
-    const sw = document.getElementById('vocabSearchWrap');
-    if (sw) sw.style.display = (mode === 'flash') ? 'block' : 'none';
+    // The search toggle lives in the deck meta, which only the flashcard
+    // view shows, so nothing extra is needed to hide it in other modes.
     const sc = document.getElementById('vocabSearchCount');
     if (sc && mode !== 'flash') sc.style.display = 'none';
     if (!usesCat) return;
@@ -48,8 +48,21 @@ const Vocab = (() => {
 
   /* The search box narrows the deck on top of the category filter, and
      matches English, Thai and the definition so either language works. */
+  function renderLevelChips(){
+    const wrap = document.getElementById('vocabLevelChips');
+    const label = document.getElementById('vocabLevelLabel');
+    // The level filter only applies to the word-by-word activities.
+    const uses = ['flash','scramble','thai'].includes(mode);
+    wrap.style.display = uses ? 'flex' : 'none';
+    if (label) label.style.display = uses ? 'flex' : 'none';
+    // Rebuild even while hidden: otherwise a language change made on another
+    // screen leaves the old labels sitting here for the next visit.
+    wrap.innerHTML = levelChipsMarkup(level);
+  }
+
   function applyPool(){
     let base = cat === 'all' ? VOCAB : VOCAB.filter(v => v.cat === cat);
+    if (level !== 'all') base = base.filter(v => String(v.level) === level);
     const q = query.trim().toLowerCase();
     if (q){
       base = base.filter(v =>
@@ -90,10 +103,11 @@ const Vocab = (() => {
         emptyEl.id = emptyId;
         stage.parentNode.insertBefore(emptyEl, stage);
       }
+      const filtered = level !== 'all' && !query.trim();
       emptyEl.innerHTML = `<div class="empty-state">
         <div class="es-icon">${ICN.search}</div>
-        <h4>${I18N.t('searchNoResultsTitle')}</h4>
-        <p>${I18N.t('searchNoResultsBody')}</p></div>`;
+        <h4>${I18N.t(filtered ? 'levelNoneTitle' : 'searchNoResultsTitle')}</h4>
+        <p>${I18N.t(filtered ? 'levelNoneBody' : 'searchNoResultsBody')}</p></div>`;
       document.getElementById('fcPos').textContent = '0';
       document.getElementById('fcTotal').textContent = '0';
       return;
@@ -104,6 +118,8 @@ const Vocab = (() => {
     const w = pool[index];
     const catObj = VOCAB_CATEGORIES.find(c => c.id === w.cat);
     document.getElementById('fcCategory').textContent = label(catObj).toUpperCase();
+    document.getElementById('fcLevel').innerHTML = levelBadge(w.level);
+    document.getElementById('fcLevelBack').innerHTML = levelBadge(w.level);
     document.getElementById('fcWord').textContent = w.word;
     document.getElementById('fcPhon').textContent = w.phon;
     document.getElementById('fcThFront').textContent = w.th;
@@ -172,7 +188,7 @@ const Vocab = (() => {
   const SCR_COUNT = 8;
 
   function newScramble(){
-    scrRounds = genScrambleRounds(SCR_COUNT, cat);
+    scrRounds = genScrambleRounds(SCR_COUNT, cat, level);
     scrIdx = 0; scrScore = 0;
     renderScramble();
   }
@@ -183,6 +199,8 @@ const Vocab = (() => {
     const r = scrRounds[scrIdx];
     const catObj = VOCAB_CATEGORIES.find(c => c.id === r.category);
     document.getElementById('scrCat').textContent = label(catObj);
+    const scrLv = document.getElementById('scrLevel');
+    if (scrLv) scrLv.innerHTML = levelBadge(r.level || 2);
     document.getElementById('scrClue').textContent = r.clue;
     document.getElementById('scrClueTh').textContent = I18N.current === 'th' ? r.clueTh : '';
     document.getElementById('scrScore').textContent = `${scrScore} / ${scrRounds.length}`;
@@ -260,7 +278,7 @@ const Vocab = (() => {
   const TH_COUNT = 12;
 
   function newThai(){
-    thQs = genThaiQuestions(TH_COUNT, cat);
+    thQs = genThaiQuestions(TH_COUNT, cat, level);
     thIdx = 0; thScore = 0;
     renderThai();
   }
@@ -451,6 +469,17 @@ const Vocab = (() => {
       const chip = e.target.closest('.chip'); if (!chip) return;
       setMode(chip.dataset.mode);
     });
+    document.getElementById('vocabLevelChips').addEventListener('click', e => {
+      const chip = e.target.closest('.chip'); if (!chip) return;
+      level = chip.dataset.level;
+      index = 0;
+      renderLevelChips();
+      applyPool();
+      if (mode === 'flash') renderCard();
+      if (mode === 'scramble') newScramble();
+      if (mode === 'thai') newThai();
+    });
+
     document.getElementById('vocabCatChips').addEventListener('click', e => {
       const chip = e.target.closest('.chip'); if (!chip) return;
       cat = chip.dataset.cat;
@@ -462,8 +491,25 @@ const Vocab = (() => {
       if (mode === 'thai') newThai();
     });
 
+    const searchWrap = document.getElementById('vocabSearchWrap');
+    const searchToggle = document.getElementById('vocabSearchToggle');
     const searchInput = document.getElementById('vocabSearch');
     const searchClear = document.getElementById('vocabSearchClear');
+
+    if (searchToggle){
+      searchToggle.addEventListener('click', () => {
+        const open = searchWrap.classList.toggle('open');
+        searchToggle.classList.toggle('active', open);
+        if (open){ searchInput.focus(); }
+        else if (query){
+          // Closing the field clears the filter, so the deck isn't left
+          // mysteriously narrowed by a search the learner can't see.
+          searchInput.value = ''; query = '';
+          searchClear.classList.remove('show');
+          index = 0; applyPool(); renderCard();
+        }
+      });
+    }
     if (searchInput){
       searchInput.addEventListener('input', () => {
         query = searchInput.value;
@@ -540,6 +586,7 @@ const Vocab = (() => {
     mode = next;
     renderModeChips();
     renderCatChips();
+    renderLevelChips();
     showPane();
     if (mode === 'flash') renderCard();
     if (mode === 'match') newMatchRound();
@@ -551,7 +598,23 @@ const Vocab = (() => {
 
   return {
     init(){ applyPool(); bind(); setMode('flash'); },
-    rerender(){ renderModeChips(); renderCatChips(); setMode(mode); },
+    /* Launched from the practice hub: open the Vocabulary screen already
+       switched to the requested drill. */
+    openMode(next){
+      Nav.go('vocab');
+      setMode(next);
+      const screen = document.getElementById('screen-vocab');
+      if (screen) screen.scrollIntoView({ block:'start' });
+    },
+    rerender(){ renderModeChips(); renderCatChips(); renderLevelChips(); setMode(mode); },
+    /* Re-opening the screen refreshes labels and the visible card, but does
+       not restart an activity the learner is part-way through. */
+    refreshChrome(){
+      renderModeChips();
+      renderCatChips();
+      renderLevelChips();
+      if (mode === 'flash'){ applyPool(); renderCard(); }
+    },
     stopTimers,
   };
 })();

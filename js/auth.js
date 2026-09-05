@@ -219,12 +219,29 @@ const Progress = (() => {
     return a;
   }
 
+  /* Daily words climb the difficulty ladder: all the Easy words are offered
+     before Intermediate ones appear, and Advanced terms only once the earlier
+     levels are done. Within a level the order is seeded by the date, so the
+     set is stable for the day but varies day to day. */
   function pickDailyWords(){
     const knownSet = new Set(load().knownWords);
     const seed = dateSeed();
-    const fresh  = seededShuffle(VOCAB.filter(v => !knownSet.has(v.word)), seed);
-    const review = seededShuffle(VOCAB.filter(v =>  knownSet.has(v.word)), seed + 7);
-    return [...fresh, ...review].slice(0, DAILY_SIZE).map(v => v.word);
+    const unknown = VOCAB.filter(v => !knownSet.has(v.word));
+
+    const byLevel = [1, 2, 3].map(lv =>
+      seededShuffle(unknown.filter(v => (v.level || 2) === lv), seed + lv * 13));
+
+    // Mostly one level at a time, but let a couple of words from the next
+    // level through so the set never feels static once a level is nearly done.
+    let queue = [...byLevel[0], ...byLevel[1], ...byLevel[2]];
+
+    if (queue.length < DAILY_SIZE){
+      // Everything is known: revise, easiest first, so a session still works.
+      const review = [1, 2, 3].flatMap(lv =>
+        seededShuffle(VOCAB.filter(v => knownSet.has(v.word) && (v.level || 2) === lv), seed + lv * 29));
+      queue = queue.concat(review);
+    }
+    return queue.slice(0, DAILY_SIZE).map(v => v.word);
   }
 
   function dailyState(){
