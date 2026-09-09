@@ -2090,8 +2090,13 @@ html[lang="th"] .course-hero h2{ font-family:var(--thai); font-style:normal; fon
   display:flex; align-items:center; justify-content:center;
 }
 .cc-mark svg{ width:22px; height:22px; }
-.cc-mark.spa{ background:var(--gold-mist); color:var(--gold-deep); border:1px solid var(--gold-line); }
+/* Fixed brand colours: each course card must look like its own course,
+   whichever theme happens to be active while the chooser is open. */
+.cc-mark.spa{ background:#F6EFDD; color:#8A6C34; border:1px solid rgba(171,134,70,.35); }
 .cc-mark.cruise{ background:#E4EFF4; color:#1F536C; border:1px solid rgba(46,110,142,.34); }
+.course-card.current{ border-color:currentColor; }
+.course-card[data-course="spa"].current{ border-color:#AB8646; }
+.course-card[data-course="cruise"].current{ border-color:#2E6E8E; }
 .cc-title{ flex:1; min-width:0; }
 .cc-title h3{
   font-family:var(--serif); font-size:17px; font-weight:600;

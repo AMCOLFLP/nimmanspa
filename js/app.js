@@ -46,10 +46,9 @@ const App = (() => {
 
   function showApp(){
     document.getElementById('authWrap').classList.remove('active');
-    // A first-time learner chooses a course before the app opens; returning
-    // learners go straight back to the one they were studying.
-    if (!Courses.saved()){ showCourseChooser({ cancellable:false }); return; }
-    Courses.activate(Courses.saved());
+    // Straight into the app on the course last studied — never a forced
+    // chooser. Switching is available from the Home bar and from Account.
+    Courses.activate(Courses.saved() || 'spa');
     hideCourseChooser();
     document.getElementById('appShell').style.display = 'block';
     const user = Auth.currentUser();
@@ -809,9 +808,15 @@ const App = (() => {
       switchAuthTab('register');
     });
 
+    // The app always opens on the sign-in screen. Any previous session is
+    // ended on load, so a shared staff phone never drops the next person
+    // into someone else's account. Progress is stored per account, so
+    // nothing is lost by signing in again.
+    Auth.logout();
+    Progress.clearGuest();
+    Progress.invalidate();
     Courses.activate(Courses.saved() || 'spa', { remember: false });
-    if (Auth.isLoggedIn() && Auth.currentUser()) showApp();
-    else showAuth();
+    showAuth();
   }
 
   return {

@@ -16,9 +16,20 @@ real web address — not on a file:// path. Use one of these:
 If you open index.html directly, the speaking test will tell you this and
 offer self-check mode instead.
 
+SIGNING IN
+----------
+The app always opens on the sign-in screen, even if it was used a moment
+ago. That is deliberate: these devices are often shared between staff, and
+nobody should land in someone else's account. Progress is saved per account,
+so signing in again brings everything back.
+
+Tap "Continue as guest" for a quick look without an account. Guest progress
+lasts for that session only.
+
 TWO COURSES
 -----------
-After signing in you choose which course to study:
+After signing in you go straight back to the course you last studied.
+The two available are:
 
   NIMMAN Willow & Stone English   Spa & wellness
                                   137 words · 121 phrases · 20 do/don't pairs
@@ -27,7 +38,7 @@ After signing in you choose which course to study:
                                   98 words · 80 phrases · 14 do/don't pairs
 
 Switch any time from the bar at the top of the Home screen, or from
-Account -> Switch course. Each course keeps its OWN progress: known words,
+Account -> Switch course. You are never forced to pick one on the way in. Each course keeps its OWN progress: known words,
 scores, streak and Daily Five are stored separately, so one person can study
 both without one wiping the other. Each course also has its own colour —
 brass for spa, marine blue for cruise — so you can see at a glance which
