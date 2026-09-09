@@ -34,7 +34,7 @@ function catLabel(catId){
    MULTIPLE CHOICE BANK — 30 hand-written questions
    12 are sampled per attempt.
    ========================================================================= */
-const MC_BANK = [
+const SPA_MC_BANK = [
   { q:'What does \u201cexfoliation\u201d mean?', options:['Adding oil to the skin','Removing dead skin cells from the surface','Cooling the treatment room','Applying make-up'], correct:1,
     hit:'That\u2019s exactly right — exfoliation removes dead skin cells.', miss:'Exfoliation means removing dead skin cells from the surface.' },
   { q:'A \u201ccontraindication\u201d is best described as:', options:['A treatment guests love','A reason a treatment should not go ahead','A relaxing essential oil','A type of massage stroke'], correct:1,
@@ -122,7 +122,7 @@ const MC_BANK = [
 /* =========================================================================
    TRUE OR FALSE BANK — 20 statements, 12 sampled per attempt
    ========================================================================= */
-const TRUE_FALSE_BANK = [
+const SPA_TRUE_FALSE_BANK = [
   { statement:'You should always check for contraindications before a treatment begins.', answer:true,  why:'Checking contraindications is a core safety step before every treatment.' },
   { statement:'\u201cExfoliation\u201d means adding moisture back into the skin.', answer:false, why:'Exfoliation removes dead skin cells. Hydrating adds moisture.' },
   { statement:'It is professional to tell a late guest that they have less time now.', answer:false, why:'Reassure the guest instead: \u201cwe\u2019ll make the best use of the time we have.\u201d' },
@@ -157,7 +157,7 @@ const TRUE_FALSE_BANK = [
    ERROR CORRECTION BANK — 12 items, 8 sampled per attempt
    The learner reads a blunt line and picks the professional rewrite.
    ========================================================================= */
-const ERROR_BANK = [
+const SPA_ERROR_BANK = [
   { wrong:'Wait here.', options:['Please have a seat while we prepare your room.','Stand there please.','You wait now.'], correct:0,
     why:'A warm invitation with a reason, rather than a bare command.' },
   { wrong:'You don\u2019t have allergies, right?', options:['Could you tell me about any allergies or sensitivities?','No allergies then?','You are fine, correct?'], correct:0,
@@ -199,7 +199,7 @@ const ERROR_BANK = [
 /* =========================================================================
    LISTEN & CHOOSE BANK — 18 rounds, 10 sampled per attempt
    ========================================================================= */
-const LISTEN_BANK = [
+const SPA_LISTEN_BANK = [
   { target:'Acupressure',       distractors:['Aromatherapy','Reflexology','Sanitise'] },
   { target:'Exfoliation',       distractors:['Extraction','Hydrotherapy','Rejuvenating'] },
   { target:'Contraindication',  distractors:['Consultation form','Cross-contamination','Cancellation policy'] },
@@ -229,7 +229,7 @@ const LISTEN_BANK = [
 /* =========================================================================
    PHRASE BUILDER BANK — 18 sentences, 8 sampled per attempt
    ========================================================================= */
-const BUILDER_BANK = [
+const SPA_BUILDER_BANK = [
   { th:'วันนี้มีอะไรให้ช่วยไหมคะ',                        sentence:'How may I assist you today?' },
   { th:'เชิญนั่งพักผ่อนตามสบายค่ะ',                       sentence:'Please have a seat and relax.' },
   { th:'แรงกดแน่นเกินไปไหมคะ',                            sentence:'Is the pressure too firm?' },
@@ -261,7 +261,7 @@ const BUILDER_BANK = [
 /* =========================================================================
    FILL-IN-THE-BLANK DIALOGUES — 3 complete scripts
    ========================================================================= */
-const FILL_DIALOGUES = [
+const SPA_FILL_DIALOGUES = [
   { id:'arrival', title:'Front desk & treatment room', th:'หน้าเคาน์เตอร์และห้องทรีตเมนต์', lines:[
     { speaker:'Front desk', before:'Good afternoon, and welcome to Willow & Stone. How may I ', after:' you today?', options:['assist','ignore','delay','question'], correct:'assist' },
     { speaker:'Guest', before:'Hi, I have a two o\u2019clock booking for a deep tissue massage.', after:'', fixed:true },

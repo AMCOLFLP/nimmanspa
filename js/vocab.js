@@ -19,7 +19,10 @@ const Vocab = (() => {
   let pool = VOCAB;
   let index = 0;
 
-  function label(v){ return I18N.current === 'th' ? v.th : v.en; }
+  function label(v){
+    if (!v) return '';
+    return I18N.current === 'th' ? (v.th || v.en || '') : (v.en || v.th || '');
+  }
 
   function renderModeChips(){
     const wrap = document.getElementById('vocabModeChips');
@@ -116,7 +119,7 @@ const Vocab = (() => {
     if (emptyEl) emptyEl.innerHTML = '';
 
     const w = pool[index];
-    const catObj = VOCAB_CATEGORIES.find(c => c.id === w.cat);
+    const catObj = VOCAB_CATEGORIES.find(c => c.id === w.cat) || null;
     document.getElementById('fcCategory').textContent = label(catObj).toUpperCase();
     document.getElementById('fcLevel').innerHTML = levelBadge(w.level);
     document.getElementById('fcLevelBack').innerHTML = levelBadge(w.level);
@@ -607,6 +610,31 @@ const Vocab = (() => {
       if (screen) screen.scrollIntoView({ block:'start' });
     },
     rerender(){ renderModeChips(); renderCatChips(); renderLevelChips(); setMode(mode); },
+    /* Switching course replaces the whole word list, so every filter and the
+       card index have to be reset — a category id from the other course
+       would otherwise leave an empty deck and a stale card on screen. */
+    resetForCourse(){
+      mode = 'flash';
+      cat = 'all';
+      level = 'all';
+      query = '';
+      index = 0;
+      const input = document.getElementById('vocabSearch');
+      if (input) input.value = '';
+      const clear = document.getElementById('vocabSearchClear');
+      if (clear) clear.classList.remove('show');
+      const wrap = document.getElementById('vocabSearchWrap');
+      if (wrap) wrap.classList.remove('open');
+      const toggle = document.getElementById('vocabSearchToggle');
+      if (toggle) toggle.classList.remove('active');
+      applyPool();
+      renderModeChips();
+      renderCatChips();
+      renderLevelChips();
+      showPane();
+      renderCard();
+    },
+
     /* Re-opening the screen refreshes labels and the visible card, but does
        not restart an activity the learner is part-way through. */
     refreshChrome(){

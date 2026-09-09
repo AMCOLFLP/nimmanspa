@@ -1985,3 +1985,165 @@ html[lang="th"] .pg-head h3{font-family:var(--thai);font-weight:700;}
 /* leave room under the sticky header when jumping to a group */
 .practice-group{scroll-margin-top:96px;}
 #practiceJump .chip{font-size:12px;padding:8px 15px;}
+
+/* =========================================================================
+   PHRASE OF THE DAY — playable and tappable through to its category
+   ========================================================================= */
+.featured-quote{ cursor:pointer; }
+.fq-head{ display:flex; align-items:center; justify-content:space-between; gap:10px; }
+.fq-head .fq-label{ margin-bottom:0; }
+.potd-play{
+  width:34px;height:34px;border-radius:50%;flex-shrink:0;
+  border:1px solid var(--gold-line); background:var(--gold-mist);
+  color:var(--gold-deep); cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+}
+.potd-play svg{ width:12px;height:12px; }
+.potd-play.playing{ animation:ringPulse 1s infinite; }
+.fq-meta{ display:flex; align-items:center; gap:7px; margin:7px 0 6px; flex-wrap:wrap; }
+.fq-meta #potdCat{
+  font-size:10.5px; font-weight:800; letter-spacing:.2px;
+  color:var(--ink-faint);
+}
+.fq-cta{
+  font-size:11px; font-weight:700; color:var(--gold-deep);
+  margin:8px 0 0;
+}
+
+/* the tap-through line is UI, not part of the quotation */
+.featured-quote .fq-cta{
+  font-family:var(--sans);
+  font-style:normal;
+  font-size:11.5px;
+  font-weight:700;
+  line-height:1.4;
+}
+html[lang="th"] .featured-quote .fq-cta{ font-family:var(--thai); }
+.featured-quote .fq-meta #potdCat{ font-family:var(--sans); font-style:normal; }
+html[lang="th"] .featured-quote .fq-meta #potdCat{ font-family:var(--thai); }
+
+/* =========================================================================
+   COURSE THEMES
+   The whole design keys off the brass accent variables, so a course only
+   needs to swap those five values to feel like its own product. The cruise
+   course takes a deep marine blue; eucalyptus and clay stay put so every
+   correct/incorrect signal keeps meaning the same thing.
+   ========================================================================= */
+html.course-cruise{
+  --gold:#2E6E8E;
+  --gold-deep:#1F536C;
+  --gold-bright:#3F8CAF;
+  --gold-mist:#E4EFF4;
+  --gold-line:rgba(46,110,142,.34);
+  --shadow-pop:0 10px 30px rgba(31,83,108,.26);
+}
+html.course-cruise .app-shell::before{
+  background:
+    radial-gradient(480px 200px at 12% -10%, rgba(46,110,142,.12), transparent 60%),
+    radial-gradient(420px 220px at 100% -6%, rgba(95,128,115,.08), transparent 55%);
+}
+
+/* =========================================================================
+   COURSE CHOOSER
+   ========================================================================= */
+.course-wrap{
+  min-height:100vh; min-height:100dvh;
+  max-width:448px; margin:0 auto;
+  background:var(--mist);
+  padding:0 22px calc(28px + env(safe-area-inset-bottom));
+  display:none; flex-direction:column; position:relative;
+}
+.course-wrap.active{ display:flex; }
+.course-wrap::before{
+  content:''; position:absolute; inset:0 0 auto 0; height:300px;
+  background:
+    radial-gradient(420px 220px at 8% -8%, rgba(171,134,70,.13), transparent 62%),
+    radial-gradient(380px 200px at 100% -4%, rgba(95,128,115,.10), transparent 58%);
+  pointer-events:none;
+}
+.course-hero{ position:relative; z-index:2; padding:8px 0 20px; }
+.course-hero h2{
+  font-family:var(--serif); font-style:italic; font-weight:500;
+  font-size:25px; line-height:1.28; margin:0 0 8px; text-align:center;
+}
+html[lang="th"] .course-hero h2{ font-family:var(--thai); font-style:normal; font-weight:700; font-size:22px; }
+.course-hero p{
+  font-size:13px; color:var(--ink-soft); line-height:1.55;
+  margin:0 auto; max-width:34ch; text-align:center;
+}
+
+.course-card{
+  position:relative; z-index:2;
+  background:var(--paper);
+  border:1.5px solid var(--stone);
+  border-radius:var(--radius-lg);
+  padding:18px;
+  margin-bottom:13px;
+  cursor:pointer;
+  box-shadow:var(--shadow-card);
+}
+.course-card:active{ transform:scale(.99); }
+.course-card.current{ border-color:var(--gold); }
+.cc-top{ display:flex; align-items:center; gap:12px; margin-bottom:11px; }
+.cc-mark{
+  width:46px; height:46px; border-radius:50%; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+}
+.cc-mark svg{ width:22px; height:22px; }
+.cc-mark.spa{ background:var(--gold-mist); color:var(--gold-deep); border:1px solid var(--gold-line); }
+.cc-mark.cruise{ background:#E4EFF4; color:#1F536C; border:1px solid rgba(46,110,142,.34); }
+.cc-title{ flex:1; min-width:0; }
+.cc-title h3{
+  font-family:var(--serif); font-size:17px; font-weight:600;
+  margin:0 0 2px; line-height:1.25;
+}
+html[lang="th"] .cc-title h3{ font-family:var(--thai); font-weight:700; font-size:15.5px; }
+.cc-title p{ font-size:11.5px; color:var(--ink-faint); margin:0; }
+.cc-badge{
+  font-size:9.5px; font-weight:800; letter-spacing:.2px;
+  background:var(--sage-mist); color:var(--sage-deep);
+  padding:3px 9px; border-radius:100px; flex-shrink:0;
+}
+.cc-desc{ font-size:12.5px; color:var(--ink-soft); line-height:1.55; margin:0 0 12px; }
+.cc-stats{ display:flex; gap:8px; }
+.cc-stat{
+  flex:1; background:var(--mist); border-radius:10px;
+  padding:8px 6px; text-align:center;
+}
+.cc-stat b{ display:block; font-family:var(--serif); font-size:16px; font-weight:600; color:var(--ink); }
+.cc-stat span{ font-size:8.8px; font-weight:700; color:var(--ink-faint); letter-spacing:.2px; }
+.cc-go{
+  display:flex; align-items:center; justify-content:center; gap:7px;
+  margin-top:13px; padding:11px;
+  border-radius:12px; background:var(--ink); color:#fff;
+  font-size:13px; font-weight:800;
+}
+.cc-go svg{ width:14px; height:14px; }
+
+/* =========================================================================
+   CURRENT-COURSE BAR on Home
+   ========================================================================= */
+.course-bar{
+  display:flex; align-items:center; gap:10px;
+  background:var(--paper); border:1px solid var(--stone);
+  border-radius:100px; padding:7px 8px 7px 10px;
+  margin:12px 0 4px; cursor:pointer;
+}
+.course-bar:active{ background:var(--mist); }
+.cb-mark{
+  width:26px; height:26px; border-radius:50%; flex-shrink:0;
+  background:var(--gold-mist); color:var(--gold-deep);
+  display:flex; align-items:center; justify-content:center;
+}
+.cb-mark svg{ width:14px; height:14px; }
+.cb-body{ flex:1; min-width:0; display:flex; flex-direction:column; }
+.cb-label{ font-size:8.8px; font-weight:800; color:var(--ink-faint); letter-spacing:.3px; }
+.cb-name{
+  font-size:12px; font-weight:700; color:var(--ink);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.cb-switch{
+  font-size:11px; font-weight:800; color:var(--gold-deep);
+  background:var(--gold-mist); border-radius:100px;
+  padding:5px 12px; flex-shrink:0;
+}

@@ -5,7 +5,7 @@
    ========================================================================= */
 
 /* ---------- VOCABULARY ---------- */
-const VOCAB_CATEGORIES = [
+const SPA_VOCAB_CATEGORIES = [
   { id:'massage',    en:'Massage & bodywork',        th:'นวดและการบำบัดร่างกาย' },
   { id:'skin',       en:'Facial & skincare',         th:'ผิวหน้าและการดูแลผิว' },
   { id:'modality',   en:'Body treatments',           th:'ทรีตเมนต์ร่างกาย' },
@@ -17,7 +17,7 @@ const VOCAB_CATEGORIES = [
   { id:'team',       en:'Teamwork & shift talk',     th:'การทำงานเป็นทีมและการเข้ากะ' },
 ];
 
-const VOCAB = [
+const SPA_VOCAB = [
   // massage & bodywork (16)
   { word:'Effleurage', level:3, th:'การนวดลูบผิวเบาๆ', phon:'/ˌef.lɜːˈrɑːʒ/', cat:'massage', def:'Long, light, gliding strokes used to warm the tissue and open a massage sequence.', short:'Light, gliding opening stroke' },
   { word:'Petrissage', level:3, th:'การนวดคลึงและบีบกล้ามเนื้อ', phon:'/ˈpet.rɪ.sɑːʒ/', cat:'massage', def:'Kneading, rolling and lifting movements that work more deeply into the muscle.', short:'Kneading, deeper muscle work' },
@@ -185,7 +185,7 @@ const VOCAB = [
 ];
 
 /* ---------- PRONUNCIATION (10 tricky terms) ---------- */
-const PRON = [
+const SPA_PRON = [
   { word:'Acupressure', th:'การกดจุด', phon:'/ˈæk.juːˌpreʃ.ər/', syll:['a','cu','pres','sure'], stress:2, example:'We\u2019ll begin with gentle acupressure across your shoulders.' },
   { word:'Exfoliation', th:'การขัดผิว', phon:'/ˌeks.fəʊ.liˈeɪ.ʃən/', syll:['ex','fo','li','a','tion'], stress:3, example:'This exfoliation scrub will leave your skin feeling smooth.' },
   { word:'Contraindication', th:'ข้อห้ามในการทำทรีตเมนต์', phon:'/ˌkɒn.trə.ɪn.dɪˈkeɪ.ʃən/', syll:['con','tra','in','di','ca','tion'], stress:4, example:'Please tell us about any contraindications before we start.' },
@@ -206,7 +206,19 @@ const PRON = [
 ];
 
 /* ---------- USEFUL PHRASES (8 categories, ~55 lines) ---------- */
-const PHRASES = [
+const SPA_PHRASES = [
+  { id:'everyday', en:'Everyday courtesies', th:'คำสุภาพที่ใช้ทุกวัน', items:[
+    { level:1, text:'Good morning. How are you today?', th:'สวัสดีตอนเช้าค่ะ วันนี้เป็นอย่างไรบ้างคะ', note:'The one you will use most often.' },
+    { level:1, text:'Certainly \u2014 one moment, please.', th:'ได้ค่ะ ขอเวลาสักครู่นะคะ', note:'Buys you a moment without sounding abrupt.' },
+    { level:1, text:'Thank you for waiting.', th:'ขอบคุณที่รอนะคะ', note:'Say this every time a guest has waited, even briefly.' },
+    { level:1, text:'You\u2019re very welcome.', th:'ด้วยความยินดีค่ะ', note:'Warmer than a plain \u201cyou\u2019re welcome\u201d.' },
+    { level:1, text:'It\u2019s my pleasure.', th:'เป็นความยินดีของดิฉันค่ะ', note:'A gracious reply to any thank-you.' },
+    { level:1, text:'After you, please.', th:'เชิญก่อนเลยค่ะ', note:'Use at doorways and corridors.' },
+    { level:2, text:'Excuse me, may I just pass?', th:'ขออนุญาตเดินผ่านนะคะ', note:'Polite in a narrow corridor or lounge.' },
+    { level:2, text:'I\u2019m sorry to have kept you waiting.', th:'ขออภัยที่ให้รอนานค่ะ', note:'A genuine apology when you are late to greet.' },
+    { level:2, text:'Is there anything else I can do for you?', th:'มีอะไรให้ดิฉันช่วยอีกไหมคะ', note:'Closes any interaction well.' },
+    { level:1, text:'Please take care, and see you next time.', th:'เดินทางปลอดภัยนะคะ แล้วพบกันครั้งหน้า', note:'A warm everyday farewell.' },
+  ]},
   { id:'welcome', en:'Welcoming guests', th:'การต้อนรับแขก', items:[
     { level:2, text:'Good afternoon, welcome to Willow & Stone. How may I assist you today?', th:'สวัสดีตอนบ่ายค่ะ ยินดีต้อนรับสู่วิลโลว์แอนด์สโตน มีอะไรให้ดิฉันช่วยไหมคะ', note:'A warm, formal opener for arrival.' },
     { level:2, text:'Thank you for choosing us today — may I take your coat and bag?', th:'ขอบคุณที่เลือกใช้บริการเรานะคะ ขอรับเสื้อโค้ทและกระเป๋าได้ไหมคะ', note:'Offers immediate, practical help.' },
@@ -217,6 +229,25 @@ const PHRASES = [
     { level:1, text:'Can I get you some water, tea, or a cold towel while you wait?', th:'รับน้ำ ชา หรือผ้าเย็นระหว่างรอไหมคะ', note:'A thoughtful gesture while a guest waits.' },
     { level:1, text:'Your therapist today will be Nok — she has fifteen years of experience.', th:'นักบำบัดของคุณวันนี้ชื่อนกค่ะ มีประสบการณ์สิบห้าปี', note:'Builds confidence in the assigned therapist.' },
   ]},
+  { id:'guiding', en:'Showing guests around', th:'การนำแขกชมสถานที่', items:[
+    { level:1, text:'Let me show you to the changing room.', th:'ดิฉันจะพาไปที่ห้องเปลี่ยนเสื้อผ้านะคะ', note:'The first step after check-in.' },
+    { level:2, text:'Here is your locker and the key \u2014 please keep it with you.', th:'นี่คือตู้ล็อกเกอร์และกุญแจของคุณค่ะ กรุณาเก็บไว้กับตัว', note:'Hand over the key as you say it.' },
+    { level:2, text:'You\u2019ll find a robe and slippers inside. Please change into these.', th:'ข้างในมีเสื้อคลุมและรองเท้าแตะค่ะ กรุณาเปลี่ยนเป็นชุดนี้นะคะ', note:'Explains what to do without being blunt.' },
+    { level:2, text:'The showers are just through that door on the left.', th:'ห้องอาบน้ำอยู่ตรงประตูด้านซ้ายค่ะ', note:'Point as you speak.' },
+    { level:1, text:'The restroom is at the end of the corridor.', th:'ห้องน้ำอยู่สุดทางเดินค่ะ', note:'Asked several times a day.' },
+    { level:2, text:'Please help yourself to water and tea in the lounge.', th:'เชิญดื่มน้ำหรือชาได้ตามสบายที่ห้องรับรองนะคะ', note:'An easy way to make guests comfortable.' },
+    { level:2, text:'When you\u2019re ready, I\u2019ll meet you here.', th:'เมื่อพร้อมแล้ว ดิฉันจะมารับที่นี่นะคะ', note:'Sets a clear, unhurried next step.' },
+  ]},
+  { id:'consultation', en:'Health & consultation', th:'การซักประวัติสุขภาพ', items:[
+    { level:2, text:'Before we start, may I ask a few questions about your health?', th:'ก่อนเริ่ม ขออนุญาตถามเรื่องสุขภาพสักสองสามข้อนะคะ', note:'Opens the consultation politely.' },
+    { level:2, text:'Are you taking any medication at the moment?', th:'ตอนนี้คุณรับประทานยาอะไรอยู่ไหมคะ', note:'An essential safety question.' },
+    { level:2, text:'Do you have any injuries or areas I should avoid?', th:'มีอาการบาดเจ็บหรือบริเวณที่ควรหลีกเลี่ยงไหมคะ', note:'Prevents harm and shows care.' },
+    { level:2, text:'Are you pregnant, or could you be?', th:'คุณตั้งครรภ์หรืออาจตั้งครรภ์อยู่ไหมคะ', note:'Ask gently but always ask.' },
+    { level:2, text:'Do you have high or low blood pressure?', th:'คุณมีความดันโลหิตสูงหรือต่ำไหมคะ', note:'Affects heat and pressure choices.' },
+    { level:3, text:'Have you had any surgery in the last six months?', th:'ในช่วงหกเดือนที่ผ่านมา คุณเคยผ่าตัดหรือไม่คะ', note:'A common contraindication to check.' },
+    { level:3, text:'How would you describe your skin \u2014 dry, oily or combination?', th:'ผิวของคุณเป็นแบบไหนคะ ผิวแห้ง ผิวมัน หรือผิวผสม', note:'Guides product selection in a facial.' },
+    { level:2, text:'Please sign here to confirm the information is correct.', th:'กรุณาเซ็นชื่อตรงนี้เพื่อยืนยันว่าข้อมูลถูกต้องนะคะ', note:'Closes the consultation form.' },
+  ]},
   { id:'explain', en:'Explaining treatments', th:'การอธิบายทรีตเมนต์', items:[
     { level:2, text:'Today\u2019s treatment includes a full-body exfoliation, followed by a hydrating mask.', th:'ทรีตเมนต์วันนี้ประกอบด้วยการขัดผิวทั้งตัว ตามด้วยมาส์กให้ความชุ่มชื้น', note:'Sets out clear expectations.' },
     { level:2, text:'This massage focuses on releasing tension through your shoulders and lower back.', th:'การนวดนี้เน้นคลายความตึงเครียดบริเวณไหล่และหลังส่วนล่าง', note:'Describes the purpose of the treatment.' },
@@ -225,6 +256,16 @@ const PHRASES = [
     { level:3, text:'May I ask if you have any allergies or sensitivities I should know about?', th:'ขอถามหน่อยได้ไหมคะว่าคุณมีอาการแพ้หรือผิวแพ้ง่ายหรือเปล่า', note:'An essential safety question.' },
     { level:2, text:'This oil blend is completely natural and suitable for sensitive skin.', th:'น้ำมันสูตรนี้เป็นธรรมชาติทั้งหมดและเหมาะกับผิวแพ้ง่าย', note:'Reassures a cautious guest about ingredients.' },
     { level:2, text:'Please let me know if you\u2019ve had this treatment before.', th:'รบกวนแจ้งด้วยนะคะถ้าเคยทำทรีตเมนต์นี้มาก่อน', note:'Helps you tailor the explanation.' },
+  ]},
+  { id:'during', en:'During the treatment', th:'ระหว่างทำทรีตเมนต์', items:[
+    { level:3, text:'I\u2019m going to step outside. Please undress to your comfort level and lie face-down under the towel.', th:'ดิฉันขอออกไปข้างนอกนะคะ กรุณาถอดเสื้อผ้าเท่าที่สบายใจ แล้วนอนคว่ำใต้ผ้าขนหนู', note:'Respects privacy and gives clear instructions.' },
+    { level:2, text:'Please turn over onto your back when you\u2019re ready.', th:'กรุณาพลิกตัวนอนหงายเมื่อพร้อมนะคะ', note:'Never rush a position change.' },
+    { level:2, text:'I\u2019ll cover you with a warm towel now.', th:'ดิฉันจะคลุมผ้าขนหนูอุ่นให้นะคะ', note:'Announce what you are about to do.' },
+    { level:2, text:'Take a deep breath in, and slowly out.', th:'หายใจเข้าลึกๆ แล้วค่อยๆ ผ่อนออกนะคะ', note:'Helps a tense guest relax.' },
+    { level:2, text:'Could you lift your arm a little for me?', th:'ยกแขนขึ้นเล็กน้อยได้ไหมคะ', note:'A request, not an instruction.' },
+    { level:3, text:'I\u2019m going to work on your shoulders now \u2014 do tell me if it\u2019s too much.', th:'ดิฉันจะเริ่มนวดบริเวณไหล่นะคะ ถ้าแรงเกินไปบอกได้เลยค่ะ', note:'Warns before increasing pressure.' },
+    { level:3, text:'I\u2019ll be applying a cool mask \u2014 it may feel a little cold at first.', th:'ดิฉันจะทามาส์กเย็นนะคะ ตอนแรกอาจรู้สึกเย็นเล็กน้อย', note:'Prepares the guest for a sensation.' },
+    { level:2, text:'We\u2019re nearly finished \u2014 just a few more minutes.', th:'ใกล้เสร็จแล้วค่ะ อีกสองสามนาทีนะคะ', note:'Eases a guest back toward the room.' },
   ]},
   { id:'comfort', en:'Checking comfort levels', th:'การตรวจสอบความสบาย', items:[
     { level:2, text:'How does that pressure feel? Let me know if you\u2019d like it firmer or lighter.', th:'แรงกดตรงนั้นเป็นอย่างไรบ้างคะ บอกได้เลยถ้าอยากให้หนักขึ้นหรือเบาลง', note:'Invites honest, in-the-moment feedback.' },
@@ -270,6 +311,23 @@ const PHRASES = [
     { level:3, text:'I want to make sure you leave feeling happy with today\u2019s experience.', th:'ดิฉันอยากให้แน่ใจว่าคุณจะกลับไปด้วยความพึงพอใจกับวันนี้', note:'States your genuine intention plainly.' },
     { level:2, text:'Let me get my supervisor so we can resolve this together.', th:'ขอไปตามหัวหน้างานมาช่วยแก้ไขเรื่องนี้ด้วยกันนะคะ', note:'Knowing when to involve a manager.' },
   ]},
+  { id:'etiquette', en:'Spa etiquette & rules', th:'มารยาทและกฎของสปา', items:[
+    { level:3, text:'May I ask you to switch your phone to silent? It helps everyone relax.', th:'ขอความร่วมมือปิดเสียงโทรศัพท์ได้ไหมคะ เพื่อให้ทุกท่านได้ผ่อนคลาย', note:'Frames a rule as a shared benefit.' },
+    { level:3, text:'We ask guests not to take photographs in the treatment areas.', th:'เราขอความร่วมมืองดถ่ายภาพในบริเวณห้องทรีตเมนต์นะคะ', note:'Protects other guests\u2019 privacy.' },
+    { level:2, text:'Please arrive fifteen minutes before your appointment.', th:'กรุณามาถึงก่อนเวลานัดสิบห้านาทีนะคะ', note:'Say this when booking, not on arrival.' },
+    { level:2, text:'Please leave valuables in the locker \u2014 it\u2019s safer for you.', th:'กรุณาเก็บของมีค่าไว้ในตู้ล็อกเกอร์นะคะ จะปลอดภัยกว่า', note:'Gives the reason, so it does not sound like a rule.' },
+    { level:2, text:'This is a quiet area, so we keep our voices low.', th:'บริเวณนี้เป็นโซนเงียบ เราจะพูดกันเสียงเบานะคะ', note:'Includes yourself \u2014 \u201cwe\u201d, not \u201cyou\u201d.' },
+    { level:1, text:'Please shower before entering the sauna.', th:'กรุณาอาบน้ำก่อนเข้าห้องซาวน่านะคะ', note:'A simple hygiene rule.' },
+  ]},
+  { id:'special', en:'Special care & requests', th:'การดูแลกรณีพิเศษ', items:[
+    { level:3, text:'For your comfort during pregnancy, we\u2019ll use side-lying positions throughout.', th:'เพื่อความสบายของคุณแม่ตั้งครรภ์ เราจะจัดท่านอนตะแคงตลอดการนวดนะคะ', note:'Reassures an expectant guest.' },
+    { level:2, text:'Take your time on the steps \u2014 I\u2019ll walk with you.', th:'ค่อยๆ เดินขึ้นบันไดนะคะ ดิฉันจะเดินไปด้วย', note:'Attentive care for an elderly guest.' },
+    { level:2, text:'Would you prefer a female or a male therapist?', th:'คุณสะดวกให้นักบำบัดหญิงหรือชายดูแลคะ', note:'Ask before assigning, never after.' },
+    { level:2, text:'We can lower the bed to make getting on easier.', th:'เราปรับเตียงให้ต่ำลงเพื่อขึ้นได้สะดวกขึ้นได้นะคะ', note:'Offer before the guest has to ask.' },
+    { level:2, text:'Is this your first massage? I\u2019ll explain each step as we go.', th:'นี่เป็นการนวดครั้งแรกไหมคะ ดิฉันจะอธิบายทุกขั้นตอนไปพร้อมกัน', note:'Settles a nervous first-timer.' },
+    { level:3, text:'If you\u2019d like your partner in the same room, we have a couples suite.', th:'หากต้องการอยู่ห้องเดียวกับคู่ของคุณ เรามีห้องทรีตเมนต์คู่ค่ะ', note:'Offers an upgrade as a kindness.' },
+    { level:2, text:'If you feel dizzy or unwell at any point, please tell me straight away.', th:'หากรู้สึกเวียนหัวหรือไม่สบายตอนไหน กรุณาบอกดิฉันทันทีนะคะ', note:'Essential after heat or a long treatment.' },
+  ]},
   { id:'smalltalk', en:'Small talk with guests', th:'การสนทนาทั่วไปกับแขก', items:[
     { level:2, text:'Have you visited Sriracha before, or is this your first time?', th:'เคยมาศรีราชามาก่อนไหมคะ หรือนี่เป็นครั้งแรก', note:'Opens conversation without being intrusive.' },
     { level:3, text:'The weather has been very warm this week, hasn\u2019t it?', th:'อาทิตย์นี้อากาศร้อนมากเลยนะคะ', note:'A safe, easy opener in any country.' },
@@ -307,7 +365,7 @@ const PHRASES = [
 ];
 
 /* ---------- SAY THIS, NOT THAT (14 scenarios) ---------- */
-const SAYTHIS = [
+const SPA_SAYTHIS = [
   { scenario:'A guest arrives early', dont:'Wait here.', dontTh:'รอตรงนี้',
     doo:'Please have a seat in our lounge while we finish preparing your room — it won\u2019t be long.',
     dooTh:'เชิญนั่งพักที่ห้องรับรองระหว่างที่เราเตรียมห้องให้นะคะ ใช้เวลาไม่นานค่ะ',

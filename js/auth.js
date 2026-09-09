@@ -94,11 +94,14 @@ const Auth = (() => {
 const Progress = (() => {
   let cache = null;
   let cacheKey = null;
-  let guestCache = null;   // session-only, never written to localStorage
+  let guestCache = {};     // session-only per course, never written to localStorage
 
+  /* One progress record per user PER COURSE, so studying spa English and
+     cruise English never overwrite each other's words and scores. */
   function keyFor(){
     const u = Auth.currentUser();
-    return (u && !u.guest) ? `spa_progress_${u.email}` : null;
+    if (!u || u.guest) return null;
+    return `spa_progress_${u.email}__${Courses.currentId}`;
   }
 
   function blank(){
@@ -116,8 +119,11 @@ const Progress = (() => {
     // Guests get a real, working progress object that simply isn't persisted,
     // so counters and scores behave normally for the length of the session.
     if (!key){
-      if (!guestCache) guestCache = blank();
-      cache = guestCache; cacheKey = null;
+      // Guests are not persisted to storage, but keep a separate in-memory
+      // record per course so switching course mid-session loses nothing.
+      const gk = Courses.currentId;
+      if (!guestCache[gk]) guestCache[gk] = blank();
+      cache = guestCache[gk]; cacheKey = null;
       return cache;
     }
     if (cache && cacheKey === key) return cache;
@@ -133,7 +139,7 @@ const Progress = (() => {
     localStorage.setItem(key, JSON.stringify(cache));
   }
 
-  function clearGuest(){ guestCache = null; }
+  function clearGuest(){ guestCache = {}; }
 
   function touchStreak(){
     const p = load();

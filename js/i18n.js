@@ -18,6 +18,7 @@ const UI_STRINGS = {
     greetingHeading: 'Ready for today\u2019s practice?',
     greetingBody: 'Fifteen quiet minutes a day is enough to sound calm, warm and confident with every guest who walks through your door.',
     phraseOfDayLabel: 'Phrase of the day',
+    potdOpenCta: 'Tap to see more phrases like this \u2192',
     continueLearning: 'Continue learning',
     statWords: 'WORDS LEARNED',
     statQuiz: 'QUIZ AVERAGE',
@@ -27,14 +28,14 @@ const UI_STRINGS = {
     tipOfDay: 'Tip of the day',
     tipOfDayBody: 'Instead of \u201cIt\u2019s not hot,\u201d try \u201cThe temperature is gentle and completely safe for your skin.\u201d It reassures rather than simply denying the guest\u2019s concern.',
 
-    menuVocabTitle: 'Vocabulary & practice', menuVocabDesc: 'Flashcards and a matching game for spa terminology',
+    menuVocabTitle: 'Vocabulary & practice', menuVocabDesc: 'Flashcards and games for {w} {domainShort} terms',
     menuPronTitle: 'Pronunciation', menuPronDesc: 'Hear and repeat the industry\u2019s trickiest words',
-    menuPhrasesTitle: 'Useful phrases', menuPhrasesDesc: 'Ready phrase banks for real guest scenarios',
+    menuPhrasesTitle: 'Useful phrases', menuPhrasesDesc: '{p} guest phrases across {pc} real situations',
     menuSaythisTitle: 'Say this, not that', menuSaythisDesc: 'Turn blunt phrases into polished, guest-ready ones',
     menuAssessTitle: 'Knowledge assessment', menuAssessDesc: 'Nine activities including a spoken pronunciation test',
 
     vocabHeading: 'Vocabulary & practice',
-    vocabLede: '137 terms across nine areas of spa work, graded Easy to Advanced, with six ways to practise them.',
+    vocabLede: '{w} terms across {wc} areas of {domain}, graded Easy to Advanced, with six ways to practise them.',
     modeFlash: 'Flashcards', modeMatch: 'Matching game',
     catAll: 'All terms',
     cardOf: 'Card', of: 'of', known: 'known',
@@ -50,16 +51,16 @@ const UI_STRINGS = {
     example: 'Example',
 
     phrasesHeading: 'Useful phrases',
-    phrasesLede: 'Eleven situations you\u2019ll meet every shift, with ready-made lines graded Easy to Advanced.',
+    phrasesLede: '{p} ready-made lines across {pc} situations you meet every shift, graded Easy to Advanced.',
 
     saythisHeading: 'Say this, not that',
-    saythisLede: 'Twenty everyday moments where a small change in wording makes a guest feel looked after.',
+    saythisLede: '{s} everyday moments where a small change in wording makes a guest feel looked after.',
     dontSay: 'Don\u2019t say', doSay: 'Do say', whyItMatters: 'Why it matters',
 
     assessHeading: 'Knowledge assessment',
     assessLede: 'Nine activities to check what\u2019s sticking, including a spoken test, with feedback after every answer.',
     bestScores: 'Your best scores',
-    actMcTitle: 'Multiple choice quiz', actMcDesc: '12 questions drawn from a bank of 41',
+    actMcTitle: 'Multiple choice quiz', actMcDesc: '12 questions drawn from a bank of {mc}',
     actFillTitle: 'Fill-in-the-blank dialogue', actFillDesc: 'Complete a full guest conversation, start to finish',
     actListenTitle: 'Listen & choose', actListenDesc: 'Hear a word spoken aloud and pick what you heard',
     actBuilderTitle: 'Phrase builder', actBuilderDesc: 'Rebuild the English sentence from its Thai meaning',
@@ -93,7 +94,7 @@ const UI_STRINGS = {
     mcKicker: 'Vocabulary & guest etiquette',
     scenarioKicker: 'Real guest situations',
     defKicker: 'Definitions & terminology',
-    actDefTitle: 'Definition quiz', actDefDesc: 'Endless questions drawn from all 137 terms',
+    actDefTitle: 'Definition quiz', actDefDesc: 'Endless questions drawn from all {w} terms',
     actTfTitle: 'True or false', actTfDesc: '12 statements on safety, etiquette and terminology',
     actErrTitle: 'Fix the phrase', actErrDesc: 'Spot the blunt line and choose the polished rewrite',
     defQuestion: 'What does this mean:', revQuestion: 'Which term means:',
@@ -126,7 +127,7 @@ const UI_STRINGS = {
     backToDaily: 'Back to Daily Five',
 
     partnerCaption: 'A programme by Nimmanoradee International School & Barter Group',
-    searchVocabPh: 'Search 137 words\u2026',
+    searchVocabPh: 'Search {w} words\u2026',
     searchPhrasePh: 'Search all phrases\u2026',
     searchResults: 'matches', searchNoResultsTitle: 'No matches',
     searchNoResultsBody: 'Try a shorter word, or search in Thai.',
@@ -195,7 +196,7 @@ const UI_STRINGS = {
     practiceHeading: 'Practice & tests',
     practiceLede: 'Every activity in one place. Pick what you feel like: recognise the words, answer questions, or say them out loud.',
     menuPracticeDesc: 'All 16 activities in one place',
-    grpVocabTitle: 'Learn the words', grpVocabDesc: 'Six ways to drill the 137 terms',
+    grpVocabTitle: 'Learn the words', grpVocabDesc: 'Six ways to drill the {w} terms',
     grpQuizTitle: 'Test yourself', grpQuizDesc: 'Eight quizzes with instant feedback',
     grpSpeakTitle: 'Say it out loud', grpSpeakDesc: 'Hear the model voice, then score your own',
     actFlashDesc: 'Flip cards and mark what you know',
@@ -205,6 +206,27 @@ const UI_STRINGS = {
     actSortDesc: 'Drop terms into the right category',
     actSpeedDesc: '60 seconds, as many as you can',
     actPronDesc: 'Stress patterns for tricky words',
+
+    programName: 'NIMMAN English for Service Professionals',
+    programTagline: 'Spa, wellness & cruise ship English \u00b7 Sriracha',
+    courseChooseHeading: 'What would you like to study?',
+    courseChooseLede: 'Pick a course. You can switch between them at any time, and each one keeps its own progress.',
+    courseSpaName: 'NIMMAN Willow & Stone English',
+    courseSpaTagline: 'Spa & wellness \u00b7 Sriracha',
+    courseSpaDesc: 'The English you use with spa guests: welcoming, explaining treatments, checking comfort, aftercare and handling complaints.',
+    courseCruiseName: 'NIMMAN Harbour & Horizon English',
+    courseCruiseTagline: 'Cruise ship crew \u00b7 Sriracha',
+    courseCruiseDesc: 'The English you use aboard: embarkation, cabins, dining and bar service, safety drills, ports and shore excursions.',
+    courseWords: 'WORDS', coursePhrases: 'PHRASES', courseSayThis: 'DO / DON\u2019T',
+    courseCurrent: 'Studying now', courseStart: 'Start this course', courseContinue: 'Continue this course',
+    courseCancel: 'Keep my current course',
+    courseStudying: 'STUDYING', courseSwitch: 'Switch',
+    courseSwitchTitle: 'Switch course',
+
+    domainSpa: 'spa work', domainSpaShort: 'spa',
+    domainCruise: 'life aboard ship', domainCruiseShort: 'cruise',
+    tipSpa: 'Instead of \u201cIt\u2019s not hot,\u201d try \u201cThe temperature is gentle and completely safe for your skin.\u201d It reassures rather than simply denying the guest\u2019s concern.',
+    tipCruise: 'Never tell a guest something is \u201cupstairs\u201d. On a ship, always give the deck number and a direction \u2014 \u201cit\u2019s on deck nine, just above us\u201d.',
 
     // Auth
     authWelcome: 'Welcome',
@@ -247,6 +269,7 @@ const UI_STRINGS = {
     greetingHeading: 'พร้อมฝึกฝนสำหรับวันนี้หรือยังคะ?',
     greetingBody: 'ใช้เวลาเพียงสิบห้านาทีต่อวันก็เพียงพอที่จะพูดกับแขกได้อย่างสงบ อบอุ่น และมั่นใจในทุกครั้ง',
     phraseOfDayLabel: 'ประโยคประจำวัน',
+    potdOpenCta: 'แตะเพื่อดูประโยคอื่นในหมวดนี้ \u2192',
     continueLearning: 'เรียนต่อ',
     statWords: 'คำศัพท์ที่เรียนแล้ว',
     statQuiz: 'คะแนนเฉลี่ยแบบทดสอบ',
@@ -256,14 +279,14 @@ const UI_STRINGS = {
     tipOfDay: 'เคล็ดลับประจำวัน',
     tipOfDayBody: 'แทนที่จะพูดว่า "It\u2019s not hot" ลองพูดว่า "The temperature is gentle and completely safe for your skin" แทน เพราะช่วยสร้างความมั่นใจมากกว่าการปฏิเสธความกังวลของแขกตรงๆ',
 
-    menuVocabTitle: 'คำศัพท์และแบบฝึกหัด', menuVocabDesc: 'แฟลชการ์ดและเกมจับคู่คำศัพท์สปา',
+    menuVocabTitle: 'คำศัพท์และแบบฝึกหัด', menuVocabDesc: 'แฟลชการ์ดและเกมจับคู่คำศัพท์ {w} คำ',
     menuPronTitle: 'การออกเสียง', menuPronDesc: 'ฟังและฝึกออกเสียงคำศัพท์ที่ยากที่สุดในวงการ',
-    menuPhrasesTitle: 'ประโยคที่ใช้บ่อย', menuPhrasesDesc: 'คลังประโยคพร้อมใช้สำหรับสถานการณ์จริงกับแขก',
+    menuPhrasesTitle: 'ประโยคที่ใช้บ่อย', menuPhrasesDesc: 'ประโยคสำหรับแขก {p} ประโยค ใน {pc} สถานการณ์',
     menuSaythisTitle: 'พูดแบบนี้ ไม่ใช่แบบนั้น', menuSaythisDesc: 'เปลี่ยนคำพูดห้วนๆ ให้สุภาพและมืออาชีพ',
     menuAssessTitle: 'แบบทดสอบความรู้', menuAssessDesc: 'เก้ากิจกรรม รวมการทดสอบการออกเสียง',
 
     vocabHeading: 'คำศัพท์และแบบฝึกหัด',
-    vocabLede: 'คำศัพท์ 137 คำ ครอบคลุม 9 หมวดของงานสปา แบ่งระดับง่ายถึงยาก พร้อมแบบฝึก 6 รูปแบบ',
+    vocabLede: 'คำศัพท์ {w} คำ ครอบคลุม {wc} หมวดของ{domain} แบ่งระดับง่ายถึงยาก พร้อมแบบฝึก 6 รูปแบบ',
     modeFlash: 'แฟลชการ์ด', modeMatch: 'เกมจับคู่',
     catAll: 'ทั้งหมด',
     cardOf: 'การ์ดที่', of: 'จาก', known: 'จำได้แล้ว',
@@ -279,16 +302,16 @@ const UI_STRINGS = {
     example: 'ตัวอย่าง',
 
     phrasesHeading: 'ประโยคที่ใช้บ่อย',
-    phrasesLede: 'สิบเอ็ดสถานการณ์ที่เจอได้ทุกกะการทำงาน พร้อมประโยคสำเร็จรูปแบ่งระดับง่ายถึงยาก',
+    phrasesLede: 'ประโยคพร้อมใช้ {p} ประโยค ครอบคลุม {pc} สถานการณ์ที่เจอทุกกะ แบ่งระดับง่ายถึงยาก',
 
     saythisHeading: 'พูดแบบนี้ ไม่ใช่แบบนั้น',
-    saythisLede: 'ยี่สิบสถานการณ์ที่การเปลี่ยนคำพูดเพียงเล็กน้อยทำให้แขกรู้สึกได้รับการดูแล',
+    saythisLede: '{s} สถานการณ์ที่การเปลี่ยนคำพูดเพียงเล็กน้อยทำให้แขกรู้สึกได้รับการดูแล',
     dontSay: 'อย่าพูดว่า', doSay: 'ควรพูดว่า', whyItMatters: 'ทำไมถึงสำคัญ',
 
     assessHeading: 'แบบทดสอบความรู้',
     assessLede: 'เก้ากิจกรรมเพื่อตรวจสอบความเข้าใจ รวมถึงการทดสอบการพูด พร้อมผลตอบรับหลังทุกคำตอบ',
     bestScores: 'คะแนนสูงสุดของคุณ',
-    actMcTitle: 'แบบทดสอบปรนัย', actMcDesc: '12 ข้อ สุ่มจากคลังคำถาม 41 ข้อ',
+    actMcTitle: 'แบบทดสอบปรนัย', actMcDesc: '12 ข้อ สุ่มจากคลังคำถาม {mc} ข้อ',
     actFillTitle: 'เติมคำในบทสนทนา', actFillDesc: 'ทำบทสนทนากับแขกให้สมบูรณ์ตั้งแต่ต้นจนจบ',
     actListenTitle: 'ฟังแล้วเลือก', actListenDesc: 'ฟังคำศัพท์แล้วเลือกคำที่ได้ยิน',
     actBuilderTitle: 'เรียงประโยค', actBuilderDesc: 'เรียงประโยคภาษาอังกฤษจากความหมายภาษาไทย',
@@ -322,7 +345,7 @@ const UI_STRINGS = {
     mcKicker: 'คำศัพท์และมารยาทกับแขก',
     scenarioKicker: 'สถานการณ์จริงกับแขก',
     defKicker: 'ความหมายและคำศัพท์เฉพาะ',
-    actDefTitle: 'แบบทดสอบความหมาย', actDefDesc: 'คำถามไม่จำกัดจากคำศัพท์ทั้ง 137 คำ',
+    actDefTitle: 'แบบทดสอบความหมาย', actDefDesc: 'คำถามไม่จำกัดจากคำศัพท์ทั้ง {w} คำ',
     actTfTitle: 'ถูกหรือผิด', actTfDesc: '12 ข้อความเกี่ยวกับความปลอดภัย มารยาท และคำศัพท์',
     actErrTitle: 'แก้ประโยคให้สุภาพ', actErrDesc: 'หาประโยคที่ห้วน แล้วเลือกประโยคที่สุภาพกว่า',
     defQuestion: 'คำนี้มีความหมายว่าอะไร:', revQuestion: 'คำศัพท์ใดมีความหมายว่า:',
@@ -355,7 +378,7 @@ const UI_STRINGS = {
     backToDaily: 'กลับไปห้าคำต่อวัน',
 
     partnerCaption: 'โปรแกรมโดย โรงเรียนฝึกอบรมนิมมานรดี อินเตอร์เนชั่นแนล และ Barter Group',
-    searchVocabPh: 'ค้นหาคำศัพท์ 137 คำ\u2026',
+    searchVocabPh: 'ค้นหาคำศัพท์ {w} คำ\u2026',
     searchPhrasePh: 'ค้นหาประโยคทั้งหมด\u2026',
     searchResults: 'รายการที่พบ', searchNoResultsTitle: 'ไม่พบรายการ',
     searchNoResultsBody: 'ลองใช้คำที่สั้นลง หรือค้นหาเป็นภาษาไทย',
@@ -424,7 +447,7 @@ const UI_STRINGS = {
     practiceHeading: 'แบบฝึกและแบบทดสอบ',
     practiceLede: 'ทุกกิจกรรมรวมอยู่ที่เดียว เลือกได้ตามใจ: จำคำศัพท์ ตอบคำถาม หรือฝึกพูดออกเสียง',
     menuPracticeDesc: 'ทั้ง 16 กิจกรรมรวมอยู่ที่เดียว',
-    grpVocabTitle: 'เรียนคำศัพท์', grpVocabDesc: 'ฝึกคำศัพท์ 137 คำ ด้วย 6 รูปแบบ',
+    grpVocabTitle: 'เรียนคำศัพท์', grpVocabDesc: 'ฝึกคำศัพท์ {w} คำ ด้วย 6 รูปแบบ',
     grpQuizTitle: 'ทดสอบตัวเอง', grpQuizDesc: 'แบบทดสอบ 8 ชุด พร้อมผลตอบรับทันที',
     grpSpeakTitle: 'ฝึกพูดออกเสียง', grpSpeakDesc: 'ฟังเสียงตัวอย่าง แล้ววัดคะแนนการพูดของคุณ',
     actFlashDesc: 'พลิกการ์ดแล้วเลือกว่าจำได้หรือยัง',
@@ -434,6 +457,27 @@ const UI_STRINGS = {
     actSortDesc: 'จัดคำศัพท์ลงหมวดที่ถูกต้อง',
     actSpeedDesc: '60 วินาที ทำให้ได้มากที่สุด',
     actPronDesc: 'รูปแบบการเน้นเสียงของคำที่ออกเสียงยาก',
+
+    programName: 'NIMMAN ภาษาอังกฤษสำหรับงานบริการ',
+    programTagline: 'ภาษาอังกฤษสำหรับสปา เวลเนส และเรือสำราญ \u00b7 ศรีราชา',
+    courseChooseHeading: 'คุณต้องการเรียนหลักสูตรใด?',
+    courseChooseLede: 'เลือกหลักสูตรที่ต้องการ สลับได้ตลอดเวลา และแต่ละหลักสูตรจะบันทึกความคืบหน้าแยกกัน',
+    courseSpaName: 'NIMMAN วิลโลว์แอนด์สโตน อิงลิช',
+    courseSpaTagline: 'สปาและเวลเนส \u00b7 ศรีราชา',
+    courseSpaDesc: 'ภาษาอังกฤษที่ใช้กับแขกสปา ตั้งแต่การต้อนรับ อธิบายทรีตเมนต์ สอบถามความสบาย คำแนะนำหลังทำ และการรับมือข้อร้องเรียน',
+    courseCruiseName: 'NIMMAN ฮาร์เบอร์แอนด์ฮอไรซัน อิงลิช',
+    courseCruiseTagline: 'ลูกเรือสำราญ \u00b7 ศรีราชา',
+    courseCruiseDesc: 'ภาษาอังกฤษที่ใช้บนเรือ ตั้งแต่การขึ้นเรือ ห้องพัก ห้องอาหารและบาร์ การซ้อมความปลอดภัย ท่าเรือ และทัวร์ชายฝั่ง',
+    courseWords: 'คำศัพท์', coursePhrases: 'ประโยค', courseSayThis: 'ควร / ไม่ควร',
+    courseCurrent: 'กำลังเรียน', courseStart: 'เริ่มหลักสูตรนี้', courseContinue: 'เรียนต่อหลักสูตรนี้',
+    courseCancel: 'ใช้หลักสูตรเดิม',
+    courseStudying: 'กำลังเรียน', courseSwitch: 'สลับ',
+    courseSwitchTitle: 'สลับหลักสูตร',
+
+    domainSpa: 'งานสปา', domainSpaShort: 'สปา',
+    domainCruise: 'การทำงานบนเรือ', domainCruiseShort: 'เรือสำราญ',
+    tipSpa: 'แทนที่จะพูดว่า "It\u2019s not hot" ลองพูดว่า "The temperature is gentle and completely safe for your skin" แทน เพราะช่วยสร้างความมั่นใจมากกว่าการปฏิเสธความกังวลของแขกตรงๆ',
+    tipCruise: 'อย่าบอกแขกว่าสิ่งของอยู่ "ชั้นบน" บนเรือควรระบุหมายเลขชั้นและทิศทางเสมอ เช่น "อยู่ชั้นเก้า เหนือขึ้นไปหนึ่งชั้น"',
 
     // Auth
     authWelcome: 'ยินดีต้อนรับ',
@@ -468,8 +512,17 @@ const UI_STRINGS = {
 const I18N = (() => {
   let current = (localStorage.getItem('spa_lang') === 'th') ? 'th' : 'en';
 
+  /* A provider supplied by the app returns counts for the ACTIVE course, so
+     any string containing {w}, {p} etc. stays correct when courses switch. */
+  let varsProvider = null;
+
   function t(key){
-    return (UI_STRINGS[current] && UI_STRINGS[current][key]) || UI_STRINGS.en[key] || key;
+    let out = (UI_STRINGS[current] && UI_STRINGS[current][key]) || UI_STRINGS.en[key] || key;
+    if (typeof out === 'string' && out.indexOf('{') !== -1 && varsProvider){
+      const v = varsProvider() || {};
+      Object.keys(v).forEach(k => { out = out.split('{' + k + '}').join(v[k]); });
+    }
+    return out;
   }
 
   function applyStatic(){
@@ -491,6 +544,7 @@ const I18N = (() => {
   return {
     get current(){ return current; },
     t,
+    setVars(fn){ varsProvider = fn; },
     applyStatic,
     set(lang, rerender){
       current = (lang === 'th') ? 'th' : 'en';

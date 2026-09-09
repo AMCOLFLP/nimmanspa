@@ -30,8 +30,8 @@
       <span class="ab-divider"></span>
       <img class="barter" src="assets/barter-logo.png" alt="Barter Group" loading="eager">
     </div>
-    <p class="auth-appname" data-i18n="appName">NIMMAN Willow &amp; Stone English</p>
-    <p class="auth-appsub" data-i18n="appTagline">Spa &amp; wellness English &middot; Sriracha</p>
+    <p class="auth-appname" data-i18n="programName">NIMMAN English for Service Professionals</p>
+    <p class="auth-appsub" data-i18n="programTagline">Spa, wellness &amp; cruise ship English &middot; Sriracha</p>
     <h2 data-i18n="authWelcome">Welcome</h2>
     <p data-i18n="authTagline">Sign in to save your progress across every device.</p>
   </div>
@@ -116,6 +116,32 @@
 </div>
 
 <!-- =====================================================================
+     COURSE CHOOSER — which course to study
+     ===================================================================== -->
+<div class="course-wrap" id="courseWrap">
+  <div class="auth-top">
+    <div class="lang-toggle">
+      <button class="lang-opt" data-lang="en">EN</button>
+      <button class="lang-opt" data-lang="th">ไทย</button>
+    </div>
+  </div>
+
+  <div class="course-hero">
+    <div class="auth-brands">
+      <img src="assets/nimman-logo.png" alt="Nimmanoradee International School">
+      <span class="ab-divider"></span>
+      <img class="barter" src="assets/barter-logo.png" alt="Barter Group">
+    </div>
+    <h2 data-i18n="courseChooseHeading">What would you like to study?</h2>
+    <p data-i18n="courseChooseLede">Pick a course. You can switch between them at any time, and each keeps its own progress.</p>
+  </div>
+
+  <div id="courseList"></div>
+
+  <button class="btn btn-ghost btn-block" id="courseBackBtn" style="display:none;" data-i18n="courseCancel">Cancel</button>
+</div>
+
+<!-- =====================================================================
      MAIN APP
      ===================================================================== -->
 <div class="app-shell" id="appShell" style="display:none;">
@@ -145,15 +171,29 @@
 
   <!-- ============================= HOME ============================= -->
   <section class="screen active" id="screen-home">
+    <div class="course-bar" id="courseBar">
+      <span class="cb-mark" id="courseBarMark"></span>
+      <span class="cb-body">
+        <span class="cb-label" data-i18n="courseStudying">Studying</span>
+        <span class="cb-name" id="courseBarName"></span>
+      </span>
+      <span class="cb-switch" data-i18n="courseSwitch">Switch</span>
+    </div>
+
     <div class="greeting">
       <p class="eyebrow" id="homeGreetEyebrow" data-i18n="greetingEyebrow">Good to see you</p>
       <h2 data-i18n="greetingHeading">Ready for today's practice?</h2>
       <p data-i18n="greetingBody">Fifteen quiet minutes a day is enough to sound calm, warm and confident with every guest who walks through your door.</p>
-      <div class="featured-quote">
-        <p class="fq-label" data-i18n="phraseOfDayLabel">Phrase of the day</p>
+      <div class="featured-quote" id="potdOpen">
+        <div class="fq-head">
+          <p class="fq-label" data-i18n="phraseOfDayLabel">Phrase of the day</p>
+          <button class="potd-play" id="potdPlay" aria-label="Listen to today's phrase"></button>
+        </div>
+        <div class="fq-meta"><span id="potdCat"></span><span id="potdLevel"></span></div>
         <p id="potdText">&nbsp;</p>
         <p class="gloss" id="potdTh">&nbsp;</p>
         <p class="fq-note" id="potdNote">&nbsp;</p>
+        <p class="fq-cta" data-i18n="potdOpenCta">Tap to see more like this</p>
       </div>
       <div class="cta-row">
         <button class="btn btn-gold" onclick="Nav.go('vocab')">
@@ -256,6 +296,11 @@
     </div>
 
     <div class="menu-list" style="margin-bottom:16px;">
+      <div class="menu-row" id="accSwitchCourse">
+        <div class="menu-icon" id="accCourseMark"></div>
+        <div class="menu-body"><h4 data-i18n="courseSwitchTitle">Switch course</h4><p id="accCourseName"></p></div>
+        <div class="menu-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
       <div class="menu-row" onclick="Nav.go('settings')">
         <div class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg></div>
         <div class="menu-body"><h4 data-i18n="settingsHeading">Settings</h4><p data-i18n="settingsDesc">Voice, text size and language</p></div>
@@ -768,6 +813,8 @@
 <script src="js/i18n.js"></script>
 <script src="js/data.js"></script>
 <script src="js/activities.js"></script>
+<script src="js/data-cruise.js"></script>
+<script src="js/courses.js"></script>
 <script src="js/auth.js"></script>
 <script src="js/speech.js"></script>
 <script src="js/vocab.js"></script>

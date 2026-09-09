@@ -16,14 +16,31 @@ real web address — not on a file:// path. Use one of these:
 If you open index.html directly, the speaking test will tell you this and
 offer self-check mode instead.
 
+TWO COURSES
+-----------
+After signing in you choose which course to study:
+
+  NIMMAN Willow & Stone English   Spa & wellness
+                                  137 words · 121 phrases · 20 do/don't pairs
+
+  NIMMAN Harbour & Horizon English  Cruise ship crew
+                                  98 words · 80 phrases · 14 do/don't pairs
+
+Switch any time from the bar at the top of the Home screen, or from
+Account -> Switch course. Each course keeps its OWN progress: known words,
+scores, streak and Daily Five are stored separately, so one person can study
+both without one wiping the other. Each course also has its own colour —
+brass for spa, marine blue for cruise — so you can see at a glance which
+one you are in.
+
 GETTING AROUND
 --------------
 Five tabs along the bottom:
 
   Home      Today's summary, phrase of the day, and links to everything
   Daily     The Daily Five: five words a day, swiped, then a knowledge check
-  Vocab     Browse the 137 terms as flashcards, with search and filters
-  Phrases   75 ready-made lines across 11 guest situations
+  Vocab     Browse the course vocabulary as flashcards, with search + filters
+  Phrases   Ready-made guest phrases, grouped by situation
   Practice  ALL 16 activities in one place, in three groups:
               - Learn the words   (6 vocabulary drills)
               - Test yourself     (8 quizzes)
@@ -31,6 +48,22 @@ Five tabs along the bottom:
 
 Everything is graded Easy / Intermediate / Advanced, and the whole interface
 switches between English and Thai with the EN/ไทย toggle.
+
+WHAT'S IN EACH COURSE
+---------------------
+Willow & Stone (spa)      137 terms / 9 categories, 121 phrases / 17 situations,
+                          20 do-and-don't pairs, 17 pronunciation entries
+Harbour & Horizon (cruise) 98 terms / 8 categories, 80 phrases / 13 situations,
+                          14 do-and-don't pairs, 12 pronunciation entries
+
+Both courses have all 16 practice activities and tests, everything graded
+Easy / Intermediate / Advanced, and full Thai throughout.
+
+PHRASE OF THE DAY
+-----------------
+The Home screen shows one guest phrase each day, drawn only from the
+guest-facing categories. Tap the speaker to hear it, or tap the phrase to
+open that whole category in the Phrases tab.
 
 ABOUT THE SPEAKING SCORE
 ------------------------

@@ -46,6 +46,11 @@ const App = (() => {
 
   function showApp(){
     document.getElementById('authWrap').classList.remove('active');
+    // A first-time learner chooses a course before the app opens; returning
+    // learners go straight back to the one they were studying.
+    if (!Courses.saved()){ showCourseChooser({ cancellable:false }); return; }
+    Courses.activate(Courses.saved());
+    hideCourseChooser();
     document.getElementById('appShell').style.display = 'block';
     const user = Auth.currentUser();
     if (user && !user.guest && user.lang && user.lang !== I18N.current){
@@ -113,8 +118,129 @@ const App = (() => {
     });
   }
 
+  /* ---------------- course chooser ---------------- */
+  function showCourseChooser(opts){
+    const cancellable = !!(opts && opts.cancellable);
+    document.getElementById('authWrap').classList.remove('active');
+    document.getElementById('appShell').style.display = 'none';
+    document.getElementById('courseWrap').classList.add('active');
+    document.getElementById('courseBackBtn').style.display = cancellable ? 'block' : 'none';
+    renderCourseList();
+    window.scrollTo(0, 0);
+  }
+
+  function hideCourseChooser(){
+    document.getElementById('courseWrap').classList.remove('active');
+  }
+
+  function renderCourseList(){
+    const current = Courses.saved();
+    document.getElementById('courseList').innerHTML = Courses.all.map(c => {
+      const st = Courses.stats(c.id);
+      const isCurrent = c.id === current;
+      return `<div class="course-card ${isCurrent ? 'current' : ''}" data-course="${c.id}">
+        <div class="cc-top">
+          <span class="cc-mark ${c.id}">${COURSE_ICONS[c.icon]}</span>
+          <span class="cc-title">
+            <h3>${I18N.t(c.nameKey)}</h3>
+            <p>${I18N.t(c.taglineKey)}</p>
+          </span>
+          ${isCurrent ? `<span class="cc-badge">${I18N.t('courseCurrent')}</span>` : ''}
+        </div>
+        <p class="cc-desc">${I18N.t(c.descKey)}</p>
+        <div class="cc-stats">
+          <span class="cc-stat"><b>${st.words}</b><span>${I18N.t('courseWords')}</span></span>
+          <span class="cc-stat"><b>${st.phrases}</b><span>${I18N.t('coursePhrases')}</span></span>
+          <span class="cc-stat"><b>${st.sayThis}</b><span>${I18N.t('courseSayThis')}</span></span>
+        </div>
+        <div class="cc-go">
+          ${I18N.t(isCurrent ? 'courseContinue' : 'courseStart')}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  /* Switching course re-aims every module, so caches and in-progress
+     activities must be cleared before anything re-renders. */
+  function selectCourse(id){
+    Speaking.stopAll();
+    Vocab.stopTimers();
+    Courses.activate(id);
+    Progress.invalidate();      // re-read progress under the new course key
+
+    // Filters hold ids from the previous course, so clear them all.
+    activePhraseCat = Courses.defaultPhraseCat;
+    phraseQuery = '';
+    phraseLevel = 'all';
+    const search = document.getElementById('phraseSearch');
+    if (search) search.value = '';
+    const clear = document.getElementById('phraseSearchClear');
+    if (clear) clear.classList.remove('show');
+
+    hideCourseChooser();
+    document.getElementById('appShell').style.display = 'block';
+    Progress.touchStreak();
+    renderAll();
+    Vocab.resetForCourse();
+    Nav.go('home');
+  }
+
+  function bindCourseChooser(){
+    document.getElementById('courseList').addEventListener('click', e => {
+      const card = e.target.closest('[data-course]');
+      if (card) selectCourse(card.dataset.course);
+    });
+    document.getElementById('courseBackBtn').addEventListener('click', () => {
+      hideCourseChooser();
+      document.getElementById('appShell').style.display = 'block';
+      Nav.go('home');
+    });
+    document.getElementById('courseBar').addEventListener('click', () => showCourseChooser({ cancellable:true }));
+    document.getElementById('accSwitchCourse').addEventListener('click', () => showCourseChooser({ cancellable:true }));
+  }
+
+  /* Feeds {w}, {p}, {domain} … into every i18n string for the active course. */
+  function registerCourseVars(){
+    I18N.setVars(() => {
+      const c = Courses.active;
+      if (!c) return {};
+      const st = Courses.stats(c.id) || {};
+      return {
+        w: st.words, wc: st.wordCats,
+        p: st.phrases, pc: st.phraseCats,
+        s: st.sayThis, mc: st.mc, pr: st.pron,
+        domain: (UI_STRINGS[I18N.current] || UI_STRINGS.en)[c.domainKey] || '',
+        domainShort: (UI_STRINGS[I18N.current] || UI_STRINGS.en)[c.domainShortKey] || '',
+      };
+    });
+  }
+
+  function renderCourseChrome(){
+    const c = Courses.active;
+    if (!c) return;
+    // The tip of the day is course-specific.
+    const tip = document.querySelector('[data-i18n="tipOfDayBody"]');
+    if (tip) tip.textContent = I18N.t(c.tipKey);
+    // Header identity follows the active course.
+    const h1 = document.querySelector('.brand-text h1');
+    const tag = document.querySelector('.brand-text p');
+    if (h1) h1.textContent = I18N.t(c.nameKey);
+    if (tag) tag.textContent = I18N.t(c.taglineKey);
+
+    const mark = document.getElementById('courseBarMark');
+    if (mark) mark.innerHTML = COURSE_ICONS[c.icon];
+    const name = document.getElementById('courseBarName');
+    if (name) name.textContent = I18N.t(c.nameKey);
+    const accMark = document.getElementById('accCourseMark');
+    if (accMark) accMark.innerHTML = COURSE_ICONS[c.icon];
+    const accName = document.getElementById('accCourseName');
+    if (accName) accName.textContent = I18N.t(c.nameKey);
+  }
+
   /* ---------------- home ---------------- */
   let potdIndex = 0;
+  let potdPick = null;
 
   function refreshHome(){
     const user = Auth.currentUser();
@@ -135,9 +261,17 @@ const App = (() => {
     document.getElementById('avatarBtn').textContent = initial;
 
     // phrase of the day, rotating by calendar day so it feels alive
-    const allPhrases = PHRASES.flatMap(c => c.items);
-    potdIndex = (new Date().getFullYear() * 366 + dayOfYear()) % allPhrases.length;
-    const p = allPhrases[potdIndex];
+    /* Phrase of the day is drawn only from guest-facing categories — the
+       team-talk lines are useful, but they are not what you say to a guest. */
+    const pool = [];
+    PHRASES.filter(c => c.id !== 'teamwork').forEach(c => {
+      c.items.forEach(item => pool.push({ ...item, catId: c.id, catLabel: I18N.current === 'th' ? c.th : c.en }));
+    });
+    potdIndex = (new Date().getFullYear() * 366 + dayOfYear()) % pool.length;
+    const p = pool[potdIndex];
+    potdPick = p;
+    document.getElementById('potdCat').textContent = p.catLabel;
+    document.getElementById('potdLevel').innerHTML = levelBadge(p.level, { compact:true });
     document.getElementById('potdText').textContent = `\u201c${p.text}\u201d`;
     document.getElementById('potdTh').textContent = p.th || '';
     document.getElementById('potdNote').textContent = p.note;
@@ -239,7 +373,7 @@ const App = (() => {
   }
 
   /* ---------------- phrases ---------------- */
-  let activePhraseCat = 'welcome';
+  let activePhraseCat = 'everyday';
 
   function renderPhraseLevelChips(){
     const wrap = document.getElementById('phraseLevelChips');
@@ -247,6 +381,10 @@ const App = (() => {
   }
 
   function renderPhraseCats(){
+    // A category id from the other course will not exist here.
+    if (!PHRASES.some(c => c.id === activePhraseCat)){
+      activePhraseCat = (PHRASES[0] && PHRASES[0].id) || 'everyday';
+    }
     document.getElementById('phraseCatChips').innerHTML = PHRASES.map(c =>
       `<button class="chip ${c.id === activePhraseCat ? 'active' : ''}" data-cat="${c.id}">${I18N.current === 'th' ? c.th : c.en}</button>`
     ).join('');
@@ -541,6 +679,7 @@ const App = (() => {
     Speech.onReady(() => {
       if (document.getElementById('screen-settings').classList.contains('active')) renderSettings();
     Speaking.rerender();
+    if (document.getElementById('courseWrap').classList.contains('active')) renderCourseList();
     });
 
     document.getElementById('voiceTest').addEventListener('click', () => {
@@ -578,6 +717,36 @@ const App = (() => {
   }
 
   /* ---------------- language ---------------- */
+  function bindPhraseOfDay(){
+    const play = document.getElementById('potdPlay');
+    if (play){
+      play.innerHTML = ICN.play;
+      play.addEventListener('click', e => {
+        e.stopPropagation();
+        if (!potdPick) return;
+        play.classList.add('playing');
+        play.innerHTML = ICN.pause;
+        Speech.speak(potdPick.text, {
+          rate: speechRate(),
+          onend(){ play.classList.remove('playing'); play.innerHTML = ICN.play; }
+        });
+      });
+    }
+    const open = document.getElementById('potdOpen');
+    if (open){
+      open.addEventListener('click', () => {
+        if (!potdPick) return;
+        activePhraseCat = potdPick.catId;   // land on the category it came from
+        phraseQuery = '';
+        const input = document.getElementById('phraseSearch');
+        if (input) input.value = '';
+        Nav.go('phrases');
+        renderPhraseCats();
+        renderPhraseList();
+      });
+    }
+  }
+
   function bindLangToggles(){
     document.querySelectorAll('.lang-toggle').forEach(row => {
       row.addEventListener('click', e => {
@@ -589,6 +758,7 @@ const App = (() => {
 
   function renderAll(){
     I18N.applyStatic();
+    renderCourseChrome();
     refreshHome();
     renderPron();
     renderPhraseCats();
@@ -608,13 +778,16 @@ const App = (() => {
 
   /* ---------------- boot ---------------- */
   function init(){
+    registerCourseVars();
     I18N.applyStatic();
     bindAuth();
     bindLangToggles();
     bindPron();
     bindPhrases();
+    bindPhraseOfDay();
     bindSettings();
     bindHints();
+    bindCourseChooser();
     applyTextSize(textSize());
     bindAssess();
     Vocab.init();
@@ -627,6 +800,7 @@ const App = (() => {
       Auth.logout();
       Progress.clearGuest();
       Progress.invalidate();
+      hideCourseChooser();
       showAuth();
     });
     document.getElementById('accRegisterCta').addEventListener('click', () => {
@@ -635,13 +809,14 @@ const App = (() => {
       switchAuthTab('register');
     });
 
+    Courses.activate(Courses.saved() || 'spa', { remember: false });
     if (Auth.isLoggedIn() && Auth.currentUser()) showApp();
     else showAuth();
   }
 
   return {
     init, showResults, refreshHome, renderAccount, renderAssessHub, rerenderAll,
-    renderSettings, speechRate,
+    renderSettings, speechRate, showCourseChooser,
     renderVocabHint(){ renderHint('vocabHint', 'vocab', 'hintVocab'); },
     get resultsBackTo(){ return resultsBackTo; },
   };
