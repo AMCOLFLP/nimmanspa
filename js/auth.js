@@ -185,7 +185,7 @@ const Progress = (() => {
     return Math.round(wordPart + activityPart);
   }
 
-  function reset(){ cache = blank(); cacheKey = keyFor(); save(); }
+  function reset(){ cache = blank(); cacheKey = keyFor(); if (!cacheKey) guestCache[Courses.currentId]=cache; save(); }
 
   function bestFor(activityKey){
     const p = load();
@@ -208,6 +208,7 @@ const Progress = (() => {
   const DAILY_SIZE = 5;
 
   function todayKey(){ return new Date().toDateString(); }
+  function isoToday(){ const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
 
   function dateSeed(){
     const d = new Date();
@@ -239,13 +240,18 @@ const Progress = (() => {
 
     // Mostly one level at a time, but let a couple of words from the next
     // level through so the set never feels static once a level is nearly done.
-    let queue = [...byLevel[0], ...byLevel[1], ...byLevel[2]];
+    const reviewWords = load().reviewWords || {};
+    const due = VOCAB.filter(v => reviewWords[v.word] && reviewWords[v.word].dueDate <= isoToday())
+      .sort((a,b)=>reviewWords[a.word].dueDate.localeCompare(reviewWords[b.word].dueDate)).slice(0,2);
+    const dueSet = new Set(due.map(v=>v.word));
+    let queue = [...due, ...byLevel.flat().filter(v=>!dueSet.has(v.word))];
 
     if (queue.length < DAILY_SIZE){
       // Everything is known: revise, easiest first, so a session still works.
       const review = [1, 2, 3].flatMap(lv =>
         seededShuffle(VOCAB.filter(v => knownSet.has(v.word) && (v.level || 2) === lv), seed + lv * 29));
-      queue = queue.concat(review);
+      const queued = new Set(queue.map(v=>v.word));
+      queue = queue.concat(review.filter(v=>!queued.has(v.word)));
     }
     return queue.slice(0, DAILY_SIZE).map(v => v.word);
   }
@@ -286,22 +292,55 @@ const Progress = (() => {
     return d.right.length >= d.words.length;
   }
 
-  function dailyCompleteCheck(score, total){
+  function dailyCompleteCheck(score, total, answers = []){
     const p = load();
     const d = dailyState();
     d.checkDone = true;
     d.checkScore = score;
     d.checkTotal = total;
-    // Finishing the day's check banks those words as learned.
+    const allowed = new Set(d.words);
+    d.itemResults = answers.filter(a => allowed.has(a.word)).map(a=>({word:a.word,correct:a.correct === true}));
     const set = new Set(p.knownWords);
-    d.words.forEach(w => set.add(w));
+    p.reviewWords = p.reviewWords || {};
+    d.itemResults.forEach(a => {
+      const prior = p.reviewWords[a.word] || {successes:0};
+      const successes = a.correct ? (prior.lastDate === todayKey() ? Math.max(1,prior.successes || 0) : (prior.successes || 0)+1) : 0;
+      // Editorial review intervals, not a validated mastery certification.
+      const intervals = [1,3,7,14];
+      const date = new Date();
+      date.setDate(date.getDate() + (a.correct ? intervals[Math.min(successes-1,3)] : 1));
+      const dueDate = `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
+      p.reviewWords[a.word] = {successes,dueDate,lastDate:todayKey(),correct:a.correct};
+      if(a.correct) set.add(a.word); else set.delete(a.word);
+    });
     p.knownWords = [...set];
     save();
-    recordQuizResult('daily', Math.round((score / total) * 100));
+    recordQuizResult('daily', total ? Math.round((score / total) * 100) : 0);
     return d;
   }
 
+  function practiceSettings(){
+    return {...{length:10,level:'all'},...(load().practiceSettings || {})};
+  }
+  function setPracticeSettings(settings){
+    const p=load();p.practiceSettings={length:[5,10,15,20].includes(Number(settings.length))?Number(settings.length):10,level:['all','1','2','3'].includes(String(settings.level))?String(settings.level):'all'};save();
+  }
+  function practiceHistory(){ return {...(load().practiceHistory || {})}; }
+  function recordPracticeAnswer(id, activity, correct, assisted){
+    if (!id) return;
+    const p=load();p.practiceHistory=p.practiceHistory || {};
+    const old=p.practiceHistory[id] || {attempts:0,right:0};
+    p.practiceHistory[id]={attempts:old.attempts+1,right:old.right+(correct?1:0),lastSeen:Date.now(),activity,lastCorrect:correct,assisted:!!assisted,needsReview:!correct || (assisted && !!old.needsReview)};
+    save();
+  }
+  function recordPracticeSession(session){
+    const p=load();p.practiceSessions=p.practiceSessions || [];
+    p.practiceSessions.push({at:Date.now(),activity:session.activity,score:session.score,total:session.total,assisted:session.assisted,level:session.level});
+    p.practiceSessions=p.practiceSessions.slice(-50);save();
+  }
+
   return {
+    practiceSettings, setPracticeSettings, practiceHistory, recordPracticeAnswer, recordPracticeSession,
     touchStreak, markWordKnown, knownCount, isKnown,
     recordQuizResult, quizAverage, activitiesCompleted, courseProgressPct,
     bestFor,

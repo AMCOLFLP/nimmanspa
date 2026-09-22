@@ -121,9 +121,9 @@ const UI_STRINGS = {
     dailyReadyTitle: 'All five understood', dailyReadyBody: 'Now check that it stuck. Five quick questions on exactly these words.',
     dailyStartCheck: 'Start the knowledge check',
     dailyCheckTitle: 'Daily Five check', dailyCheckKicker: 'Today\u2019s five words',
-    dailyDoneTitle: 'Today\u2019s set is done', dailyDoneScore: 'You scored', dailyComeBack: 'Come back tomorrow for five more.',
+    dailyDoneTitle: 'Today\u2019s set is done', dailyDoneScore: 'You scored', dailyComeBack: 'Return tomorrow for new words and review.',
     dailyRetake: 'Take the check again',
-    dailyBanked: 'These five words are now counted as learned.',
+    dailyBanked: 'Only correctly recalled words are marked as known. Missed words return for review.',
     backToDaily: 'Back to Daily Five',
 
     partnerCaption: 'A programme by Nimmanoradee International School & Barter Group',
@@ -161,8 +161,8 @@ const UI_STRINGS = {
     levelLegend: 'Easy \u2192 Advanced',
 
     actSpeakTitle: 'Speaking test', actSpeakDesc: 'Say words aloud and get an accuracy score',
-    spkLede: 'Read each item aloud. Your device transcribes what it hears and we compare it with the target, so the score reflects how clearly you were understood.',
-    spkHowItWorks: 'Your speech is transcribed on your own device and compared with the target text. Nothing is uploaded or stored by this app.',
+    spkLede: 'Read each item aloud. The browser recognition result is compared with the target. This is a practice indicator, not a validated pronunciation score.',
+    spkHowItWorks: 'Speech recognition may send audio to your browser provider. This app does not save recordings. To practise without sharing audio, listen and read aloud without enabling the microphone.',
     spkModeWords: 'Single words', spkModePhrases: 'Full phrases',
     spkStart: 'Start the speaking test', spkStartSelfCheck: 'Start in self-check mode',
     spkSayThis: 'SAY THIS OUT LOUD', spkListenModel: 'Listen',
@@ -230,7 +230,7 @@ const UI_STRINGS = {
 
     // Auth
     authWelcome: 'Welcome',
-    authTagline: 'Sign in to save your progress across every device.',
+    authTagline: 'Sign in to save progress in this browser. Accounts are local demo accounts.',
     loginTab: 'Log in', registerTab: 'Register',
     fieldName: 'Full name', fieldEmail: 'Email', fieldPassword: 'Password', fieldConfirm: 'Confirm password', fieldRole: 'Your role', fieldLanguage: 'Preferred language',
     roleTherapist: 'Therapist', roleReception: 'Receptionist', roleManager: 'Manager', roleOther: 'Other',
@@ -372,9 +372,9 @@ const UI_STRINGS = {
     dailyReadyTitle: 'เข้าใจครบทั้งห้าคำ', dailyReadyBody: 'มาตรวจสอบว่าจำได้จริงไหม ห้าคำถามสั้นๆ จากคำศัพท์ชุดนี้',
     dailyStartCheck: 'เริ่มแบบทดสอบ',
     dailyCheckTitle: 'ทดสอบห้าคำประจำวัน', dailyCheckKicker: 'คำศัพท์ห้าคำของวันนี้',
-    dailyDoneTitle: 'ชุดคำศัพท์วันนี้เสร็จแล้ว', dailyDoneScore: 'คุณได้คะแนน', dailyComeBack: 'กลับมาพบกันใหม่พรุ่งนี้กับอีกห้าคำ',
+    dailyDoneTitle: 'ชุดคำศัพท์วันนี้เสร็จแล้ว', dailyDoneScore: 'คุณได้คะแนน', dailyComeBack: 'กลับมาพรุ่งนี้เพื่อเรียนคำใหม่และทบทวนคำเดิม',
     dailyRetake: 'ทำแบบทดสอบอีกครั้ง',
-    dailyBanked: 'คำศัพท์ห้าคำนี้ถูกนับเป็นคำที่เรียนแล้ว',
+    dailyBanked: 'นับว่ารู้แล้วเฉพาะคำที่ตอบถูก คำที่ตอบผิดจะกลับมาให้ทบทวน',
     backToDaily: 'กลับไปห้าคำต่อวัน',
 
     partnerCaption: 'โปรแกรมโดย โรงเรียนฝึกอบรมนิมมานรดี อินเตอร์เนชั่นแนล และ Barter Group',
@@ -412,8 +412,8 @@ const UI_STRINGS = {
     levelLegend: 'ง่าย \u2192 ยาก',
 
     actSpeakTitle: 'ทดสอบการพูด', actSpeakDesc: 'ออกเสียงคำศัพท์แล้วรับคะแนนความถูกต้อง',
-    spkLede: 'อ่านออกเสียงแต่ละรายการ อุปกรณ์ของคุณจะถอดเสียงที่ได้ยินแล้วเปรียบเทียบกับคำเป้าหมาย คะแนนจึงสะท้อนว่าคุณพูดชัดเจนเพียงใด',
-    spkHowItWorks: 'เสียงพูดของคุณถูกถอดความบนอุปกรณ์ของคุณเองและเทียบกับข้อความเป้าหมาย แอปนี้ไม่ได้อัปโหลดหรือเก็บเสียงของคุณ',
+    spkLede: 'อ่านออกเสียงแต่ละรายการ ระบบจะเทียบผลการรู้จำเสียงของเบราว์เซอร์กับข้อความเป้าหมาย คะแนนใช้ประกอบการฝึก ไม่ใช่ผลประเมินการออกเสียงที่ผ่านการรับรอง',
+    spkHowItWorks: 'การรู้จำเสียงอาจส่งเสียงไปยังผู้ให้บริการเบราว์เซอร์ แอปนี้ไม่บันทึกไฟล์เสียง หากไม่ต้องการส่งเสียง ให้ฟังตัวอย่างและอ่านออกเสียงโดยไม่เปิดไมโครโฟน',
     spkModeWords: 'คำเดี่ยว', spkModePhrases: 'ประโยคเต็ม',
     spkStart: 'เริ่มทดสอบการพูด', spkStartSelfCheck: 'เริ่มโหมดประเมินตนเอง',
     spkSayThis: 'อ่านออกเสียงประโยคนี้', spkListenModel: 'ฟังตัวอย่าง',
@@ -481,7 +481,7 @@ const UI_STRINGS = {
 
     // Auth
     authWelcome: 'ยินดีต้อนรับ',
-    authTagline: 'เข้าสู่ระบบเพื่อบันทึกความคืบหน้าของคุณในทุกอุปกรณ์',
+    authTagline: 'เข้าสู่ระบบเพื่อบันทึกความคืบหน้าในเบราว์เซอร์นี้ บัญชีเป็นบัญชีสาธิตที่เก็บในเครื่อง',
     loginTab: 'เข้าสู่ระบบ', registerTab: 'สมัครสมาชิก',
     fieldName: 'ชื่อ-นามสกุล', fieldEmail: 'อีเมล', fieldPassword: 'รหัสผ่าน', fieldConfirm: 'ยืนยันรหัสผ่าน', fieldRole: 'ตำแหน่งของคุณ', fieldLanguage: 'ภาษาที่ต้องการ',
     roleTherapist: 'นักบำบัด', roleReception: 'พนักงานต้อนรับ', roleManager: 'ผู้จัดการ', roleOther: 'อื่นๆ',

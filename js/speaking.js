@@ -227,8 +227,8 @@ const Speaking = (() => {
 
   function buildItems(){
     if (mode === 'words'){
-      let pool = vocabPool('all', level).filter(v => !/[\s-]/.test(v.word));
-      if (pool.length < WORD_COUNT) pool = vocabPool('all', 'all').filter(v => !/[\s-]/.test(v.word));
+      let pool = vocabPool('all', level);
+      if (pool.length < WORD_COUNT) pool = vocabPool('all', 'all');
       return sample(pool, WORD_COUNT).map(v => ({
         target: v.word, th: v.th, sub: v.phon, level: v.level, kind:'word',
       }));

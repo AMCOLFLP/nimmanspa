@@ -1,92 +1,123 @@
-NIMMAN Willow & Stone English
-=============================
+NIMMAN ENGLISH — EXPANDED QUIZZES & ACTIVITIES
+22 September 2026
 
-HOW TO RUN
-----------
-Most of the app works by simply opening index.html in a browser.
+A complete updated copy of the uploaded app. The existing branding, two-course
+structure, 500 vocabulary entries and 400 phrases are retained.
+This package has NOT been deployed to the live website.
 
-The SPEAKING TEST needs the microphone, and browsers only allow that on a
-real web address — not on a file:// path. Use one of these:
+CURRENT PRACTICE BANKS
+Activity                            Spa       Cruise      Combined
+Workplace multiple-choice quiz      100       100         200
+True / false                         50        50         100
+Correct the sentence                 50        50         100
+Hear the word                        80        80         160
+Build a sentence                     80        80         160
+Guided dialogues                     30        30          60
+Workplace scenarios                  30        30          60
+Reading passages                     10        10          20
+  Questions across those passages    30        30          60
+Listen & respond                     20        20          40
+Order the conversation               10        10          20
+Word in context                      30        30          60
 
-  1. Upload this folder to any web host and open it over https://
-  2. Or run a local server from inside this folder:
-        python3 -m http.server 8000
-     then open  http://localhost:8000
+There are 90 spa and 87 cruise dialogue blanks. Including those blanks, there
+are 1,137 authored scored prompts. This is NOT a count of unique words or wholly
+distinct situations: modes deliberately reuse language and some conversations.
+Dynamic definition quizzes additionally draw from 250 vocabulary entries per
+course. Existing vocabulary drills and speaking activities are retained.
 
-If you open index.html directly, the speaking test will tell you this and
-offer self-check mode instead.
+Core content: spa 250 words / 220 phrases; cruise 250 words / 180 phrases.
+Pronunciation guides: 40 per course. All 900 core vocabulary/phrase entries from
+the previous content-expanded release remain.
 
-SIGNING IN
-----------
-The app always opens on the sign-in screen, even if it was used a moment
-ago. That is deliberate: these devices are often shared between staff, and
-nobody should land in someone else's account. Progress is saved per account,
-so signing in again brings everything back.
+HOW TO OPEN
+1. Extract the ZIP. Keep index.html, styles.css, js and assets together.
+2. For a simple desktop preview, open index.html in a browser.
+3. For a local server, open a terminal in this folder and run:
+   python -m http.server 8000 --bind 127.0.0.1
+   Then visit http://localhost:8000 in your browser.
+4. Choose Continue as guest, choose a course, and open Practice.
+5. For deployment, back up the old app and upload the complete folder contents
+   to your static host. Use the host's secure HTTPS configuration. Do not upload
+   only one JS file: the new player depends on the updated HTML, CSS and scripts.
 
-Tap "Continue as guest" for a quick look without an account. Guest progress
-lasts for that session only.
+HOW TO USE THE NEW PRACTICE
+Choose 5, 10, 15 or 20 items and Starter / Everyday / Extended / All levels.
+These are editorial difficulty labels, not CEFR certification.
+Settings affect the quiz and applied-activity cards, not all vocabulary drills.
+Unseen items come first; previously attempted items are ordered by recency.
+Reading keeps each passage's three questions together, so length settings
+5 / 10 / 15 / 20 yield up to 3 / 9 / 15 / 18 reading questions.
+Dialogue length follows its own number of blanks. Small filtered banks may
+return fewer items than the selected session length.
 
-TWO COURSES
------------
-After signing in you go straight back to the course you last studied.
-The two available are:
+New activities:
+- Read a workplace message: find purpose, details and a next action.
+- Listen & respond: hear a guest/colleague and choose a relevant reply.
+- Order the conversation: keep the opening fixed; arrange the next three turns.
+- Word in context: type a word using a meaning clue, initial letter and length.
 
-  NIMMAN Willow & Stone English   Spa & wellness
-                                  137 words · 121 phrases · 20 do/don't pairs
+Words/turns are clickable buttons: select, undo by tapping the placed item, or
+Clear. Typed marking ignores case and surrounding punctuation and accepts
+listed variants only. It does not guess misspellings or assess open-ended writing.
 
-  NIMMAN Harbour & Horizon English  Cruise ship crew
-                                  98 words · 80 phrases · 14 do/don't pairs
+Feedback gives a model and an explanation. Newly authored items include Thai
+support; some inherited explanations remain English-only.
+The end screen retains first responses and offers Retry missed items or a new
+set. Review my mistakes combines missed questions in the CURRENT course across
+levels. Retrying does not overwrite the original activity score.
 
-Switch any time from the bar at the top of the Home screen, or from
-Account -> Switch course. You are never forced to pick one on the way in. Each course keeps its OWN progress: known words,
-scores, streak and Daily Five are stored separately, so one person can study
-both without one wiping the other. Each course also has its own colour —
-brass for spa, marine blue for cruise — so you can see at a glance which
-one you are in.
+Listening transcripts are hidden until requested or the answer is submitted.
+Opening the transcript, known playback failure, or answering without pressing
+Play records supported practice with a separate score key. This is not evidence
+that playback succeeded or that the learner heard the audio. A correct supported
+answer does not clear an earlier mistake from the review list.
+Audio is browser text-to-speech, not human recordings.
 
-GETTING AROUND
---------------
-Five tabs along the bottom:
+TEACHER RESOURCES & CONTENT FILES
+QUIZ_ACTIVITY_GUIDE.html — searchable guide and answer bank for all 1,137 authored
+scored prompts. Contains answers; intended for teacher preparation, not a secure
+exam. Keep this optional file private when independent learner testing matters.
+CONTENT_LIBRARY.html — previous standalone catalogue of 900 core words/phrases.
+content/content.json — complete structured export for content review.
+CHANGELOG.md — current changes and clearly labelled previous-release history.
+SOURCES.md — editorial reference notes and review boundaries.
 
-  Home      Today's summary, phrase of the day, and links to everything
-  Daily     The Daily Five: five words a day, swiped, then a knowledge check
-  Vocab     Browse the course vocabulary as flashcards, with search + filters
-  Phrases   Ready-made guest phrases, grouped by situation
-  Practice  ALL 16 activities in one place, in three groups:
-              - Learn the words   (6 vocabulary drills)
-              - Test yourself     (8 quizzes)
-              - Say it out loud   (pronunciation guide + speaking test)
+RUNTIME DATA / EDITING
+The app loads js/data.js, js/activities.js, js/data-cruise.js, then
+js/practice-data.js before js/courses.js. practice-data.js applies the expanded
+assessment banks to existing arrays in place. It is authoritative for those
+banks. js/practice-lab.js supplies the new player and hub controls.
+Changing content/content.json alone does NOT change the running application.
+Keep the runtime overlay and JSON review copy in sync when editing.
+Old word keys, course IDs and existing question IDs have been retained.
 
-Everything is graded Easy / Intermediate / Advanced, and the whole interface
-switches between English and Thai with the EN/ไทย toggle.
+PROGRESS, PRIVACY AND ACCOUNTS
+Demo-account progress remains browser-local and course-specific. It does not
+synchronise between devices. Guests have session-only progress. Changing host,
+browser/profile or clearing site data can make existing progress unavailable.
+New fields are added without replacing existing known words, scores or streaks.
 
-WHAT'S IN EACH COURSE
----------------------
-Willow & Stone (spa)      137 terms / 9 categories, 121 phrases / 17 situations,
-                          20 do-and-don't pairs, 17 pronunciation entries
-Harbour & Horizon (cruise) 98 terms / 8 categories, 80 phrases / 13 situations,
-                          14 do-and-don't pairs, 12 pronunciation entries
+The inherited sign-in is a demonstration, NOT production-grade authentication;
+it stores demo credentials in localStorage. Do not use real or reused passwords.
+No account backend, secure authentication or cross-device sync has been added.
+Browser speech recognition may involve the browser provider's remote service.
+No audio recording storage is added by this release.
 
-Both courses have all 16 practice activities and tests, everything graded
-Easy / Intermediate / Advanced, and full Thai throughout.
+TESTING
+See tests/README.md, activity-validation-report.json and
+activity-browser-test-report.json. Structural checks cover counts, options,
+answer keys, IDs, levels, links and matching runtime/export data. Chromium UI
+checks use the actual app in an in-memory HTML/localStorage harness because
+local HTTP navigation is blocked in the authoring environment. TTS is stubbed
+for those checks. Screenshots omit remote fonts and reflect local fallbacks.
+Live deployment, real-origin persistence, Safari/iOS, actual audio playback and
+live microphone recognition have NOT been verified. A formal accessibility
+or psychometric assessment has not been performed.
 
-PHRASE OF THE DAY
------------------
-The Home screen shows one guest phrase each day, drawn only from the
-guest-facing categories. Tap the speaker to hear it, or tap the phrase to
-open that whole category in the Phrases tab.
-
-ABOUT THE SPEAKING SCORE
-------------------------
-The score comes from your browser's own speech recognition. Your speech is
-transcribed on your device and compared with the target text, so the number
-reflects how clearly you were understood.
-
-It is an intelligibility measure, not a phoneme-by-phoneme assessment.
-Background noise or a poor microphone can lower it. Treat it as practice
-feedback, not an exam result. Nothing is uploaded or stored by this app.
-
-Speech recognition is available in Safari (iPhone/Mac) and Chrome. In
-browsers without it (e.g. Firefox), the app switches to self-check mode:
-you record, compare with the model voice, and rate yourself. It will not
-invent a percentage without a recogniser.
+WORKPLACE REVIEW
+Examples are language practice, not medical advice, treatment protocols,
+emergency training or a replacement for approved workplace procedures. Confirm
+actual prices, times, locations, permissions and compensation arrangements.
+Independent Thai-language and workplace-specialist review is recommended before
+formal rollout. Incorrect answer choices are deliberately unsuitable examples.

@@ -1,0 +1,30 @@
+{
+  "browser": "Headless Chromium; local in-memory HTML harness (managed browser blocks URL navigation)",
+  "storage": "In-memory localStorage-compatible test shim, not a real hosted-origin persistence test",
+  "mobile_viewport": "375 × 812",
+  "checks": [
+    "spa: correct course counts and switching",
+    "spa: contextual flashcards render in English and Thai",
+    "spa: phrase-to-dialogue link and answer progression work",
+    "spa: 20 dialogues and 40 pronunciation guides available",
+    "spa: Thai UI and 375px mobile layout without horizontal overflow",
+    "cruise: correct course counts and switching",
+    "cruise: contextual flashcards render in English and Thai",
+    "cruise: phrase-to-dialogue link and answer progression work",
+    "cruise: 20 dialogues and 40 pronunciation guides available",
+    "cruise: Thai UI and 375px mobile layout without horizontal overflow",
+    "MC randomisation preserves correct answer; 20 launches sample multiple positions",
+    "Daily Five: zero correct marks 0 known; 2/5 marks 2 known; 5/5 marks 5 known",
+    "Legacy local progress and quiz score preserved; overdue word returns in Daily Five",
+    "Speaking word mode samples multiword terms (no live microphone test)",
+    "No uncaught browser JavaScript errors across tested flows"
+  ],
+  "console_errors": [],
+  "not_tested": [
+    "Live microphone recognition and speech service connectivity",
+    "Real audio playback quality",
+    "Safari/iOS and other browsers",
+    "Live hosting deployment and real-origin browser persistence",
+    "Independent Thai-language or workplace-specialist review"
+  ]
+}

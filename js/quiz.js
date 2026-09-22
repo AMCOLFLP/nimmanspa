@@ -3,7 +3,7 @@
    1 multiple choice    2 fill-in dialogue   3 listen & choose   4 builder
    5 what would you say 6 true or false      7 error correction   8 definition quiz
    Hand-written banks are sampled per attempt; the definition quiz is
-   generated from the full 102-word pool, so it never repeats a set.
+   generated from the active course vocabulary pool, so it never repeats a set.
    ========================================================================= */
 
 const Quiz = (() => {
@@ -17,7 +17,11 @@ const Quiz = (() => {
 
   function startMC(config){
     mc = {
-      questions: config.questions,
+      questions: config.questions.map(q => {
+        const choices = shuffle(q.options.map((text,index)=>({text,index})));
+        return {...q, options:choices.map(c=>c.text), correct:choices.findIndex(c=>c.index===q.correct)};
+      }),
+      answers: [],
       idx: 0, score: 0, answered: false,
       title: config.title,
       kicker: config.kicker,
@@ -48,7 +52,7 @@ const Quiz = (() => {
 
     const letters = ['A','B','C','D'];
     document.getElementById('mcOptions').innerHTML = q.options.map((o, i) =>
-      `<div class="q-option" data-i="${i}"><div class="opt-mark">${letters[i]}</div><div>${o}</div></div>`
+      `<button type="button" class="q-option" data-i="${i}"><span class="opt-mark">${letters[i]}</span><span>${o}</span></button>`
     ).join('');
 
     const btn = document.getElementById('mcNextBtn');
@@ -66,6 +70,7 @@ const Quiz = (() => {
       else if (idx === i) el.classList.add('is-wrong');
     });
     const ok = i === q.correct;
+    mc.answers.push({id:q.id || null,word:q.word || null,correct:ok});
     if (ok) mc.score++;
     document.getElementById('mcScoreChip').textContent = `${mc.score} / ${mc.questions.length}`;
 
@@ -83,7 +88,7 @@ const Quiz = (() => {
     const pct = Math.round((mc.score / mc.questions.length) * 100);
     // A caller with its own completion flow (the Daily Five check) handles
     // its own scoring and results; otherwise fall back to the default.
-    if (mc.onFinish){ mc.onFinish(mc.score, mc.questions.length); return; }
+    if (mc.onFinish){ mc.onFinish(mc.score, mc.questions.length, mc.answers); return; }
     Progress.recordQuizResult(mc.progressKey, pct);
     App.showResults(mc.score, mc.questions.length, mc.title);
   }
@@ -92,6 +97,7 @@ const Quiz = (() => {
      Activity launchers that use the MC engine
      ===================================================================== */
   function startMainQuiz(){
+    if (typeof Practice !== "undefined") return Practice.start('mc');
     startMC({
       questions: sample(MC_BANK, 12),
       title: I18N.t('actMcTitle'),
@@ -101,6 +107,7 @@ const Quiz = (() => {
   }
 
   function startScenarioQuiz(){
+    if (typeof Practice !== "undefined") return Practice.start('scenario');
     const items = sample(SAYTHIS, 10).map(s => {
       const options = shuffle([s.doo, s.dont]);
       const extra = shuffle(SAYTHIS.filter(o => o.scenario !== s.scenario)).slice(0, 2).map(o => o.dont);
@@ -123,6 +130,7 @@ const Quiz = (() => {
   }
 
   function startDefinitionQuiz(){
+    if (typeof Practice !== "undefined") return Practice.start('definition');
     const half = genDefinitionQuestions(8, 'all').map(q => ({
       q: `${I18N.t('defQuestion')} \u201c${q.prompt}\u201d`,
       promptTh: I18N.current === 'th' ? q.promptTh : null,
@@ -146,6 +154,7 @@ const Quiz = (() => {
   let fill = null;
 
   function openFillPicker(){
+    if (typeof Practice !== "undefined") return Practice.openDialogues();
     Nav.go('fillquiz');
     document.getElementById('fillPicker').style.display = 'block';
     document.getElementById('fillPlay').style.display = 'none';
@@ -160,7 +169,10 @@ const Quiz = (() => {
   }
 
   function startFill(dialogueId){
+    if (typeof Practice !== "undefined") return Practice.startDialogue(dialogueId);
     const d = FILL_DIALOGUES.find(x => x.id === dialogueId);
+    if (!d) return;
+    Nav.go("fillquiz");
     // deep copy so a replay starts clean
     fill = {
       id: d.id,
@@ -188,8 +200,10 @@ const Quiz = (() => {
   function renderScript(){
     let html = '';
     fill.lines.forEach((line, i) => {
+      if (i > fill.idx) return; // Reveal turns in order; do not show future answers.
+      const translation = line.th && (line.fixed || i < fill.idx) ? `<small class="dialogue-th" lang="th">${LearningContent.esc(line.th)}</small>` : "";
       if (line.fixed){
-        html += `<div class="dscript-line"><span class="dscript-speaker">${line.speaker}</span><span class="dscript-text">${line.before}</span></div>`;
+        html += `<div class="dscript-line"><span class="dscript-speaker">${line.speaker}</span><span class="dscript-text">${line.before}${translation}</span></div>`;
         return;
       }
       let blank;
@@ -200,7 +214,7 @@ const Quiz = (() => {
       } else {
         blank = `<span class="blank-slot future">&hellip;</span>`;
       }
-      html += `<div class="dscript-line"><span class="dscript-speaker">${line.speaker}</span><span class="dscript-text">${line.before}${blank}${line.after}</span></div>`;
+      html += `<div class="dscript-line"><span class="dscript-speaker">${line.speaker}</span><span class="dscript-text">${line.before}${blank}${line.after}${translation}</span></div>`;
     });
     document.getElementById('dialogueScript').innerHTML = html;
     const active = document.getElementById('activeBlank');
@@ -269,6 +283,7 @@ const Quiz = (() => {
   let ls = null;
 
   function startListen(){
+    if (typeof Practice !== "undefined") return Practice.start('listen');
     ls = { rounds: sample(LISTEN_BANK, 10), idx:0, score:0, answered:false, plays:0 };
     Nav.go('listen');
     renderListen();
@@ -340,6 +355,7 @@ const Quiz = (() => {
   let bd = null;
 
   function startBuilder(){
+    if (typeof Practice !== "undefined") return Practice.start('builder');
     bd = { rounds: sample(BUILDER_BANK, 8), idx:0, score:0, placed:[], locked:false };
     Nav.go('builder');
     renderBuilder();
@@ -423,6 +439,7 @@ const Quiz = (() => {
   let tf = null;
 
   function startTrueFalse(){
+    if (typeof Practice !== "undefined") return Practice.start('truefalse');
     tf = { items: sample(TRUE_FALSE_BANK, 12), idx:0, score:0, answered:false };
     Nav.go('truefalse');
     document.getElementById('tfTitle').textContent = I18N.t('actTfTitle');
@@ -486,6 +503,7 @@ const Quiz = (() => {
   let ef = null;
 
   function startErrorFix(){
+    if (typeof Practice !== "undefined") return Practice.start('errorfix');
     ef = { items: sample(ERROR_BANK, 8), idx:0, score:0, answered:false };
     Nav.go('errorfix');
     document.getElementById('efTitle').textContent = I18N.t('actErrTitle');
@@ -596,7 +614,7 @@ const Quiz = (() => {
     init: bind,
     startMC,   // shared engine, used by the Daily Five knowledge check
     startMainQuiz, startScenarioQuiz, startDefinitionQuiz,
-    openFillPicker, startListen, startBuilder, startTrueFalse, startErrorFix,
+    openFillPicker, startFill, startListen, startBuilder, startTrueFalse, startErrorFix,
   };
 })();
 

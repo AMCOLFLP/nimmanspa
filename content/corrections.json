@@ -1,0 +1,310 @@
+[
+  {
+    "course": "spa",
+    "type": "vocabulary",
+    "item": "Hypoallergenic",
+    "before": "Formulated to reduce the chance of an allergic reaction.",
+    "after": "A product claim suggesting fewer allergic reactions; it does not guarantee that a product cannot cause allergy."
+  },
+  {
+    "course": "spa",
+    "type": "vocabulary",
+    "item": "Detoxifying",
+    "before": "Describes a treatment believed to help remove unwanted toxins from the body.",
+    "after": "A wellness marketing term suggesting toxin removal; do not present it as a proven effect of a spa treatment."
+  },
+  {
+    "course": "spa",
+    "type": "vocabulary",
+    "item": "Detox",
+    "before": "Short for detoxification — the process of removing unwanted substances from the body.",
+    "after": "A shortened form of detoxification, often used in wellness marketing; spa claims are not medical detoxification."
+  },
+  {
+    "course": "spa",
+    "type": "vocabulary",
+    "item": "Reflexology",
+    "before": "Pressure-point work on the feet, hands or ears, linked to other areas of the body.",
+    "after": "A practice applying pressure to feet or hands, based on beliefs about connections to other body areas."
+  },
+  {
+    "course": "spa",
+    "type": "vocabulary",
+    "item": "Sports massage",
+    "before": "A firmer massage designed to prevent injury and aid recovery for active guests.",
+    "after": "Massage offered to active people; suitability and expected benefits should be discussed with a trained practitioner."
+  },
+  {
+    "course": "spa",
+    "type": "vocabulary",
+    "item": "Cryotherapy",
+    "before": "A treatment using very cold temperatures to reduce inflammation and refresh the body.",
+    "after": "The use of cold in treatment; methods, risks and suitability vary and require appropriate professional advice."
+  },
+  {
+    "course": "spa",
+    "type": "vocabulary",
+    "item": "Friction",
+    "before": "Small, deep, circular movements applied to help break down muscle knots.",
+    "after": "Small, focused rubbing movements used in massage. Avoid promising that they break down tissue or cure pain."
+  },
+  {
+    "course": "spa",
+    "type": "vocabulary",
+    "item": "Energy flow",
+    "before": "In holistic therapies, the movement of vital energy through the body.",
+    "after": "A concept used in some traditional wellness practices, not a measurable treatment outcome in this course."
+  },
+  {
+    "course": "spa",
+    "type": "vocabulary",
+    "item": "Holistic balance",
+    "before": "A state of physical and emotional equilibrium that many treatments aim to restore.",
+    "after": "A broad wellness expression about overall wellbeing rather than a medical diagnosis or measurable guarantee."
+  },
+  {
+    "course": "spa",
+    "type": "vocabulary",
+    "item": "Toning",
+    "before": "Applying a light liquid to balance the skin’s pH after cleansing.",
+    "after": "Applying a toner as part of a skincare routine; its function depends on the individual product."
+  },
+  {
+    "course": "spa",
+    "type": "vocabulary",
+    "item": "Chemical peel",
+    "before": "A treatment using a mild acid solution to remove the outer layer of skin.",
+    "after": "A treatment using a chemical solution on the skin; depth, risks and aftercare depend on the product and method."
+  },
+  {
+    "course": "spa",
+    "type": "vocabulary",
+    "item": "Patch test",
+    "before": "A small trial application of a product, used to check for a reaction before full use.",
+    "after": "Applying a product to a small skin area as directed to check for a possible reaction; a clear result is not a guarantee."
+  },
+  {
+    "course": "spa",
+    "type": "vocabulary",
+    "item": "Fragrance-free",
+    "before": "Containing no added perfume, suitable for sensitive guests.",
+    "after": "Labelled as having no added fragrance; this does not automatically mean allergy-free."
+  },
+  {
+    "course": "spa",
+    "type": "vocabulary",
+    "item": "Prenatal massage",
+    "before": "A gentle massage adapted for pregnant guests, using safe positions and pressure.",
+    "after": "Massage during pregnancy, requiring a suitably trained practitioner and an individual suitability assessment."
+  },
+  {
+    "course": "spa",
+    "type": "vocabulary",
+    "item": "Swedish massage",
+    "before": "A classic full-body massage using long strokes to relax and improve circulation.",
+    "after": "A massage style using gliding and other strokes; the practitioner should discuss comfort, suitability and expectations."
+  },
+  {
+    "course": "cruise",
+    "type": "vocabulary",
+    "item": "Sanitiser station",
+    "before": "A hand-hygiene point at entrances to dining areas.",
+    "after": "A place providing hand sanitiser; it does not replace soap-and-water handwashing against norovirus."
+  },
+  {
+    "course": "cruise",
+    "type": "vocabulary",
+    "item": "Motion sickness tablet",
+    "before": "Medicine that reduces seasickness.",
+    "after": "Medicine used for motion sickness. Refer questions about its suitability or use to the medical team."
+  },
+  {
+    "course": "cruise",
+    "type": "vocabulary",
+    "item": "General emergency alarm",
+    "before": "Seven short blasts and one long blast, telling everyone to go to their muster station.",
+    "after": "The general emergency signal is seven or more short blasts followed by one long blast; follow ship-specific instructions."
+  },
+  {
+    "course": "spa",
+    "type": "phrase",
+    "item": "welcome:8",
+    "before": "Your therapist today will be Nok — she has fifteen years of experience.",
+    "after": "Let me introduce your therapist and confirm the treatment you have booked."
+  },
+  {
+    "course": "spa",
+    "type": "phrase",
+    "item": "explain:6",
+    "before": "This oil blend is completely natural and suitable for sensitive skin.",
+    "after": "Let me check the ingredients and discuss your skin concerns before choosing a product."
+  },
+  {
+    "course": "spa",
+    "type": "phrase",
+    "item": "booking:3",
+    "before": "That will be sixty-five pounds today — would you like to pay by card or cash?",
+    "after": "Let me confirm the total and currency. How would you like to pay?"
+  },
+  {
+    "course": "spa",
+    "type": "phrase",
+    "item": "aftercare:1",
+    "before": "We recommend drinking plenty of water over the next twenty-four hours.",
+    "after": "Would you like some water? Please follow the aftercare advice given for your treatment."
+  },
+  {
+    "course": "spa",
+    "type": "phrase",
+    "item": "aftercare:2",
+    "before": "Please avoid direct sun exposure for at least forty-eight hours after this facial.",
+    "after": "Please follow the sun-protection advice in your treatment-specific aftercare instructions."
+  },
+  {
+    "course": "spa",
+    "type": "phrase",
+    "item": "aftercare:3",
+    "before": "You may feel a little tender tomorrow — that’s completely normal after deep tissue work.",
+    "after": "Please seek appropriate medical advice about severe, persistent or unusual symptoms."
+  },
+  {
+    "course": "spa",
+    "type": "phrase",
+    "item": "aftercare:4",
+    "before": "For the best results, we’d suggest a follow-up session in two to three weeks.",
+    "after": "The practitioner can discuss whether a follow-up appointment would be appropriate for you."
+  },
+  {
+    "course": "spa",
+    "type": "phrase",
+    "item": "aftercare:6",
+    "before": "Try to avoid strenuous exercise for the rest of today.",
+    "after": "Please follow the activity advice in the aftercare instructions for your treatment."
+  },
+  {
+    "course": "spa",
+    "type": "phrase",
+    "item": "aftercare:7",
+    "before": "If you notice any unusual redness or irritation, please contact us.",
+    "after": "Please tell us about unexpected symptoms and seek appropriate medical help when needed."
+  },
+  {
+    "course": "spa",
+    "type": "phrase",
+    "item": "concerns:5",
+    "before": "As an apology, we’d like to offer you a complimentary treatment on your next visit.",
+    "after": "I will check with my manager what options we can offer to address your concern."
+  },
+  {
+    "course": "spa",
+    "type": "phrase",
+    "item": "special:1",
+    "before": "For your comfort during pregnancy, we’ll use side-lying positions throughout.",
+    "after": "Our appropriately trained practitioner will discuss a suitable position and whether treatment can proceed."
+  },
+  {
+    "course": "spa",
+    "type": "phrase",
+    "item": "consultation:6",
+    "before": "Have you had any surgery in the last six months?",
+    "after": "Have you had any recent surgery or a medical procedure the practitioner should know about?"
+  },
+  {
+    "course": "spa",
+    "type": "phrase",
+    "item": "during:3",
+    "before": "I’ll cover you with a warm towel now.",
+    "after": "May I cover you with a warm towel?"
+  },
+  {
+    "course": "cruise",
+    "type": "phrase",
+    "item": "embark:3",
+    "before": "Your luggage will be delivered to your cabin within a few hours.",
+    "after": "Let me check when your luggage is expected to reach your cabin."
+  },
+  {
+    "course": "cruise",
+    "type": "phrase",
+    "item": "embark:4",
+    "before": "The muster drill is compulsory and takes about fifteen minutes.",
+    "after": "Please follow the instructions for the required passenger safety briefing and muster arrangements."
+  },
+  {
+    "course": "cruise",
+    "type": "phrase",
+    "item": "embark:5",
+    "before": "Your muster station is printed on the back of your cruise card.",
+    "after": "Let me help you find your assigned muster station in the ship information provided."
+  },
+  {
+    "course": "cruise",
+    "type": "phrase",
+    "item": "safety:2",
+    "before": "Please take the stairs, not the lift, during the drill.",
+    "after": "Please follow the crew instructions about which route to use during the drill."
+  },
+  {
+    "course": "cruise",
+    "type": "phrase",
+    "item": "safety:3",
+    "before": "Your life jacket is in the wardrobe in your cabin.",
+    "after": "Please follow this ship's instructions about where to find and when to collect your life jacket."
+  },
+  {
+    "course": "cruise",
+    "type": "phrase",
+    "item": "safety:4",
+    "before": "Seven short blasts and one long blast means go to your muster station.",
+    "after": "Seven or more short blasts followed by one long blast is the general emergency alarm. Follow the crew's instructions."
+  },
+  {
+    "course": "cruise",
+    "type": "phrase",
+    "item": "safety:6",
+    "before": "May I ask you to use the hand sanitiser before entering?",
+    "after": "Please wash your hands with soap and water before eating."
+  },
+  {
+    "course": "cruise",
+    "type": "phrase",
+    "item": "complaints:4",
+    "before": "As an apology, may I offer you dinner in our speciality restaurant?",
+    "after": "May I check with my supervisor what options are available to address this?"
+  },
+  {
+    "course": "cruise",
+    "type": "phrase",
+    "item": "care:1",
+    "before": "Are you feeling unwell? The medical centre is on deck two.",
+    "after": "Are you feeling unwell? I will contact the medical team and confirm how they can assist."
+  },
+  {
+    "course": "cruise",
+    "type": "phrase",
+    "item": "care:2",
+    "before": "Ginger tea and crackers can help with seasickness — shall I bring some?",
+    "after": "The medical team can advise you about seasickness; may I contact them?"
+  },
+  {
+    "course": "cruise",
+    "type": "phrase",
+    "item": "care:4",
+    "before": "There’s step-free access to the theatre by the forward lift.",
+    "after": "Let me check the step-free route and assistance arrangements for the theatre."
+  },
+  {
+    "course": "cruise",
+    "type": "phrase",
+    "item": "care:5",
+    "before": "We can arrange priority boarding for you at the next port.",
+    "after": "Let me check what boarding assistance can be arranged at the next port."
+  },
+  {
+    "course": "cruise",
+    "type": "phrase",
+    "item": "excursion:6",
+    "before": "Do remember the ship runs on ship’s time, not local time.",
+    "after": "Please check whether today's ship time differs from local time."
+  }
+]

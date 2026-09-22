@@ -1,5 +1,5 @@
 /* =========================================================================
-   VOCABULARY MODULE — six activities over the 102-word pool
+   VOCABULARY MODULE — six activities over the active course vocabulary pool
    flashcards · matching · scramble · Thai recall · category sort · speed round
    ========================================================================= */
 
@@ -69,9 +69,9 @@ const Vocab = (() => {
     const q = query.trim().toLowerCase();
     if (q){
       base = base.filter(v =>
-        `${v.word} ${v.th} ${v.def} ${v.short}`.toLowerCase().includes(q));
+        `${v.word} ${v.th} ${v.def} ${v.short} ${v.example || ""} ${v.exampleTh || ""} ${v.collocation || ""}`.toLowerCase().includes(q));
     }
-    pool = base;
+    pool = [...base].sort((a,b) => (a.level || 2) - (b.level || 2));
     if (index >= pool.length) index = 0;
 
     const countEl = document.getElementById('vocabSearchCount');
@@ -99,6 +99,7 @@ const Vocab = (() => {
     let emptyEl = document.getElementById(emptyId);
 
     if (!pool.length){
+      document.getElementById('fcContext').innerHTML = '';
       // Search matched nothing: show a clear message instead of a blank card.
       if (stage) stage.style.display = 'none';
       if (!emptyEl){
@@ -119,6 +120,8 @@ const Vocab = (() => {
     if (emptyEl) emptyEl.innerHTML = '';
 
     const w = pool[index];
+    document.getElementById('fcContext').innerHTML = LearningContent.vocabContext(w);
+    LearningContent.updateNotices();
     const catObj = VOCAB_CATEGORIES.find(c => c.id === w.cat) || null;
     document.getElementById('fcCategory').textContent = label(catObj).toUpperCase();
     document.getElementById('fcLevel').innerHTML = levelBadge(w.level);

@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "checks": [
+    "Final coaching text is formative and does not imply certified readiness",
+    "Empty review shows guidance, not a zero-divide result",
+    "Course chooser UI activates cruise",
+    "Answering without playback is explicitly supported practice",
+    "Naturalised example dialogue scores correctly after final content edits",
+    "Final cruise dialogue and revised coaching rendered"
+  ],
+  "scope": "Final-text and edge-state supplement; same Chromium in-memory harness as the main suite"
+}

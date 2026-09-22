@@ -235,6 +235,7 @@ const Daily = (() => {
       if (shape === 0){
         const opts = shuffle([v, ...others]);
         return {
+          word: v.word,
           q: `${I18N.t('defQuestion')} \u201c${v.word}\u201d`,
           promptTh: I18N.current === 'th' ? v.th : null,
           options: opts.map(o => o.short),
@@ -245,6 +246,7 @@ const Daily = (() => {
       if (shape === 1){
         const opts = shuffle([v, ...others]);
         return {
+          word: v.word,
           q: `${I18N.t('revQuestion')} \u201c${v.short}\u201d`,
           options: opts.map(o => o.word),
           correct: opts.findIndex(o => o.word === v.word),
@@ -253,6 +255,7 @@ const Daily = (() => {
       }
       const opts = shuffle([v, ...others]);
       return {
+          word: v.word,
         q: v.th,
         isThaiPrompt: true,
         options: opts.map(o => o.word),
@@ -269,8 +272,8 @@ const Daily = (() => {
       title: I18N.t('dailyCheckTitle'),
       kicker: I18N.t('dailyCheckKicker'),
       progressKey: 'daily',
-      onFinish(score, total){
-        Progress.dailyCompleteCheck(score, total);
+      onFinish(score, total, answers){
+        Progress.dailyCompleteCheck(score, total, answers);
         App.showResults(score, total, I18N.t('dailyCheckTitle'), {
           extraNote: I18N.t('dailyBanked'),
           backTo: 'daily',

@@ -7,7 +7,7 @@ const Nav = {
     home:'home', account:'home', settings:'home', daily:'daily', vocab:'vocab', pron:'assess',
     phrases:'phrases', saythis:'phrases',
     assess:'assess', mcquiz:'assess', fillquiz:'assess', listen:'assess', speaking:'assess',
-    builder:'assess', truefalse:'assess', errorfix:'assess', results:'assess',
+    builder:'assess', truefalse:'assess', errorfix:'assess', results:'assess', practiceplay:'assess',
   },
   go(screen){
     Vocab.stopTimers();
@@ -263,8 +263,8 @@ const App = (() => {
     /* Phrase of the day is drawn only from guest-facing categories — the
        team-talk lines are useful, but they are not what you say to a guest. */
     const pool = [];
-    PHRASES.filter(c => c.id !== 'teamwork').forEach(c => {
-      c.items.forEach(item => pool.push({ ...item, catId: c.id, catLabel: I18N.current === 'th' ? c.th : c.en }));
+    PHRASES.forEach(c => {
+      c.items.filter(item => item.audience === "guest").forEach(item => pool.push({ ...item, catId: c.id, catLabel: I18N.current === "th" ? c.th : c.en }));
     });
     potdIndex = (new Date().getFullYear() * 366 + dayOfYear()) % pool.length;
     const p = pool[potdIndex];
@@ -273,7 +273,7 @@ const App = (() => {
     document.getElementById('potdLevel').innerHTML = levelBadge(p.level, { compact:true });
     document.getElementById('potdText').textContent = `\u201c${p.text}\u201d`;
     document.getElementById('potdTh').textContent = p.th || '';
-    document.getElementById('potdNote').textContent = p.note;
+    document.getElementById('potdNote').textContent = I18N.current === 'th' ? (p.noteTh || p.note) : p.note;
 
     renderDailyCta();
   }
@@ -355,6 +355,7 @@ const App = (() => {
         <div class="syll-row">${syll}</div>
         <div class="wave-row" id="wave-${idx}">${bars}</div>
         <div class="pron-example"><b>${I18N.t('example')}</b> &nbsp;<i>&ldquo;${item.example}&rdquo;</i></div>
+        <p class="context-th" lang="th">${LearningContent.esc(item.exampleTh || "")}</p>
       </div>`;
     }).join('');
   }
@@ -402,7 +403,7 @@ const App = (() => {
       rows = [];
       PHRASES.forEach(cat => {
         cat.items.forEach(p => {
-          const hay = `${p.text} ${p.th || ''} ${p.note || ''}`.toLowerCase();
+          const hay = `${p.text} ${p.th || ''} ${p.note || ''} ${p.prompt || ''} ${p.promptTh || ''} ${p.noteTh || ''}`.toLowerCase();
           if (hay.includes(q)) rows.push({ ...p, catLabel: I18N.current === 'th' ? cat.th : cat.en });
         });
       });
@@ -412,6 +413,8 @@ const App = (() => {
     }
 
     if (phraseLevel !== 'all') rows = rows.filter(p => String(p.level) === phraseLevel);
+    rows.sort((a,b)=>(a.level || 2)-(b.level || 2));
+    LearningContent.updateNotices();
 
     const countEl = document.getElementById('phraseSearchCount');
     if (q){
@@ -429,6 +432,7 @@ const App = (() => {
           <div class="phrase-text">&ldquo;${p.text}&rdquo;</div>
           <div class="gloss">${p.th || ''}</div>
           <div class="phrase-note">${p.note}</div>
+          ${LearningContent.phraseContext(p)}
         </div>
         <button class="mini-play" data-text="${p.text.replace(/"/g,'&quot;')}" aria-label="Play">${ICN.play}</button>
       </div>`).join('');
@@ -512,6 +516,7 @@ const App = (() => {
 
   /* ---------------- assessment hub ---------------- */
   function renderAssessHub(){
+    Practice.renderControls();
     // A sixteen-card list is a long scroll, so offer a jump to each group.
     document.getElementById('practiceJump').innerHTML = PRACTICE_GROUPS.map((g, i) =>
       `<button class="chip" data-jump="pg-${i}">${I18N.t(g.titleKey)}</button>`).join('');
@@ -519,11 +524,12 @@ const App = (() => {
     document.getElementById('assessGrid').innerHTML = PRACTICE_GROUPS.map((group, i) => {
       const cards = group.items.map(a => {
         const best = a.score ? Progress.bestFor(a.score) : null;
-        return `<div class="activity-card ${a.wide ? 'wide' : ''}" data-act="${a.key}">
+        return `<div class="activity-card ${a.wide ? 'wide' : ''}" data-act="${a.key}" role="button" tabindex="0">
           ${best !== null ? `<span class="ac-best">${best}%</span>` : ''}
           <div class="ac-icon ${a.sage ? 'sage' : ''}">${ASSESS_ICONS[a.icon] || ''}</div>
           <h4>${I18N.t(a.titleKey)}</h4>
           <p>${I18N.t(a.descKey)}</p>
+          ${Practice.cardMeta(a.key)}
         </div>`;
       }).join('');
       return `<section class="practice-group" id="pg-${i}">
@@ -542,6 +548,10 @@ const App = (() => {
       const target = document.getElementById(chip.dataset.jump);
       if (target) target.scrollIntoView({ behavior:'smooth', block:'start' });
     });
+    document.getElementById('assessGrid').addEventListener('keydown', e => {
+      const card=e.target.closest('[data-act]');
+      if (card && (e.key === 'Enter' || e.key === ' ')){e.preventDefault();card.click();}
+    });
     document.getElementById('assessGrid').addEventListener('click', e => {
       const card = e.target.closest('.activity-card'); if (!card) return;
       const act = PRACTICE_INDEX.find(a => a.key === card.dataset.act);
@@ -551,7 +561,7 @@ const App = (() => {
 
   /* ---------------- results ---------------- */
   function showResults(score, total, activityName, opts = {}){
-    const pct = Math.round((score / total) * 100);
+    const pct = total ? Math.round((score / total) * 100) : 0;
     Nav.go('results');
     // Results normally return to the assessment hub; the Daily Five check
     // sends the learner back to its own screen instead.
@@ -572,6 +582,7 @@ const App = (() => {
     document.getElementById('resultFeedback').textContent = opts.extraNote ? `${note} ${opts.extraNote}` : note;
     document.getElementById('resultsBackBtn').textContent =
       resultsBackTo === 'daily' ? I18N.t('backToDaily') : I18N.t('backToAssessments');
+    Practice.renderResults(opts.practiceSession || null);
     refreshHome();
   }
 
@@ -770,6 +781,7 @@ const App = (() => {
   function rerenderAll(){
     renderAll();
     Vocab.rerender();
+    Practice.rerender();
     if (document.getElementById('screen-daily').classList.contains('active')) Daily.rerender();
     if (document.getElementById('screen-settings').classList.contains('active')) renderSettings();
     if (document.getElementById('screen-account').classList.contains('active')) renderAccount();
@@ -791,6 +803,7 @@ const App = (() => {
     bindAssess();
     Vocab.init();
     Quiz.init();
+    Practice.init();
     Daily.init();
     Speaking.init();
 

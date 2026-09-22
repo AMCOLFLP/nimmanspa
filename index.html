@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#f2f6f6">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="description" content="NIMMAN Willow &amp; Stone English — a bilingual (English/Thai) mobile course teaching professional workplace English to spa and wellness staff.">
@@ -33,7 +33,7 @@
     <p class="auth-appname" data-i18n="programName">NIMMAN English for Service Professionals</p>
     <p class="auth-appsub" data-i18n="programTagline">Spa, wellness &amp; cruise ship English &middot; Sriracha</p>
     <h2 data-i18n="authWelcome">Welcome</h2>
-    <p data-i18n="authTagline">Sign in to save your progress across every device.</p>
+    <p data-i18n="authTagline">Sign in to save progress in this browser. Accounts are local demo accounts.</p>
   </div>
 
   <div class="auth-tabs">
@@ -506,8 +506,11 @@
         <button class="know-btn again" id="fcAgain"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5l5 5M14.5 9.5l-5 5"/></svg><span data-i18n="stillLearning">Still learning</span></button>
         <button class="know-btn got-it" id="fcKnow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.5 2.5L16 9"/></svg><span data-i18n="iKnowThis">I know this</span></button>
       </div>
+      <div id="fcContext" aria-live="polite"></div>
+      <p class="training-note"></p>
     </div>
 
+    <!-- Context is kept outside the fixed-height flashcard for readable Thai text. -->
     <!-- matching -->
     <div class="vocab-pane" id="pane-match" style="display:none;">
       <p class="match-status" id="matchStatus"></p>
@@ -594,6 +597,7 @@
       <button class="search-clear" id="phraseSearchClear" aria-label="Clear search">&times;</button>
     </div>
     <p class="search-count" id="phraseSearchCount" style="display:none;"></p>
+    <p class="training-note"></p>
     <div class="phrase-list" id="phraseList"></div>
     <div id="phraseEmpty"></div>
   </section>
@@ -609,6 +613,7 @@
   <section class="screen" id="screen-assess">
     <div class="crumb"><button class="crumb-back" onclick="Nav.go('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="practiceHeading">Practice &amp; tests</h2></div>
     <p class="lede" data-i18n="practiceLede"></p>
+    <div id="practiceControls"></div>
     <div class="chip-scroll" id="practiceJump"></div>
     <div id="assessGrid"></div>
   </section>
@@ -621,7 +626,7 @@
     <div class="q-question" id="mcQuestion"></div>
     <div class="gloss" id="mcQuestionTh"></div>
     <div id="mcOptions"></div>
-    <div id="mcFeedback"></div>
+    <div id="mcFeedback" aria-live="polite"></div>
     <button class="btn btn-gold btn-block" id="mcNextBtn" disabled></button>
   </section>
 
@@ -762,6 +767,12 @@
     </div>
   </section>
 
+  <!-- Shared, keyboard-accessible activity player -->
+  <section class="screen" id="screen-practiceplay" aria-label="Activity player">
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('assess')" aria-label="Back to practice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 id="pxTitle"></h2></div>
+    <div id="pxStage"></div>
+  </section>
+
   <!-- ============================= RESULTS ============================= -->
   <section class="screen" id="screen-results">
     <div class="crumb"><button class="crumb-back" onclick="Nav.go(App.resultsBackTo)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="resultsHeading">Your results</h2></div>
@@ -779,6 +790,7 @@
       <div class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3C12 3 6.5 9.5 6.5 13.5a5.5 5.5 0 0 0 11 0C17.5 9.5 12 3 12 3Z"/></svg></div>
       <div><h5 data-i18n="coachNote">Coach's note</h5><p id="resultFeedback"></p></div>
     </div>
+    <div id="practiceResults"></div>
     <button class="btn btn-gold btn-block" id="resultsBackBtn" onclick="Nav.go(App.resultsBackTo)" data-i18n="backToAssessments">Back to assessments</button>
     <button class="btn btn-ghost btn-block" onclick="Nav.go('home')" data-i18n="returnHome">Return home</button>
   </section>
@@ -814,11 +826,14 @@
 <script src="js/data.js"></script>
 <script src="js/activities.js"></script>
 <script src="js/data-cruise.js"></script>
+<script src="js/practice-data.js"></script>
 <script src="js/courses.js"></script>
 <script src="js/auth.js"></script>
 <script src="js/speech.js"></script>
+<script src="js/content-ui.js"></script>
 <script src="js/vocab.js"></script>
 <script src="js/quiz.js"></script>
+<script src="js/practice-lab.js"></script>
 <script src="js/daily.js"></script>
 <script src="js/speaking.js"></script>
 <script src="js/app.js"></script>

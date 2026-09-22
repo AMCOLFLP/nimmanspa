@@ -218,12 +218,13 @@ const Speech = (() => {
 
   function speak(text, opts){
     opts = opts || {};
-    const onstart = opts.onstart, onend = opts.onend;
+    const onstart = opts.onstart, onend = opts.onend, onerror = opts.onerror;
     const rate = opts.rate !== undefined ? opts.rate : 0.88;
     const pitch = opts.pitch !== undefined ? opts.pitch : 1.05;
 
     if (!supported){
-      // Visual-only fallback so play buttons still give feedback.
+      if (onerror) onerror({error:'not-supported'});
+      // Visual-only fallback so legacy play buttons still give feedback.
       if (onstart) onstart();
       window.setTimeout(() => onend && onend(), Math.max(900, String(text).length * 55));
       return;
@@ -249,10 +250,10 @@ const Speech = (() => {
       utter.lang = voice ? (voice.lang || 'en-US') : 'en-US';
       if (voice) utter.voice = voice;
       utter.onend = () => onend && onend();
-      utter.onerror = () => onend && onend();
+      utter.onerror = (event) => { if (onerror && !['interrupted','canceled'].includes(event.error)) onerror(event); if (onend) onend(); };
 
       try { window.speechSynthesis.speak(utter); }
-      catch(e){ if (onend) onend(); return; }
+      catch(e){ if (onerror) onerror(e); if (onend) onend(); return; }
       if (onstart) onstart();   // some engines never fire onstart
     };
 

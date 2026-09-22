@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "counts": {
+    "spa": {
+      "mc": 100,
+      "tf": 50,
+      "error": 50,
+      "listen": 80,
+      "builder": 80,
+      "dialogues": 30,
+      "scenario": 30,
+      "readings": 10,
+      "listenRespond": 20,
+      "order": 10,
+      "context": 30,
+      "readingQuestions": 30,
+      "dialogueBlanks": 90
+    },
+    "cruise": {
+      "mc": 100,
+      "tf": 50,
+      "error": 50,
+      "listen": 80,
+      "builder": 80,
+      "dialogues": 30,
+      "scenario": 30,
+      "readings": 10,
+      "listenRespond": 20,
+      "order": 10,
+      "context": 30,
+      "readingQuestions": 30,
+      "dialogueBlanks": 87
+    }
+  },
+  "checks": [
+    "spa: 12 activity banks, unique per-bank prompts, keys, options, levels and linked IDs checked",
+    "cruise: 12 activity banks, unique per-bank prompts, keys, options, levels and linked IDs checked",
+    "All JavaScript files pass Node syntax validation",
+    "Runtime bank overlays exactly match content/content.json",
+    "All scored-item IDs unique across both courses",
+    "Original 500 vocabulary entries and 400 phrases retained"
+  ],
+  "errors": [],
+  "scope": "Automated structural checks; not independent language, clinical, operational or psychometric validation."
+}

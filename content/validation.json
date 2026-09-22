@@ -1,0 +1,59 @@
+{
+  "summary": {
+    "spa": {
+      "vocabulary": 250,
+      "phrases": 220,
+      "dialogues": 30,
+      "pronunciation": 40,
+      "mc": 100,
+      "listening": 80,
+      "builder": 80,
+      "vocab_levels": {
+        "3": 37,
+        "2": 60,
+        "1": 153
+      },
+      "phrase_levels": {
+        "1": 95,
+        "2": 93,
+        "3": 32
+      },
+      "vocabulary_categories": 13,
+      "phrase_categories": 19,
+      "new_prompt_pairs": 99
+    },
+    "cruise": {
+      "vocabulary": 250,
+      "phrases": 180,
+      "dialogues": 30,
+      "pronunciation": 40,
+      "mc": 100,
+      "listening": 80,
+      "builder": 80,
+      "vocab_levels": {
+        "1": 163,
+        "2": 64,
+        "3": 23
+      },
+      "phrase_levels": {
+        "1": 75,
+        "2": 86,
+        "3": 19
+      },
+      "vocabulary_categories": 9,
+      "phrase_categories": 16,
+      "new_prompt_pairs": 100
+    }
+  },
+  "issues": [],
+  "checks": [
+    "unique stable content IDs",
+    "all vocabulary has English and Thai workplace examples",
+    "phrase translations and usage support present",
+    "all related-item links resolve",
+    "correct options exist",
+    "no duplicate answer options",
+    "valid categories and learning levels",
+    "valid pronunciation stress positions"
+  ]
+}

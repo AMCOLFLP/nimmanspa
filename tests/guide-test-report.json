@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "checks": [
+    "All 1,137 authored scored prompts indexed",
+    "Course and activity filtering",
+    "Difficulty filtering",
+    "Answer panels toggle",
+    "Text search finds relevant passage questions",
+    "No-match state",
+    "Load-more paging",
+    "No mobile horizontal overflow",
+    "No JavaScript errors"
+  ],
+  "scope": "Standalone guide in Chromium in-memory HTML harness"
+}
