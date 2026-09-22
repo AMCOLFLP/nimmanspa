@@ -44,20 +44,16 @@ const App = (() => {
     switchAuthTab('login');
   }
 
-  function showApp(){
+  /* Every sign-in — account or guest — lands on the course chooser first, so
+     the learner always picks spa or cruise for that session before anything
+     else loads. Switching later (Home bar, Account) reuses the same screen. */
+  function afterAuthSuccess(){
     document.getElementById('authWrap').classList.remove('active');
-    // Straight into the app on the course last studied — never a forced
-    // chooser. Switching is available from the Home bar and from Account.
-    Courses.activate(Courses.saved() || 'spa');
-    hideCourseChooser();
-    document.getElementById('appShell').style.display = 'block';
     const user = Auth.currentUser();
     if (user && !user.guest && user.lang && user.lang !== I18N.current){
       I18N.set(user.lang, rerenderAll);
     }
-    Progress.touchStreak();
-    renderAll();
-    Nav.go('home');
+    showCourseChooser({ cancellable:false });
   }
 
   function switchAuthTab(which){
@@ -92,7 +88,7 @@ const App = (() => {
       if (!res.ok){ showAuthError(res.error); return; }
       hideAuthError();
       document.getElementById('loginForm').reset();
-      showApp();
+      afterAuthSuccess();
     });
 
     document.getElementById('registerForm').addEventListener('submit', e => {
@@ -108,12 +104,12 @@ const App = (() => {
       if (!res.ok){ showAuthError(res.error); return; }
       hideAuthError();
       document.getElementById('registerForm').reset();
-      showApp();
+      afterAuthSuccess();
     });
 
     document.getElementById('guestBtn').addEventListener('click', () => {
       Auth.continueAsGuest();
-      showApp();
+      afterAuthSuccess();
     });
   }
 

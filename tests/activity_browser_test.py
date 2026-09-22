@@ -71,7 +71,7 @@ try:
   p=browser.new_page(viewport={'width':390,'height':844});p.set_default_timeout(4000)
   p.on('pageerror',lambda e:errors.append(str(e)))
   p.route('https://fonts.googleapis.com/**',lambda r:r.abort());p.route('https://fonts.gstatic.com/**',lambda r:r.abort())
-  p.set_content(markup(),wait_until='domcontentloaded',timeout=20000);p.locator('#guestBtn').click()
+  p.set_content(markup(),wait_until='domcontentloaded',timeout=20000);p.locator('#guestBtn').click();p.locator('[data-course="spa"]').click()
   p.add_style_tag(content='.screen{animation:none!important}')
   p.evaluate('window.audioCalls=[];Speech.speak=(text,opts={})=>{audioCalls.push(text);if(opts.onend)opts.onend();};')
   check('App and guest session boot without script errors',not errors)
