@@ -1,27 +1,40 @@
 /* =========================================================================
-   AUTH — a client-side-only account system.
-   Accounts and progress are stored in this browser's localStorage. There is
-   no server, so this is a demo pattern, not production-grade security —
-   the UI says so plainly wherever a password is collected.
+   AUTH — accounts are real now: register/login/logout call the PHP/MySQL
+   backend in backend/api/, which hashes passwords and holds the actual
+   session. This module keeps a small local "profile mirror" (name, email,
+   role, lang) in localStorage purely so the UI can render instantly without
+   an extra round trip — it is NOT the security boundary. Every server call
+   re-checks the real PHP session cookie, so a tampered-with local mirror
+   simply can't grant access to another account's data.
+   Guest mode is unchanged: fully local, session-only, never touches the
+   server.
    ========================================================================= */
 
 const Auth = (() => {
-  const USERS_KEY = 'spa_users';
   const SESSION_KEY = 'spa_session';
-
-  function loadUsers(){
-    try { return JSON.parse(localStorage.getItem(USERS_KEY)) || []; }
-    catch(e){ return []; }
-  }
-  function saveUsers(users){ localStorage.setItem(USERS_KEY, JSON.stringify(users)); }
 
   function isValidEmail(email){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
 
-  function findUser(email){
-    return loadUsers().find(u => u.email.toLowerCase() === String(email).toLowerCase());
+  function readMirror(){
+    try { return JSON.parse(localStorage.getItem(SESSION_KEY)); }
+    catch(e){ return null; }
+  }
+  function writeMirror(profile){ localStorage.setItem(SESSION_KEY, JSON.stringify(profile)); }
+  function clearMirror(){ localStorage.removeItem(SESSION_KEY); }
+
+  /* The server returns short machine-readable error codes (never revealing,
+     e.g., whether an email is registered) which map to the existing
+     localized strings. */
+  function mapServerError(code){
+    const map = {
+      required: 'errRequired', email_format: 'errEmailFormat', password_short: 'errPasswordShort',
+      password_match: 'errPasswordMatch', email_used: 'errEmailUsed', login_failed: 'errLoginFailed',
+      too_many_attempts: 'errTooManyAttempts', invalid: 'errServer', network: 'errServer',
+    };
+    return I18N.t(map[code] || 'errServer');
   }
 
-  function register({ name, email, password, confirm, role, lang }){
+  async function register({ name, email, password, confirm, role, lang }){
     if (!name || !email || !password || !confirm){
       return { ok:false, error: I18N.t('errRequired') };
     }
@@ -34,74 +47,90 @@ const Auth = (() => {
     if (password !== confirm){
       return { ok:false, error: I18N.t('errPasswordMatch') };
     }
-    if (findUser(email)){
-      return { ok:false, error: I18N.t('errEmailUsed') };
+    try {
+      const res = await Api.post('register.php', { name: name.trim(), email: email.trim(), password, role: role || 'therapist', lang: lang || 'en' });
+      writeMirror({ ...res.user, guest:false });
+      return { ok:true, user: res.user };
+    } catch (e){
+      return { ok:false, error: mapServerError(e.error) };
     }
-    const users = loadUsers();
-    const user = { name: name.trim(), email: email.trim(), password, role: role || 'therapist', lang: lang || 'en', joined: Date.now() };
-    users.push(user);
-    saveUsers(users);
-    startSession(user.email);
-    return { ok:true, user };
   }
 
-  function login({ email, password }){
+  async function login({ email, password }){
     if (!email || !password){
       return { ok:false, error: I18N.t('errRequired') };
     }
-    const user = findUser(email);
-    if (!user || user.password !== password){
-      return { ok:false, error: I18N.t('errLoginFailed') };
+    try {
+      const res = await Api.post('login.php', { email, password });
+      writeMirror({ ...res.user, guest:false });
+      return { ok:true, user: res.user };
+    } catch (e){
+      return { ok:false, error: mapServerError(e.error) };
     }
-    startSession(user.email);
-    return { ok:true, user };
-  }
-
-  function startSession(email){
-    localStorage.setItem(SESSION_KEY, JSON.stringify({ email, guest:false, since: Date.now() }));
   }
 
   function continueAsGuest(){
-    localStorage.setItem(SESSION_KEY, JSON.stringify({ email:null, guest:true, since: Date.now() }));
+    writeMirror({ email:null, guest:true, since: Date.now() });
   }
 
+  /* Local sign-out is immediate; telling the server to drop its session is
+     best-effort and never blocks the UI on a network round trip. */
   function logout(){
-    localStorage.removeItem(SESSION_KEY);
+    const mirror = readMirror();
+    clearMirror();
+    if (mirror && !mirror.guest) Api.post('logout.php', {}).catch(()=>{});
   }
 
-  function session(){
-    try { return JSON.parse(localStorage.getItem(SESSION_KEY)); }
-    catch(e){ return null; }
-  }
+  function session(){ return readMirror(); }
 
   function currentUser(){
     const s = session();
     if (!s) return null;
     if (s.guest) return { name: I18N.t('accountGuestName'), email:null, role:'guest', guest:true };
-    const u = findUser(s.email);
-    return u ? { ...u, guest:false } : null;
+    return s;
   }
 
   function isLoggedIn(){ return !!session(); }
 
-  return { register, login, logout, continueAsGuest, session, currentUser, isLoggedIn, isValidEmail };
+  /* Called when a server call reports the PHP session is gone (expired,
+     server restarted, cookie cleared) so the UI drops back to signed-out
+     instead of pretending progress is still saving. The event lets app.js
+     show the sign-in screen without this module knowing about navigation. */
+  function forceSignedOut(){
+    clearMirror();
+    window.dispatchEvent(new CustomEvent('nimman:session-expired'));
+  }
+
+  return { register, login, logout, continueAsGuest, session, currentUser, isLoggedIn, isValidEmail, forceSignedOut };
 })();
 
 /* =========================================================================
-   PROGRESS — lightweight per-user stats, stored locally per email
-   (guests get a transient, non-persisted progress object).
+   PROGRESS — one JSON blob per (account, course), stored server-side via
+   backend/api/progress.php (guests keep a transient, in-memory-only object,
+   exactly as before — guest mode never touches the server).
+
+   The rest of the app calls load()/save() synchronously, dozens of times
+   across daily.js, vocab.js, quiz.js, speaking.js and practice-lab.js, so
+   those two stay synchronous here too: they always read/write the in-memory
+   `cache`. The only asynchronous step is hydrate(), which fetches the saved
+   blob from the server and must be awaited once — right after a course is
+   activated (see App.selectCourse) — before anything calls load(). save()
+   still writes to `cache` immediately, then fires a debounced POST in the
+   background so rapid changes (e.g. swiping through Daily Five) coalesce
+   into one request instead of one per change.
    ========================================================================= */
 const Progress = (() => {
   let cache = null;
   let cacheKey = null;
-  let guestCache = {};     // session-only per course, never written to localStorage
+  let guestCache = {};     // session-only per course, never sent to the server
+  let saveTimer = null;
 
   /* One progress record per user PER COURSE, so studying spa English and
      cruise English never overwrite each other's words and scores. */
   function keyFor(){
     const u = Auth.currentUser();
     if (!u || u.guest) return null;
-    return `spa_progress_${u.email}__${Courses.currentId}`;
+    return `${u.email}__${Courses.currentId}`;
   }
 
   function blank(){
@@ -127,16 +156,45 @@ const Progress = (() => {
       return cache;
     }
     if (cache && cacheKey === key) return cache;
-    try { cache = JSON.parse(localStorage.getItem(key)) || blank(); }
-    catch(e){ cache = blank(); }
+    // hydrate() should already have run for this key by the time anything
+    // calls load(); this is just a safe fallback so no caller ever sees
+    // undefined (e.g. if load() is somehow reached before a course is
+    // fully activated).
+    cache = blank();
     cacheKey = key;
     return cache;
+  }
+
+  /* Fetches the signed-in learner's saved progress for the active course.
+     Must be awaited before load() is called for a freshly activated course
+     (App.selectCourse does this). A no-op for guests. */
+  async function hydrate(){
+    const key = keyFor();
+    if (!key){ load(); return; }
+    if (cache && cacheKey === key) return; // already loaded for this user+course
+    try {
+      const res = await Api.get(`progress.php?course=${encodeURIComponent(Courses.currentId)}`);
+      cache = Object.assign(blank(), res.data || {});
+    } catch (e){
+      if (e && e.status === 401) Auth.forceSignedOut();
+      console.error('Could not load saved progress from the server; starting this session fresh.', e);
+      cache = blank();
+    }
+    cacheKey = key;
   }
 
   function save(){
     const key = keyFor();
     if (!key) return; // guest: held in memory only
-    localStorage.setItem(key, JSON.stringify(cache));
+    const snapshot = cache;
+    const course = Courses.currentId;
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => {
+      Api.post('progress.php', { course, data: snapshot }).catch(e => {
+        if (e && e.status === 401) Auth.forceSignedOut();
+        console.error('Could not save progress to the server; it will retry on the next change.', e);
+      });
+    }, 500);
   }
 
   function clearGuest(){ guestCache = {}; }
@@ -347,7 +405,7 @@ const Progress = (() => {
     dailyState, dailySwipeRight, dailySwipeLeft, dailyIsReadyForCheck, dailyCompleteCheck,
     DAILY_SIZE,
     get streak(){ return load().streak || 0; },
-    reset, clearGuest,
+    reset, clearGuest, hydrate,
     invalidate(){ cache = null; cacheKey = null; },
   };
 })();

@@ -1,4 +1,35 @@
-# Current release: quizzes and applied activities — 22 September 2026
+# Current release: accounts & progress move to a PHP/MySQL backend — 22 September 2026
+
+Accounts and their progress no longer live only in the browser. Registering
+or signing in now calls a PHP backend (`backend/api/`) which hashes passwords
+with `password_hash`/`password_verify`, holds a server-side PHP session, and
+stores each account's per-course progress as a JSON document in MySQL/MariaDB
+(`backend/schema.sql`). Progress therefore now follows an account across
+devices instead of staying pinned to one browser. Guest mode is unchanged:
+still local, session-only, and never sent to the server.
+
+Signing in, registering or continuing as guest now always leads to the
+course chooser before anything else loads, instead of silently resuming the
+last-studied course — the learner picks spa or cruise every time. Once a
+course is picked, the client fetches that course's saved progress from the
+server, and every subsequent change (known words, quiz scores, streaks,
+Daily Five, practice history) is saved back to the server in the background.
+If the server session expires while the app is open, the learner is
+returned to sign-in with an explanation rather than having changes silently
+fail to save.
+
+Failed logins are throttled per email address. All SQL uses parameterised
+PDO statements. See `backend/README.md` for setup, requirements (PHP 8+,
+MySQL 5.7+/MariaDB 10.2+, one shared origin for the front end and backend —
+this will not run on GitHub Pages) and the security notes for deployment.
+
+The Chromium regression suite (`tests/activity_browser_test.py`) runs in
+guest mode only and has no server to talk to, so the new backend code paths
+are not covered by it yet — see `tests/README.md`.
+
+---
+
+# Previous release: quizzes and applied activities — 22 September 2026
 
 ## Compared with the previously delivered expanded-content app
 

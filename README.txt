@@ -31,15 +31,26 @@ Pronunciation guides: 40 per course. All 900 core vocabulary/phrase entries from
 the previous content-expanded release remain.
 
 HOW TO OPEN
-1. Extract the ZIP. Keep index.html, styles.css, js and assets together.
-2. For a simple desktop preview, open index.html in a browser.
-3. For a local server, open a terminal in this folder and run:
+1. Extract the ZIP. Keep index.html, styles.css, js, assets and backend together.
+2. Guest mode only, quick preview: open index.html directly in a browser, or
+   serve it with:
    python -m http.server 8000 --bind 127.0.0.1
-   Then visit http://localhost:8000 in your browser.
-4. Choose Continue as guest, choose a course, and open Practice.
+   Then visit http://localhost:8000 and choose Continue as guest.
+   Account sign-in/registration needs the PHP backend (step 3) and will not
+   work from a plain file:// preview or a plain static file server.
+3. For accounts (sign-in/registration and server-saved progress), you need a
+   host that runs PHP 8+ with a MySQL/MariaDB database. See backend/README.md
+   to create the database, import backend/schema.sql and configure
+   backend/config.php, then serve the whole folder (front end + backend/)
+   from that PHP host. GitHub Pages cannot run PHP, so it can only host the
+   guest-mode experience, not accounts.
+4. Choose Continue as guest (or sign in/register, once the backend is set up),
+   choose a course, and open Practice.
 5. For deployment, back up the old app and upload the complete folder contents
-   to your static host. Use the host's secure HTTPS configuration. Do not upload
-   only one JS file: the new player depends on the updated HTML, CSS and scripts.
+   — including backend/ with your own backend/config.php — to your PHP host.
+   Use the host's secure HTTPS configuration and set 'secure_cookies' => true
+   in backend/config.php once HTTPS is live. Do not upload only one JS file:
+   the app depends on the updated HTML, CSS, scripts and backend together.
 
 HOW TO USE THE NEW PRACTICE
 Choose 5, 10, 15 or 20 items and Starter / Everyday / Extended / All levels.
@@ -93,14 +104,21 @@ Keep the runtime overlay and JSON review copy in sync when editing.
 Old word keys, course IDs and existing question IDs have been retained.
 
 PROGRESS, PRIVACY AND ACCOUNTS
-Demo-account progress remains browser-local and course-specific. It does not
-synchronise between devices. Guests have session-only progress. Changing host,
-browser/profile or clearing site data can make existing progress unavailable.
-New fields are added without replacing existing known words, scores or streaks.
+Accounts and their progress are now stored server-side in a MySQL/MariaDB
+database via a PHP backend (see backend/README.md), course-specific per
+account. Passwords are hashed (never stored in plain text); the PHP session
+cookie, not anything the browser sends, is what the server trusts. Progress
+now follows the account across devices, since it lives on the server rather
+than in one browser's storage.
+Guests are unchanged: session-only, browser-local, never sent to the server.
+Signing out (or the app's automatic sign-out on load, for shared devices)
+ends the session; progress is safe on the server until signed back in.
 
-The inherited sign-in is a demonstration, NOT production-grade authentication;
-it stores demo credentials in localStorage. Do not use real or reused passwords.
-No account backend, secure authentication or cross-device sync has been added.
+The backend requires PHP 8+ with a MySQL/MariaDB database — it will not run
+on GitHub Pages or another static-only host. See backend/README.md for setup.
+There is still no email verification or password-reset flow; "Forgot
+password" remains a placeholder note, as in the previous localStorage-only
+demo.
 Browser speech recognition may involve the browser provider's remote service.
 No audio recording storage is added by this release.
 
@@ -113,7 +131,9 @@ local HTTP navigation is blocked in the authoring environment. TTS is stubbed
 for those checks. Screenshots omit remote fonts and reflect local fallbacks.
 Live deployment, real-origin persistence, Safari/iOS, actual audio playback and
 live microphone recognition have NOT been verified. A formal accessibility
-or psychometric assessment has not been performed.
+or psychometric assessment has not been performed. The Chromium checks run in
+guest mode only; the PHP/MySQL backend (accounts and server-saved progress)
+has no automated test coverage yet — see tests/README.md.
 
 WORKPLACE REVIEW
 Examples are language practice, not medical advice, treatment protocols,

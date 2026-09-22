@@ -285,6 +285,7 @@ button{font-family:inherit;}
   transition:transform .12s ease, box-shadow .12s ease;
 }
 .btn:active{transform:scale(.97);}
+.btn:disabled{ opacity:.6; cursor:default; pointer-events:none; }
 .btn-gold{
   background:linear-gradient(135deg,var(--gold-bright),var(--gold-deep));
   color:#fff;
@@ -2084,6 +2085,7 @@ html[lang="th"] .course-hero h2{ font-family:var(--thai); font-style:normal; fon
 }
 .course-card:active{ transform:scale(.99); }
 .course-card.current{ border-color:var(--gold); }
+.course-card.loading{ opacity:.55; pointer-events:none; }
 .cc-top{ display:flex; align-items:center; gap:12px; margin-bottom:11px; }
 .cc-mark{
   width:46px; height:46px; border-radius:50%; flex-shrink:0;

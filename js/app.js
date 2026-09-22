@@ -72,6 +72,13 @@ const App = (() => {
   }
   function hideAuthError(){ document.getElementById('authError').classList.remove('show'); }
 
+  /* Disables a form's submit button while its request is in flight, so a
+     slow connection can't be turned into a double account/login attempt. */
+  function setFormBusy(form, busy){
+    const btn = form.querySelector('button[type="submit"]');
+    if (btn) btn.disabled = busy;
+  }
+
   function bindAuth(){
     document.getElementById('tabLogin').addEventListener('click', () => switchAuthTab('login'));
     document.getElementById('tabRegister').addEventListener('click', () => switchAuthTab('register'));
@@ -79,21 +86,26 @@ const App = (() => {
     document.getElementById('goLogin').addEventListener('click', () => switchAuthTab('login'));
     document.getElementById('forgotBtn').addEventListener('click', () => showAuthError(I18N.t('forgotPasswordNote')));
 
-    document.getElementById('loginForm').addEventListener('submit', e => {
+    document.getElementById('loginForm').addEventListener('submit', async e => {
       e.preventDefault();
-      const res = Auth.login({
+      const form = e.target;
+      setFormBusy(form, true);
+      const res = await Auth.login({
         email: document.getElementById('loginEmail').value.trim(),
         password: document.getElementById('loginPassword').value,
       });
+      setFormBusy(form, false);
       if (!res.ok){ showAuthError(res.error); return; }
       hideAuthError();
-      document.getElementById('loginForm').reset();
+      form.reset();
       afterAuthSuccess();
     });
 
-    document.getElementById('registerForm').addEventListener('submit', e => {
+    document.getElementById('registerForm').addEventListener('submit', async e => {
       e.preventDefault();
-      const res = Auth.register({
+      const form = e.target;
+      setFormBusy(form, true);
+      const res = await Auth.register({
         name: document.getElementById('regName').value,
         email: document.getElementById('regEmail').value,
         password: document.getElementById('regPassword').value,
@@ -101,9 +113,10 @@ const App = (() => {
         role: document.getElementById('regRole').value,
         lang: document.getElementById('regLang').value,
       });
+      setFormBusy(form, false);
       if (!res.ok){ showAuthError(res.error); return; }
       hideAuthError();
-      document.getElementById('registerForm').reset();
+      form.reset();
       afterAuthSuccess();
     });
 
@@ -157,28 +170,43 @@ const App = (() => {
   }
 
   /* Switching course re-aims every module, so caches and in-progress
-     activities must be cleared before anything re-renders. */
-  function selectCourse(id){
-    Speaking.stopAll();
-    Vocab.stopTimers();
-    Courses.activate(id);
-    Progress.invalidate();      // re-read progress under the new course key
+     activities must be cleared before anything re-renders. Progress for the
+     newly activated course lives on the server (guests: in memory only), so
+     this awaits Progress.hydrate() before anything reads it — every other
+     call site in the app treats Progress.load()/save() as synchronous and
+     stays that way. */
+  let selectingCourse = false;
+  async function selectCourse(id){
+    if (selectingCourse) return;
+    selectingCourse = true;
+    const card = document.querySelector(`.course-card[data-course="${id}"]`);
+    if (card) card.classList.add('loading');
+    try {
+      Speaking.stopAll();
+      Vocab.stopTimers();
+      Courses.activate(id);
+      Progress.invalidate();      // re-read progress under the new course key
+      await Progress.hydrate();
 
-    // Filters hold ids from the previous course, so clear them all.
-    activePhraseCat = Courses.defaultPhraseCat;
-    phraseQuery = '';
-    phraseLevel = 'all';
-    const search = document.getElementById('phraseSearch');
-    if (search) search.value = '';
-    const clear = document.getElementById('phraseSearchClear');
-    if (clear) clear.classList.remove('show');
+      // Filters hold ids from the previous course, so clear them all.
+      activePhraseCat = Courses.defaultPhraseCat;
+      phraseQuery = '';
+      phraseLevel = 'all';
+      const search = document.getElementById('phraseSearch');
+      if (search) search.value = '';
+      const clear = document.getElementById('phraseSearchClear');
+      if (clear) clear.classList.remove('show');
 
-    hideCourseChooser();
-    document.getElementById('appShell').style.display = 'block';
-    Progress.touchStreak();
-    renderAll();
-    Vocab.resetForCourse();
-    Nav.go('home');
+      hideCourseChooser();
+      document.getElementById('appShell').style.display = 'block';
+      Progress.touchStreak();
+      renderAll();
+      Vocab.resetForCourse();
+      Nav.go('home');
+    } finally {
+      selectingCourse = false;
+      if (card) card.classList.remove('loading');
+    }
   }
 
   function bindCourseChooser(){
@@ -810,6 +838,16 @@ const App = (() => {
       Progress.invalidate();
       hideCourseChooser();
       showAuth();
+    });
+    // The server session can expire (or be lost) while the app is open —
+    // e.g. an idle tab overnight. Rather than let saves fail silently,
+    // Progress/Auth raise this event and we drop back to sign-in with an
+    // explanation, so nothing looks "saved" when it wasn't.
+    window.addEventListener('nimman:session-expired', () => {
+      Progress.invalidate();
+      hideCourseChooser();
+      showAuth();
+      showAuthError(I18N.t('errSessionExpired'));
     });
     document.getElementById('accRegisterCta').addEventListener('click', () => {
       Auth.logout();

@@ -1,0 +1,15 @@
+# Defence in depth for Apache hosts. None of this is required for the API
+# to function — backend/api/*.php is the only part meant to be requested
+# directly — but it keeps everything else from being listed or fetched.
+Options -Indexes
+
+<FilesMatch "\.(sql|md)$">
+  Require all denied
+</FilesMatch>
+
+<Files "config.php">
+  Require all denied
+</Files>
+<Files "config.example.php">
+  Require all denied
+</Files>

@@ -121,9 +121,12 @@ try:
   check('Supported correct answer does not erase an earlier mistake',p.evaluate('Progress.practiceHistory()["qa-review"].needsReview'))
   p.evaluate('Progress.recordPracticeAnswer("qa-review","listen",true,false);')
   check('Unassisted correct answer clears a review item',not p.evaluate('Progress.practiceHistory()["qa-review"].needsReview'))
-  assert p.evaluate('Auth.register({name:"QA Test",email:"qa@example.invalid",password:"temporary-demo-only",confirm:"temporary-demo-only",role:"teacher",lang:"en"}).ok')
-  p.evaluate('localStorage.setItem("spa_progress_qa@example.invalid__spa",JSON.stringify({knownWords:["legacy-key"],quizBest:{mc:77},attemptsByActivity:{mc:2},streak:3}));Progress.invalidate();Progress.recordPracticeAnswer("spa-migration-check","context",true,false);Progress.invalidate();')
-  check('New history writes preserve legacy known words, scores and streak',p.evaluate('Progress.knownCount()')==1 and p.evaluate('Progress.bestFor("mc")')==77 and p.evaluate('Progress.streak')==3 and p.evaluate('!!Progress.practiceHistory()["spa-migration-check"]'))
+  # Account registration/login and progress load/save now call the PHP+MySQL
+  # backend (backend/api/*.php) instead of localStorage, so they need a real
+  # server (or network-level route mocking) to exercise — out of scope for
+  # this no-network, in-memory harness. This suite stays guest-only, which
+  # never touches the backend; see backend/README.md for the server-side
+  # accounts/progress behaviour this harness does not cover.
   p.evaluate('Quiz.startMC({questions:[{q:"QA legacy engine",options:["Right","Wrong","Other","More"],correct:0,explain:"Test explanation."}],title:"Legacy quiz",kicker:"Test",progressKey:"legacy_test"});');p.locator('#mcOptions button').filter(has_text='Right').click();p.locator('#mcNextBtn').click()
   check('Legacy Daily Five MC engine works; old review panel is cleared',p.locator('#rgCorrect').inner_text()=='1' and p.locator('#practiceResults').inner_text()=='')
   p.evaluate('I18N.set("th");App.rerenderAll();');check('Language change does not restore stale practice review',p.locator('#practiceResults').inner_text()=='');p.evaluate('I18N.set("en");App.rerenderAll();Nav.go("assess");')

@@ -29,3 +29,13 @@ live microphone, formal accessibility or independent language review is implied.
 `previous-release/` contains historical tests and screenshots from the earlier
 900-entry vocabulary/phrase release. They are not the current assessment counts
 or a substitute for the reports above.
+
+## Backend (accounts & progress) is not covered here
+
+`activity_browser_test.py` runs entirely in guest mode. Account registration,
+login and progress save/load now call the PHP+MySQL backend in `backend/`
+(see `backend/README.md`), which this no-network, in-memory harness has no
+server to talk to. Verifying that code path currently means either running
+against a real PHP+MySQL instance, or adding Playwright route mocks for
+`backend/api/*.php`. Guest mode is unaffected and still fully covered — it
+never calls the backend.

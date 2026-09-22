@@ -245,6 +245,9 @@ const UI_STRINGS = {
     errEmailUsed: 'An account already exists with that email.',
     errEmailFormat: 'Please enter a valid email address.',
     errLoginFailed: 'We couldn\u2019t find an account with that email and password.',
+    errServer: 'Something went wrong. Please try again.',
+    errTooManyAttempts: 'Too many attempts. Please wait a few minutes and try again.',
+    errSessionExpired: 'Your session ended. Please sign in again to keep saving progress.',
     haveAccount: 'Already have an account?', noAccount: 'New here?',
 
     // Account
@@ -496,6 +499,9 @@ const UI_STRINGS = {
     errEmailUsed: 'มีบัญชีที่ใช้อีเมลนี้อยู่แล้ว',
     errEmailFormat: 'กรุณากรอกอีเมลให้ถูกต้อง',
     errLoginFailed: 'ไม่พบบัญชีที่ตรงกับอีเมลและรหัสผ่านนี้',
+    errServer: 'เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง',
+    errTooManyAttempts: 'พยายามหลายครั้งเกินไป กรุณารอสักครู่แล้วลองใหม่',
+    errSessionExpired: 'เซสชันของคุณสิ้นสุดลง กรุณาเข้าสู่ระบบอีกครั้งเพื่อบันทึกความคืบหน้าต่อไป',
     haveAccount: 'มีบัญชีอยู่แล้ว?', noAccount: 'ยังไม่มีบัญชี?',
 
     // Account
