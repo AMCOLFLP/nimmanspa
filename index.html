@@ -271,7 +271,7 @@
 
   <!-- ============================= ACCOUNT ============================= -->
   <section class="screen" id="screen-account">
-    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="accountHeading">Your account</h2></div>
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="accountHeading">Your account</h2></div>
 
     <div class="account-card">
       <div class="account-avatar" id="accAvatar">A</div>
@@ -322,7 +322,7 @@
 
   <!-- ============================= SETTINGS ============================= -->
   <section class="screen" id="screen-settings">
-    <div class="crumb"><button class="crumb-back" onclick="Nav.go('account')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="settingsHeading">Settings</h2></div>
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('account','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="settingsHeading">Settings</h2></div>
 
     <p class="settings-title" data-i18n="setAudioGroup">AUDIO</p>
     <div class="settings-group">
@@ -395,7 +395,7 @@
 
   <!-- ============================= DAILY FIVE ============================= -->
   <section class="screen" id="screen-daily">
-    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="dailyHeading">Daily Five</h2></div>
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="dailyHeading">Daily Five</h2></div>
     <p class="lede" data-i18n="dailyLede"></p>
 
     <div class="daily-head">
@@ -446,7 +446,7 @@
 
   <!-- ============================= VOCABULARY ============================= -->
   <section class="screen" id="screen-vocab">
-    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="vocabHeading">Vocabulary &amp; practice</h2></div>
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="vocabHeading">Vocabulary &amp; practice</h2></div>
     <p class="lede" data-i18n="vocabLede"></p>
 
     <div id="vocabHint"></div>
@@ -576,7 +576,7 @@
 
   <!-- ============================= PRONUNCIATION ============================= -->
   <section class="screen" id="screen-pron">
-    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="pronHeading">Pronunciation guide</h2></div>
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="pronHeading">Pronunciation guide</h2></div>
     <p class="lede" data-i18n="pronLede"></p>
     <p class="audio-note">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="8" r=".6" fill="currentColor" stroke="none"/></svg>
@@ -587,7 +587,7 @@
 
   <!-- ============================= PHRASES ============================= -->
   <section class="screen" id="screen-phrases">
-    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="phrasesHeading">Useful phrases</h2></div>
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="phrasesHeading">Useful phrases</h2></div>
     <p class="lede" data-i18n="phrasesLede"></p>
     <div class="chip-scroll" id="phraseCatChips"></div>
     <div class="chip-scroll" id="phraseLevelChips"></div>
@@ -604,14 +604,14 @@
 
   <!-- ============================= SAY THIS NOT THAT ============================= -->
   <section class="screen" id="screen-saythis">
-    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="saythisHeading">Say this, not that</h2></div>
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="saythisHeading">Say this, not that</h2></div>
     <p class="lede" data-i18n="saythisLede"></p>
     <div id="ddList"></div>
   </section>
 
   <!-- ============================= ASSESSMENT HUB ============================= -->
   <section class="screen" id="screen-assess">
-    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="practiceHeading">Practice &amp; tests</h2></div>
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="practiceHeading">Practice &amp; tests</h2></div>
     <p class="lede" data-i18n="practiceLede"></p>
     <div id="practiceControls"></div>
     <div class="chip-scroll" id="practiceJump"></div>
@@ -620,7 +620,7 @@
 
   <!-- ============================= MULTIPLE CHOICE (shared engine) ============================= -->
   <section class="screen" id="screen-mcquiz">
-    <div class="crumb"><button class="crumb-back" onclick="Nav.go('assess')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 id="mcTitle"></h2></div>
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('assess','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 id="mcTitle"></h2></div>
     <div class="q-progress"><div class="q-dots" id="mcDots"></div><div class="q-score" id="mcScoreChip">0 / 0</div></div>
     <div class="q-kicker" id="mcKicker"></div>
     <div class="q-question" id="mcQuestion"></div>
@@ -632,7 +632,7 @@
 
   <!-- ============================= FILL IN THE BLANK ============================= -->
   <section class="screen" id="screen-fillquiz">
-    <div class="crumb"><button class="crumb-back" onclick="Nav.go('assess')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="actFillTitle">Fill-in-the-blank dialogue</h2></div>
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('assess','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="actFillTitle">Fill-in-the-blank dialogue</h2></div>
     <div id="fillPicker">
       <p class="lede" data-i18n="dialoguePicker">Choose a dialogue</p>
       <div class="menu-list" id="fillDialogueList"></div>
@@ -650,7 +650,7 @@
 
   <!-- ============================= LISTEN & CHOOSE ============================= -->
   <section class="screen" id="screen-listen">
-    <div class="crumb"><button class="crumb-back" onclick="Nav.go('assess')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="actListenTitle">Listen &amp; choose</h2></div>
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('assess','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="actListenTitle">Listen &amp; choose</h2></div>
     <p class="lede" data-i18n="listenLede"></p>
     <div class="q-progress"><div class="q-dots" id="lsDots"></div><div class="q-score" id="lsScore">0 / 10</div></div>
     <div class="listen-stage">
@@ -665,7 +665,7 @@
 
   <!-- ============================= PHRASE BUILDER ============================= -->
   <section class="screen" id="screen-builder">
-    <div class="crumb"><button class="crumb-back" onclick="Nav.go('assess')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="actBuilderTitle">Phrase builder</h2></div>
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('assess','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="actBuilderTitle">Phrase builder</h2></div>
     <p class="lede" data-i18n="builderLede"></p>
     <div class="q-progress"><div class="q-dots" id="bdDots"></div><div class="q-score" id="bdScore">0 / 8</div></div>
     <div class="builder-prompt">
@@ -684,7 +684,7 @@
 
   <!-- ============================= TRUE / FALSE ============================= -->
   <section class="screen" id="screen-truefalse">
-    <div class="crumb"><button class="crumb-back" onclick="Nav.go('assess')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 id="tfTitle"></h2></div>
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('assess','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 id="tfTitle"></h2></div>
     <div class="q-progress"><div class="q-dots" id="tfDots"></div><div class="q-score" id="tfScore">0 / 12</div></div>
     <div class="tf-statement" id="tfStatement"></div>
     <div class="tf-row">
@@ -697,7 +697,7 @@
 
   <!-- ============================= ERROR CORRECTION ============================= -->
   <section class="screen" id="screen-errorfix">
-    <div class="crumb"><button class="crumb-back" onclick="Nav.go('assess')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 id="efTitle"></h2></div>
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('assess','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 id="efTitle"></h2></div>
     <p class="lede" id="efLede"></p>
     <div class="q-progress"><div class="q-dots" id="efDots"></div><div class="q-score" id="efScore">0 / 8</div></div>
     <div class="err-original">
@@ -711,7 +711,7 @@
 
   <!-- ============================= SPEAKING TEST ============================= -->
   <section class="screen" id="screen-speaking">
-    <div class="crumb"><button class="crumb-back" onclick="Nav.go('assess')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="actSpeakTitle">Speaking test</h2></div>
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('assess','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="actSpeakTitle">Speaking test</h2></div>
 
     <!-- setup -->
     <div id="spkSetup">
@@ -763,19 +763,19 @@
       <div class="daily-wordlist" id="spkBreakdown"></div>
       <p class="spk-disclaimer" data-i18n="spkDisclaimer"></p>
       <button class="btn btn-gold btn-block" id="spkRestart" data-i18n="spkAgain">Take it again</button>
-      <button class="btn btn-ghost btn-block" onclick="Nav.go('assess')" data-i18n="backToAssessments">Back to assessments</button>
+      <button class="btn btn-ghost btn-block" onclick="Nav.go('assess','back')" data-i18n="backToAssessments">Back to assessments</button>
     </div>
   </section>
 
   <!-- Shared, keyboard-accessible activity player -->
   <section class="screen" id="screen-practiceplay" aria-label="Activity player">
-    <div class="crumb"><button class="crumb-back" onclick="Nav.go('assess')" aria-label="Back to practice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 id="pxTitle"></h2></div>
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('assess','back')" aria-label="Back to practice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 id="pxTitle"></h2></div>
     <div id="pxStage"></div>
   </section>
 
   <!-- ============================= RESULTS ============================= -->
   <section class="screen" id="screen-results">
-    <div class="crumb"><button class="crumb-back" onclick="Nav.go(App.resultsBackTo)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="resultsHeading">Your results</h2></div>
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go(App.resultsBackTo,'back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="resultsHeading">Your results</h2></div>
     <div class="result-hero">
       <div class="result-ring" id="resultRing" style="--pct:0"><span id="resultPct">0%</span></div>
       <h3 id="resultTitle"></h3>
@@ -791,8 +791,8 @@
       <div><h5 data-i18n="coachNote">Coach's note</h5><p id="resultFeedback"></p></div>
     </div>
     <div id="practiceResults"></div>
-    <button class="btn btn-gold btn-block" id="resultsBackBtn" onclick="Nav.go(App.resultsBackTo)" data-i18n="backToAssessments">Back to assessments</button>
-    <button class="btn btn-ghost btn-block" onclick="Nav.go('home')" data-i18n="returnHome">Return home</button>
+    <button class="btn btn-gold btn-block" id="resultsBackBtn" onclick="Nav.go(App.resultsBackTo,'back')" data-i18n="backToAssessments">Back to assessments</button>
+    <button class="btn btn-ghost btn-block" onclick="Nav.go('home','back')" data-i18n="returnHome">Return home</button>
   </section>
 
   </main>

@@ -9,26 +9,99 @@ const Nav = {
     assess:'assess', mcquiz:'assess', fillquiz:'assess', listen:'assess', speaking:'assess',
     builder:'assess', truefalse:'assess', errorfix:'assess', results:'assess', practiceplay:'assess',
   },
-  go(screen){
+
+  // Left-to-right tab bar order, used only to pick a slide direction when
+  // jumping directly between two root/tab screens (e.g. Home's "Phrase of
+  // the day" card opening the Phrases tab).
+  rootOrder: ['home', 'daily', 'vocab', 'phrases', 'assess'],
+
+  /* screen (required), dir ('back' | 'forward', optional).
+     Left unset, direction is inferred from the app's tab hierarchy: leaving
+     a sub-screen for its root tab screen reads as "back" (pop, slides from
+     the left); leaving a root tab for a sub-screen reads as "forward"
+     (push, slides from the right); root-to-root reuses tab bar order (moving
+     right = forward, left = back). Crumb-back buttons pass 'back' explicitly
+     since a couple of sub-screen pairs (e.g. Settings back to Account) are
+     ambiguous from hierarchy alone. */
+  go(screen, dir){
     Vocab.stopTimers();
     Speaking.stopAll();   // never leave a microphone live behind a screen change
     Speech.stop();
-    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+
+    const current = document.querySelector('.screen.active');
     const target = document.getElementById('screen-' + screen);
-    if (target) target.classList.add('active');
+    if (!target) return;
 
     document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
     const tab = document.querySelector(`.tab-item[data-tab="${this.tabFor[screen] || screen}"]`);
     if (tab) tab.classList.add('active');
 
-    if (screen === 'daily') Daily.open();
-    if (screen === 'settings') App.renderSettings();
-    if (screen === 'speaking') Speaking.open();
-    if (screen === 'vocab'){ App.renderVocabHint(); Vocab.refreshChrome(); }
-    if (screen === 'assess') App.renderAssessHub();
-    if (screen === 'account') App.renderAccount();
-    if (screen === 'home') App.refreshHome();
+    const runEffects = () => {
+      if (screen === 'daily') Daily.open();
+      if (screen === 'settings') App.renderSettings();
+      if (screen === 'speaking') Speaking.open();
+      if (screen === 'vocab'){ App.renderVocabHint(); Vocab.refreshChrome(); }
+      if (screen === 'assess') App.renderAssessHub();
+      if (screen === 'account') App.renderAccount();
+      if (screen === 'home') App.refreshHome();
+    };
 
+    // Re-entering the already-active screen (e.g. the very first Nav.go on
+    // boot, which targets the home screen the static markup already shows
+    // active): nothing to transition, just refresh its content.
+    if (current === target){
+      runEffects();
+      window.scrollTo(0, 0);
+      return;
+    }
+
+    if (!dir){
+      const curName = current ? current.id.slice(7) : null;
+      const curIsRoot = current && current.id === 'screen-' + (this.tabFor[curName] || '');
+      const nextIsRoot = screen === this.tabFor[screen];
+      if (curIsRoot && nextIsRoot){
+        dir = this.rootOrder.indexOf(screen) < this.rootOrder.indexOf(curName) ? 'back' : 'forward';
+      } else {
+        dir = !curIsRoot && nextIsRoot ? 'back' : 'forward';
+      }
+    }
+
+    const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!current || reduced){
+      if (current) current.classList.remove('active');
+      target.classList.add('active');
+      runEffects();
+      window.scrollTo(0, 0);
+      return;
+    }
+
+    const suffix = dir === 'back' ? 'pop' : 'push';
+    const outClass = 'nav-out-' + suffix;
+    const inClass = 'nav-in-' + suffix;
+
+    current.classList.add(outClass);
+    target.classList.add('active', inClass);
+
+    let done = false;
+    const cleanup = () => {
+      if (done) return;
+      done = true;
+      current.classList.remove('active', outClass);
+      target.classList.remove(inClass);
+      target.removeEventListener('animationend', onAnimEnd);
+    };
+    // Screens can contain their own animated children (progress rings, a
+    // recording mic pulse, a shake on a wrong match…); animationend bubbles,
+    // so this ignores anything that didn't fire on the screen element
+    // itself — otherwise a child's animation finishing first would both
+    // cut the screen's own transition short and, since the listener would
+    // never see -- and so never remove -- its real match, leak one stale
+    // listener per navigation.
+    const onAnimEnd = e => { if (e.target === target) cleanup(); };
+    target.addEventListener('animationend', onAnimEnd);
+    setTimeout(cleanup, 400); // safety net if animationend never fires (e.g. tab backgrounded mid-transition)
+
+    runEffects();
     window.scrollTo(0, 0);
   }
 };

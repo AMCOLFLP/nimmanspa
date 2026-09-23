@@ -170,11 +170,54 @@ button{font-family:inherit;}
 .progress-caption b{color:var(--ink-soft);}
 
 /* =========================================================================
-   Screens
-   ========================================================================= */
+   Screens — iOS-style push/pop transitions.
+   `main` is the positioning context for the brief moment a screen switch
+   overlaps outgoing and incoming content (see Nav.go in js/app.js).
+
+   Every `.screen` shares z-index:1, so within that shared stacking level the
+   browser paints strictly in DOM order — and in this markup a screen's own
+   sub-screens (and any tab further right in the tab bar) are always placed
+   later in the HTML than the screen they're reached from. That means
+   whichever of the two screens in a transition should visually be "on top"
+   already paints on top with no z-index bookkeeping needed, for both
+   directions: push (root -> sub-screen: the later, sub-screen, is incoming
+   and on top) and pop (sub-screen -> root: the later, sub-screen, is now
+   outgoing and on top).
+
+   The layer that's on top physically slides fully across (100% width) and
+   is given an opaque background, so it covers the other screen by simply
+   moving over it — no opacity animation. Opacity fades were tried first and
+   looked broken here: with two full, text-heavy screens, any mid-fade
+   opacity makes both partially see-through at once and their text visibly
+   overlaps/blends, unlike a photo crossfade. The layer underneath gets a
+   subtle parallax (slight shift + scale) so it still reads as "sliding",
+   without ever needing to fade. */
+main{position:relative;}
 .screen{display:none;position:relative;z-index:1;padding:6px 20px 4px;}
-.screen.active{display:block;animation:screenIn .28s ease;}
-@keyframes screenIn{from{opacity:0;}to{opacity:1;}}
+.screen.active{display:block;}
+
+/* The on-top, fully-sliding layer: incoming for a push, outgoing for a pop. */
+.screen.active.nav-in-push{animation:screenSlideInRight .34s cubic-bezier(.22,.8,.28,1) both;}
+.screen.nav-out-pop{animation:screenSlideOutRight .34s cubic-bezier(.22,.8,.28,1) both;}
+.screen.active.nav-in-push,.screen.nav-out-pop{
+  background:var(--mist);
+  box-shadow:-10px 0 26px rgba(22,33,31,.14);
+}
+
+/* The underneath, parallax layer: outgoing for a push, incoming for a pop. */
+.screen.nav-out-push{animation:screenParallaxOutLeft .34s cubic-bezier(.22,.8,.28,1) both;}
+.screen.active.nav-in-pop{animation:screenParallaxInLeft .34s cubic-bezier(.22,.8,.28,1) both;}
+
+/* Whichever screen is leaving is briefly lifted out of flow so it overlaps
+   the incoming screen instead of stacking above/below it. */
+.screen.nav-out-push,.screen.nav-out-pop{
+  position:absolute;top:0;left:0;width:100%;pointer-events:none;
+}
+
+@keyframes screenSlideInRight{from{transform:translateX(100%);}to{transform:translateX(0);}}
+@keyframes screenSlideOutRight{from{transform:translateX(0);}to{transform:translateX(100%);}}
+@keyframes screenParallaxOutLeft{from{transform:translateX(0) scale(1);}to{transform:translateX(-22%) scale(.96);}}
+@keyframes screenParallaxInLeft{from{transform:translateX(-22%) scale(.96);}to{transform:translateX(0) scale(1);}}
 
 .crumb{
   display:flex;
@@ -369,9 +412,10 @@ button{font-family:inherit;}
   cursor:pointer;
   border-bottom:1px solid var(--stone);
   min-height:64px;
+  transition:background .18s ease, transform .12s ease;
 }
 .menu-row:last-child{border-bottom:none;}
-.menu-row:active{background:var(--mist);}
+.menu-row:active{background:var(--mist);transform:scale(.99);}
 .menu-icon{
   width:40px;height:40px;
   border-radius:50%;
@@ -430,8 +474,10 @@ button{font-family:inherit;}
   color:var(--ink-soft);
   cursor:pointer;
   white-space:nowrap;
+  transition:background .18s ease, border-color .18s ease, color .18s ease, transform .12s ease;
 }
 .chip.active{background:var(--ink);border-color:var(--ink);color:#fff;}
+.chip:active{transform:scale(.96);}
 
 /* =========================================================================
    Vocabulary — flashcards
@@ -839,14 +885,17 @@ button{font-family:inherit;}
   background:none;border:none;cursor:pointer;
   padding:7px 4px;color:var(--ink-faint);
   min-height:52px;
+  transition:color .18s ease;
 }
 .tab-item svg{width:20px;height:20px;}
 .tab-icon-wrap{
   width:30px;height:30px;border-radius:9px;
   display:flex;align-items:center;justify-content:center;
+  transition:background .18s ease;
 }
 .tab-item.active{color:var(--gold-deep);}
-.tab-item.active .tab-icon-wrap{background:var(--gold-mist);}
+.tab-item.active .tab-icon-wrap{background:var(--gold-mist);animation:tabPop .32s cubic-bezier(.34,1.56,.64,1);}
+@keyframes tabPop{0%{transform:scale(.7);}55%{transform:scale(1.14);}100%{transform:scale(1);}}
 .tab-item span{font-size:9.5px;font-weight:700;letter-spacing:.1px;}
 
 /* Reduced-motion */
@@ -1297,8 +1346,9 @@ html[lang="th"] .fc-hint{
   background:var(--paper);border:1px solid var(--stone);
   border-radius:var(--radius-lg);padding:15px 14px;
   cursor:pointer;text-align:left;position:relative;
+  transition:background .18s ease, transform .12s ease;
 }
-.activity-card:active{background:var(--mist);}
+.activity-card:active{background:var(--mist);transform:scale(.98);}
 .activity-card .ac-icon{
   width:36px;height:36px;border-radius:50%;
   border:1px solid var(--gold-line);color:var(--gold-deep);
@@ -2082,6 +2132,7 @@ html[lang="th"] .course-hero h2{ font-family:var(--thai); font-style:normal; fon
   margin-bottom:13px;
   cursor:pointer;
   box-shadow:var(--shadow-card);
+  transition:transform .16s cubic-bezier(.22,.8,.28,1), opacity .18s ease;
 }
 .course-card:active{ transform:scale(.99); }
 .course-card.current{ border-color:var(--gold); }
