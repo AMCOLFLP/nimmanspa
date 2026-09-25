@@ -2490,9 +2490,12 @@ body.sb-open #sideBar{transform:none;}
 @media (min-width:1024px){
   /* Docked: the panel owns the left gutter and the content centres in what is
      left. Hiding it returns the layout, and the tab bar, to normal — so there
-     is never a state with no navigation. */
-  body:not(.sb-hidden){padding-left:var(--sidebar-w);}
-  body:not(.sb-hidden) #sideBar{transform:none;box-shadow:none;}
+     is never a state with no navigation.
+     The gutter is tied to .app-visible because the panel is inside .app-shell:
+     without that the sign-in and course-chooser screens were pushed 280px
+     right against a sidebar that isn't rendered on them. */
+  body.app-visible:not(.sb-hidden){padding-left:var(--sidebar-w);}
+  body.app-visible:not(.sb-hidden) #sideBar{transform:none;box-shadow:none;}
   body:not(.sb-hidden) .tab-bar{display:none;}
   body:not(.sb-hidden) .app-shell{padding-bottom:40px;}
   body:not(.sb-hidden) .sb-close{display:none;}

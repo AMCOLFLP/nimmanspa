@@ -35,8 +35,18 @@ const Sidebar = (() => {
 
   /* ---------------------------------------------------------------- state */
 
+  /* True only while the main app is on screen. The panel lives inside
+     .app-shell, so it is absent on the sign-in and course-chooser screens —
+     and the docked layout's left gutter has to disappear with it, or those
+     screens sit 280px off-centre against a sidebar that isn't there. */
+  function appVisible(){
+    const shell = document.getElementById('appShell');
+    return !!shell && getComputedStyle(shell).display !== 'none';
+  }
+
   function applyState(){
     const body = document.body;
+    body.classList.toggle('app-visible', appVisible());
     body.classList.toggle('sb-hidden', isHidden());
     const open = docked() ? !isHidden() : body.classList.contains('sb-open');
     const toggle = document.getElementById('sbToggle');
@@ -182,6 +192,16 @@ const Sidebar = (() => {
 
   function init(){
     applyState();
+
+    /* app.js shows and hides the shell by writing style.display in several
+       places (sign in, sign out, course chooser, cancel). Watching the
+       attribute keeps the docked gutter in step without threading a call
+       through every one of them. */
+    const shell = document.getElementById('appShell');
+    if (shell && typeof MutationObserver === 'function'){
+      new MutationObserver(applyState)
+        .observe(shell, { attributes:true, attributeFilter:['style'] });
+    }
 
     const toggleBtn = document.getElementById('sbToggle');
     if (toggleBtn) toggleBtn.addEventListener('click', toggle);
