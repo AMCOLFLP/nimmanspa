@@ -481,6 +481,48 @@ main{position:relative;}
 .chip:active{transform:scale(.96);}
 
 /* =========================================================================
+   Words screen filters
+   Three scrolling chip rows became three dropdowns: the rows cost three
+   lines, and with thirteen spa categories they ran off the edge with no
+   sign there was more. Activity spans the full width on phones because it
+   is the primary control; the two filters share the line below it.
+   ========================================================================= */
+.vocab-controls{display:grid;grid-template-columns:1fr 1fr;gap:10px 9px;margin-bottom:14px;}
+.vocab-controls > .vc-field:first-child{grid-column:1/-1;}
+@media (min-width:600px){
+  .vocab-controls{grid-template-columns:repeat(3,1fr);}
+  .vocab-controls > .vc-field:first-child{grid-column:auto;}
+}
+.vc-field{display:flex;flex-direction:column;gap:5px;min-width:0;cursor:pointer;}
+.vc-field[hidden]{display:none;}
+.vc-field > span{
+  font-size:9.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink-faint);padding-left:3px;
+}
+.vc-field select{
+  width:100%;font-family:var(--sans);font-size:13.5px;font-weight:600;
+  padding:11px 34px 11px 13px;
+  border:1.5px solid var(--stone-2);border-radius:12px;
+  background:var(--paper);color:var(--ink);min-height:46px;cursor:pointer;
+  -webkit-appearance:none;appearance:none;
+  background-image:url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235c6b68' stroke-width='2' stroke-linecap='round'%3e%3cpath d='M6 9l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat:no-repeat;background-position:right 12px center;background-size:15px;
+  text-overflow:ellipsis;
+}
+.vc-field select:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+
+/* Links out of the Words screen — navigation, not filters. */
+.vocab-links{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
+.vocab-links:empty{display:none;}
+.vocab-link{
+  font:inherit;font-size:12.5px;font-weight:700;color:var(--gold-deep);
+  background:var(--gold-mist);border:1px solid var(--gold-line);
+  border-radius:100px;padding:8px 14px;min-height:40px;cursor:pointer;
+  transition:background .16s ease, transform .12s ease;
+}
+.vocab-link:active{transform:scale(.97);}
+
+/* =========================================================================
    Vocabulary — flashcards
    ========================================================================= */
 .deck-meta{

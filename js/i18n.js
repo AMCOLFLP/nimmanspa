@@ -264,6 +264,10 @@ const UI_STRINGS = {
     anatomyNone: 'This course does not include body vocabulary.',
     anatomyNote: 'AI-generated PNG models for learning English body-area vocabulary. Hotspots indicate approximate surface locations; some areas are beneath skin or clothing. This is not a clinical anatomy reference or a guide to treatment, pressure points or diagnosis.',
 
+    vocabFieldActivity: 'Activity',
+    vocabFieldCategory: 'Category',
+    vocabFieldLevel: 'Level',
+
     sidebarGroupLearn: 'Learn',
     sidebarGroupWords: 'Words & phrases',
     sidebarGroupPractice: 'Practice',
@@ -544,6 +548,10 @@ const UI_STRINGS = {
     anatomyRelated: 'คำที่ไม่มีตำแหน่งในแผนผัง',
     anatomyNone: 'หลักสูตรนี้ไม่มีคำศัพท์เกี่ยวกับร่างกาย',
     anatomyNote: 'ภาพแบบจำลอง PNG ที่สร้างด้วย AI สำหรับเรียนคำศัพท์ภาษาอังกฤษเกี่ยวกับร่างกาย จุดบนภาพแสดงตำแหน่งผิวโดยประมาณ บางบริเวณอยู่ใต้ผิวหนังหรือเสื้อผ้า ไม่ใช่เอกสารอ้างอิงทางกายวิภาคคลินิกหรือคำแนะนำเกี่ยวกับทรีตเมนต์ จุดกด หรือการวินิจฉัย',
+
+    vocabFieldActivity: 'กิจกรรม',
+    vocabFieldCategory: 'หมวดหมู่',
+    vocabFieldLevel: 'ระดับ',
 
     sidebarGroupLearn: 'เรียนรู้',
     sidebarGroupWords: 'คำศัพท์และประโยค',

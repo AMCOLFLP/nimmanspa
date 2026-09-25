@@ -31,26 +31,43 @@ const Vocab = (() => {
     return I18N.current === 'th' ? (v.th || v.en || '') : (v.en || v.th || '');
   }
 
+  function esc(s){
+    return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  /* Three scrolling chip rows cost three lines of the screen and hid their
+     own overflow — with thirteen spa categories the row simply ran off the
+     edge. Native selects say how many options there are, open the platform
+     picker on a phone, and collapse the whole control block to one or two
+     lines. The two links out (Body map, Pronunciation) are navigation rather
+     than filters, so they sit below as links instead of inside the list. */
   function renderModeChips(){
-    const wrap = document.getElementById('vocabModeChips');
-    wrap.innerHTML = VOCAB_MODES.filter(m => !m.when || m.when()).map(m =>
-      `<button class="chip ${m.goto ? 'chip-goto' : ''} ${m.id === mode ? 'active' : ''}" data-mode="${m.id}">${I18N.t(m.key)}${m.goto ? ' ↗' : ''}</button>`
+    const sel = document.getElementById('vocabModeSelect');
+    sel.innerHTML = VOCAB_MODES.filter(m => !m.goto && (!m.when || m.when())).map(m =>
+      `<option value="${m.id}"${m.id === mode ? ' selected' : ''}>${esc(I18N.t(m.key))}</option>`
+    ).join('');
+
+    const links = document.getElementById('vocabLinks');
+    links.innerHTML = VOCAB_MODES.filter(m => m.goto && (!m.when || m.when())).map(m =>
+      `<button type="button" class="vocab-link" data-goto="${m.goto}">${esc(I18N.t(m.key))} <span aria-hidden="true">↗</span></button>`
     ).join('');
   }
 
   function renderCatChips(){
-    const wrap = document.getElementById('vocabCatChips');
+    const field = document.getElementById('vocabCatField');
+    const sel = document.getElementById('vocabCatSelect');
     // category filter only applies to the card/word activities
     const usesCat = ['flash','scramble','thai'].includes(mode);
-    wrap.style.display = usesCat ? 'flex' : 'none';
+    field.hidden = !usesCat;
     // The search toggle lives in the deck meta, which only the flashcard
     // view shows, so nothing extra is needed to hide it in other modes.
     const sc = document.getElementById('vocabSearchCount');
     if (sc && mode !== 'flash') sc.style.display = 'none';
     if (!usesCat) return;
     const all = [{ id:'all', en:I18N.t('catAll'), th:I18N.t('catAll') }, ...VOCAB_CATEGORIES];
-    wrap.innerHTML = all.map(c =>
-      `<button class="chip ${c.id === cat ? 'active' : ''}" data-cat="${c.id}">${label(c)}</button>`
+    sel.innerHTML = all.map(c =>
+      `<option value="${esc(c.id)}"${c.id === cat ? ' selected' : ''}>${esc(label(c))}</option>`
     ).join('');
   }
 
@@ -59,15 +76,15 @@ const Vocab = (() => {
   /* The search box narrows the deck on top of the category filter, and
      matches English, Thai and the definition so either language works. */
   function renderLevelChips(){
-    const wrap = document.getElementById('vocabLevelChips');
-    const label = document.getElementById('vocabLevelLabel');
+    const field = document.getElementById('vocabLevelField');
+    const sel = document.getElementById('vocabLevelSelect');
     // The level filter only applies to the word-by-word activities.
-    const uses = ['flash','scramble','thai'].includes(mode);
-    wrap.style.display = uses ? 'flex' : 'none';
-    if (label) label.style.display = uses ? 'flex' : 'none';
+    field.hidden = !['flash','scramble','thai'].includes(mode);
     // Rebuild even while hidden: otherwise a language change made on another
     // screen leaves the old labels sitting here for the next visit.
-    wrap.innerHTML = levelChipsMarkup(level);
+    sel.innerHTML = LEVEL_FILTERS.map(f =>
+      `<option value="${f.id}"${f.id === level ? ' selected' : ''}>${esc(I18N.t(f.key))}</option>`
+    ).join('');
   }
 
   function applyPool(){
@@ -478,30 +495,35 @@ const Vocab = (() => {
 
   /* ---------------- wiring ---------------- */
   function bind(){
-    document.getElementById('vocabModeChips').addEventListener('click', e => {
-      const chip = e.target.closest('.chip'); if (!chip) return;
-      setMode(chip.dataset.mode);
+    /* Re-draws whichever drill is on screen after a filter changes. */
+    const refreshActivity = () => {
+      if (mode === 'flash') renderCard();
+      if (mode === 'scramble') newScramble();
+      if (mode === 'thai') newThai();
+    };
+
+    document.getElementById('vocabModeSelect').addEventListener('change', e => {
+      setMode(e.target.value);
     });
-    document.getElementById('vocabLevelChips').addEventListener('click', e => {
-      const chip = e.target.closest('.chip'); if (!chip) return;
-      level = chip.dataset.level;
+
+    document.getElementById('vocabLevelSelect').addEventListener('change', e => {
+      level = e.target.value;
       index = 0;
       renderLevelChips();
       applyPool();
-      if (mode === 'flash') renderCard();
-      if (mode === 'scramble') newScramble();
-      if (mode === 'thai') newThai();
+      refreshActivity();
     });
 
-    document.getElementById('vocabCatChips').addEventListener('click', e => {
-      const chip = e.target.closest('.chip'); if (!chip) return;
-      cat = chip.dataset.cat;
+    document.getElementById('vocabCatSelect').addEventListener('change', e => {
+      cat = e.target.value;
       applyPool(); index = 0;
       renderCatChips();
-      chip.scrollIntoView({ behavior:'smooth', inline:'center', block:'nearest' });
-      if (mode === 'flash') renderCard();
-      if (mode === 'scramble') newScramble();
-      if (mode === 'thai') newThai();
+      refreshActivity();
+    });
+
+    document.getElementById('vocabLinks').addEventListener('click', e => {
+      const link = e.target.closest('[data-goto]'); if (!link) return;
+      Nav.go(link.dataset.goto);
     });
 
     const searchWrap = document.getElementById('vocabSearchWrap');
