@@ -122,6 +122,22 @@ demo.
 Browser speech recognition may involve the browser provider's remote service.
 No audio recording storage is added by this release.
 
+MICROPHONE AND THE SPEAKING TEST
+The speaking test needs an https:// address on phones. Browsers only allow
+the microphone in a secure context: https, or localhost on a computer. A LAN
+address such as http://192.168.0.10:8000 counts as insecure, so the test
+works on the development machine and the microphone is silently blocked on
+the handset. The app now detects this and says so on the speaking screen
+instead of offering a microphone that cannot work.
+Scoring also needs a browser that exposes speech recognition. On iPhone and
+iPad that is Safari only — Chrome, Firefox and Edge there cannot reach the
+recogniser. On Android, use Chrome. Android's recogniser needs an internet
+connection.
+Where scoring is unavailable, or the learner declines the microphone
+permission, the test falls back to self-check: record, compare with the
+model voice, and self-rate. Those results are labelled as self-rated, never
+presented as measured accuracy.
+
 TESTING
 See tests/README.md, activity-validation-report.json and
 activity-browser-test-report.json. Structural checks cover counts, options,

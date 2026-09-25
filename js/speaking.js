@@ -35,9 +35,35 @@
 const Speaking = (() => {
   const SR = (typeof window !== 'undefined') &&
              (window.SpeechRecognition || window.webkitSpeechRecognition);
-  const supported = !!SR;
-  const canRecord = typeof navigator !== 'undefined' &&
-                    navigator.mediaDevices && navigator.mediaDevices.getUserMedia;
+
+  /* Microphone APIs need a secure context, and this is the single biggest
+     reason the speaking test "works on the laptop but not on the phone":
+     localhost counts as secure, a LAN address over plain http does not. Open
+     the app at http://192.168.x.x:8000 on a handset and iOS/Android block
+     both getUserMedia and the recogniser outright.
+
+     file:// reports isSecureContext === true in Chromium but still has the
+     microphone blocked, so it is excluded explicitly rather than trusted. */
+  const isFileUrl = typeof location !== 'undefined' && location.protocol === 'file:';
+  const secureOrigin = !isFileUrl && (
+    (typeof window !== 'undefined' && typeof window.isSecureContext === 'boolean')
+      ? window.isSecureContext
+      : (typeof location !== 'undefined' && (location.protocol === 'https:' ||
+         ['localhost', '127.0.0.1', '::1'].includes(location.hostname)))
+  );
+
+  /* A recogniser that exists but can never be reached is worse than none at
+     all — it offers a microphone that only ever errors. Treating it as
+     unsupported routes the learner straight to self-check instead.
+     (On iPhone/iPad only Safari exposes a recogniser at all; Chrome, Firefox
+     and Edge there are WKWebView and leave webkitSpeechRecognition undefined,
+     which this already handles.) */
+  const hasRecogniser = !!SR;
+  const supported = hasRecogniser && secureOrigin;
+  const canRecord = secureOrigin &&
+                    typeof navigator !== 'undefined' &&
+                    !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) &&
+                    typeof window !== 'undefined' && !!window.MediaRecorder;
 
   const WORD_COUNT = 8;
   const PHRASE_COUNT = 5;
@@ -52,12 +78,18 @@ const Speaking = (() => {
   let listening = false;
   let rec = null;
   let stopTimer = null;
+  let endGuard = null;
   let lastResult = null;
+  /* Set once the recogniser has failed in a way retrying can't fix (denied
+     permission, no capture device). The test then finishes in self-check
+     mode rather than dead-ending on an item the learner can't answer. */
+  let recogBlocked = false;
 
   /* Self-check fallback state (no recognition available) */
   let mediaRecorder = null;
   let recordedUrl = null;
   let recordChunks = [];
+  let micStream = null;
 
   /* ---------------------------------------------------------------- text */
 
@@ -187,6 +219,9 @@ const Speaking = (() => {
 
   function open(){
     stopAll();
+    // Permission may have been granted since the last attempt, so a fresh
+    // run always gets another go at the recogniser.
+    recogBlocked = false;
     document.getElementById('spkSetup').style.display = 'block';
     document.getElementById('spkTest').style.display = 'none';
     document.getElementById('spkDone').style.display = 'none';
@@ -201,18 +236,22 @@ const Speaking = (() => {
 
     document.getElementById('spkLevelChips').innerHTML = levelChipsMarkup(level);
 
-    // Capability notice — always tell the learner what they are getting.
+    /* Capability notice — always tell the learner what they are getting, and
+       for the two blocking cases say exactly what to change, since both look
+       identical from the learner's side (a microphone that never responds). */
     const notice = document.getElementById('spkNotice');
-    const insecure = typeof location !== 'undefined' &&
-                     location.protocol === 'file:' ;
     let html = '';
-    if (!supported){
-      html = `<div class="spk-notice warn">
-        <b>${I18N.t('spkNoRecogTitle')}</b><br>${I18N.t('spkNoRecogBody')}
-      </div>`;
-    } else if (insecure){
+    if (isFileUrl){
       html = `<div class="spk-notice warn">
         <b>${I18N.t('spkFileWarnTitle')}</b><br>${I18N.t('spkFileWarnBody')}
+      </div>`;
+    } else if (!secureOrigin){
+      html = `<div class="spk-notice warn">
+        <b>${I18N.t('spkInsecureTitle')}</b><br>${I18N.t('spkInsecureBody')}
+      </div>`;
+    } else if (!hasRecogniser){
+      html = `<div class="spk-notice warn">
+        <b>${I18N.t('spkNoRecogTitle')}</b><br>${I18N.t('spkNoRecogBody')}
       </div>`;
     } else {
       html = `<div class="spk-notice">${I18N.t('spkHowItWorks')}</div>`;
@@ -275,18 +314,35 @@ const Speaking = (() => {
       ? I18N.t('seeResults')
       : I18N.t(it.kind === 'phrase' ? 'spkNextPhrase' : 'spkNextItem');
 
-    // self-check fallback controls
-    document.getElementById('spkSelfCheck').style.display = supported ? 'none' : 'block';
-    if (!supported) renderSelfCheck();
+    applyInputMode();
+  }
+
+  function selfCheckMode(){ return !supported || recogBlocked; }
+
+  /* Shows either the microphone or the record-and-rate controls, never a
+     microphone that can't do anything — tapping a dead mic used to be a
+     silent no-op, which reads as "the app is broken". */
+  function applyInputMode(){
+    const selfMode = selfCheckMode();
+    const micWrap = document.querySelector('.spk-mic-wrap');
+    if (micWrap) micWrap.style.display = selfMode ? 'none' : '';
+    document.getElementById('spkSelfCheck').style.display = selfMode ? 'block' : 'none';
+    if (selfMode) renderSelfCheck();
   }
 
   function setMicState(state){
     const btn = document.getElementById('spkMic');
     const hint = document.getElementById('spkMicHint');
-    btn.classList.remove('listening','busy');
+    btn.classList.remove('listening','busy','starting');
     if (state === 'listening'){
       btn.classList.add('listening');
       hint.textContent = I18N.t('spkListening');
+    } else if (state === 'starting'){
+      // Between the tap and the engine actually opening the mic. On iOS that
+      // gap holds the permission sheet, and anything said during it is lost,
+      // so the learner is told to wait rather than shown a false "Listening".
+      btn.classList.add('starting');
+      hint.textContent = I18N.t('spkPreparing');
     } else if (state === 'busy'){
       btn.classList.add('busy');
       hint.textContent = I18N.t('spkThinking');
@@ -299,8 +355,11 @@ const Speaking = (() => {
 
   function listen(){
     if (listening) { stopListening(); return; }
-    if (!supported){ return; }
-    if (attempt >= MAX_ATTEMPTS) return;
+    if (selfCheckMode()) return;
+    if (attempt >= MAX_ATTEMPTS){
+      document.getElementById('spkAttempt').textContent = I18N.t('spkNoMoreAttempts');
+      return;
+    }
 
     Speech.stop();   // synthesis and recognition must not overlap
 
@@ -309,29 +368,47 @@ const Speaking = (() => {
 
     rec.lang = 'en-US';
     rec.continuous = false;
-    rec.interimResults = false;
+    /* iOS Safari regularly ends a session without ever delivering a final
+       result. Keeping the best interim transcript gives us something real to
+       score instead of throwing the attempt away. No effect elsewhere:
+       Chrome still delivers its final result and that always wins. */
+    try { rec.interimResults = true; } catch(e){}
     try { rec.maxAlternatives = 5; } catch(e){}
 
     const it = items[idx];
-    let got = false;
+    let settled = false;      // a score or an error has been shown
+    let interim = '';
+
+    const clearTimers = () => { clearTimeout(stopTimer); clearTimeout(endGuard); };
+
+    rec.onstart = () => { listening = true; setMicState('listening'); };
+    rec.onaudiostart = () => { if (!settled) setMicState('listening'); };
 
     rec.onresult = (e) => {
-      got = true;
-      const res = e.results && e.results[0];
+      let finalRes = null, pending = '';
+      for (let i = e.resultIndex; i < e.results.length; i++){
+        const r = e.results[i];
+        if (r.isFinal) finalRes = r;
+        else if (r[0] && r[0].transcript) pending += r[0].transcript;
+      }
+      if (pending.trim()) interim = pending.trim();
+      if (!finalRes) return;
+      settled = true;
       const alts = [];
-      if (res){
-        for (let i = 0; i < res.length; i++){
-          alts.push({ transcript: res[i].transcript, confidence: res[i].confidence });
-        }
+      for (let i = 0; i < finalRes.length; i++){
+        alts.push({ transcript: finalRes[i].transcript, confidence: finalRes[i].confidence });
       }
       lastResult = scoreAttempt(it.target, alts);
       showResult(lastResult);
     };
 
     rec.onerror = (e) => {
-      got = true;
+      settled = true;
       const err = (e && e.error) || '';
-      if (err === 'not-allowed' || err === 'service-not-allowed') showError('spkErrMic');
+      // Denied permission and a missing capture device don't get better on a
+      // retry, so those switch the test over to self-check for good.
+      if (err === 'not-allowed' || err === 'service-not-allowed') showError('spkErrMic', { fatal:true });
+      else if (err === 'audio-capture') showError('spkErrMic', { fatal:true });
       else if (err === 'no-speech') showError('spkErrNoSpeech');
       else if (err === 'network') showError('spkErrNetwork');
       else if (err === 'aborted') setMicState('idle');
@@ -340,26 +417,43 @@ const Speaking = (() => {
 
     rec.onend = () => {
       listening = false;
-      clearTimeout(stopTimer);
-      if (!got) { setMicState('idle'); }
+      clearTimers();
+      if (settled) return;
+      if (interim){
+        lastResult = scoreAttempt(it.target, [{ transcript: interim, confidence: 0 }]);
+        showResult(lastResult);
+        return;
+      }
+      setMicState('idle');
     };
 
     try {
       rec.start();
       listening = true;
-      setMicState('listening');
+      setMicState('starting');
+      clearTimers();
       // Recognition can hang waiting for silence; cap it.
-      clearTimeout(stopTimer);
-      stopTimer = setTimeout(() => { try { rec.stop(); } catch(e){} },
-        it.kind === 'phrase' ? 12000 : 6000);
+      stopTimer = setTimeout(() => {
+        try { rec.stop(); } catch(e){}
+        // iOS sometimes never fires onend after stop(), which would strand
+        // the button mid-pulse; recover the UI either way.
+        endGuard = setTimeout(() => {
+          if (!listening) return;
+          listening = false;
+          if (!settled) setMicState('idle');
+        }, 3000);
+      }, it.kind === 'phrase' ? 12000 : 6000);
     } catch(e){
       listening = false;
-      showError('spkErrGeneric');
+      const name = (e && e.name) || '';
+      if (name === 'NotAllowedError' || name === 'SecurityError') showError('spkErrMic', { fatal:true });
+      else showError('spkErrGeneric');
     }
   }
 
   function stopListening(){
     clearTimeout(stopTimer);
+    clearTimeout(endGuard);
     if (rec){ try { rec.stop(); } catch(e){} }
     listening = false;
     setMicState('busy');
@@ -367,19 +461,33 @@ const Speaking = (() => {
 
   function stopAll(){
     clearTimeout(stopTimer);
+    clearTimeout(endGuard);
     if (rec){ try { rec.abort(); } catch(e){} rec = null; }
     listening = false;
     if (mediaRecorder && mediaRecorder.state === 'recording'){
       try { mediaRecorder.stop(); } catch(e){}
     }
+    releaseStream();
     releaseRecording();
   }
 
-  function showError(key){
+  /* `fatal` means the recogniser is unusable from here on, so the item falls
+     back to record-and-rate. Either way the Next button is enabled: a blocked
+     microphone used to leave the learner stuck on the item with no way to
+     advance or reach their results. */
+  function showError(key, opts){
+    const fatal = !!(opts && opts.fatal);
     listening = false;
     setMicState('idle');
     document.getElementById('spkFeedback').innerHTML =
-      `<div class="feedback-strip incorrect">${ICN.cross}<div>${I18N.t(key)}</div></div>`;
+      `<div class="feedback-strip incorrect">${ICN.cross}<div>${I18N.t(key)}` +
+      (fatal ? `<span class="spk-fallback-note">${I18N.t('spkSwitchedSelfCheck')}</span>` : '') +
+      `</div></div>`;
+    if (fatal){
+      recogBlocked = true;
+      applyInputMode();
+    }
+    document.getElementById('spkNextBtn').disabled = false;
   }
 
   function showResult(r){
@@ -439,18 +547,24 @@ const Speaking = (() => {
   }
 
   async function toggleRecord(){
-    if (!canRecord){ showError('spkErrMic'); return; }
+    if (!canRecord){ showError(secureOrigin ? 'spkErrMic' : 'spkErrInsecure'); return; }
     if (mediaRecorder && mediaRecorder.state === 'recording'){
       mediaRecorder.stop();
       return;
     }
+
+    try { micStream = await navigator.mediaDevices.getUserMedia({ audio:true }); }
+    catch(e){ showError('spkErrMic'); return; }
+
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio:true });
       recordChunks = [];
-      mediaRecorder = new MediaRecorder(stream);
+      // No mimeType is requested on purpose: Safari records audio/mp4 and
+      // Chrome audio/webm, and naming either one explicitly throws on the
+      // other. The blob below just reuses whatever the recorder chose.
+      mediaRecorder = new MediaRecorder(micStream);
       mediaRecorder.ondataavailable = e => { if (e.data.size) recordChunks.push(e.data); };
       mediaRecorder.onstop = () => {
-        stream.getTracks().forEach(t => t.stop());
+        releaseStream();
         releaseRecording();
         recordedUrl = URL.createObjectURL(new Blob(recordChunks, { type: mediaRecorder.mimeType }));
         const play = document.getElementById('spkPlayBtn');
@@ -460,13 +574,26 @@ const Speaking = (() => {
         setMicState('idle');
       };
       mediaRecorder.start();
-      const btn = document.getElementById('spkRecBtn');
-      if (btn){ btn.textContent = I18N.t('spkStopRecord'); btn.classList.add('recording'); }
-      setMicState('listening');
-      setTimeout(() => { if (mediaRecorder && mediaRecorder.state === 'recording') mediaRecorder.stop(); }, 8000);
     } catch(e){
+      // MediaRecorder can still refuse after permission was granted (older
+      // iOS). Hand the microphone back rather than leaving it live with the
+      // recording indicator on.
+      releaseStream();
+      mediaRecorder = null;
       showError('spkErrMic');
+      return;
     }
+
+    const btn = document.getElementById('spkRecBtn');
+    if (btn){ btn.textContent = I18N.t('spkStopRecord'); btn.classList.add('recording'); }
+    setMicState('listening');
+    setTimeout(() => { if (mediaRecorder && mediaRecorder.state === 'recording') mediaRecorder.stop(); }, 8000);
+  }
+
+  function releaseStream(){
+    if (!micStream) return;
+    try { micStream.getTracks().forEach(t => t.stop()); } catch(e){}
+    micStream = null;
   }
 
   function releaseRecording(){
@@ -497,8 +624,10 @@ const Speaking = (() => {
     document.getElementById('spkRing').style.setProperty('--pct', avg);
     document.getElementById('spkRingPct').textContent = avg + '%';
     document.getElementById('spkDoneTitle').textContent = I18N.t(band(avg).key);
+    // If the microphone was blocked partway through, some of these are
+    // self-ratings, so don't present the average as a measured score.
     document.getElementById('spkDoneSub').textContent =
-      supported ? I18N.t('spkDoneSub') : I18N.t('spkDoneSubSelf');
+      selfCheckMode() ? I18N.t('spkDoneSubSelf') : I18N.t('spkDoneSub');
 
     document.getElementById('spkBreakdown').innerHTML = items.map((it, i) => {
       const sc = scores[i];
