@@ -122,6 +122,17 @@ demo.
 Browser speech recognition may involve the browser provider's remote service.
 No audio recording storage is added by this release.
 
+SIDE PANEL, TABLET AND PHONE LAYOUT
+A side panel carries the learner's profile, course, progress bars and a full
+navigation list. Below 1024px it is a drawer: closed by default, opened with
+the button at the top left, and dismissed by tapping the dimmed background,
+pressing Escape, or choosing a destination. The bottom tab bar stays in place
+as the main navigation on phones and small tablets.
+From 1024px up the panel docks beside the content and the tab bar is hidden,
+because the panel already lists every destination. Hiding the panel brings
+the tab bar straight back, so there is never a state with no navigation, and
+the choice is remembered on that device.
+
 MICROPHONE AND THE SPEAKING TEST
 The speaking test needs an https:// address on phones. Browsers only allow
 the microphone in a secure context: https, or localhost on a computer. A LAN

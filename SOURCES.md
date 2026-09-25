@@ -23,6 +23,22 @@ References used to review selected claims and pronunciation. They are not a cert
 A qualified spa practitioner and shipboard training representative should verify operational use. A Thai-language editor should review register and preferred wording. Prices, currencies, actual locations, times, dietary assurances, compensation and emergency arrangements must be confirmed through the relevant workplace's approved procedures. Dictionary transcriptions and browser voices may use different regional pronunciations.
 
 
+## Spa anatomy vocabulary note (2026-09-25)
+
+The spa course's "Body parts" category was extended from 20 basic external
+terms to 53, adding the anatomy a therapist has to name during a treatment:
+muscle groups (trapezius, hamstring, calf, glutes), spine and shoulder
+landmarks, hand and foot detail, and the facial areas used in a facial.
+Definitions are plain-English service descriptions, not clinical anatomy, and
+the examples are consultation language rather than treatment instructions.
+
+These entries are editorial: the English, the IPA transcriptions and the Thai
+translations have NOT yet had independent review, and the Thai in particular
+should be checked by a Thai-language editor alongside the rest of the course
+before formal rollout. Level labels are editorial, not CEFR. Terms such as
+"muscle knot" and "pressure point" are described as a guest-facing therapist
+would describe them, and are not a diagnosis or a clinical claim.
+
 ## Quiz/activity expansion note
 
 The new practice tasks were authored for this app. Workplace messages are fictional,

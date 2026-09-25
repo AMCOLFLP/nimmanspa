@@ -48,6 +48,7 @@ const Nav = {
       if (screen === 'customresults') AssessmentBuilder.renderResults();
       if (screen === 'account') App.renderAccount();
       if (screen === 'home') App.refreshHome();
+      Sidebar.setActive(screen);
     };
 
     // Re-entering the already-active screen (e.g. the very first Nav.go on
@@ -409,6 +410,8 @@ const App = (() => {
     document.getElementById('homeDailyPills').innerHTML =
       Array.from({ length: s.total }).map((_, i) =>
         `<i class="${i < s.done ? 'on' : ''}"></i>`).join('');
+    // Home and the side panel show the same counters, so they refresh together.
+    Sidebar.render();
   }
 
   function dayOfYear(){
@@ -921,6 +924,7 @@ const App = (() => {
     Daily.init();
     Speaking.init();
     LearningHub.init();AssessmentBuilder.init();
+    Sidebar.init();
     window.addEventListener('nimman:progress-status',()=>{
       const b=document.getElementById('learningSaveStatus');if(!b)return;
       const status=Progress.status;b.hidden=!['load-error','save-error'].includes(status);

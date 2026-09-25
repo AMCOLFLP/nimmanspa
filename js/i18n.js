@@ -253,6 +253,14 @@ const UI_STRINGS = {
     errServer: 'Something went wrong. Please try again.',
     errTooManyAttempts: 'Too many attempts. Please wait a few minutes and try again.',
     errSessionExpired: 'Your session ended. Please sign in again to keep saving progress.',
+
+    sidebarTitle: 'Your progress',
+    sidebarMenu: 'Menu',
+    sidebarClose: 'Close menu',
+    sidebarHide: 'Hide this panel',
+    sidebarGoTo: 'Go to',
+    sidebarStreak: 'Day streak',
+    sidebarGuestNote: 'Guest — progress is kept for this session only.',
     haveAccount: 'Already have an account?', noAccount: 'New here?',
 
     // Account
@@ -512,6 +520,14 @@ const UI_STRINGS = {
     errServer: 'เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง',
     errTooManyAttempts: 'พยายามหลายครั้งเกินไป กรุณารอสักครู่แล้วลองใหม่',
     errSessionExpired: 'เซสชันของคุณสิ้นสุดลง กรุณาเข้าสู่ระบบอีกครั้งเพื่อบันทึกความคืบหน้าต่อไป',
+
+    sidebarTitle: 'ความคืบหน้าของคุณ',
+    sidebarMenu: 'เมนู',
+    sidebarClose: 'ปิดเมนู',
+    sidebarHide: 'ซ่อนแผงนี้',
+    sidebarGoTo: 'ไปที่',
+    sidebarStreak: 'จำนวนวันต่อเนื่อง',
+    sidebarGuestNote: 'ผู้เยี่ยมชม — ความคืบหน้าจะเก็บเฉพาะครั้งนี้เท่านั้น',
     haveAccount: 'มีบัญชีอยู่แล้ว?', noAccount: 'ยังไม่มีบัญชี?',
 
     // Account
@@ -549,6 +565,9 @@ const I18N = (() => {
     });
     document.querySelectorAll('[data-i18n-ph]').forEach(el => {
       el.setAttribute('placeholder', t(el.getAttribute('data-i18n-ph')));
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+      el.setAttribute('aria-label', t(el.getAttribute('data-i18n-aria')));
     });
     document.querySelectorAll('.lang-toggle').forEach(el => {
       el.querySelectorAll('.lang-opt').forEach(opt => {

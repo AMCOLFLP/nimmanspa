@@ -147,8 +147,29 @@
      ===================================================================== -->
 <div class="app-shell" id="appShell" style="display:none;">
 
+  <!-- Side panel: profile, progress and navigation. A drawer on phones and
+       small tablets, docked beside the content from 1024px up, and hideable
+       either way. Kept inside .app-shell so it disappears with it on the
+       sign-in and course-chooser screens. -->
+  <div id="sideBackdrop" hidden></div>
+  <aside id="sideBar" aria-label="Profile, progress and navigation">
+    <div class="sb-head">
+      <span class="sb-brand">
+        <img src="assets/nimman-logo-small.png" alt="">
+        <b data-i18n="sidebarTitle">Your progress</b>
+      </span>
+      <button class="sb-close" id="sbClose" data-i18n-aria="sidebarClose" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div id="sideBarBody"></div>
+  </aside>
+
   <header class="topbar">
     <div class="topbar-row">
+      <button class="sb-toggle" id="sbToggle" aria-controls="sideBar" aria-expanded="false" data-i18n-aria="sidebarMenu" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
       <div class="brand">
         <img class="brand-crest" src="assets/nimman-logo-small.png" alt="NIMMAN">
         <div class="brand-text">
@@ -854,6 +875,7 @@
 <script src="js/learning-hub.js"></script>
 <script src="js/assessment-builder.js"></script>
 <script src="js/learning-i18n.js"></script>
+<script src="js/sidebar.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>
