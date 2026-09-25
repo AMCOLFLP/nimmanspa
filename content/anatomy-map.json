@@ -1,0 +1,2752 @@
+{
+  "version": "png-bodymap-1",
+  "coordinateSystem": "Percent of the entire untrimmed PNG canvas (0–100); do not crop or object-fit:cover.",
+  "models": {
+    "female": {
+      "front": {
+        "src": "assets/anatomy/female-front.png",
+        "width": 887,
+        "height": 1774,
+        "regions": [
+          {
+            "word": "Face",
+            "pin": [
+              50,
+              11.5
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 50,
+                "cy": 11.0,
+                "rx": 8.2,
+                "ry": 4.4
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Neck",
+            "pin": [
+              50,
+              17
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 50,
+                "cy": 17,
+                "rx": 5.7,
+                "ry": 2.2
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Shoulder",
+            "pin": [
+              30,
+              23
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 30,
+                "cy": 23.3,
+                "rx": 4.7,
+                "ry": 3.2
+              },
+              {
+                "type": "ellipse",
+                "cx": 70,
+                "cy": 23.3,
+                "rx": 4.7,
+                "ry": 3.2
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Chest",
+            "pin": [
+              50,
+              26.5
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    37,
+                    22
+                  ],
+                  [
+                    63,
+                    22
+                  ],
+                  [
+                    63,
+                    30.5
+                  ],
+                  [
+                    37,
+                    30.5
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Collarbone",
+            "pin": [
+              42,
+              20.1
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    38,
+                    19.6
+                  ],
+                  [
+                    47,
+                    19.3
+                  ],
+                  [
+                    48,
+                    20.5
+                  ],
+                  [
+                    39,
+                    21.2
+                  ]
+                ]
+              },
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    61,
+                    21.2
+                  ],
+                  [
+                    52,
+                    20.5
+                  ],
+                  [
+                    53,
+                    19.3
+                  ],
+                  [
+                    62,
+                    19.6
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": true
+          },
+          {
+            "word": "Abdomen",
+            "pin": [
+              50,
+              36.2
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 50,
+                "cy": 36,
+                "rx": 12.4,
+                "ry": 4.7
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Waist",
+            "pin": [
+              35.7,
+              41.5
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    33.7,
+                    39.8
+                  ],
+                  [
+                    40.900000000000006,
+                    39.8
+                  ],
+                  [
+                    40.900000000000006,
+                    43.199999999999996
+                  ],
+                  [
+                    33.7,
+                    43.199999999999996
+                  ]
+                ]
+              },
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    66.3,
+                    43.199999999999996
+                  ],
+                  [
+                    59.1,
+                    43.199999999999996
+                  ],
+                  [
+                    59.1,
+                    39.8
+                  ],
+                  [
+                    66.3,
+                    39.8
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Hip",
+            "pin": [
+              34,
+              46.8
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 34,
+                "cy": 46.8,
+                "rx": 3.6,
+                "ry": 3.0
+              },
+              {
+                "type": "ellipse",
+                "cx": 66,
+                "cy": 46.8,
+                "rx": 3.6,
+                "ry": 3.0
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Upper arm",
+            "pin": [
+              29,
+              30.4
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    27.5,
+                    27.4
+                  ],
+                  [
+                    34,
+                    27.4
+                  ],
+                  [
+                    32.1,
+                    33.6
+                  ],
+                  [
+                    26.0,
+                    33.6
+                  ]
+                ]
+              },
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    74.0,
+                    33.6
+                  ],
+                  [
+                    67.9,
+                    33.6
+                  ],
+                  [
+                    66,
+                    27.4
+                  ],
+                  [
+                    72.5,
+                    27.4
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Elbow",
+            "pin": [
+              27.1,
+              36.3
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 27.1,
+                "cy": 36.3,
+                "rx": 3.7,
+                "ry": 1.9
+              },
+              {
+                "type": "ellipse",
+                "cx": 72.9,
+                "cy": 36.3,
+                "rx": 3.7,
+                "ry": 1.9
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Forearm",
+            "pin": [
+              23.5,
+              41.3
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    24.2,
+                    38.7
+                  ],
+                  [
+                    30.5,
+                    39.0
+                  ],
+                  [
+                    23.8,
+                    45.0
+                  ],
+                  [
+                    18.6,
+                    44.0
+                  ]
+                ]
+              },
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    81.4,
+                    44.0
+                  ],
+                  [
+                    76.2,
+                    45.0
+                  ],
+                  [
+                    69.5,
+                    39.0
+                  ],
+                  [
+                    75.8,
+                    38.7
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Wrist",
+            "pin": [
+              17.3,
+              47.6
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 17.3,
+                "cy": 47.6,
+                "rx": 2.8,
+                "ry": 1.3
+              },
+              {
+                "type": "ellipse",
+                "cx": 82.7,
+                "cy": 47.6,
+                "rx": 2.8,
+                "ry": 1.3
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Hand",
+            "pin": [
+              14.4,
+              52.5
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    10.7,
+                    49.5
+                  ],
+                  [
+                    19,
+                    49.5
+                  ],
+                  [
+                    18.1,
+                    54
+                  ],
+                  [
+                    15,
+                    56.1
+                  ],
+                  [
+                    8.3,
+                    56.1
+                  ],
+                  [
+                    6.8,
+                    53.1
+                  ]
+                ]
+              },
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    93.2,
+                    53.1
+                  ],
+                  [
+                    91.7,
+                    56.1
+                  ],
+                  [
+                    85,
+                    56.1
+                  ],
+                  [
+                    81.9,
+                    54
+                  ],
+                  [
+                    81,
+                    49.5
+                  ],
+                  [
+                    89.3,
+                    49.5
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Thigh",
+            "pin": [
+              39.5,
+              58.2
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 39.5,
+                "cy": 58.1,
+                "rx": 7.1,
+                "ry": 6.4
+              },
+              {
+                "type": "ellipse",
+                "cx": 60.5,
+                "cy": 58.1,
+                "rx": 7.1,
+                "ry": 6.4
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Knee",
+            "pin": [
+              39.5,
+              68.8
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 39.5,
+                "cy": 68.8,
+                "rx": 4.9,
+                "ry": 2.4
+              },
+              {
+                "type": "ellipse",
+                "cx": 60.5,
+                "cy": 68.8,
+                "rx": 4.9,
+                "ry": 2.4
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Shin",
+            "pin": [
+              39.4,
+              80.5
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 39.4,
+                "cy": 80.1,
+                "rx": 4.1,
+                "ry": 7.2
+              },
+              {
+                "type": "ellipse",
+                "cx": 60.6,
+                "cy": 80.1,
+                "rx": 4.1,
+                "ry": 7.2
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Ankle",
+            "pin": [
+              38.6,
+              90.4
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 38.6,
+                "cy": 90.6,
+                "rx": 3.0,
+                "ry": 1.7
+              },
+              {
+                "type": "ellipse",
+                "cx": 61.4,
+                "cy": 90.6,
+                "rx": 3.0,
+                "ry": 1.7
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Foot",
+            "pin": [
+              37.9,
+              95.4
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 37.9,
+                "cy": 95.0,
+                "rx": 4.5,
+                "ry": 2.1
+              },
+              {
+                "type": "ellipse",
+                "cx": 62.1,
+                "cy": 95.0,
+                "rx": 4.5,
+                "ry": 2.1
+              }
+            ],
+            "surfaceOnly": false
+          }
+        ]
+      },
+      "back": {
+        "src": "assets/anatomy/female-back.png",
+        "width": 887,
+        "height": 1774,
+        "regions": [
+          {
+            "word": "Scalp",
+            "pin": [
+              50,
+              8
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 50,
+                "cy": 8,
+                "rx": 8.7,
+                "ry": 5.1
+              }
+            ],
+            "surfaceOnly": true
+          },
+          {
+            "word": "Nape",
+            "pin": [
+              50,
+              15.6
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 50,
+                "cy": 16.1,
+                "rx": 5.8,
+                "ry": 2.1
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Shoulder",
+            "pin": [
+              30,
+              23
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 30,
+                "cy": 23.3,
+                "rx": 4.7,
+                "ry": 3.2
+              },
+              {
+                "type": "ellipse",
+                "cx": 70,
+                "cy": 23.3,
+                "rx": 4.7,
+                "ry": 3.2
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Upper back",
+            "pin": [
+              58,
+              24.2
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    37,
+                    21.5
+                  ],
+                  [
+                    63,
+                    21.5
+                  ],
+                  [
+                    63,
+                    30.9
+                  ],
+                  [
+                    37,
+                    30.9
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Trapezius",
+            "pin": [
+              50,
+              20.7
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    45,
+                    18.0
+                  ],
+                  [
+                    55,
+                    18.0
+                  ],
+                  [
+                    65,
+                    21
+                  ],
+                  [
+                    59,
+                    23.5
+                  ],
+                  [
+                    50,
+                    28.5
+                  ],
+                  [
+                    41,
+                    23.5
+                  ],
+                  [
+                    35,
+                    21
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": true
+          },
+          {
+            "word": "Shoulder blade",
+            "pin": [
+              41.2,
+              27
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 41.2,
+                "cy": 27,
+                "rx": 3.8,
+                "ry": 3.1
+              },
+              {
+                "type": "ellipse",
+                "cx": 58.8,
+                "cy": 27,
+                "rx": 3.8,
+                "ry": 3.1
+              }
+            ],
+            "surfaceOnly": true
+          },
+          {
+            "word": "Back",
+            "pin": [
+              41,
+              35
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    36.5,
+                    32
+                  ],
+                  [
+                    63.5,
+                    32
+                  ],
+                  [
+                    63.5,
+                    37.0
+                  ],
+                  [
+                    36.5,
+                    37.0
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Lower back",
+            "pin": [
+              43.5,
+              40
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    35.6,
+                    37.5
+                  ],
+                  [
+                    64.4,
+                    37.5
+                  ],
+                  [
+                    64.4,
+                    42.1
+                  ],
+                  [
+                    35.6,
+                    42.1
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Spine",
+            "pin": [
+              50,
+              31.8
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    49,
+                    23
+                  ],
+                  [
+                    51,
+                    23
+                  ],
+                  [
+                    51,
+                    41.8
+                  ],
+                  [
+                    49,
+                    41.8
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": true
+          },
+          {
+            "word": "Glutes",
+            "pin": [
+              40,
+              50.5
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 40,
+                "cy": 49.8,
+                "rx": 6.4,
+                "ry": 3.8
+              },
+              {
+                "type": "ellipse",
+                "cx": 60,
+                "cy": 49.8,
+                "rx": 6.4,
+                "ry": 3.8
+              }
+            ],
+            "surfaceOnly": true
+          },
+          {
+            "word": "Upper arm",
+            "pin": [
+              29,
+              30.4
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    27.5,
+                    27.4
+                  ],
+                  [
+                    34,
+                    27.4
+                  ],
+                  [
+                    32.1,
+                    33.6
+                  ],
+                  [
+                    26.0,
+                    33.6
+                  ]
+                ]
+              },
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    74.0,
+                    33.6
+                  ],
+                  [
+                    67.9,
+                    33.6
+                  ],
+                  [
+                    66,
+                    27.4
+                  ],
+                  [
+                    72.5,
+                    27.4
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Forearm",
+            "pin": [
+              23.5,
+              41.3
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    24.2,
+                    38.7
+                  ],
+                  [
+                    30.5,
+                    39.0
+                  ],
+                  [
+                    23.8,
+                    45.0
+                  ],
+                  [
+                    18.6,
+                    44.0
+                  ]
+                ]
+              },
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    81.4,
+                    44.0
+                  ],
+                  [
+                    76.2,
+                    45.0
+                  ],
+                  [
+                    69.5,
+                    39.0
+                  ],
+                  [
+                    75.8,
+                    38.7
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Hand",
+            "pin": [
+              14.4,
+              52.5
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    10.7,
+                    49.5
+                  ],
+                  [
+                    19,
+                    49.5
+                  ],
+                  [
+                    18.1,
+                    54
+                  ],
+                  [
+                    15,
+                    56.1
+                  ],
+                  [
+                    8.3,
+                    56.1
+                  ],
+                  [
+                    6.8,
+                    53.1
+                  ]
+                ]
+              },
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    93.2,
+                    53.1
+                  ],
+                  [
+                    91.7,
+                    56.1
+                  ],
+                  [
+                    85,
+                    56.1
+                  ],
+                  [
+                    81.9,
+                    54
+                  ],
+                  [
+                    81,
+                    49.5
+                  ],
+                  [
+                    89.3,
+                    49.5
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Hamstring",
+            "pin": [
+              39.7,
+              60.5
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 39.7,
+                "cy": 60.5,
+                "rx": 6.8,
+                "ry": 7.8
+              },
+              {
+                "type": "ellipse",
+                "cx": 60.3,
+                "cy": 60.5,
+                "rx": 6.8,
+                "ry": 7.8
+              }
+            ],
+            "surfaceOnly": true
+          },
+          {
+            "word": "Calf",
+            "pin": [
+              39.5,
+              79.4
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 39.5,
+                "cy": 79.4,
+                "rx": 5.1,
+                "ry": 6.3
+              },
+              {
+                "type": "ellipse",
+                "cx": 60.5,
+                "cy": 79.4,
+                "rx": 5.1,
+                "ry": 6.3
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Heel",
+            "pin": [
+              38.5,
+              96
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 38.5,
+                "cy": 95.9,
+                "rx": 4.0,
+                "ry": 1.6
+              },
+              {
+                "type": "ellipse",
+                "cx": 61.5,
+                "cy": 95.9,
+                "rx": 4.0,
+                "ry": 1.6
+              }
+            ],
+            "surfaceOnly": false
+          }
+        ]
+      },
+      "face": {
+        "src": "assets/anatomy/female-face.png",
+        "width": 1122,
+        "height": 1402,
+        "regions": [
+          {
+            "word": "Scalp",
+            "pin": [
+              50,
+              12
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 50,
+                "cy": 12,
+                "rx": 16.4,
+                "ry": 5.1
+              }
+            ],
+            "surfaceOnly": true
+          },
+          {
+            "word": "Forehead",
+            "pin": [
+              50,
+              23.5
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 50,
+                "cy": 23.4,
+                "rx": 13.1,
+                "ry": 3.7
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Temple",
+            "pin": [
+              31.7,
+              28.5
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 31.7,
+                "cy": 28.5,
+                "rx": 2.4,
+                "ry": 3.6
+              },
+              {
+                "type": "ellipse",
+                "cx": 68.3,
+                "cy": 28.5,
+                "rx": 2.4,
+                "ry": 3.6
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Eyebrow",
+            "pin": [
+              41.5,
+              28.9
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 41.5,
+                "cy": 28.9,
+                "rx": 5.1,
+                "ry": 1.1
+              },
+              {
+                "type": "ellipse",
+                "cx": 58.5,
+                "cy": 28.9,
+                "rx": 5.1,
+                "ry": 1.1
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Eyelid",
+            "pin": [
+              58.5,
+              32.1
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 41.5,
+                "cy": 32.1,
+                "rx": 4.0,
+                "ry": 0.8
+              },
+              {
+                "type": "ellipse",
+                "cx": 58.5,
+                "cy": 32.1,
+                "rx": 4.0,
+                "ry": 0.8
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Cheek",
+            "pin": [
+              36.7,
+              40.2
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 36.7,
+                "cy": 40.2,
+                "rx": 4.9,
+                "ry": 4.6
+              },
+              {
+                "type": "ellipse",
+                "cx": 63.3,
+                "cy": 40.2,
+                "rx": 4.9,
+                "ry": 4.6
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Jawline",
+            "pin": [
+              37.5,
+              51.3
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    32.7,
+                    46.7
+                  ],
+                  [
+                    38.5,
+                    50.9
+                  ],
+                  [
+                    45.6,
+                    54.2
+                  ],
+                  [
+                    47,
+                    56.7
+                  ],
+                  [
+                    41.3,
+                    54.9
+                  ],
+                  [
+                    35.7,
+                    51.6
+                  ],
+                  [
+                    31.8,
+                    48.0
+                  ]
+                ]
+              },
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    68.2,
+                    48.0
+                  ],
+                  [
+                    64.3,
+                    51.6
+                  ],
+                  [
+                    58.7,
+                    54.9
+                  ],
+                  [
+                    53,
+                    56.7
+                  ],
+                  [
+                    54.4,
+                    54.2
+                  ],
+                  [
+                    61.5,
+                    50.9
+                  ],
+                  [
+                    67.3,
+                    46.7
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Chin",
+            "pin": [
+              50,
+              53.6
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 50,
+                "cy": 53.6,
+                "rx": 5.5,
+                "ry": 2.1
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Neck",
+            "pin": [
+              50,
+              63.6
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 50,
+                "cy": 63.6,
+                "rx": 10.4,
+                "ry": 5.0
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Décolletage",
+            "pin": [
+              50,
+              77.5
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 50,
+                "cy": 77.5,
+                "rx": 19,
+                "ry": 5.7
+              }
+            ],
+            "surfaceOnly": false
+          }
+        ]
+      }
+    },
+    "male": {
+      "front": {
+        "src": "assets/anatomy/male-front.png",
+        "width": 887,
+        "height": 1774,
+        "regions": [
+          {
+            "word": "Face",
+            "pin": [
+              50,
+              10.5
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 50,
+                "cy": 10.0,
+                "rx": 8.2,
+                "ry": 4.4
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Neck",
+            "pin": [
+              50,
+              17
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 50,
+                "cy": 17,
+                "rx": 5.7,
+                "ry": 2.2
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Shoulder",
+            "pin": [
+              26.5,
+              23
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 26.5,
+                "cy": 23.3,
+                "rx": 4.7,
+                "ry": 3.2
+              },
+              {
+                "type": "ellipse",
+                "cx": 73.5,
+                "cy": 23.3,
+                "rx": 4.7,
+                "ry": 3.2
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Chest",
+            "pin": [
+              50,
+              26.5
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    37,
+                    22
+                  ],
+                  [
+                    63,
+                    22
+                  ],
+                  [
+                    63,
+                    30.5
+                  ],
+                  [
+                    37,
+                    30.5
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Collarbone",
+            "pin": [
+              42,
+              19.8
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    35,
+                    19.5
+                  ],
+                  [
+                    46,
+                    18.9
+                  ],
+                  [
+                    48,
+                    20.2
+                  ],
+                  [
+                    37,
+                    21.2
+                  ]
+                ]
+              },
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    63,
+                    21.2
+                  ],
+                  [
+                    52,
+                    20.2
+                  ],
+                  [
+                    54,
+                    18.9
+                  ],
+                  [
+                    65,
+                    19.5
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": true
+          },
+          {
+            "word": "Abdomen",
+            "pin": [
+              50,
+              36.2
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 50,
+                "cy": 36,
+                "rx": 12.4,
+                "ry": 4.7
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Waist",
+            "pin": [
+              35.7,
+              41.5
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    33.7,
+                    39.8
+                  ],
+                  [
+                    40.900000000000006,
+                    39.8
+                  ],
+                  [
+                    40.900000000000006,
+                    43.199999999999996
+                  ],
+                  [
+                    33.7,
+                    43.199999999999996
+                  ]
+                ]
+              },
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    66.3,
+                    43.199999999999996
+                  ],
+                  [
+                    59.1,
+                    43.199999999999996
+                  ],
+                  [
+                    59.1,
+                    39.8
+                  ],
+                  [
+                    66.3,
+                    39.8
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Hip",
+            "pin": [
+              34,
+              46.8
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 34,
+                "cy": 46.8,
+                "rx": 3.6,
+                "ry": 3.0
+              },
+              {
+                "type": "ellipse",
+                "cx": 66,
+                "cy": 46.8,
+                "rx": 3.6,
+                "ry": 3.0
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Upper arm",
+            "pin": [
+              26,
+              30.4
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    23,
+                    27.5
+                  ],
+                  [
+                    31,
+                    27.5
+                  ],
+                  [
+                    28.5,
+                    33.7
+                  ],
+                  [
+                    21.5,
+                    33.7
+                  ]
+                ]
+              },
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    78.5,
+                    33.7
+                  ],
+                  [
+                    71.5,
+                    33.7
+                  ],
+                  [
+                    69,
+                    27.5
+                  ],
+                  [
+                    77,
+                    27.5
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Elbow",
+            "pin": [
+              24,
+              35.6
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 24,
+                "cy": 35.6,
+                "rx": 3.7,
+                "ry": 1.9
+              },
+              {
+                "type": "ellipse",
+                "cx": 76,
+                "cy": 35.6,
+                "rx": 3.7,
+                "ry": 1.9
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Forearm",
+            "pin": [
+              20.2,
+              41.3
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    21.3,
+                    37.7
+                  ],
+                  [
+                    28,
+                    38.4
+                  ],
+                  [
+                    21.0,
+                    44.7
+                  ],
+                  [
+                    15.7,
+                    44.0
+                  ]
+                ]
+              },
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    84.3,
+                    44.0
+                  ],
+                  [
+                    79.0,
+                    44.7
+                  ],
+                  [
+                    72,
+                    38.4
+                  ],
+                  [
+                    78.7,
+                    37.7
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Wrist",
+            "pin": [
+              14.2,
+              47.6
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 14.2,
+                "cy": 47.6,
+                "rx": 2.8,
+                "ry": 1.3
+              },
+              {
+                "type": "ellipse",
+                "cx": 85.8,
+                "cy": 47.6,
+                "rx": 2.8,
+                "ry": 1.3
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Hand",
+            "pin": [
+              11.4,
+              52.5
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    8.5,
+                    49.4
+                  ],
+                  [
+                    16,
+                    49.4
+                  ],
+                  [
+                    16.8,
+                    53.2
+                  ],
+                  [
+                    14.4,
+                    57.9
+                  ],
+                  [
+                    6.5,
+                    57.9
+                  ],
+                  [
+                    4.8,
+                    52.2
+                  ]
+                ]
+              },
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    95.2,
+                    52.2
+                  ],
+                  [
+                    93.5,
+                    57.9
+                  ],
+                  [
+                    85.6,
+                    57.9
+                  ],
+                  [
+                    83.2,
+                    53.2
+                  ],
+                  [
+                    84,
+                    49.4
+                  ],
+                  [
+                    91.5,
+                    49.4
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Thigh",
+            "pin": [
+              39,
+              58.2
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 39,
+                "cy": 58.1,
+                "rx": 7.1,
+                "ry": 6.4
+              },
+              {
+                "type": "ellipse",
+                "cx": 61,
+                "cy": 58.1,
+                "rx": 7.1,
+                "ry": 6.4
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Knee",
+            "pin": [
+              37.9,
+              68.8
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 37.9,
+                "cy": 68.8,
+                "rx": 4.9,
+                "ry": 2.4
+              },
+              {
+                "type": "ellipse",
+                "cx": 62.1,
+                "cy": 68.8,
+                "rx": 4.9,
+                "ry": 2.4
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Shin",
+            "pin": [
+              36.8,
+              80.5
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 36.8,
+                "cy": 80.1,
+                "rx": 4.1,
+                "ry": 7.2
+              },
+              {
+                "type": "ellipse",
+                "cx": 63.2,
+                "cy": 80.1,
+                "rx": 4.1,
+                "ry": 7.2
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Ankle",
+            "pin": [
+              36.1,
+              90.4
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 36.1,
+                "cy": 90.6,
+                "rx": 3.0,
+                "ry": 1.7
+              },
+              {
+                "type": "ellipse",
+                "cx": 63.9,
+                "cy": 90.6,
+                "rx": 3.0,
+                "ry": 1.7
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Foot",
+            "pin": [
+              34.0,
+              95.4
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 34.0,
+                "cy": 95.0,
+                "rx": 5.0,
+                "ry": 2.1
+              },
+              {
+                "type": "ellipse",
+                "cx": 66.0,
+                "cy": 95.0,
+                "rx": 5.0,
+                "ry": 2.1
+              }
+            ],
+            "surfaceOnly": false
+          }
+        ]
+      },
+      "back": {
+        "src": "assets/anatomy/male-back.png",
+        "width": 887,
+        "height": 1774,
+        "regions": [
+          {
+            "word": "Scalp",
+            "pin": [
+              50,
+              8
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 50,
+                "cy": 8,
+                "rx": 8.7,
+                "ry": 5.1
+              }
+            ],
+            "surfaceOnly": true
+          },
+          {
+            "word": "Nape",
+            "pin": [
+              50,
+              15.6
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 50,
+                "cy": 16.1,
+                "rx": 5.8,
+                "ry": 2.1
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Shoulder",
+            "pin": [
+              26.5,
+              23
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 26.5,
+                "cy": 23.3,
+                "rx": 4.7,
+                "ry": 3.2
+              },
+              {
+                "type": "ellipse",
+                "cx": 73.5,
+                "cy": 23.3,
+                "rx": 4.7,
+                "ry": 3.2
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Upper back",
+            "pin": [
+              58,
+              24.2
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    37,
+                    21.5
+                  ],
+                  [
+                    63,
+                    21.5
+                  ],
+                  [
+                    63,
+                    30.9
+                  ],
+                  [
+                    37,
+                    30.9
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Trapezius",
+            "pin": [
+              50,
+              20.7
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    45,
+                    18.0
+                  ],
+                  [
+                    55,
+                    18.0
+                  ],
+                  [
+                    65,
+                    21
+                  ],
+                  [
+                    59,
+                    23.5
+                  ],
+                  [
+                    50,
+                    28.5
+                  ],
+                  [
+                    41,
+                    23.5
+                  ],
+                  [
+                    35,
+                    21
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": true
+          },
+          {
+            "word": "Shoulder blade",
+            "pin": [
+              41.2,
+              27
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 41.2,
+                "cy": 27,
+                "rx": 3.8,
+                "ry": 3.1
+              },
+              {
+                "type": "ellipse",
+                "cx": 58.8,
+                "cy": 27,
+                "rx": 3.8,
+                "ry": 3.1
+              }
+            ],
+            "surfaceOnly": true
+          },
+          {
+            "word": "Back",
+            "pin": [
+              41,
+              35
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    36.5,
+                    32
+                  ],
+                  [
+                    63.5,
+                    32
+                  ],
+                  [
+                    63.5,
+                    37.0
+                  ],
+                  [
+                    36.5,
+                    37.0
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Lower back",
+            "pin": [
+              43.5,
+              40
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    35.6,
+                    37.5
+                  ],
+                  [
+                    64.4,
+                    37.5
+                  ],
+                  [
+                    64.4,
+                    42.1
+                  ],
+                  [
+                    35.6,
+                    42.1
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Spine",
+            "pin": [
+              50,
+              31.8
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    49,
+                    23
+                  ],
+                  [
+                    51,
+                    23
+                  ],
+                  [
+                    51,
+                    41.8
+                  ],
+                  [
+                    49,
+                    41.8
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": true
+          },
+          {
+            "word": "Glutes",
+            "pin": [
+              40,
+              50.5
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 40,
+                "cy": 49.8,
+                "rx": 6.4,
+                "ry": 3.8
+              },
+              {
+                "type": "ellipse",
+                "cx": 60,
+                "cy": 49.8,
+                "rx": 6.4,
+                "ry": 3.8
+              }
+            ],
+            "surfaceOnly": true
+          },
+          {
+            "word": "Upper arm",
+            "pin": [
+              26,
+              30.4
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    23,
+                    27.5
+                  ],
+                  [
+                    31,
+                    27.5
+                  ],
+                  [
+                    28.5,
+                    33.7
+                  ],
+                  [
+                    21.5,
+                    33.7
+                  ]
+                ]
+              },
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    78.5,
+                    33.7
+                  ],
+                  [
+                    71.5,
+                    33.7
+                  ],
+                  [
+                    69,
+                    27.5
+                  ],
+                  [
+                    77,
+                    27.5
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Forearm",
+            "pin": [
+              20.2,
+              41.3
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    21.3,
+                    37.7
+                  ],
+                  [
+                    28,
+                    38.4
+                  ],
+                  [
+                    21.0,
+                    44.7
+                  ],
+                  [
+                    15.7,
+                    44.0
+                  ]
+                ]
+              },
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    84.3,
+                    44.0
+                  ],
+                  [
+                    79.0,
+                    44.7
+                  ],
+                  [
+                    72,
+                    38.4
+                  ],
+                  [
+                    78.7,
+                    37.7
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Hand",
+            "pin": [
+              11.4,
+              52.5
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    8.5,
+                    49.4
+                  ],
+                  [
+                    16,
+                    49.4
+                  ],
+                  [
+                    16.8,
+                    53.2
+                  ],
+                  [
+                    14.4,
+                    57.9
+                  ],
+                  [
+                    6.5,
+                    57.9
+                  ],
+                  [
+                    4.8,
+                    52.2
+                  ]
+                ]
+              },
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    95.2,
+                    52.2
+                  ],
+                  [
+                    93.5,
+                    57.9
+                  ],
+                  [
+                    85.6,
+                    57.9
+                  ],
+                  [
+                    83.2,
+                    53.2
+                  ],
+                  [
+                    84,
+                    49.4
+                  ],
+                  [
+                    91.5,
+                    49.4
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Hamstring",
+            "pin": [
+              39.7,
+              60.5
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 39.7,
+                "cy": 60.5,
+                "rx": 6.8,
+                "ry": 7.8
+              },
+              {
+                "type": "ellipse",
+                "cx": 60.3,
+                "cy": 60.5,
+                "rx": 6.8,
+                "ry": 7.8
+              }
+            ],
+            "surfaceOnly": true
+          },
+          {
+            "word": "Calf",
+            "pin": [
+              36.3,
+              79.4
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 36.3,
+                "cy": 79.4,
+                "rx": 5.1,
+                "ry": 6.3
+              },
+              {
+                "type": "ellipse",
+                "cx": 63.7,
+                "cy": 79.4,
+                "rx": 5.1,
+                "ry": 6.3
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Heel",
+            "pin": [
+              35.9,
+              95.5
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 35.9,
+                "cy": 95.2,
+                "rx": 4.0,
+                "ry": 1.6
+              },
+              {
+                "type": "ellipse",
+                "cx": 64.1,
+                "cy": 95.2,
+                "rx": 4.0,
+                "ry": 1.6
+              }
+            ],
+            "surfaceOnly": false
+          }
+        ]
+      },
+      "face": {
+        "src": "assets/anatomy/male-face.png",
+        "width": 1122,
+        "height": 1402,
+        "regions": [
+          {
+            "word": "Scalp",
+            "pin": [
+              50,
+              12
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 50,
+                "cy": 12,
+                "rx": 16.4,
+                "ry": 5.1
+              }
+            ],
+            "surfaceOnly": true
+          },
+          {
+            "word": "Forehead",
+            "pin": [
+              50,
+              23.5
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 50,
+                "cy": 23.4,
+                "rx": 13.1,
+                "ry": 3.7
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Temple",
+            "pin": [
+              31.7,
+              28.5
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 31.7,
+                "cy": 28.5,
+                "rx": 2.4,
+                "ry": 3.6
+              },
+              {
+                "type": "ellipse",
+                "cx": 68.3,
+                "cy": 28.5,
+                "rx": 2.4,
+                "ry": 3.6
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Eyebrow",
+            "pin": [
+              41.5,
+              28.1
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 41.5,
+                "cy": 28.1,
+                "rx": 5.1,
+                "ry": 1.1
+              },
+              {
+                "type": "ellipse",
+                "cx": 58.5,
+                "cy": 28.1,
+                "rx": 5.1,
+                "ry": 1.1
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Eyelid",
+            "pin": [
+              58.5,
+              31.5
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 41.5,
+                "cy": 31.5,
+                "rx": 4.0,
+                "ry": 0.8
+              },
+              {
+                "type": "ellipse",
+                "cx": 58.5,
+                "cy": 31.5,
+                "rx": 4.0,
+                "ry": 0.8
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Cheek",
+            "pin": [
+              36.7,
+              40.2
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 36.7,
+                "cy": 40.2,
+                "rx": 4.9,
+                "ry": 4.6
+              },
+              {
+                "type": "ellipse",
+                "cx": 63.3,
+                "cy": 40.2,
+                "rx": 4.9,
+                "ry": 4.6
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Jawline",
+            "pin": [
+              37.5,
+              52.0
+            ],
+            "shapes": [
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    33.5,
+                    47.0
+                  ],
+                  [
+                    39.0,
+                    52
+                  ],
+                  [
+                    46,
+                    55.0
+                  ],
+                  [
+                    48,
+                    57.8
+                  ],
+                  [
+                    41,
+                    56.1
+                  ],
+                  [
+                    35.8,
+                    52.2
+                  ],
+                  [
+                    32,
+                    48.6
+                  ]
+                ]
+              },
+              {
+                "type": "polygon",
+                "points": [
+                  [
+                    68,
+                    48.6
+                  ],
+                  [
+                    64.2,
+                    52.2
+                  ],
+                  [
+                    59,
+                    56.1
+                  ],
+                  [
+                    52,
+                    57.8
+                  ],
+                  [
+                    54,
+                    55.0
+                  ],
+                  [
+                    61.0,
+                    52
+                  ],
+                  [
+                    66.5,
+                    47.0
+                  ]
+                ]
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Chin",
+            "pin": [
+              50,
+              54.7
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 50,
+                "cy": 54.7,
+                "rx": 5.5,
+                "ry": 2.1
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Neck",
+            "pin": [
+              50,
+              65.4
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 50,
+                "cy": 65.4,
+                "rx": 10.4,
+                "ry": 5.0
+              }
+            ],
+            "surfaceOnly": false
+          },
+          {
+            "word": "Décolletage",
+            "pin": [
+              50,
+              82
+            ],
+            "shapes": [
+              {
+                "type": "ellipse",
+                "cx": 50,
+                "cy": 82,
+                "rx": 19,
+                "ry": 5.7
+              }
+            ],
+            "surfaceOnly": false
+          }
+        ]
+      }
+    }
+  },
+  "unplacedNotes": {
+    "Sole": "The underside of the foot is not visible in the standing PNGs. Retained in the related-word list.",
+    "Sinuses": "Not visible in the surface portrait. Retained in the related-word list."
+  }
+}

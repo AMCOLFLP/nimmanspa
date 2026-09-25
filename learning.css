@@ -3,7 +3,7 @@
 :root{--learn-navy:#173e48;--learn-line:#dbe5e4;--learn-soft:#edf4f3}
 .course-salon{--gold:#8b6d9a;--gold-deep:#6e527b;--gold-bright:#a685b7;--gold-mist:#f2edf5;--gold-line:rgba(139,109,154,.3)}
 .app-shell,.tab-bar{max-width:1040px}
-.screen:not(#screen-learning):not(#screen-assess):not(#screen-customplay):not(#screen-customresults){max-width:640px;margin-left:auto;margin-right:auto}
+.screen:not(#screen-learning):not(#screen-assess):not(#screen-customplay):not(#screen-customresults):not(#screen-anatomy){max-width:640px;margin-left:auto;margin-right:auto}
 #screen-learning,#screen-assess,#screen-customplay,#screen-customresults{padding-bottom:24px}
 .tab-bar{width:100%}.tab-item{flex:1;min-width:0}.tab-item span{font-size:10px}
 #screen-customplay,#screen-customresults{max-width:820px;margin:0 auto}

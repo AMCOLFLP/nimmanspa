@@ -9,8 +9,9 @@
 <title>NIMMAN Willow &amp; Stone English</title>
 <link rel="icon" type="image/png" href="assets/nimman-logo-small.png">
 <link rel="apple-touch-icon" href="assets/nimman-logo.png">
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="learning.css">
+<link rel="stylesheet" href="styles.css?v=png-bodymap-1">
+<link rel="stylesheet" href="learning.css?v=png-bodymap-1">
+<link rel="stylesheet" href="anatomy.css?v=png-bodymap-1">
 </head>
 <body>
 
@@ -607,9 +608,15 @@
   <section class="screen" id="screen-anatomy">
     <div class="crumb"><button class="crumb-back" onclick="Nav.go('home','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="anatomyHeading">Body map</h2></div>
     <p class="lede" data-i18n="anatomyLede"></p>
-    <div class="chip-scroll" id="anatomyViewChips"></div>
-    <div id="anatomyStage"></div>
-    <div id="anatomyDetail" aria-live="polite"></div>
+    <div id="anatomyModelControls"></div>
+    <div id="anatomyViewChips"></div>
+    <div class="an-layout">
+      <div class="an-figure-column"><div id="anatomyStage"></div></div>
+      <div class="an-info-column">
+        <div id="anatomyDetail" aria-live="polite" tabindex="-1"></div>
+        <section id="anatomyWordList"></section>
+      </div>
+    </div>
     <div id="anatomyRelated"></div>
     <p class="anatomy-note" data-i18n="anatomyNote"></p>
   </section>
@@ -870,7 +877,7 @@
 
 </div>
 
-<script src="js/i18n.js"></script>
+<script src="js/i18n.js?v=png-bodymap-1"></script>
 <script src="js/data.js"></script>
 <script src="js/activities.js"></script>
 <script src="js/data-cruise.js"></script>
@@ -891,8 +898,9 @@
 <script src="js/learning-hub.js"></script>
 <script src="js/assessment-builder.js"></script>
 <script src="js/learning-i18n.js"></script>
-<script src="js/anatomy.js"></script>
+<script src="js/anatomy-data.js?v=png-bodymap-1"></script>
+<script src="js/anatomy.js?v=png-bodymap-1"></script>
 <script src="js/sidebar.js"></script>
-<script src="js/app.js"></script>
+<script src="js/app.js?v=png-bodymap-1"></script>
 </body>
 </html>

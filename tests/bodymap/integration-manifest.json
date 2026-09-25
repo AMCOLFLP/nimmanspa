@@ -1,0 +1,47 @@
+{
+  "release": "png-bodymap-1",
+  "base": "nimmanspa(1).zip",
+  "modified": [
+    "index.html",
+    "js/anatomy.js",
+    "js/app.js",
+    "js/i18n.js",
+    "learning.css",
+    "styles.css"
+  ],
+  "added": [
+    "BODY_MAP_RELEASE.md",
+    "anatomy.css",
+    "assets/anatomy/female-back.png",
+    "assets/anatomy/female-face.png",
+    "assets/anatomy/female-front.png",
+    "assets/anatomy/male-back.png",
+    "assets/anatomy/male-face.png",
+    "assets/anatomy/male-front.png",
+    "assets/anatomy/manifest.json",
+    "content/anatomy-map.json",
+    "js/anatomy-data.js",
+    "tests/bodymap/asset-report.json",
+    "tests/bodymap/browser-report.json",
+    "tests/bodymap/browser_helpers.py",
+    "tests/bodymap/browser_test.py",
+    "tests/bodymap/female-back-desktop.png",
+    "tests/bodymap/female-face-desktop.png",
+    "tests/bodymap/female-face-mobile-thai.png",
+    "tests/bodymap/female-front-desktop.png",
+    "tests/bodymap/learning-regression-report.json",
+    "tests/bodymap/male-back-desktop.png",
+    "tests/bodymap/male-back-mobile-thai.png",
+    "tests/bodymap/male-face-desktop.png",
+    "tests/bodymap/male-front-desktop.png",
+    "tests/bodymap/standalone-preview.png",
+    "tests/bodymap/validate_assets.py",
+    "tools/build_bodymap_preview.py"
+  ],
+  "unchangedCount": 86,
+  "protectedContentAndBackendUnchanged": true,
+  "notes": [
+    "PNG images copied without re-encoding; source hashes in assets/anatomy/manifest.json.",
+    "No clinical validation is claimed."
+  ]
+}

@@ -903,6 +903,7 @@ const App = (() => {
     Vocab.rerender();
     if(Courses.currentId!=='salon')Practice.rerender();
     AssessmentBuilder.rerender();
+    if (document.getElementById('screen-anatomy').classList.contains('active')) Anatomy.render();
     if (document.getElementById('screen-daily').classList.contains('active')) Daily.rerender();
     if (document.getElementById('screen-settings').classList.contains('active')) renderSettings();
     if (document.getElementById('screen-account').classList.contains('active')) renderAccount();

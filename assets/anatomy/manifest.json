@@ -1,0 +1,62 @@
+[
+  {
+    "file": "assets/anatomy/female-front.png",
+    "source": "full_body_woman_cutout_on_transparency.png",
+    "width": 887,
+    "height": 1774,
+    "format": "PNG",
+    "mode": "RGBA",
+    "sha256": "fe1cc8ea36625f64b2734249fe19123e4d00cd583e426aedfe0bd2ee6636600a",
+    "bytes": 908734
+  },
+  {
+    "file": "assets/anatomy/female-back.png",
+    "source": "rear_view_woman_in_nude_underwear.png",
+    "width": 887,
+    "height": 1774,
+    "format": "PNG",
+    "mode": "RGBA",
+    "sha256": "19b1a42a6abab792520121ba273396367abead2370a4862bf54c599f704ed006",
+    "bytes": 902714
+  },
+  {
+    "file": "assets/anatomy/female-face.png",
+    "source": "studio_portrait_cutout_with_high_bun.png",
+    "width": 1122,
+    "height": 1402,
+    "format": "PNG",
+    "mode": "RGBA",
+    "sha256": "942e81a501d8e4c4cdba6e39df4401d83e59cbd60362f6298b4f4fda113facf8",
+    "bytes": 1465789
+  },
+  {
+    "file": "assets/anatomy/male-front.png",
+    "source": "full_body_male_anatomy_reference.png",
+    "width": 887,
+    "height": 1774,
+    "format": "PNG",
+    "mode": "RGBA",
+    "sha256": "3ec72fbcf500e9abcdd33af9a6f8e6bb6d7720e00b619bfe30e4b219c77369ed",
+    "bytes": 1024161
+  },
+  {
+    "file": "assets/anatomy/male-back.png",
+    "source": "athletic_man_rear_view_cutout.png",
+    "width": 887,
+    "height": 1774,
+    "format": "PNG",
+    "mode": "RGBA",
+    "sha256": "cc344783cdde24aa8b5388e0534a30f8640ededdc33decb568b860baa828e757",
+    "bytes": 1005550
+  },
+  {
+    "file": "assets/anatomy/male-face.png",
+    "source": "front_facing_studio_portrait_cutout.png",
+    "width": 1122,
+    "height": 1402,
+    "format": "PNG",
+    "mode": "RGBA",
+    "sha256": "93845c481ac5b1d24e022a801fe3f343aa363ebd02e2f7fd703c9c42dcd43a58",
+    "bytes": 1597518
+  }
+]
