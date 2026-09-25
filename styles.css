@@ -481,25 +481,25 @@ main{position:relative;}
 .chip:active{transform:scale(.96);}
 
 /* =========================================================================
-   Words screen filters
-   Three scrolling chip rows became three dropdowns: the rows cost three
-   lines, and with thirteen spa categories they ran off the edge with no
-   sign there was more. Activity spans the full width on phones because it
-   is the primary control; the two filters share the line below it.
+   Filter bar — Words and Phrases
+   Scrolling chip rows became dropdowns: the rows cost a line each, and with
+   twenty-odd categories they ran off the edge with no sign there was more.
+   A field marked .wide takes the whole line on phones (the Words activity
+   picker, which is the primary control); the rest share a line.
    ========================================================================= */
-.vocab-controls{display:grid;grid-template-columns:1fr 1fr;gap:10px 9px;margin-bottom:14px;}
-.vocab-controls > .vc-field:first-child{grid-column:1/-1;}
+.filter-bar{display:grid;grid-template-columns:1fr 1fr;gap:10px 9px;margin-bottom:14px;}
+.filter-bar > .filter-field.wide{grid-column:1/-1;}
 @media (min-width:600px){
-  .vocab-controls{grid-template-columns:repeat(3,1fr);}
-  .vocab-controls > .vc-field:first-child{grid-column:auto;}
+  .filter-bar{grid-template-columns:repeat(3,1fr);}
+  .filter-bar > .filter-field.wide{grid-column:auto;}
 }
-.vc-field{display:flex;flex-direction:column;gap:5px;min-width:0;cursor:pointer;}
-.vc-field[hidden]{display:none;}
-.vc-field > span{
+.filter-field{display:flex;flex-direction:column;gap:5px;min-width:0;cursor:pointer;}
+.filter-field[hidden]{display:none;}
+.filter-field > span{
   font-size:9.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
   color:var(--ink-faint);padding-left:3px;
 }
-.vc-field select{
+.filter-field select{
   width:100%;font-family:var(--sans);font-size:13.5px;font-weight:600;
   padding:11px 34px 11px 13px;
   border:1.5px solid var(--stone-2);border-radius:12px;
@@ -509,18 +509,21 @@ main{position:relative;}
   background-repeat:no-repeat;background-position:right 12px center;background-size:15px;
   text-overflow:ellipsis;
 }
-.vc-field select:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+.filter-field select:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
 
-/* Links out of the Words screen — navigation, not filters. */
-.vocab-links{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
-.vocab-links:empty{display:none;}
-.vocab-link{
+/* Links out of a content screen to its related sections — navigation, not
+   filters. Used by Words (Body map, Pronunciation) and Phrases (Say this,
+   not that) so that everything listed in the side panel is also reachable
+   from the tab that owns it. */
+.nav-links{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
+.nav-links:empty{display:none;}
+.nav-link{
   font:inherit;font-size:12.5px;font-weight:700;color:var(--gold-deep);
   background:var(--gold-mist);border:1px solid var(--gold-line);
   border-radius:100px;padding:8px 14px;min-height:40px;cursor:pointer;
   transition:background .16s ease, transform .12s ease;
 }
-.vocab-link:active{transform:scale(.97);}
+.nav-link:active{transform:scale(.97);}
 
 /* =========================================================================
    Vocabulary — flashcards

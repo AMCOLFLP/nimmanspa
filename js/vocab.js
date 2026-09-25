@@ -50,7 +50,7 @@ const Vocab = (() => {
 
     const links = document.getElementById('vocabLinks');
     links.innerHTML = VOCAB_MODES.filter(m => m.goto && (!m.when || m.when())).map(m =>
-      `<button type="button" class="vocab-link" data-goto="${m.goto}">${esc(I18N.t(m.key))} <span aria-hidden="true">↗</span></button>`
+      `<button type="button" class="nav-link" data-goto="${m.goto}">${esc(I18N.t(m.key))} <span aria-hidden="true">↗</span></button>`
     ).join('');
   }
 

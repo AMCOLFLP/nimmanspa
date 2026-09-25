@@ -267,6 +267,7 @@ const UI_STRINGS = {
     vocabFieldActivity: 'Activity',
     vocabFieldCategory: 'Category',
     vocabFieldLevel: 'Level',
+    phraseFieldSituation: 'Situation',
 
     sidebarGroupLearn: 'Learn',
     sidebarGroupWords: 'Words & phrases',
@@ -552,6 +553,7 @@ const UI_STRINGS = {
     vocabFieldActivity: 'กิจกรรม',
     vocabFieldCategory: 'หมวดหมู่',
     vocabFieldLevel: 'ระดับ',
+    phraseFieldSituation: 'สถานการณ์',
 
     sidebarGroupLearn: 'เรียนรู้',
     sidebarGroupWords: 'คำศัพท์และประโยค',

@@ -493,8 +493,24 @@ const App = (() => {
   let activePhraseCat = 'everyday';
 
   function renderPhraseLevelChips(){
-    const wrap = document.getElementById('phraseLevelChips');
-    if (wrap) wrap.innerHTML = levelChipsMarkup(phraseLevel);
+    const sel = document.getElementById('phraseLevelSelect');
+    if (!sel) return;
+    sel.innerHTML = LEVEL_FILTERS.map(f =>
+      `<option value="${f.id}"${f.id === phraseLevel ? ' selected' : ''}>${LearningContent.esc(I18N.t(f.key))}</option>`
+    ).join('');
+  }
+
+  /* "Say this, not that" is phrase material, so the Phrases tab has to lead
+     there — otherwise it is listed in the side panel and reachable from
+     nowhere else but Home, which is how it was getting lost. Mirrors the
+     link pills on the Words screen. */
+  function renderPhraseLinks(){
+    const wrap = document.getElementById('phraseLinks');
+    if (!wrap) return;
+    const has = typeof SAYTHIS !== 'undefined' && SAYTHIS.length;
+    wrap.innerHTML = has
+      ? `<button type="button" class="nav-link" data-goto="saythis">${I18N.t('menuSaythisTitle')} <span aria-hidden="true">↗</span></button>`
+      : '';
   }
 
   function renderPhraseCats(){
@@ -502,8 +518,9 @@ const App = (() => {
     if (!PHRASES.some(c => c.id === activePhraseCat)){
       activePhraseCat = (PHRASES[0] && PHRASES[0].id) || 'everyday';
     }
-    document.getElementById('phraseCatChips').innerHTML = PHRASES.map(c =>
-      `<button class="chip ${c.id === activePhraseCat ? 'active' : ''}" data-cat="${c.id}">${I18N.current === 'th' ? c.th : c.en}</button>`
+    const e = LearningContent.esc;
+    document.getElementById('phraseCatSelect').innerHTML = PHRASES.map(c =>
+      `<option value="${e(c.id)}"${c.id === activePhraseCat ? ' selected' : ''}>${e(I18N.current === 'th' ? c.th : c.en)}</option>`
     ).join('');
   }
 
@@ -584,21 +601,22 @@ const App = (() => {
   }
 
   function bindPhrases(){
+    document.getElementById('phraseLinks').addEventListener('click', e => {
+      const link = e.target.closest('[data-goto]');
+      if (link) Nav.go(link.dataset.goto);
+    });
     bindSearch('phraseSearch', 'phraseSearchClear', val => {
       phraseQuery = val;
       renderPhraseList();
     });
-    document.getElementById('phraseLevelChips').addEventListener('click', e => {
-      const chip = e.target.closest('.chip'); if (!chip) return;
-      phraseLevel = chip.dataset.level;
+    document.getElementById('phraseLevelSelect').addEventListener('change', e => {
+      phraseLevel = e.target.value;
       renderPhraseLevelChips();
       renderPhraseList();
     });
-    document.getElementById('phraseCatChips').addEventListener('click', e => {
-      const chip = e.target.closest('.chip'); if (!chip) return;
-      activePhraseCat = chip.dataset.cat;
+    document.getElementById('phraseCatSelect').addEventListener('change', e => {
+      activePhraseCat = e.target.value;
       renderPhraseCats(); renderPhraseList();
-      chip.scrollIntoView({ behavior:'smooth', inline:'center', block:'nearest' });
     });
     document.getElementById('phraseList').addEventListener('click', e => {
       const btn = e.target.closest('.mini-play'); if (!btn) return;
@@ -896,6 +914,7 @@ const App = (() => {
     renderPron();
     renderPhraseCats();
     renderPhraseLevelChips();
+    renderPhraseLinks();
     renderPhraseList();
     renderSayThis();
     renderAssessHub();

@@ -135,8 +135,17 @@ a once-a-day habit belongs, and Home stays highlighted while you are in it.
 
 The side panel (button at the top left, or docked from 1024px) is the full
 index, grouped Learn / Words & phrases / Practice / Account. Everything in
-the app is listed there exactly once, so nothing is reachable from only one
-screen. Home's list below the stats shows only what is not already a tab.
+the app is listed there exactly once. Nothing is reachable only from the
+panel: every entry in it can also be reached from the bottom bar, through
+the tab that owns it.
+  Daily Five           Home, the card at the top
+  Body map             Words, link below the filters
+  Pronunciation        Words, link below the filters
+  Say this, not that   Phrases, link below the filters
+  Your account         the avatar, top right
+  Settings             Your account
+Home's list below the stats shows the same extras, so there are two routes
+to each of them and none depends on finding the panel.
 
 Entries appear only where the course has that content: the cruise course has
 no Body map, and the salon course has neither Body map, Pronunciation nor
