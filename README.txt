@@ -122,6 +122,26 @@ demo.
 Browser speech recognition may involve the browser provider's remote service.
 No audio recording storage is added by this release.
 
+GETTING AROUND
+Five tabs along the bottom, for the five things a learner does repeatedly:
+  Home      today's card, streak, phrase of the day, continue your path
+  Learn     the module path for this course
+  Words     vocabulary drills, plus Body map and Pronunciation
+  Phrases   phrase banks, plus Say this, not that
+  Practice  build an assessment, and the original activity library
+
+Daily Five no longer has its own tab. It is a card on Home, which is where
+a once-a-day habit belongs, and Home stays highlighted while you are in it.
+
+The side panel (button at the top left, or docked from 1024px) is the full
+index, grouped Learn / Words & phrases / Practice / Account. Everything in
+the app is listed there exactly once, so nothing is reachable from only one
+screen. Home's list below the stats shows only what is not already a tab.
+
+Entries appear only where the course has that content: the cruise course has
+no Body map, and the salon course has neither Body map, Pronunciation nor
+Say this, not that.
+
 BODY MAP — WHERE TO FIND IT
 Home > Body map, the side panel, or the Body map chip in the Vocab screen's
 row of drills. It does not have its own tab in the bottom bar: it is another

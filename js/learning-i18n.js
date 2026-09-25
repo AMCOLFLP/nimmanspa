@@ -1,6 +1,6 @@
 /* New section labels and corrected menu/account descriptions. */
 Object.assign(UI_STRINGS.en,{
- navLearning:'Learning',navPractice:'Assess',practiceHeading:'Build an assessment',practiceLede:'',menuPracticeDesc:'Choose content, number of entries and assessment type',modulesCount:'Learning tools',
+ navLearning:'Learn',navPractice:'Practice',practiceHeading:'Build an assessment',practiceLede:'',menuPracticeDesc:'Choose content, number of entries and assessment type',modulesCount:'Learning tools',
  courseSpaName:'Cruise Spa English',courseSpaTagline:'Spa Therapist · learning & interviews',courseSpaDesc:'Follow the five-day course structure: cruise spa careers, self-introduction, terminology, guest communication and mock interview preparation.',
  courseCruiseName:'Cruise Ship Employment',courseCruiseTagline:'Foundation · work · interviews',courseCruiseDesc:'Study the source-aligned foundation modules, workplace communication, guest service and job interview preparation. Safety language is a clearly labelled supplement.',
  courseSalonName:'Cruise Hair & Nail English',courseSalonTagline:'Hair & Nail · learning & interviews',courseSalonDesc:'Role-specific hair and nail terminology, shared guest-service language, professional introductions and interview preparation.',

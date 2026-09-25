@@ -4,7 +4,10 @@
 
 const Nav = {
   tabFor: {
-    home:'home', learning:'learning', customplay:'assess', customresults:'assess', account:'home', settings:'home', daily:'daily', vocab:'vocab', anatomy:'vocab', pron:'assess',
+    /* Which bottom-bar tab lights up for each screen. Daily lost its own tab
+       (it is a card on Home, not a place you browse) and Pronunciation moved
+       under Words, so both point at their new parent. */
+    home:'home', learning:'learning', customplay:'assess', customresults:'assess', account:'home', settings:'home', daily:'home', vocab:'vocab', anatomy:'vocab', pron:'vocab',
     phrases:'phrases', saythis:'phrases',
     assess:'assess', mcquiz:'assess', fillquiz:'assess', listen:'assess', speaking:'assess',
     builder:'assess', truefalse:'assess', errorfix:'assess', results:'assess', practiceplay:'assess',
@@ -13,7 +16,7 @@ const Nav = {
   // Left-to-right tab bar order, used only to pick a slide direction when
   // jumping directly between two root/tab screens (e.g. Home's "Phrase of
   // the day" card opening the Phrases tab).
-  rootOrder: ['home', 'learning', 'daily', 'vocab', 'phrases', 'assess'],
+  rootOrder: ['home', 'learning', 'vocab', 'phrases', 'assess'],
 
   /* screen (required), dir ('back' | 'forward', optional).
      Left unset, direction is inferred from the app's tab hierarchy: leaving

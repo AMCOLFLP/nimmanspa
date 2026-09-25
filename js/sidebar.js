@@ -86,22 +86,33 @@ const Sidebar = (() => {
     </div>`;
   }
 
-  function mainNav(){
+  /* The bottom bar carries the five places a learner goes repeatedly; this
+     panel is the full index, grouped, so everything in the app is listed
+     exactly once and nothing is reachable only from one screen. Entries
+     appear only where the active course actually has that content. */
+  function navGroups(){
     return [
-      { screen:'home',     key:'navHome' },
-      { screen:'learning', key:'navLearning' },
-      { screen:'daily',    key:'navDaily' },
-      { screen:'vocab',    key:'navVocab' },
-      // Only the courses that teach body parts have a body map.
-      ...(Anatomy.available() ? [{ screen:'anatomy', key:'menuAnatomyTitle' }] : []),
-      { screen:'phrases',  key:'navPhrases' },
-      { screen:'assess',   key:'navPractice' },
+      { items:[{ screen:'home', key:'navHome' }] },
+      { titleKey:'sidebarGroupLearn', items:[
+        { screen:'learning', key:'navLearning' },
+        { screen:'daily',    key:'navDaily' },
+      ]},
+      { titleKey:'sidebarGroupWords', items:[
+        { screen:'vocab',   key:'navVocab' },
+        ...(Anatomy.available() ? [{ screen:'anatomy', key:'menuAnatomyTitle' }] : []),
+        ...(typeof PRON !== 'undefined' && PRON.length ? [{ screen:'pron', key:'menuPronTitle' }] : []),
+        { screen:'phrases', key:'navPhrases' },
+        ...(typeof SAYTHIS !== 'undefined' && SAYTHIS.length ? [{ screen:'saythis', key:'menuSaythisTitle' }] : []),
+      ]},
+      { titleKey:'sidebarGroupPractice', items:[
+        { screen:'assess', key:'navPractice' },
+      ]},
+      { titleKey:'sidebarGroupAccount', items:[
+        { screen:'account',  key:'accountHeading' },
+        { screen:'settings', key:'settingsHeading' },
+      ]},
     ];
   }
-  const NAV_FOOT = [
-    { screen:'account',  key:'accountHeading' },
-    { screen:'settings', key:'settingsHeading' },
-  ];
 
   function navList(items){
     const active = currentScreen();
@@ -109,6 +120,12 @@ const Sidebar = (() => {
       `<button class="sb-nav-item${n.screen === active ? ' active' : ''}" data-sb-go="${n.screen}">
         ${esc(I18N.t(n.key))}
       </button>`).join('');
+  }
+
+  function navMarkup(){
+    return navGroups().map(g =>
+      `${g.titleKey ? `<p class="sb-nav-title">${esc(I18N.t(g.titleKey))}</p>` : ''}
+       ${navList(g.items)}`).join('');
   }
 
   function currentScreen(){
@@ -164,9 +181,7 @@ const Sidebar = (() => {
       </div>
 
       <nav class="sb-nav" aria-label="${esc(I18N.t('sidebarGoTo'))}">
-        ${navList(mainNav())}
-        <span class="sb-nav-rule"></span>
-        ${navList(NAV_FOOT)}
+        ${navMarkup()}
       </nav>
 
       <button class="sb-hide" data-sb-action="hide">${esc(I18N.t('sidebarHide'))}</button>

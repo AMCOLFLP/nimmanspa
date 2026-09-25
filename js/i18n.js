@@ -12,7 +12,7 @@ const UI_STRINGS = {
     courseProgress: 'Course progress',
     complete: 'complete',
 
-    navHome: 'Home', navVocab: 'Vocab', navSpeak: 'Speak', navPhrases: 'Phrases', navAssess: 'Assess',
+    navHome: 'Home', navVocab: 'Words', navSpeak: 'Speak', navPhrases: 'Phrases', navAssess: 'Assess',
 
     greetingEyebrow: 'Good to see you',
     greetingHeading: 'Ready for today\u2019s practice?',
@@ -264,6 +264,10 @@ const UI_STRINGS = {
     anatomyNone: 'This course does not include body vocabulary.',
     anatomyNote: 'AI-generated PNG models for learning English body-area vocabulary. Hotspots indicate approximate surface locations; some areas are beneath skin or clothing. This is not a clinical anatomy reference or a guide to treatment, pressure points or diagnosis.',
 
+    sidebarGroupLearn: 'Learn',
+    sidebarGroupWords: 'Words & phrases',
+    sidebarGroupPractice: 'Practice',
+    sidebarGroupAccount: 'Account',
     sidebarTitle: 'Your progress',
     sidebarMenu: 'Menu',
     sidebarClose: 'Close menu',
@@ -541,6 +545,10 @@ const UI_STRINGS = {
     anatomyNone: 'หลักสูตรนี้ไม่มีคำศัพท์เกี่ยวกับร่างกาย',
     anatomyNote: 'ภาพแบบจำลอง PNG ที่สร้างด้วย AI สำหรับเรียนคำศัพท์ภาษาอังกฤษเกี่ยวกับร่างกาย จุดบนภาพแสดงตำแหน่งผิวโดยประมาณ บางบริเวณอยู่ใต้ผิวหนังหรือเสื้อผ้า ไม่ใช่เอกสารอ้างอิงทางกายวิภาคคลินิกหรือคำแนะนำเกี่ยวกับทรีตเมนต์ จุดกด หรือการวินิจฉัย',
 
+    sidebarGroupLearn: 'เรียนรู้',
+    sidebarGroupWords: 'คำศัพท์และประโยค',
+    sidebarGroupPractice: 'ฝึกฝน',
+    sidebarGroupAccount: 'บัญชี',
     sidebarTitle: 'ความคืบหน้าของคุณ',
     sidebarMenu: 'เมนู',
     sidebarClose: 'ปิดเมนู',

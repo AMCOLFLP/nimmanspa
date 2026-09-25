@@ -1550,15 +1550,6 @@ html[lang="th"] .sc-word{font-family:var(--serif);}
 .dc-pills i{width:20px;height:4px;border-radius:4px;background:rgba(255,255,255,.22);}
 .dc-pills i.on{background:var(--gold-bright);}
 
-/* 6-tab bottom nav needs slightly tighter cells */
-.tab-bar.six .tab-item{padding:7px 2px;}
-.tab-bar.six .tab-item span{font-size:9px;letter-spacing:0;}
-.tab-bar.six .tab-icon-wrap{width:28px;height:28px;}
-.tab-bar.six .tab-item svg{width:19px;height:19px;}
-@media (max-width:359px){
-  .tab-bar.six .tab-item span{font-size:8.5px;}
-}
-
 .sr-live{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
 
 @media (prefers-reduced-motion:reduce){
@@ -2432,6 +2423,11 @@ body.sb-open #sideBar{transform:none;}
 .sb-nav-item:active{background:var(--mist);}
 .sb-nav-item.active{background:var(--gold-mist);color:var(--gold-deep);font-weight:800;}
 .sb-nav-rule{height:1px;background:var(--stone);margin:8px 4px;}
+.sb-nav-title{
+  font-size:9.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink-faint);margin:14px 0 4px;padding:0 12px;
+}
+.sb-nav-title:first-child{margin-top:4px;}
 
 .sb-hide{
   margin-top:auto;font:inherit;font-size:11.5px;font-weight:700;color:var(--ink-faint);

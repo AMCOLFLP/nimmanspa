@@ -16,6 +16,7 @@ const VOCAB_MODES = [
   { id:'sort',     key:'modeSort' },
   { id:'speed',    key:'modeSpeed' },
   { id:'anatomy',  key:'menuAnatomyTitle', goto:'anatomy', when:() => Anatomy.available() },
+  { id:'pron',     key:'menuPronTitle',    goto:'pron',    when:() => typeof PRON !== 'undefined' && PRON.length > 0 },
 ];
 
 const Vocab = (() => {
