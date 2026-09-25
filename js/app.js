@@ -4,7 +4,7 @@
 
 const Nav = {
   tabFor: {
-    home:'home', account:'home', settings:'home', daily:'daily', vocab:'vocab', pron:'assess',
+    home:'home', learning:'learning', customplay:'assess', customresults:'assess', account:'home', settings:'home', daily:'daily', vocab:'vocab', pron:'assess',
     phrases:'phrases', saythis:'phrases',
     assess:'assess', mcquiz:'assess', fillquiz:'assess', listen:'assess', speaking:'assess',
     builder:'assess', truefalse:'assess', errorfix:'assess', results:'assess', practiceplay:'assess',
@@ -13,7 +13,7 @@ const Nav = {
   // Left-to-right tab bar order, used only to pick a slide direction when
   // jumping directly between two root/tab screens (e.g. Home's "Phrase of
   // the day" card opening the Phrases tab).
-  rootOrder: ['home', 'daily', 'vocab', 'phrases', 'assess'],
+  rootOrder: ['home', 'learning', 'daily', 'vocab', 'phrases', 'assess'],
 
   /* screen (required), dir ('back' | 'forward', optional).
      Left unset, direction is inferred from the app's tab hierarchy: leaving
@@ -27,6 +27,7 @@ const Nav = {
     Vocab.stopTimers();
     Speaking.stopAll();   // never leave a microphone live behind a screen change
     Speech.stop();
+    if(this.transitionCleanup)this.transitionCleanup();
 
     const current = document.querySelector('.screen.active');
     const target = document.getElementById('screen-' + screen);
@@ -42,6 +43,9 @@ const Nav = {
       if (screen === 'speaking') Speaking.open();
       if (screen === 'vocab'){ App.renderVocabHint(); Vocab.refreshChrome(); }
       if (screen === 'assess') App.renderAssessHub();
+      if (screen === 'learning') LearningHub.render();
+      if (screen === 'customplay') AssessmentBuilder.renderSession();
+      if (screen === 'customresults') AssessmentBuilder.renderResults();
       if (screen === 'account') App.renderAccount();
       if (screen === 'home') App.refreshHome();
     };
@@ -86,6 +90,7 @@ const Nav = {
     const cleanup = () => {
       if (done) return;
       done = true;
+      if(this.transitionCleanup===cleanup)this.transitionCleanup=null;
       current.classList.remove('active', outClass);
       target.classList.remove(inClass);
       target.removeEventListener('animationend', onAnimEnd);
@@ -98,6 +103,7 @@ const Nav = {
     // never see -- and so never remove -- its real match, leak one stale
     // listener per navigation.
     const onAnimEnd = e => { if (e.target === target) cleanup(); };
+    this.transitionCleanup=cleanup;
     target.addEventListener('animationend', onAnimEnd);
     setTimeout(cleanup, 400); // safety net if animationend never fires (e.g. tab backgrounded mid-transition)
 
@@ -219,7 +225,7 @@ const App = (() => {
     document.getElementById('courseList').innerHTML = Courses.all.map(c => {
       const st = Courses.stats(c.id);
       const isCurrent = c.id === current;
-      return `<div class="course-card ${isCurrent ? 'current' : ''}" data-course="${c.id}">
+      return `<div class="course-card ${isCurrent ? 'current' : ''}" data-course="${c.id}" role="button" tabindex="0" aria-label="${I18N.t(c.nameKey)}">
         <div class="cc-top">
           <span class="cc-mark ${c.id}">${COURSE_ICONS[c.icon]}</span>
           <span class="cc-title">
@@ -232,7 +238,7 @@ const App = (() => {
         <div class="cc-stats">
           <span class="cc-stat"><b>${st.words}</b><span>${I18N.t('courseWords')}</span></span>
           <span class="cc-stat"><b>${st.phrases}</b><span>${I18N.t('coursePhrases')}</span></span>
-          <span class="cc-stat"><b>${st.sayThis}</b><span>${I18N.t('courseSayThis')}</span></span>
+          <span class="cc-stat"><b>${CURRICULUM_DATA.modules[c.id].length}</b><span>${I18N.t('courseSections')}</span></span>
         </div>
         <div class="cc-go">
           ${I18N.t(isCurrent ? 'courseContinue' : 'courseStart')}
@@ -275,7 +281,7 @@ const App = (() => {
       Progress.touchStreak();
       renderAll();
       Vocab.resetForCourse();
-      Nav.go('home');
+      LearningHub.open();
     } finally {
       selectingCourse = false;
       if (card) card.classList.remove('loading');
@@ -283,6 +289,7 @@ const App = (() => {
   }
 
   function bindCourseChooser(){
+    document.getElementById('courseList').addEventListener('keydown',e=>{const card=e.target.closest('[data-course]');if(card&&(e.key==='Enter'||e.key===' ')){e.preventDefault();selectCourse(card.dataset.course);}});
     document.getElementById('courseList').addEventListener('click', e => {
       const card = e.target.closest('[data-course]');
       if (card) selectCourse(card.dataset.course);
@@ -313,6 +320,7 @@ const App = (() => {
   }
 
   function renderCourseChrome(){
+    document.querySelectorAll('#screen-home [onclick]').forEach(el=>{const action=el.getAttribute('onclick')||'';if(/Nav\.go\('(?:pron|saythis)'/.test(action))el.hidden=Courses.currentId==='salon';});
     const c = Courses.active;
     if (!c) return;
     // The tip of the day is course-specific.
@@ -349,9 +357,11 @@ const App = (() => {
     document.getElementById('statQuiz').textContent = avg === null ? '—' : avg + '%';
     document.getElementById('statLessons').textContent = Progress.activitiesCompleted();
 
-    const pct = Progress.courseProgressPct();
+    const lm=CURRICULUM_DATA.modules[Courses.currentId]||[], ls=Progress.learningState();
+    const studied=lm.filter(m=>ls.modules[m.id]).length;
+    const pct = lm.length?Math.round(studied/lm.length*100):0;
     document.getElementById('courseProgressFill').style.setProperty('--pct', pct + '%');
-    document.getElementById('courseProgressLabel').textContent = `${pct}% ${I18N.t('complete')}`;
+    document.getElementById('courseProgressLabel').textContent = `${studied}/${lm.length}`;
 
     const initial = (user && !user.guest && user.name) ? user.name.trim()[0].toUpperCase() : 'G';
     document.getElementById('avatarBtn').textContent = initial;
@@ -613,6 +623,10 @@ const App = (() => {
 
   /* ---------------- assessment hub ---------------- */
   function renderAssessHub(){
+    AssessmentBuilder.render();
+    const legacy=document.getElementById('legacyPractice');
+    if(legacy)legacy.hidden=Courses.currentId==='salon';
+    if(Courses.currentId==='salon')return;
     Practice.renderControls();
     // A sixteen-card list is a long scroll, so offer a jump to each group.
     document.getElementById('practiceJump').innerHTML = PRACTICE_GROUPS.map((g, i) =>
@@ -865,6 +879,8 @@ const App = (() => {
 
   function renderAll(){
     I18N.applyStatic();
+    LearningHub.home();
+    LearningHub.render();
     renderCourseChrome();
     refreshHome();
     renderPron();
@@ -878,7 +894,8 @@ const App = (() => {
   function rerenderAll(){
     renderAll();
     Vocab.rerender();
-    Practice.rerender();
+    if(Courses.currentId!=='salon')Practice.rerender();
+    AssessmentBuilder.rerender();
     if (document.getElementById('screen-daily').classList.contains('active')) Daily.rerender();
     if (document.getElementById('screen-settings').classList.contains('active')) renderSettings();
     if (document.getElementById('screen-account').classList.contains('active')) renderAccount();
@@ -903,6 +920,12 @@ const App = (() => {
     Practice.init();
     Daily.init();
     Speaking.init();
+    LearningHub.init();AssessmentBuilder.init();
+    window.addEventListener('nimman:progress-status',()=>{
+      const b=document.getElementById('learningSaveStatus');if(!b)return;
+      const status=Progress.status;b.hidden=!['load-error','save-error'].includes(status);
+      b.textContent=I18N.current==='th'?'ยังบันทึกในบัญชีไม่ได้ กรุณาตรวจสอบการเชื่อมต่อ โหลดความคืบหน้าเดิมไม่สำเร็จจะไม่เขียนทับข้อมูลเดิม':'Account saving is unavailable. Check your connection. A failed progress load will not overwrite existing records.';
+    });
 
     document.getElementById('avatarBtn').addEventListener('click', () => Nav.go('account'));
     document.getElementById('logoutBtn').addEventListener('click', () => {

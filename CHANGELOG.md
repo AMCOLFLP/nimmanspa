@@ -1,3 +1,14 @@
+# 2026-09-25 — Learning paths and assessment builder
+
+Added three source-aligned learning paths, nineteen learning sections (including one clearly
+labelled supplement), per-entry module mapping, seven configurable assessment formats,
+manual target selection, exact item counts, independent attempt summaries and missed-only
+retry. Added source-conflict notes and a searchable module guide. Retained original content
+and course IDs. Added a progress-load write guard and rapid-navigation cleanup. Original
+activity libraries remain separate from the new filters. See LEARNING_RELEASE_README.md.
+
+---
+
 # Current release: accounts & progress move to a PHP/MySQL backend — 22 September 2026
 
 Accounts and their progress no longer live only in the browser. Registering

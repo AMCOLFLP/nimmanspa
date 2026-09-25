@@ -79,6 +79,13 @@ const Courses = (() => {
       },
       defaultPhraseCat: 'everyday',
     },
+    {
+      id: 'salon', nameKey: 'courseSalonName', taglineKey: 'courseSalonTagline', descKey: 'courseSalonDesc',
+      theme:'course-salon', icon:'leaf', domainKey:'domainSalon', domainShortKey:'domainSalonShort',tipKey:'tipSalon',
+      content:{vocab:()=>CurriculumBank.salon.vocab,vocabCategories:()=>CurriculumBank.salon.cats,
+      phrases:()=>CurriculumBank.salon.phrases,sayThis:()=>[],pron:()=>[],mc:()=>[],tf:()=>[],err:()=>[],listen:()=>[],builder:()=>[],fill:()=>[]},
+      defaultPhraseCat:CurriculumBank.salon.phrases[0].id,
+    },
   ];
 
   let active = null;

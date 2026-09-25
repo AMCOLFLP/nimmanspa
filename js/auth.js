@@ -123,7 +123,10 @@ const Progress = (() => {
   let cache = null;
   let cacheKey = null;
   let guestCache = {};     // session-only per course, never sent to the server
-  let saveTimer = null;
+  const saveTimers = new Map();
+  const hydratedKeys = new Set();
+  let progressStatus = 'ready';
+  function setStatus(status){progressStatus=status;window.dispatchEvent(new CustomEvent('nimman:progress-status',{detail:status}));}
 
   /* One progress record per user PER COURSE, so studying spa English and
      cruise English never overwrite each other's words and scores. */
@@ -171,13 +174,15 @@ const Progress = (() => {
   async function hydrate(){
     const key = keyFor();
     if (!key){ load(); return; }
-    if (cache && cacheKey === key) return; // already loaded for this user+course
+    if (cache && cacheKey === key && hydratedKeys.has(key)) return; // successful load only
     try {
       const res = await Api.get(`progress.php?course=${encodeURIComponent(Courses.currentId)}`);
       cache = Object.assign(blank(), res.data || {});
+      hydratedKeys.add(key);setStatus('ready');
     } catch (e){
       if (e && e.status === 401) Auth.forceSignedOut();
-      console.error('Could not load saved progress from the server; starting this session fresh.', e);
+      hydratedKeys.delete(key);setStatus('load-error');
+      console.error('Saved progress could not be loaded. Account writes are blocked to protect existing records.', e);
       cache = blank();
     }
     cacheKey = key;
@@ -185,16 +190,20 @@ const Progress = (() => {
 
   function save(){
     const key = keyFor();
-    if (!key) return; // guest: held in memory only
-    const snapshot = cache;
-    const course = Courses.currentId;
-    clearTimeout(saveTimer);
-    saveTimer = setTimeout(() => {
-      Api.post('progress.php', { course, data: snapshot }).catch(e => {
+    if (!key) return; // guest: session memory only
+    if (!hydratedKeys.has(key)){setStatus('load-error');return;}
+    const snapshot = JSON.parse(JSON.stringify(cache));
+    const course = Courses.currentId, email = Auth.currentUser()?.email;
+    clearTimeout(saveTimers.get(key));setStatus('saving');
+    saveTimers.set(key,setTimeout(() => {
+      saveTimers.delete(key);
+      if (Auth.currentUser()?.email !== email) return;
+      Api.post('progress.php', { course, data: snapshot }).then(()=>setStatus('ready')).catch(e => {
         if (e && e.status === 401) Auth.forceSignedOut();
-        console.error('Could not save progress to the server; it will retry on the next change.', e);
+        setStatus('save-error');
+        console.error('Could not save progress. It will retry on the next change.',e);
       });
-    }, 500);
+    },500));
   }
 
   function clearGuest(){ guestCache = {}; }
@@ -397,7 +406,26 @@ const Progress = (() => {
     p.practiceSessions=p.practiceSessions.slice(-50);save();
   }
 
+  function learningState(){const p=load();return {modules:{...(p.learningModules||{})},items:{...(p.learningItems||{})}};}
+  function setLearningModule(id,value){const p=load();p.learningModules=p.learningModules||{};if(value)p.learningModules[id]=Date.now();else delete p.learningModules[id];save();}
+  function setLearningItem(id,value){const p=load();p.learningItems=p.learningItems||{};if(value)p.learningItems[id]=Date.now();else delete p.learningItems[id];save();}
+  function assessmentPreferences(){return {...(load().assessmentPreferences||{})};}
+  function setAssessmentPreferences(settings){load().assessmentPreferences={...settings};save();}
+  function assessmentHistory(){return {...(load().assessmentHistory||{})};}
+  function assessmentAttempts(){return [...(load().assessmentAttempts||[])];}
+  function recordAssessmentAttempt(result){
+    const p=load();p.assessmentAttempts=p.assessmentAttempts||[];
+    const {answers,...summary}=result;
+    p.assessmentAttempts.push(summary);p.assessmentAttempts=p.assessmentAttempts.slice(-50);
+    p.assessmentHistory=p.assessmentHistory||{};
+    result.answers.forEach(a=>{const old=p.assessmentHistory[a.id]||{attempts:0,right:0};p.assessmentHistory[a.id]={attempts:old.attempts+1,right:old.right+(a.correct?1:0),lastSeen:result.at,lastType:a.type,needsReview:!a.correct||(a.supported&&!!old.needsReview),supported:!!a.supported};});
+    // Store compact attempt summaries and per-item review state; detailed answers remain in the current result/export.
+    save();
+  }
+
   return {
+    learningState,setLearningModule,setLearningItem,assessmentPreferences,setAssessmentPreferences,assessmentHistory,assessmentAttempts,recordAssessmentAttempt,
+    get status(){return progressStatus;},
     practiceSettings, setPracticeSettings, practiceHistory, recordPracticeAnswer, recordPracticeSession,
     touchStreak, markWordKnown, knownCount, isKnown,
     recordQuizResult, quizAverage, activitiesCompleted, courseProgressPct,

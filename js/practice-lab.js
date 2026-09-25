@@ -33,7 +33,7 @@ const Practice = (() => {
   }
   function adapt(item,kind,extra={}){
     const q={...item,...extra,kind,sourceActivity:kind,type:'choice'};
-    q.explain=plain(item.explain||item.why||item.hit||item.miss||item.feedback||'');
+    q.explain=plain(item.miss||item.explain||item.why||item.hit||item.feedback||'');
     q.explainTh=item.explainTh||item.feedbackTh||'';
     if(kind==='truefalse'){q.q=item.statement;q.options=['True','False'];q.correct=item.answer?0:1;}
     if(kind==='errorfix'){q.q=T('Choose the correct or most appropriate rewrite.','เลือกประโยคที่แก้ไขถูกต้องหรือเหมาะสมที่สุด');q.context=item.wrong;}

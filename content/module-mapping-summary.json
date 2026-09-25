@@ -1,0 +1,134 @@
+{
+  "cruise": {
+    "words": 273,
+    "phrases": 200,
+    "modules": [
+      {
+        "id": "c1",
+        "title": "Module 1 · Survival English for Cruise Work",
+        "primary": 37,
+        "withCrossReferences": 41
+      },
+      {
+        "id": "c2",
+        "title": "Module 2 · Introducing Yourself & Your Career",
+        "primary": 16,
+        "withCrossReferences": 16
+      },
+      {
+        "id": "c3",
+        "title": "Module 3 · Cruise Ship Vocabulary",
+        "primary": 62,
+        "withCrossReferences": 62
+      },
+      {
+        "id": "c4",
+        "title": "Module 4 · English for Daily Work",
+        "primary": 87,
+        "withCrossReferences": 87
+      },
+      {
+        "id": "c5",
+        "title": "Module 5 · Guest Service English",
+        "primary": 196,
+        "withCrossReferences": 196
+      },
+      {
+        "id": "c6",
+        "title": "Module 6 · Complaints & Problem Solving",
+        "primary": 17,
+        "withCrossReferences": 17
+      },
+      {
+        "id": "c8",
+        "title": "Module 8 · Multicultural Communication",
+        "primary": 13,
+        "withCrossReferences": 13
+      },
+      {
+        "id": "ca2",
+        "title": "A2 Module · Cruise Ship Job Interview",
+        "primary": 12,
+        "withCrossReferences": 31
+      },
+      {
+        "id": "cs",
+        "title": "Supplement · Safety & Emergency Language",
+        "primary": 33,
+        "withCrossReferences": 33
+      }
+    ]
+  },
+  "spa": {
+    "words": 280,
+    "phrases": 236,
+    "modules": [
+      {
+        "id": "s1",
+        "title": "Day 1 · Cruise Ship & Spa Industry Overview",
+        "primary": 41,
+        "withCrossReferences": 42
+      },
+      {
+        "id": "s2",
+        "title": "Day 2 · Professional Self-Introduction in English",
+        "primary": 8,
+        "withCrossReferences": 20
+      },
+      {
+        "id": "s3",
+        "title": "Day 3 · English for Spa & Cruise Ship Terminology",
+        "primary": 320,
+        "withCrossReferences": 335
+      },
+      {
+        "id": "s4",
+        "title": "Day 4 · Cruise Spa Interview Preparation",
+        "primary": 147,
+        "withCrossReferences": 274
+      },
+      {
+        "id": "s5",
+        "title": "Day 5 · Interview Simulation & Mock Interview",
+        "primary": 0,
+        "withCrossReferences": 155
+      }
+    ]
+  },
+  "salon": {
+    "words": 194,
+    "phrases": 135,
+    "modules": [
+      {
+        "id": "h1",
+        "title": "Day 1 · Cruise Ship & Salon Industry Overview",
+        "primary": 42,
+        "withCrossReferences": 42
+      },
+      {
+        "id": "h2",
+        "title": "Day 2 · Professional Self-Introduction in English",
+        "primary": 8,
+        "withCrossReferences": 20
+      },
+      {
+        "id": "h3",
+        "title": "Day 3 · Professional English & Specialized Terminology",
+        "primary": 164,
+        "withCrossReferences": 180
+      },
+      {
+        "id": "h4",
+        "title": "Day 4 · Interview & Guest Service Preparation",
+        "primary": 115,
+        "withCrossReferences": 306
+      },
+      {
+        "id": "h5",
+        "title": "Day 5 · Interview Simulation & Mock Interview",
+        "primary": 0,
+        "withCrossReferences": 123
+      }
+    ]
+  }
+}
