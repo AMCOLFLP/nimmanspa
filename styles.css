@@ -174,16 +174,6 @@ button{font-family:inherit;}
    `main` is the positioning context for the brief moment a screen switch
    overlaps outgoing and incoming content (see Nav.go in js/app.js).
 
-   Every `.screen` shares z-index:1, so within that shared stacking level the
-   browser paints strictly in DOM order — and in this markup a screen's own
-   sub-screens (and any tab further right in the tab bar) are always placed
-   later in the HTML than the screen they're reached from. That means
-   whichever of the two screens in a transition should visually be "on top"
-   already paints on top with no z-index bookkeeping needed, for both
-   directions: push (root -> sub-screen: the later, sub-screen, is incoming
-   and on top) and pop (sub-screen -> root: the later, sub-screen, is now
-   outgoing and on top).
-
    The layer that's on top physically slides fully across (100% width) and
    is given an opaque background, so it covers the other screen by simply
    moving over it — no opacity animation. Opacity fades were tried first and
@@ -191,7 +181,13 @@ button{font-family:inherit;}
    opacity makes both partially see-through at once and their text visibly
    overlaps/blends, unlike a photo crossfade. The layer underneath gets a
    subtle parallax (slight shift + scale) so it still reads as "sliding",
-   without ever needing to fade. */
+   without ever needing to fade.
+
+   Which of the two is on top is stated outright with z-index below. This
+   used to lean on DOM order instead, which held only while every screen's
+   sub-screens and further-right tabs happened to sit later in the HTML —
+   an invariant nothing enforces, and one that broke as soon as the Learning
+   tab and the custom-assessment screens were added in the wrong place. */
 main{position:relative;}
 .screen{display:none;position:relative;z-index:1;padding:6px 20px 4px;}
 .screen.active{display:block;}
@@ -200,6 +196,7 @@ main{position:relative;}
 .screen.active.nav-in-push{animation:screenSlideInRight .34s cubic-bezier(.22,.8,.28,1) both;}
 .screen.nav-out-pop{animation:screenSlideOutRight .34s cubic-bezier(.22,.8,.28,1) both;}
 .screen.active.nav-in-push,.screen.nav-out-pop{
+  z-index:2;                 /* rides over the other screen, whatever the DOM order */
   background:var(--mist);
   box-shadow:-10px 0 26px rgba(22,33,31,.14);
 }
