@@ -122,6 +122,18 @@ demo.
 Browser speech recognition may involve the browser provider's remote service.
 No audio recording storage is added by this release.
 
+BODY MAP (SPA)
+Home > Body map opens an interactive diagram with front, back and face views.
+Tapping a region shows that part's English name, IPA, Thai, an example
+sentence you can say to a guest, and a play button. Regions are drawn from the
+course's own Body parts vocabulary, so nothing is duplicated: the spa course
+has 53 such words. Body words with no place on a diagram (tendon, joint,
+pressure point, muscle knot and similar) appear as chips below it.
+The diagram is a simplified service illustration for naming areas in English.
+It is not a clinical or anatomical reference and does not indicate what any
+treatment should do. It appears only for courses that teach enough body
+vocabulary to fill it, so the cruise and salon courses do not show it.
+
 SIDE PANEL, TABLET AND PHONE LAYOUT
 A side panel carries the learner's profile, course, progress bars and a full
 navigation list. Below 1024px it is a drawer: closed by default, opened with

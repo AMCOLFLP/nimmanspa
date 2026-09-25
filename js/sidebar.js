@@ -76,14 +76,18 @@ const Sidebar = (() => {
     </div>`;
   }
 
-  const NAV = [
-    { screen:'home',     key:'navHome' },
-    { screen:'learning', key:'navLearning' },
-    { screen:'daily',    key:'navDaily' },
-    { screen:'vocab',    key:'navVocab' },
-    { screen:'phrases',  key:'navPhrases' },
-    { screen:'assess',   key:'navPractice' },
-  ];
+  function mainNav(){
+    return [
+      { screen:'home',     key:'navHome' },
+      { screen:'learning', key:'navLearning' },
+      { screen:'daily',    key:'navDaily' },
+      { screen:'vocab',    key:'navVocab' },
+      // Only the courses that teach body parts have a body map.
+      ...(Anatomy.available() ? [{ screen:'anatomy', key:'menuAnatomyTitle' }] : []),
+      { screen:'phrases',  key:'navPhrases' },
+      { screen:'assess',   key:'navPractice' },
+    ];
+  }
   const NAV_FOOT = [
     { screen:'account',  key:'accountHeading' },
     { screen:'settings', key:'settingsHeading' },
@@ -150,7 +154,7 @@ const Sidebar = (() => {
       </div>
 
       <nav class="sb-nav" aria-label="${esc(I18N.t('sidebarGoTo'))}">
-        ${navList(NAV)}
+        ${navList(mainNav())}
         <span class="sb-nav-rule"></span>
         ${navList(NAV_FOOT)}
       </nav>

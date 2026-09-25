@@ -1,3 +1,27 @@
+# 2026-09-25 — Spa anatomy, body map and a hideable side panel
+
+Extended the spa course's Body parts vocabulary from 20 basic external terms to 53, adding
+the anatomy a therapist names during a treatment: muscle groups, spine and shoulder
+landmarks, hand and foot detail, and the areas used in a facial. Each entry carries Thai,
+IPA, a level, a definition and a consultation example, and is mapped to the Day 3
+terminology module, so the words reach the learning modules, flashcards and generated
+assessments together. The Thai and IPA are editorial and not yet independently reviewed;
+see SOURCES.md.
+
+Added a Body map screen: an interactive front / back / face diagram in inline SVG where each
+region opens the matching vocabulary entry with its pronunciation, Thai and example. The
+figure is a simplified service diagram for naming areas in English, not a clinical
+reference. It appears only for courses that teach enough body vocabulary to fill it.
+
+Added a side panel carrying profile, course, progress and full navigation: a drawer below
+1024px with the tab bar retained, docked above it with the tab bar hidden, and hideable
+either way without ever leaving the app without navigation.
+
+Fixed screen transitions drawing the wrong layer on top after the new screens were added;
+stacking is now stated explicitly rather than inferred from source order.
+
+---
+
 # 2026-09-25 — Learning paths and assessment builder
 
 Added three source-aligned learning paths, nineteen learning sections (including one clearly

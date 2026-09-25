@@ -4,7 +4,7 @@
 
 const Nav = {
   tabFor: {
-    home:'home', learning:'learning', customplay:'assess', customresults:'assess', account:'home', settings:'home', daily:'daily', vocab:'vocab', pron:'assess',
+    home:'home', learning:'learning', customplay:'assess', customresults:'assess', account:'home', settings:'home', daily:'daily', vocab:'vocab', anatomy:'vocab', pron:'assess',
     phrases:'phrases', saythis:'phrases',
     assess:'assess', mcquiz:'assess', fillquiz:'assess', listen:'assess', speaking:'assess',
     builder:'assess', truefalse:'assess', errorfix:'assess', results:'assess', practiceplay:'assess',
@@ -42,6 +42,7 @@ const Nav = {
       if (screen === 'settings') App.renderSettings();
       if (screen === 'speaking') Speaking.open();
       if (screen === 'vocab'){ App.renderVocabHint(); Vocab.refreshChrome(); }
+      if (screen === 'anatomy') Anatomy.render();
       if (screen === 'assess') App.renderAssessHub();
       if (screen === 'learning') LearningHub.render();
       if (screen === 'customplay') AssessmentBuilder.renderSession();
@@ -322,6 +323,9 @@ const App = (() => {
 
   function renderCourseChrome(){
     document.querySelectorAll('#screen-home [onclick]').forEach(el=>{const action=el.getAttribute('onclick')||'';if(/Nav\.go\('(?:pron|saythis)'/.test(action))el.hidden=Courses.currentId==='salon';});
+    // The body map only exists where the course actually teaches body parts.
+    const anatomyRow = document.getElementById('homeAnatomyRow');
+    if (anatomyRow) anatomyRow.hidden = !Anatomy.available();
     const c = Courses.active;
     if (!c) return;
     // The tip of the day is course-specific.
@@ -924,6 +928,7 @@ const App = (() => {
     Daily.init();
     Speaking.init();
     LearningHub.init();AssessmentBuilder.init();
+    Anatomy.init();
     Sidebar.init();
     window.addEventListener('nimman:progress-status',()=>{
       const b=document.getElementById('learningSaveStatus');if(!b)return;

@@ -2300,6 +2300,71 @@ button.q-option{width:100%;text-align:left;font-family:var(--sans);}
 @media(max-width:420px){.px-settings{padding:16px;}.px-setting-grid{gap:10px;}.px-setting-grid select{font-size:12px;padding:9px 7px;}.px-question{font-size:18px;}.px-passage{padding:16px;}.px-passage p{font-size:14px;}.px-options .q-option{font-size:13px;padding:13px;gap:9px;}.px-answer-mark{font-size:8px;max-width:44px;}.px-feedback{padding:16px;}}
 
 /* =========================================================================
+   BODY MAP — interactive anatomy diagram (js/anatomy.js)
+   ========================================================================= */
+#anatomyStage{
+  background:var(--paper);border:1px solid var(--stone);
+  border-radius:var(--radius-lg);box-shadow:var(--shadow-card);
+  padding:16px;margin-bottom:16px;
+  display:flex;justify-content:center;
+}
+.an-svg{width:100%;max-width:300px;max-height:56vh;height:auto;display:block;}
+.an-base{fill:var(--mist-deep);}
+/* The always-complete silhouette sitting under the interactive regions. */
+.an-base-figure{pointer-events:none;}
+.an-base-figure rect,.an-base-figure ellipse{fill:var(--mist-deep);stroke:var(--stone);stroke-width:1;}
+.an-base-figure path{fill:none;stroke:var(--stone);stroke-width:15;stroke-linecap:round;}
+/* Eyes, nose and mouth: not vocabulary, just enough for the zones above to
+   read as a face. Never intercepts a tap. */
+.an-decor{pointer-events:none;}
+.an-decor path{fill:none;stroke:var(--ink-faint);stroke-width:2;stroke-linecap:round;opacity:.55;}
+.an-region{cursor:pointer;}
+.an-region rect,.an-region ellipse{
+  fill:var(--mist-deep);stroke:var(--stone-2);stroke-width:1.2;
+  transition:fill .18s ease, stroke .18s ease;
+}
+.an-region .an-stroke{
+  fill:none;stroke:var(--stone-2);stroke-width:15;stroke-linecap:round;
+  transition:stroke .18s ease;
+}
+.an-region:hover rect,.an-region:hover ellipse{fill:var(--gold-mist);stroke:var(--gold-line);}
+.an-region:hover .an-stroke{stroke:var(--gold-line);}
+.an-region.selected rect,.an-region.selected ellipse{
+  fill:var(--gold);stroke:var(--gold-deep);stroke-width:1.6;
+}
+.an-region.selected .an-stroke{stroke:var(--gold);}
+.an-region:focus{outline:none;}
+.an-region:focus-visible rect,.an-region:focus-visible ellipse,
+.an-region:focus-visible .an-stroke{stroke:var(--ink);stroke-width:2.4;}
+
+.an-hint{
+  font-size:13px;color:var(--ink-soft);line-height:1.6;text-align:center;
+  margin:0;padding:14px 8px;
+}
+.an-detail{
+  background:var(--paper);border:1px solid var(--stone);
+  border-radius:var(--radius-lg);padding:16px;margin-bottom:16px;
+}
+.an-detail-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:9px;}
+.an-word{font-family:var(--serif);font-size:22px;font-weight:600;line-height:1.2;}
+.an-phon{font-size:12.5px;color:var(--ink-faint);margin-top:3px;}
+.an-th{font-family:var(--thai);font-size:14px;color:var(--ink-soft);margin-top:4px;}
+.an-def{font-size:13.5px;line-height:1.6;color:var(--ink);margin:10px 0 0;}
+.an-example{font-family:var(--serif);font-style:italic;font-size:14.5px;line-height:1.6;color:var(--ink-soft);margin:9px 0 0;}
+.an-related-title{
+  font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink-faint);margin:0 0 9px;
+}
+.an-related{padding-bottom:12px;}
+.anatomy-note{
+  font-size:11.5px;line-height:1.6;color:var(--ink-faint);
+  background:var(--mist-deep);border-radius:12px;padding:12px 14px;margin:0 0 8px;
+}
+@media (min-width:768px){
+  .an-svg{max-width:360px;}
+}
+
+/* =========================================================================
    SIDE PANEL — profile, progress and navigation
    Drawer below 1024px, docked from 1024px up. See js/sidebar.js.
    ========================================================================= */

@@ -254,6 +254,16 @@ const UI_STRINGS = {
     errTooManyAttempts: 'Too many attempts. Please wait a few minutes and try again.',
     errSessionExpired: 'Your session ended. Please sign in again to keep saving progress.',
 
+    menuAnatomyTitle: 'Body map',
+    menuAnatomyDesc: 'Tap any part of the body to learn its English name',
+    anatomyHeading: 'Body map',
+    anatomyLede: 'Tap a part of the body to see its English name, how to say it, and a sentence you can use with a guest.',
+    anatomyFront: 'Front', anatomyBack: 'Back', anatomyFace: 'Face',
+    anatomyPrompt: 'Tap any highlighted area of the diagram.',
+    anatomyRelated: 'Words without a place on the diagram',
+    anatomyNone: 'This course does not include body vocabulary.',
+    anatomyNote: 'A simplified service diagram for naming areas in English. It is not a clinical or anatomical reference, and it does not show what any treatment should do.',
+
     sidebarTitle: 'Your progress',
     sidebarMenu: 'Menu',
     sidebarClose: 'Close menu',
@@ -520,6 +530,16 @@ const UI_STRINGS = {
     errServer: 'เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง',
     errTooManyAttempts: 'พยายามหลายครั้งเกินไป กรุณารอสักครู่แล้วลองใหม่',
     errSessionExpired: 'เซสชันของคุณสิ้นสุดลง กรุณาเข้าสู่ระบบอีกครั้งเพื่อบันทึกความคืบหน้าต่อไป',
+
+    menuAnatomyTitle: 'แผนผังร่างกาย',
+    menuAnatomyDesc: 'แตะส่วนต่าง ๆ ของร่างกายเพื่อเรียนรู้ชื่อภาษาอังกฤษ',
+    anatomyHeading: 'แผนผังร่างกาย',
+    anatomyLede: 'แตะส่วนของร่างกายเพื่อดูชื่อภาษาอังกฤษ วิธีออกเสียง และประโยคที่ใช้กับลูกค้าได้',
+    anatomyFront: 'ด้านหน้า', anatomyBack: 'ด้านหลัง', anatomyFace: 'ใบหน้า',
+    anatomyPrompt: 'แตะบริเวณที่ไฮไลต์ในแผนผัง',
+    anatomyRelated: 'คำที่ไม่มีตำแหน่งในแผนผัง',
+    anatomyNone: 'หลักสูตรนี้ไม่มีคำศัพท์เกี่ยวกับร่างกาย',
+    anatomyNote: 'แผนผังอย่างง่ายสำหรับเรียกชื่อบริเวณต่าง ๆ เป็นภาษาอังกฤษ ไม่ใช่เอกสารอ้างอิงทางกายวิภาคหรือทางคลินิก และไม่ได้ระบุว่าทรีตเมนต์ใดควรทำอะไร',
 
     sidebarTitle: 'ความคืบหน้าของคุณ',
     sidebarMenu: 'เมนู',
