@@ -71,6 +71,9 @@
 .an-related-words .chip{min-height:44px;white-space:normal;text-align:left;line-height:1.8}
 .an-related-words .chip.selected{background:var(--gold-mist);border-color:var(--gold)}
 .an-related-words .chip span{font-weight:400}
+.an-practise-box{border:1px solid var(--stone);border-radius:16px;padding:18px;margin:0 0 18px;background:var(--paper)}
+.an-practise-box h3{margin:0 0 6px;font:500 18px/1.3 var(--serif)}
+.an-practise-box .btn{margin-top:12px}
 #screen-anatomy .anatomy-note{margin-top:0;color:var(--ink-soft);font-size:11.5px;line-height:1.8}
 #screen-anatomy button:focus-visible,#screen-anatomy input:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 @media(max-width:859px){
@@ -88,6 +91,30 @@
  #screen-anatomy .an-detail{padding:18px}.an-control-label{font-size:11px}
  #anatomyStage{padding:0 9px}.an-figure-head{padding-top:13px}
  .an-pin{width:24px;height:24px;font-size:9px}
+
+ /* The body photos are 1:2, so at phone width the figure is ~640px tall and
+    the word detail lands far below the fold — you had to scroll away from
+    the body to find out what you had just tapped. The figure footer becomes
+    a bar pinned above the tab bar instead, so the selected word, its Thai
+    and a play button stay on screen while the image is in view. The full
+    entry is one tap away on "Word details". */
+ #screen-anatomy > .lede{display:none}
+ /* Fixed rather than sticky on purpose: .app-shell sets overflow-x:hidden,
+    which makes it a scroll container and stops position:sticky resolving
+    against the viewport, so a sticky bar simply scrolled away. */
+ .an-figure-footer{
+  position:fixed;left:50%;transform:translateX(-50%);
+  bottom:calc(78px + env(safe-area-inset-bottom));
+  width:min(100% - 26px,430px);z-index:45;
+  margin:0;padding:10px 12px;border-radius:14px;
+  background:var(--paper);border:1px solid var(--stone-2);
+  box-shadow:0 8px 24px rgba(22,33,31,.16);
+ }
+ /* Keeps the last of the page clear of the pinned bar. */
+ #screen-anatomy{padding-bottom:96px}
+ .an-figure-footer.has-selection{border-color:var(--gold-line);background:var(--gold-mist)}
+ .an-figure-footer #anatomySelectionLabel{font-weight:700;color:var(--ink)}
+ .an-figure-footer .mini-play{width:38px;height:38px;flex-shrink:0}
 }
 @media(prefers-reduced-motion:reduce){#screen-anatomy *{transition:none!important;scroll-behavior:auto!important}}
 @media print{.an-points-toggle,.an-text-button,.mini-play{display:none!important}.an-map{max-width:300px}.an-layout{display:block}}

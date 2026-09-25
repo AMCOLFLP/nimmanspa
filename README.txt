@@ -122,6 +122,21 @@ demo.
 Browser speech recognition may involve the browser provider's remote service.
 No audio recording storage is added by this release.
 
+BODY MAP — WHERE TO FIND IT
+Home > Body map, the side panel, or the Body map chip in the Vocab screen's
+row of drills. It does not have its own tab in the bottom bar: it is another
+route into the same vocabulary, so it lives under Vocab (that tab stays
+highlighted while the map is open), and a seventh tab would leave about 55px
+per tab on a phone.
+On phones the selected word, its Thai and a play button stay pinned above the
+bottom bar while you use the map, because the full-body photo is taller than
+a phone screen and the word panel would otherwise sit below the fold.
+"Word details" opens the full entry.
+"Match pairs" under the word list starts an assessment built from this
+course's body vocabulary, so the parts you have just learned can be practised
+without rebuilding the filter by hand. Body parts is also selectable as a
+category in the assessment builder.
+
 BODY MAP (SPA)
 Home > Body map opens an interactive diagram with front, back and face views.
 Tapping a region shows that part's English name, IPA, Thai, an example

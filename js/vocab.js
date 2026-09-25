@@ -3,6 +3,11 @@
    flashcards · matching · scramble · Thai recall · category sort · speed round
    ========================================================================= */
 
+/* `goto` marks a chip that leaves this screen instead of switching pane. The
+   body map is another way into the same vocabulary, so it belongs under the
+   Vocab tab (which already highlights for it via Nav.tabFor) rather than
+   taking a seventh slot in the bottom bar. `when` hides a chip for courses
+   the destination does not apply to. */
 const VOCAB_MODES = [
   { id:'flash',    key:'modeFlash' },
   { id:'match',    key:'modeMatch' },
@@ -10,6 +15,7 @@ const VOCAB_MODES = [
   { id:'thai',     key:'modeThai' },
   { id:'sort',     key:'modeSort' },
   { id:'speed',    key:'modeSpeed' },
+  { id:'anatomy',  key:'menuAnatomyTitle', goto:'anatomy', when:() => Anatomy.available() },
 ];
 
 const Vocab = (() => {
@@ -26,8 +32,8 @@ const Vocab = (() => {
 
   function renderModeChips(){
     const wrap = document.getElementById('vocabModeChips');
-    wrap.innerHTML = VOCAB_MODES.map(m =>
-      `<button class="chip ${m.id === mode ? 'active' : ''}" data-mode="${m.id}">${I18N.t(m.key)}</button>`
+    wrap.innerHTML = VOCAB_MODES.filter(m => !m.when || m.when()).map(m =>
+      `<button class="chip ${m.goto ? 'chip-goto' : ''} ${m.id === mode ? 'active' : ''}" data-mode="${m.id}">${I18N.t(m.key)}${m.goto ? ' ↗' : ''}</button>`
     ).join('');
   }
 
@@ -589,6 +595,10 @@ const Vocab = (() => {
 
   function setMode(next){
     stopTimers();
+    const target = VOCAB_MODES.find(m => m.id === next);
+    // A "goto" chip is a link out, not a pane: leave `mode` where it was so
+    // coming back lands on the drill the learner was already using.
+    if (target && target.goto){ Nav.go(target.goto); return; }
     mode = next;
     renderModeChips();
     renderCatChips();

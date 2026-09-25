@@ -90,8 +90,16 @@ const Anatomy = (() => {
         <div class="an-layer">${shapes}${pins}</div>
         <p class="an-image-error" role="status" hidden>${T('The image could not be loaded. You can still use the word list.','โหลดภาพไม่สำเร็จ ยังสามารถเรียนจากรายการคำศัพท์ได้')}</p>
       </div>
-      <div class="an-figure-footer"><span id="anatomySelectionLabel">${selected?esc(selected+' · '+(find(selected)?.th||'')):T('Select a point or a word below.','เลือกจุดบนภาพหรือคำศัพท์ในรายการ')}</span>
-        <button type="button" class="an-text-button" data-an-detail>${T('Word details','รายละเอียดคำศัพท์')} ↓</button></div>`;
+      <div class="an-figure-footer${selected?' has-selection':''}" id="anatomyFigureFooter">${footerMarkup()}</div>`;
+  }
+  /* Kept separate because select() updates the page in place instead of
+     re-rendering the map, and on phones this footer is the pinned bar that
+     keeps the chosen word readable without scrolling. */
+  function footerMarkup(){
+    const v=selected?find(selected):null;
+    return `<span id="anatomySelectionLabel">${v?esc(v.word+' · '+(v.th||'')):T('Select a point or a word below.','เลือกจุดบนภาพหรือคำศัพท์ในรายการ')}</span>
+      ${v?`<button type="button" class="mini-play" data-an-speak="${esc(v.word)}" aria-label="${esc(T('Listen to ','ฟังคำว่า ')+v.word)}">${ICN.play}</button>`:''}
+      <button type="button" class="an-text-button" data-an-detail>${T('Word details','รายละเอียดคำศัพท์')} ↓</button>`;
   }
   function listMarkup(){
     const rs=placed();
@@ -126,6 +134,36 @@ const Anatomy = (() => {
       ${v.word==='Face'&&view!=='face'?`<button type="button" class="an-text-button" data-an-view="face">${T('Open face close-up','เปิดภาพใบหน้าระยะใกล้')} →</button>`:''}
       <p class="an-audio-status" role="status"></p></div>`;
   }
+  /* The category the curriculum files these words under, and what the
+     assessment builder's category filter matches on. */
+  const CATEGORY='Body parts';
+  function practiceConfig(count){
+    return {course:Courses.currentId,module:'all',category:CATEGORY,kind:'word',
+      count,type:'match',feedback:'practice',scope:'all',selected:[]};
+  }
+  function practicePool(){
+    if(typeof LearningModel==='undefined')return [];
+    try { return LearningModel.select(practiceConfig(2)); } catch(_) { return []; }
+  }
+  /* Hands this vocabulary straight to the assessment builder as a Match pairs
+     set instead of making the learner rebuild the same filter by hand. The
+     config is passed per-call, so their saved builder preferences are left
+     untouched. */
+  function practise(){
+    const n=practicePool().length;
+    if(n<2||typeof AssessmentBuilder==='undefined')return;
+    stopAudio();
+    AssessmentBuilder.start(practiceConfig(Math.min(10,n)));
+  }
+  function practiceMarkup(){
+    const n=practicePool().length;
+    if(n<2)return '';
+    return `<div class="an-practise-box">
+      <h3>${T('Practise these words','ฝึกคำศัพท์เหล่านี้')}</h3>
+      <p class="an-small">${T(`Match the English body words to their Thai meanings. Uses ${Math.min(10,n)} of the ${n} body words in this course.`,`จับคู่คำศัพท์ร่างกายภาษาอังกฤษกับความหมายภาษาไทย ใช้ ${Math.min(10,n)} จาก ${n} คำในหลักสูตรนี้`)}</p>
+      <button type="button" class="btn btn-gold btn-block" data-an-practise>${T('Match pairs','จับคู่คำศัพท์')} →</button>
+    </div>`;
+  }
   function related(){
     const placedWords=allPlaced(),rest=bodyWords().filter(v=>!placedWords.has(norm(v.word)));
     if (!rest.length) return '';
@@ -148,6 +186,8 @@ const Anatomy = (() => {
     controls();stage.innerHTML=mapMarkup();
     document.getElementById('anatomyDetail').innerHTML=detail();
     document.getElementById('anatomyWordList').innerHTML=listMarkup();
+    const practice=document.getElementById('anatomyPractice');
+    if(practice)practice.innerHTML=practiceMarkup();
     document.getElementById('anatomyRelated').innerHTML=related();
   }
   function select(word){
@@ -159,8 +199,8 @@ const Anatomy = (() => {
       el.classList.toggle('selected',active);el.setAttribute('aria-pressed',String(active));
     });
     document.getElementById('anatomyDetail').innerHTML=detail();
-    const label=document.getElementById('anatomySelectionLabel');
-    if(label)label.textContent=selected+' · '+(entry.th||'');
+    const footer=document.getElementById('anatomyFigureFooter');
+    if(footer){footer.innerHTML=footerMarkup();footer.classList.add('has-selection');}
     // Do not re-create the image or scroll the page on every tap. Keyboard
     // focus and the learner's position stay on the selected map/list control.
   }
@@ -193,6 +233,8 @@ const Anatomy = (() => {
         if(e.detail===0)screen.querySelector(`#anatomyViewChips [data-an-view="${view}"]`)?.focus({preventScroll:true});
       } else if(target.hasAttribute('data-an-word')){
         select(target.dataset.anWord);
+      } else if(target.hasAttribute('data-an-practise')){
+        practise();
       } else if(target.hasAttribute('data-an-detail')){
         showDetail();
       } else if(target.hasAttribute('data-an-speak')){
