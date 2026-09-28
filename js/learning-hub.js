@@ -8,6 +8,15 @@ const LearningHub = (() => {
  function courseHeader(){return `<div class="lh-course-line"><span class="lh-eyebrow">${E(T(D.courses[course].title,D.courses[course].th))}</span><button class="lh-link" data-lh="switch">${T('Switch course','เปลี่ยนหลักสูตร')} ↗</button></div>`;}
  function stats(){const es=M.items(course);return {words:es.filter(e=>e.kind==='word').length,phrases:es.filter(e=>e.kind==='phrase').length};}
  function sourceNote(){return `<details class="lh-source"><summary>${T('Course sources & details to confirm','เอกสารหลักสูตรและรายละเอียดที่ต้องยืนยัน')}</summary><p>${T('Module titles follow the uploaded outlines. Short lessons, models and module mappings are editorial learning support, not quotations or newly approved course requirements.','ชื่อโมดูลอิงจากโครงร่างที่แนบ บทเรียนสั้น ตัวอย่าง และการจัดหมวดเป็นสื่อเสริมที่เรียบเรียงขึ้น ไม่ใช่ข้อความคัดลอกหรือข้อกำหนดหลักสูตรที่ได้รับอนุมัติใหม่')}</p><p>${E(D.courses[course].duration)}</p><p>${D.courses[course].sources.map(E).join('<br>')}</p><a href="LEARNING_GUIDE.html" target="_blank" rel="noopener">${T('Read the mapping and source notes','อ่านการจัดหมวดและหมายเหตุเอกสาร')} ↗</a></details>`;}
+ /* The interview rehearsal sits in the module grid, after the last day: it is
+    the course's final step, so it belongs with the days rather than hidden
+    behind Practice. Only a course whose curriculum carries a script shows it. */
+ function rehearsalCard(){
+  if(typeof Interview==='undefined'||!Interview.available())return '';
+  const s=Interview.summary();if(!s)return '';
+  const started=s.at>0;
+  return `<article class="lh-module is-rehearsal"><div class="lh-module-top"><span class="lh-index" aria-hidden="true">★</span><span class="lh-badge">${T('Rehearsal · unscored','ซ้อม · ไม่มีคะแนน')}</span></div><h3>${E(I18N.t('interviewHeading'))}</h3><p>${T('Walk the employer’s interview and practical test step by step. Answer each question out loud, then open the model answer and compare.','ซ้อมการสัมภาษณ์และทดสอบภาคปฏิบัติของนายจ้างทีละขั้น ตอบออกเสียงก่อน แล้วเปิดดูตัวอย่างคำตอบเพื่อเปรียบเทียบ')}</p><div class="lh-meta">${s.steps} ${T('steps','ขั้นตอน')} · ${s.questions} ${T('questions','คำถาม')}${started?` · ${T('Step','ขั้นที่')} ${s.at+1}/${s.steps}`:''}</div><button class="btn btn-outline btn-block" data-lh="rehearsal">${started?T('Continue rehearsal','ซ้อมต่อ'):T('Start rehearsal','เริ่มซ้อม')} →</button></article>`;
+ }
  function overview(){
   const s=stats(),progress=Progress.learningState(),ms=D.modules[course],done=ms.filter(m=>progress.modules[m.id]).length;
   return `${courseHeader()}<div class="lh-hero"><div><div class="lh-eyebrow">${T('LEARN FIRST. PRACTISE WITH PURPOSE.','เรียนรู้ก่อน แล้วฝึกอย่างมีเป้าหมาย')}</div><h2>${T('Your learning path','เส้นทางการเรียนรู้ของคุณ')}</h2><p>${T('Choose a module. Read the short lesson, study the words and phrases, then build your own practice set.','เลือกโมดูล อ่านบทเรียนสั้น เรียนรู้คำศัพท์และวลี แล้วจัดชุดฝึกของคุณเอง')}</p></div><div class="lh-stats"><span><b>${s.words}</b>${T('words','คำศัพท์')}</span><span><b>${s.phrases}</b>${T('phrases','วลี')}</span><span><b>${done}/${ms.length}</b>${T('marked studied','ทำเครื่องหมายว่าเรียนแล้ว')}</span></div></div>
@@ -15,7 +24,7 @@ const LearningHub = (() => {
   <div class="lh-module-grid">${ms.map((m,i)=>{
     const es=M.items(course,m.id),w=es.filter(e=>e.kind==='word').length,p=es.length-w,studied=!!progress.modules[m.id];
     return `<article class="lh-module ${studied?'is-studied':''}"><div class="lh-module-top"><span class="lh-index">${m.supplement?'+':m.id==='ca2'?'A2':m.id==='c8'?'08':String(i+1).padStart(2,'0')}</span><span class="lh-badge">${m.supplement?T('Supplement','บทเสริม'):m.teacherAssessed?T('Includes teacher task','มีงานที่ครูประเมิน'):T('Self-study + practice','เรียนรู้และฝึกด้วยตนเอง')}</span></div><h3>${E(title(m))}</h3><p>${E(T(m.goal,m.goalTh))}</p><div class="lh-meta">${w} ${T('words','คำศัพท์')} · ${p} ${T('phrases','วลี')}${studied?' · ✓ '+T('Studied','เรียนแล้ว'):''}</div><button class="btn btn-outline btn-block" data-lh="module" data-id="${m.id}">${T('Open lesson','เปิดบทเรียน')} →</button></article>`;
-  }).join('')}</div>${sourceNote()}<section class="lh-panel"><h3>${T('Course assessment ≠ vocabulary practice','การประเมินหลักสูตร ≠ การฝึกคำศัพท์')}</h3><p>${T('The source course also requires teacher-assessed evidence. The practice builder below does not calculate an official course grade.','หลักสูตรในเอกสารยังต้องใช้หลักฐานที่ครูประเมิน ระบบชุดฝึกนี้ไม่คำนวณคะแนนหลักสูตรอย่างเป็นทางการ')}</p><div class="lh-weight-list">${D.courses[course].assessment.map(([name,weight])=>`<div><span>${E(name)}</span><b>${weight}%</b></div>`).join('')}</div></section>`;
+  }).join('')}${rehearsalCard()}</div>${sourceNote()}<section class="lh-panel"><h3>${T('Course assessment ≠ vocabulary practice','การประเมินหลักสูตร ≠ การฝึกคำศัพท์')}</h3><p>${T('The source course also requires teacher-assessed evidence. The practice builder below does not calculate an official course grade.','หลักสูตรในเอกสารยังต้องใช้หลักฐานที่ครูประเมิน ระบบชุดฝึกนี้ไม่คำนวณคะแนนหลักสูตรอย่างเป็นทางการ')}</p><div class="lh-weight-list">${D.courses[course].assessment.map(([name,weight])=>`<div><span>${E(name)}</span><b>${weight}%</b></div>`).join('')}</div></section>`;
  }
  function lesson(){
   const m=D.modules[course].find(m=>m.id===moduleId);if(!m){moduleId=null;return overview();}
@@ -41,6 +50,7 @@ const LearningHub = (() => {
    const b=e.target.closest('[data-lh]');if(!b)return;
    if(b.dataset.lh==='module')open(b.dataset.id);
    if(b.dataset.lh==='back')open();
+   if(b.dataset.lh==='rehearsal')Interview.open();
    if(b.dataset.lh==='switch')App.showCourseChooser({cancellable:true});
    if(b.dataset.lh==='assess')AssessmentBuilder.open(b.dataset.id);
    if(b.dataset.lh==='studied'){Progress.setLearningModule(b.dataset.id,!Progress.learningState().modules[b.dataset.id]);App.refreshHome();render();}

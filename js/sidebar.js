@@ -95,6 +95,7 @@ const Sidebar = (() => {
       { items:[{ screen:'home', key:'navHome' }] },
       { titleKey:'sidebarGroupLearn', items:[
         { screen:'learning', key:'navLearning' },
+        ...(Interview.available() ? [{ screen:'interview', key:'menuInterviewTitle' }] : []),
         { screen:'daily',    key:'navDaily' },
       ]},
       { titleKey:'sidebarGroupWords', items:[
@@ -106,7 +107,6 @@ const Sidebar = (() => {
       ]},
       { titleKey:'sidebarGroupPractice', items:[
         { screen:'assess', key:'navPractice' },
-        ...(Interview.available() ? [{ screen:'interview', key:'menuInterviewTitle' }] : []),
       ]},
       { titleKey:'sidebarGroupAccount', items:[
         { screen:'account',  key:'accountHeading' },

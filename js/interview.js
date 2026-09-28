@@ -29,6 +29,17 @@ const Interview = (() => {
   function steps(){ const s = script(); return s ? s.steps : []; }
   function clamp(n){ return Math.max(0, Math.min(steps().length - 1, n)); }
 
+  /* What the Learn hub needs to draw the rehearsal card beside the modules. */
+  function summary(){
+    const list = steps();
+    if (!list.length) return null;
+    return {
+      steps: list.length,
+      questions: list.reduce((n, s) => n + (s.questions || []).length, 0),
+      at: clamp(step),
+    };
+  }
+
   function remember(){ try { localStorage.setItem(STEP_KEY, String(step)); } catch(e){} }
   function restore(){
     try {
@@ -148,5 +159,5 @@ const Interview = (() => {
     });
   }
 
-  return { init, render, available, open(){ Nav.go('interview'); } };
+  return { init, render, available, summary, open(){ Nav.go('interview'); } };
 })();

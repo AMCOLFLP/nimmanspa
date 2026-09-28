@@ -125,7 +125,7 @@ No audio recording storage is added by this release.
 GETTING AROUND
 Five tabs along the bottom, for the five things a learner does repeatedly:
   Home      today's card, streak, phrase of the day, continue your path
-  Learn     the module path for this course
+  Learn     the module path for this course, and the interview rehearsal
   Words     vocabulary drills, plus Body map and Pronunciation
   Phrases   phrase banks, plus Say this, not that
   Practice  build an assessment, and the original activity library
@@ -139,6 +139,7 @@ the app is listed there exactly once. Nothing is reachable only from the
 panel: every entry in it can also be reached from the bottom bar, through
 the tab that owns it.
   Daily Five           Home, the card at the top
+  Interview rehearsal  Learn, the last card in the module grid
   Body map             Words, link below the filters
   Pronunciation        Words, link below the filters
   Say this, not that   Phrases, link below the filters
@@ -152,7 +153,7 @@ no Body map, and the salon course has neither Body map, Pronunciation nor
 Say this, not that.
 
 INTERVIEW REHEARSAL (SPA)
-Practice > Interview rehearsal walks the six steps of the employer's spa
+Learn > Interview rehearsal walks the six steps of the employer's spa
 therapist interview and practical test: introduction and experience, guest
 consultation, confirming the booking, the practical massage, the questions
 asked during the massage, and sales and guest service. Each step states what
@@ -161,6 +162,9 @@ loud, then opens each question to compare against a model answer. Questions
 can be played aloud. Progress through the steps is remembered on the device.
 It is self-study and unscored, and the copy says so: it is a rehearsal, not
 the employer's assessment and not a pass.
+It sits in the Learn tab as the last card in the module grid, after Day 5,
+because it is the last step of the course rather than a separate drill. The
+card shows how far through the six steps you are and resumes there.
 The answer language is also in Words and Phrases, so it can be drilled and
 built into a practice set like any other content.
 Contraindications are taught as language and professional conduct — name the
