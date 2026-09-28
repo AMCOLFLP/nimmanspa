@@ -106,6 +106,7 @@ const Sidebar = (() => {
       ]},
       { titleKey:'sidebarGroupPractice', items:[
         { screen:'assess', key:'navPractice' },
+        ...(Interview.available() ? [{ screen:'interview', key:'menuInterviewTitle' }] : []),
       ]},
       { titleKey:'sidebarGroupAccount', items:[
         { screen:'account',  key:'accountHeading' },

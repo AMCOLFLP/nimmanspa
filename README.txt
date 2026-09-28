@@ -151,6 +151,25 @@ Entries appear only where the course has that content: the cruise course has
 no Body map, and the salon course has neither Body map, Pronunciation nor
 Say this, not that.
 
+INTERVIEW REHEARSAL (SPA)
+Practice > Interview rehearsal walks the six steps of the employer's spa
+therapist interview and practical test: introduction and experience, guest
+consultation, confirming the booking, the practical massage, the questions
+asked during the massage, and sales and guest service. Each step states what
+the interviewer is checking and lists the questions; the learner answers out
+loud, then opens each question to compare against a model answer. Questions
+can be played aloud. Progress through the steps is remembered on the device.
+It is self-study and unscored, and the copy says so: it is a rehearsal, not
+the employer's assessment and not a pass.
+The answer language is also in Words and Phrases, so it can be drilled and
+built into a practice set like any other content.
+Contraindications are taught as language and professional conduct — name the
+condition, ask, do not diagnose, postpone, refer for medical clearance. The
+source document's clinical thresholds are not reproduced here; see
+SOURCES.md.
+Only the spa course has a rehearsal, so it does not appear for cruise or
+salon.
+
 BODY MAP — WHERE TO FIND IT
 Home > Body map, the side panel, or the Body map chip in the Vocab screen's
 row of drills. It does not have its own tab in the bottom bar: it is another

@@ -2369,6 +2369,68 @@ button.q-option{width:100%;text-align:left;font-family:var(--sans);}
 }
 
 /* =========================================================================
+   INTERVIEW REHEARSAL (js/interview.js)
+   ========================================================================= */
+.iv-source{font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--ink-faint);margin:0 0 12px;}
+.iv-eyebrow{
+  display:block;font-size:9.5px;font-weight:800;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--gold-deep);margin-bottom:7px;
+}
+.iv-steps{
+  display:flex;gap:7px;list-style:none;padding:0;margin:0 0 16px;
+  overflow-x:auto;scrollbar-width:none;
+}
+.iv-steps::-webkit-scrollbar{display:none;}
+.iv-step{
+  width:36px;height:36px;border-radius:50%;flex-shrink:0;cursor:pointer;
+  border:1.5px solid var(--stone-2);background:var(--paper);
+  font:inherit;font-size:13px;font-weight:700;color:var(--ink-soft);
+  transition:background .16s ease, border-color .16s ease, color .16s ease;
+}
+.iv-step.done{background:var(--sage-mist);border-color:var(--sage);color:var(--sage-deep);}
+.iv-step.current{background:var(--ink);border-color:var(--ink);color:#fff;}
+
+.iv-panel{
+  background:var(--paper);border:1px solid var(--stone);
+  border-radius:var(--radius-lg);padding:20px;margin-bottom:16px;
+}
+.iv-panel h3{font-family:var(--serif);font-size:20px;font-weight:600;margin:0 0 14px;line-height:1.25;}
+.iv-focus{background:var(--sage-mist);border-radius:13px;padding:13px 15px;margin-bottom:14px;}
+.iv-focus .iv-eyebrow{color:var(--sage-deep);}
+.iv-focus p{margin:0;font-size:13px;line-height:1.65;color:var(--ink);}
+.iv-hint{font-size:11.5px;color:var(--ink-faint);margin:0 0 12px;}
+
+.iv-q{border:1px solid var(--stone);border-radius:13px;margin-bottom:9px;background:var(--mist);}
+.iv-q[open]{background:var(--paper);border-color:var(--gold-line);}
+.iv-q summary{
+  display:flex;gap:11px;align-items:flex-start;
+  padding:13px 15px;cursor:pointer;list-style:none;min-height:52px;
+}
+.iv-q summary::-webkit-details-marker{display:none;}
+.iv-q-num{
+  width:22px;height:22px;border-radius:50%;flex-shrink:0;margin-top:1px;
+  background:var(--gold-mist);color:var(--gold-deep);
+  font-size:11px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+}
+.iv-q-text{display:flex;flex-direction:column;gap:3px;min-width:0;}
+.iv-q-text b{font-size:14px;line-height:1.5;font-weight:600;}
+.iv-q-text small{font-family:var(--thai);font-size:12.5px;color:var(--ink-soft);line-height:1.6;}
+.iv-answer{padding:0 15px 15px 48px;}
+.iv-answer p{font-size:13px;line-height:1.7;margin:0 0 8px;}
+.iv-answer-th{font-family:var(--thai);color:var(--ink-soft);}
+
+.iv-finish{border-color:var(--gold-line);background:var(--gold-mist);}
+.iv-finish p{font-size:13px;line-height:1.7;margin:0 0 14px;}
+.iv-nav{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+.iv-nav .btn{width:100%;}
+
+@media (min-width:600px){
+  .iv-answer{padding-left:48px;}
+  .iv-nav{grid-template-columns:auto auto;justify-content:space-between;}
+}
+
+/* =========================================================================
    SIDE PANEL — profile, progress and navigation
    Drawer below 1024px, docked from 1024px up. See js/sidebar.js.
    ========================================================================= */

@@ -23,6 +23,35 @@ References used to review selected claims and pronunciation. They are not a cert
 A qualified spa practitioner and shipboard training representative should verify operational use. A Thai-language editor should review register and preferred wording. Prices, currencies, actual locations, times, dietary assurances, compensation and emergency arrangements must be confirmed through the relevant workplace's approved procedures. Dictionary transcriptions and browser voices may use different regional pronunciations.
 
 
+## Interview & practical assessment note (2026-09-28)
+
+Source: the employer's "Spa Therapist Interview & Practical Assessment"
+document (Thai and English), covering a six-step interview and practical
+test, a ten-category question bank, and a five-step solution-selling
+sequence. Applied to the spa course as: a six-step rehearsal on Day 5, 21
+answer phrases, and 8 terms the assessment asks for that the course lacked
+(Vibration, Sen Sib, Scapula, Sciatic nerve, Origin, Insertion, Hygiene,
+Upgrade).
+
+The interviewer's questions are presented as rehearsal material; the entries
+the learner is drilled and assessed on are the **answers**, because those are
+what a candidate has to produce.
+
+**Contraindications are deliberately handled as language and conduct, not as
+clinical instruction.** The source lists twelve contraindications with
+clinical detail, including numeric thresholds for fever and blood pressure.
+Those thresholds are NOT reproduced in the app and are not used as scored
+answers. What is taught is how to name the conditions in English and the
+professional sequence around them: ask, do not diagnose, postpone, refer for
+medical clearance — which is what the source's own model answer describes.
+Anyone wanting the full clinical list should use the employer's document
+under their trainer, not this app.
+
+Model answers are language practice. They are not a treatment protocol, not
+a clinical reference, and not a guarantee of any recruitment outcome. The
+rehearsal is unscored and says so. English, Thai and the transliterations of
+technique names are editorial and have not had independent review.
+
 ## Spa anatomy vocabulary note (2026-09-25)
 
 The spa course's "Body parts" category was extended from 20 basic external

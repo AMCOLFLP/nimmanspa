@@ -646,7 +646,176 @@
         "taskTh": "สัมภาษณ์จำลองรายบุคคลและจัดทำแผนพัฒนาร่วมกับครู การฝึกด้วยตนเองไม่ทำให้ได้รับประกาศนียบัตรหลักสูตร",
         "teacherAssessed": true,
         "supplement": false,
-        "lessonOrigin": "New authored learning support aligned to the source topic"
+        "lessonOrigin": "New authored learning support aligned to the source topic",
+        "rehearsal": {
+          "steps": [
+            {
+              "id": "r1",
+              "title": "Introduction & experience",
+              "titleTh": "แนะนำตัวและประสบการณ์",
+              "focus": "Years of experience, previous workplaces, the type of spa or hotel, and the techniques you can actually demonstrate.",
+              "focusTh": "จำนวนปีประสบการณ์ สถานที่ทำงานที่ผ่านมา ประเภทสปาหรือโรงแรม และเทคนิคที่คุณสาธิตได้จริง",
+              "questions": [
+                {
+                  "en": "Please introduce yourself and tell us about your massage and spa experience.",
+                  "th": "กรุณาแนะนำตัวและเล่าประสบการณ์ด้านการนวดและสปาของคุณ",
+                  "answer": "Give your name, how many years you have worked, the kind of spa or hotel, and the treatments you specialise in. Keep it truthful — you may be asked to demonstrate anything you claim.",
+                  "answerTh": "บอกชื่อ จำนวนปีที่ทำงาน ประเภทสปาหรือโรงแรม และทรีตเมนต์ที่คุณถนัด ตอบตามจริง เพราะอาจถูกขอให้สาธิตสิ่งที่คุณบอก"
+                },
+                {
+                  "en": "Where are you currently working? What is your current position?",
+                  "th": "ปัจจุบันคุณทำงานที่ไหน ตำแหน่งอะไร",
+                  "answer": "Name the workplace and your position, then describe your actual duties rather than only the job title.",
+                  "answerTh": "ระบุสถานที่ทำงานและตำแหน่ง จากนั้นอธิบายหน้าที่จริง ไม่ใช่เพียงชื่อตำแหน่ง"
+                }
+              ]
+            },
+            {
+              "id": "r2",
+              "title": "Guest consultation",
+              "titleTh": "การซักประวัติลูกค้า",
+              "focus": "Health history, then contraindications, then areas of concern, then pressure preference, then the booked treatment — in that order.",
+              "focusTh": "ประวัติสุขภาพ ข้อห้าม บริเวณที่กังวล ระดับน้ำหนักมือ และทรีตเมนต์ที่จองไว้ ตามลำดับนี้",
+              "questions": [
+                {
+                  "en": "How do you conduct a consultation before starting a massage?",
+                  "th": "คุณซักประวัติลูกค้าอย่างไรก่อนเริ่มนวด",
+                  "answer": "Health history → contraindications → areas of concern → pressure preference → treatment plan. Saying the sequence in order is what is being marked.",
+                  "answerTh": "ประวัติสุขภาพ → ข้อห้าม → บริเวณที่กังวล → ระดับน้ำหนักมือ → แผนการให้บริการ การบอกลำดับให้ถูกต้องคือสิ่งที่ถูกประเมิน"
+                },
+                {
+                  "en": "What questions would you ask your guest before the treatment?",
+                  "th": "คุณจะถามอะไรลูกค้าก่อนเริ่มทรีตเมนต์",
+                  "answer": "Medical conditions, injuries, recent surgery, pregnancy, allergies, skin conditions, areas of concern and any area to avoid.",
+                  "answerTh": "โรคประจำตัว การบาดเจ็บ การผ่าตัดล่าสุด การตั้งครรภ์ ภูมิแพ้ สภาพผิว บริเวณที่กังวล และบริเวณที่ต้องหลีกเลี่ยง"
+                },
+                {
+                  "en": "Can you tell me two or three contraindications for massage?",
+                  "th": "บอกข้อห้ามของการนวดสักสองหรือสามข้อได้ไหม",
+                  "answer": "Name conditions in English — for example fever, a contagious skin condition, an acute injury or inflammation, or a suspected blood clot. Then add what you do about it: postpone the treatment and recommend medical clearance. You are being marked on safe professional conduct and clear English, not on diagnosing anything.",
+                  "answerTh": "บอกชื่อภาวะเป็นภาษาอังกฤษ เช่น มีไข้ โรคผิวหนังติดต่อ การบาดเจ็บหรือการอักเสบเฉียบพลัน หรือสงสัยว่ามีลิ่มเลือด จากนั้นบอกสิ่งที่คุณจะทำ คือเลื่อนบริการและแนะนำให้ปรึกษาแพทย์ สิ่งที่ถูกประเมินคือการปฏิบัติอย่างปลอดภัยและภาษาอังกฤษที่ชัดเจน ไม่ใช่การวินิจฉัยโรค"
+                },
+                {
+                  "en": "When should you stop a massage treatment?",
+                  "th": "คุณควรหยุดการนวดเมื่อใด",
+                  "answer": "If the guest has unusual or severe pain, dizziness, difficulty breathing, an allergic reaction or numbness. Say that you would stop and check on the guest.",
+                  "answerTh": "เมื่อลูกค้าเจ็บผิดปกติหรือเจ็บมาก เวียนศีรษะ หายใจลำบาก มีอาการแพ้ หรือชา ให้บอกว่าคุณจะหยุดและดูแลลูกค้าทันที"
+                }
+              ]
+            },
+            {
+              "id": "r3",
+              "title": "Confirm the booking & recommend",
+              "titleTh": "ยืนยันการจองและแนะนำทรีตเมนต์",
+              "focus": "Confirming what was booked, naming the guest's main concern, and matching a treatment or add-on to it.",
+              "focusTh": "ยืนยันสิ่งที่จองไว้ ระบุความกังวลหลักของลูกค้า และเลือกทรีตเมนต์หรือบริการเสริมให้เหมาะสม",
+              "questions": [
+                {
+                  "en": "What treatment has the guest booked, and what are the guest's main concerns?",
+                  "th": "ลูกค้าจองทรีตเมนต์อะไร และมีความกังวลหลักเรื่องใด",
+                  "answer": "Repeat the booking back — treatment and duration — then state the concern in your own words so the guest knows you listened. Confirm before you begin.",
+                  "answerTh": "ทวนการจอง ทั้งทรีตเมนต์และระยะเวลา จากนั้นสรุปความกังวลด้วยคำพูดของคุณเองเพื่อแสดงว่าคุณรับฟัง แล้วยืนยันก่อนเริ่ม"
+                },
+                {
+                  "en": "A guest booked a 60-minute Swedish massage but complains of muscle tension. What would you recommend?",
+                  "th": "ลูกค้าจองนวดสวีดิช 60 นาที แต่บอกว่ามีอาการกล้ามเนื้อตึง คุณจะแนะนำอย่างไร",
+                  "answer": "Acknowledge the tension, suggest focusing the time on those areas, and offer either a deep tissue option or a longer treatment. Give the guest a real choice and accept a no.",
+                  "answerTh": "รับทราบอาการตึง เสนอให้เน้นเวลาไปที่บริเวณนั้น และเสนอทางเลือกเป็นการนวดเนื้อเยื่อชั้นลึกหรือเพิ่มเวลา ให้ลูกค้าเลือกได้จริงและยอมรับหากปฏิเสธ"
+                }
+              ]
+            },
+            {
+              "id": "r4",
+              "title": "Practical massage",
+              "titleTh": "การสาธิตการนวด",
+              "focus": "Hygiene, draping, your posture, pressure control, technique, the flow of the treatment, and how you talk to the guest throughout.",
+              "focusTh": "สุขอนามัย การคลุมผ้า ท่าทางของผู้ให้บริการ การควบคุมน้ำหนักมือ เทคนิค ความต่อเนื่อง และการสื่อสารกับลูกค้าตลอดการให้บริการ",
+              "questions": [
+                {
+                  "en": "Please demonstrate a Swedish massage.",
+                  "th": "กรุณาสาธิตการนวดแบบสวีดิช",
+                  "answer": "Keep talking as you work: say what you are about to do, check the pressure, and check comfort. Silence during a practical test reads as weak guest communication even when the hands are good.",
+                  "answerTh": "พูดสื่อสารขณะนวด บอกสิ่งที่กำลังจะทำ ถามเรื่องน้ำหนักมือ และถามความสบาย การเงียบตลอดการทดสอบจะถูกมองว่าสื่อสารกับลูกค้าไม่ดี แม้ฝีมือนวดจะดีก็ตาม"
+                },
+                {
+                  "en": "How many massage techniques can you demonstrate? Please name and show them.",
+                  "th": "คุณสาธิตเทคนิคการนวดได้กี่แบบ กรุณาบอกชื่อและสาธิต",
+                  "answer": "Name each technique in English as you begin it — effleurage, petrissage, friction, tapotement, vibration. Only claim what you can actually show.",
+                  "answerTh": "บอกชื่อเทคนิคเป็นภาษาอังกฤษขณะเริ่มแต่ละเทคนิค ได้แก่ เอฟเฟลอราจ เพทริสสาจ ฟริกชัน แทโพเทเมนต์ และการสั่นสะเทือน บอกเฉพาะที่สาธิตได้จริง"
+                }
+              ]
+            },
+            {
+              "id": "r5",
+              "title": "Questions during the massage",
+              "titleTh": "คำถามระหว่างการนวด",
+              "focus": "Answering anatomy and technique questions in English while your hands keep working. Short, clear answers are enough.",
+              "focusTh": "การตอบคำถามด้านกายวิภาคและเทคนิคเป็นภาษาอังกฤษขณะที่มือยังนวดต่อเนื่อง ตอบสั้นและชัดเจนก็เพียงพอ",
+              "questions": [
+                {
+                  "en": "What technique are you using now?",
+                  "th": "ตอนนี้คุณใช้เทคนิคอะไร",
+                  "answer": "Name it and keep working: \"I'm using petrissage now.\" One sentence is enough.",
+                  "answerTh": "บอกชื่อเทคนิคแล้วนวดต่อ เช่น \"I'm using petrissage now.\" ประโยคเดียวก็เพียงพอ"
+                },
+                {
+                  "en": "Which muscle are you working on?",
+                  "th": "คุณกำลังนวดกล้ามเนื้อมัดใด",
+                  "answer": "Name the muscle in English. If you are unsure of the technical name, name the area clearly instead of guessing.",
+                  "answerTh": "บอกชื่อกล้ามเนื้อเป็นภาษาอังกฤษ หากไม่แน่ใจชื่อทางวิชาการ ให้บอกชื่อบริเวณให้ชัดเจนแทนการเดา"
+                },
+                {
+                  "en": "Where is the trapezius muscle? Please show me.",
+                  "th": "กล้ามเนื้อทราพีเซียสอยู่ตรงไหน กรุณาชี้ให้ดู",
+                  "answer": "The back of the neck, the shoulders and the upper back. Point as you say it — the Body map in this app shows the same area.",
+                  "answerTh": "อยู่บริเวณต้นคอ บ่า และหลังส่วนบน ชี้ตำแหน่งขณะพูด แผนผังร่างกายในแอปนี้แสดงบริเวณเดียวกัน"
+                },
+                {
+                  "en": "Can you show me the scapula?",
+                  "th": "ชี้กระดูกสะบักให้ดูได้ไหม",
+                  "answer": "The shoulder blade, the flat triangular bone on the upper back. Remember it is a bone, not a muscle — this is the mix-up the question is testing.",
+                  "answerTh": "คือกระดูกสะบัก กระดูกแบนรูปสามเหลี่ยมที่หลังส่วนบน จำไว้ว่าเป็นกระดูก ไม่ใช่กล้ามเนื้อ นี่คือจุดที่คำถามต้องการตรวจสอบ"
+                },
+                {
+                  "en": "What is the longest and largest nerve in the human body?",
+                  "th": "เส้นประสาทที่ยาวและใหญ่ที่สุดในร่างกายคือเส้นใด",
+                  "answer": "The sciatic nerve. It runs from the lower back, through the buttock, and down the back of the leg.",
+                  "answerTh": "คือเส้นประสาทไซแอติก ทอดจากหลังส่วนล่าง ผ่านสะโพก ลงไปด้านหลังของขา"
+                },
+                {
+                  "en": "Would you avoid this area under any circumstances? Why?",
+                  "th": "มีกรณีใดที่คุณจะเลี่ยงบริเวณนี้หรือไม่ เพราะอะไร",
+                  "answer": "Yes — for example over a recent injury, an open wound, an inflamed area or a suspected blood clot. Say what you would avoid and that you would check with the guest first.",
+                  "answerTh": "มี เช่น บริเวณที่บาดเจ็บใหม่ แผลเปิด บริเวณที่อักเสบ หรือที่สงสัยว่ามีลิ่มเลือด ให้บอกว่าจะเลี่ยงอะไรและจะสอบถามลูกค้าก่อน"
+                }
+              ]
+            },
+            {
+              "id": "r6",
+              "title": "Sales & guest service",
+              "titleTh": "การขายและการบริการลูกค้า",
+              "focus": "Recommending a next treatment, package or add-on from what the guest actually needs — never pressure selling.",
+              "focusTh": "การแนะนำทรีตเมนต์ครั้งต่อไป แพ็กเกจ หรือบริการเสริม จากความต้องการจริงของลูกค้า โดยไม่ใช่การขายแบบกดดัน",
+              "questions": [
+                {
+                  "en": "How would you recommend or sell a spa treatment to a guest?",
+                  "th": "คุณจะแนะนำหรือเสนอขายทรีตเมนต์สปาให้ลูกค้าอย่างไร",
+                  "answer": "Follow the five steps: consult, identify the concern, recommend one suitable option, explain the benefit in plain words, then confirm. The five phrases for these steps are in Phrases → Suggesting extras politely.",
+                  "answerTh": "ทำตามห้าขั้นตอน: สอบถาม ระบุปัญหา แนะนำทางเลือกที่เหมาะสมหนึ่งอย่าง อธิบายประโยชน์ด้วยภาษาง่าย ๆ แล้วยืนยัน ประโยคสำหรับแต่ละขั้นอยู่ในหมวดประโยค การเสนอบริการเสริมอย่างสุภาพ"
+                },
+                {
+                  "en": "How would you recommend an additional treatment without making the guest feel pressured?",
+                  "th": "คุณจะแนะนำทรีตเมนต์เพิ่มเติมอย่างไรโดยไม่ทำให้ลูกค้ารู้สึกกดดัน",
+                  "answer": "Tie the suggestion to what the guest told you, state the extra time and cost plainly, and make it easy to say no. Accepting a no politely is part of what is marked.",
+                  "answerTh": "เชื่อมโยงข้อเสนอกับสิ่งที่ลูกค้าบอก แจ้งเวลาและค่าใช้จ่ายเพิ่มเติมอย่างตรงไปตรงมา และทำให้ลูกค้าปฏิเสธได้ง่าย การยอมรับคำปฏิเสธอย่างสุภาพก็เป็นสิ่งที่ถูกประเมิน"
+                }
+              ]
+            }
+          ],
+          "note": "Rehearsal support for an employer's interview and practical assessment. Model answers are language practice, not a treatment protocol, and not a guarantee of any recruitment outcome. Follow your employer's and your training provider's approved procedures for anything clinical.",
+          "noteTh": "แบบฝึกซ้อมสำหรับการสัมภาษณ์และการทดสอบภาคปฏิบัติของนายจ้าง ตัวอย่างคำตอบเป็นการฝึกภาษา ไม่ใช่ขั้นตอนการรักษา และไม่ได้รับประกันผลการสมัครงาน สำหรับเรื่องทางคลินิก ให้ปฏิบัติตามขั้นตอนที่นายจ้างและสถาบันฝึกอบรมของคุณอนุมัติ",
+          "source": "Employer's Spa Therapist Interview & Practical Assessment"
+        }
       }
     ],
     "salon": [
@@ -34133,6 +34302,858 @@
         "levelNote": "Editorial learning level, not CEFR certification.",
         "relatedPhraseIds": []
       }
+    },
+    "spa-v-vibration": {
+      "id": "spa-v-vibration",
+      "kind": "word",
+      "en": "Vibration",
+      "th": "การสั่นสะเทือน",
+      "description": "A Swedish massage technique using fine shaking or trembling movements.",
+      "descriptionTh": "",
+      "example": "Vibration is one of the five classic Swedish techniques.",
+      "exampleTh": "การสั่นสะเทือนเป็นหนึ่งในห้าเทคนิคพื้นฐานของการนวดแบบสวีดิช",
+      "level": 3,
+      "category": "Massage & bodywork",
+      "categoryTh": "นวดและการบำบัดร่างกาย",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "word": "Vibration",
+        "th": "การสั่นสะเทือน",
+        "phon": "/vaɪˈbreɪ.ʃən/",
+        "pos": "noun",
+        "cat": "massage",
+        "level": 3,
+        "short": "A Swedish massage technique using fine shaking or trembling movements.",
+        "example": "Vibration is one of the five classic Swedish techniques.",
+        "exampleTh": "การสั่นสะเทือนเป็นหนึ่งในห้าเทคนิคพื้นฐานของการนวดแบบสวีดิช",
+        "collocation": "gentle vibration",
+        "added": true,
+        "def": "A Swedish massage technique using fine shaking or trembling movements.",
+        "id": "spa-v-vibration",
+        "progressKey": "Vibration",
+        "audience": "both",
+        "levelNote": "Editorial learning level, not CEFR certification.",
+        "relatedPhraseIds": []
+      }
+    },
+    "spa-v-sen-sib": {
+      "id": "spa-v-sen-sib",
+      "kind": "word",
+      "en": "Sen Sib",
+      "th": "เส้นประธานสิบ",
+      "description": "The ten principal energy lines described in traditional Thai massage.",
+      "descriptionTh": "",
+      "example": "I trained in traditional Thai massage and the Sen Sib lines.",
+      "exampleTh": "ดิฉันเรียนนวดแผนไทยและเส้นประธานสิบมาค่ะ",
+      "level": 3,
+      "category": "Massage & bodywork",
+      "categoryTh": "นวดและการบำบัดร่างกาย",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "word": "Sen Sib",
+        "th": "เส้นประธานสิบ",
+        "phon": "/sen sɪp/",
+        "pos": "noun",
+        "cat": "massage",
+        "level": 3,
+        "short": "The ten principal energy lines described in traditional Thai massage.",
+        "example": "I trained in traditional Thai massage and the Sen Sib lines.",
+        "exampleTh": "ดิฉันเรียนนวดแผนไทยและเส้นประธานสิบมาค่ะ",
+        "collocation": "the Sen Sib lines",
+        "added": true,
+        "def": "The ten principal energy lines described in traditional Thai massage.",
+        "id": "spa-v-sen-sib",
+        "progressKey": "Sen Sib",
+        "audience": "both",
+        "levelNote": "Editorial learning level, not CEFR certification.",
+        "relatedPhraseIds": []
+      }
+    },
+    "spa-v-scapula": {
+      "id": "spa-v-scapula",
+      "kind": "word",
+      "en": "Scapula",
+      "th": "กระดูกสะบัก",
+      "description": "The anatomical name for the shoulder blade. It is a bone, not a muscle.",
+      "descriptionTh": "",
+      "example": "The scapula is the shoulder blade, here on the upper back.",
+      "exampleTh": "กระดูกสะบักอยู่บริเวณหลังส่วนบนตรงนี้ค่ะ",
+      "level": 3,
+      "category": "Body parts",
+      "categoryTh": "ส่วนต่าง ๆ ของร่างกาย",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "word": "Scapula",
+        "th": "กระดูกสะบัก",
+        "phon": "/ˈskæp.jʊ.lə/",
+        "pos": "noun",
+        "cat": "body",
+        "level": 3,
+        "short": "The anatomical name for the shoulder blade. It is a bone, not a muscle.",
+        "example": "The scapula is the shoulder blade, here on the upper back.",
+        "exampleTh": "กระดูกสะบักอยู่บริเวณหลังส่วนบนตรงนี้ค่ะ",
+        "collocation": "the left scapula",
+        "added": true,
+        "def": "The anatomical name for the shoulder blade. It is a bone, not a muscle.",
+        "id": "spa-v-scapula",
+        "progressKey": "Scapula",
+        "audience": "both",
+        "levelNote": "Editorial learning level, not CEFR certification.",
+        "relatedPhraseIds": []
+      }
+    },
+    "spa-v-sciatic-nerve": {
+      "id": "spa-v-sciatic-nerve",
+      "kind": "word",
+      "en": "Sciatic nerve",
+      "th": "เส้นประสาทไซแอติก",
+      "description": "The longest and largest nerve in the body, running from the lower back through the buttock and down the back of the leg.",
+      "descriptionTh": "",
+      "example": "The sciatic nerve is the longest and largest nerve in the body.",
+      "exampleTh": "เส้นประสาทไซแอติกเป็นเส้นประสาทที่ยาวและใหญ่ที่สุดในร่างกาย",
+      "level": 3,
+      "category": "Body parts",
+      "categoryTh": "ส่วนต่าง ๆ ของร่างกาย",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "word": "Sciatic nerve",
+        "th": "เส้นประสาทไซแอติก",
+        "phon": "/saɪˌæt.ɪk ˈnɜːv/",
+        "pos": "noun",
+        "cat": "body",
+        "level": 3,
+        "short": "The longest and largest nerve in the body, running from the lower back through the buttock and down the back of the leg.",
+        "example": "The sciatic nerve is the longest and largest nerve in the body.",
+        "exampleTh": "เส้นประสาทไซแอติกเป็นเส้นประสาทที่ยาวและใหญ่ที่สุดในร่างกาย",
+        "collocation": "the sciatic nerve",
+        "added": true,
+        "def": "The longest and largest nerve in the body, running from the lower back through the buttock and down the back of the leg.",
+        "id": "spa-v-sciatic-nerve",
+        "progressKey": "Sciatic nerve",
+        "audience": "both",
+        "levelNote": "Editorial learning level, not CEFR certification.",
+        "relatedPhraseIds": []
+      }
+    },
+    "spa-v-origin": {
+      "id": "spa-v-origin",
+      "kind": "word",
+      "en": "Origin",
+      "th": "จุดเกาะต้น",
+      "description": "The fixed attachment point of a muscle, used when describing where a muscle begins.",
+      "descriptionTh": "",
+      "example": "Can you tell me the origin of this muscle?",
+      "exampleTh": "บอกจุดเกาะต้นของกล้ามเนื้อมัดนี้ได้ไหมคะ",
+      "level": 3,
+      "category": "Body parts",
+      "categoryTh": "ส่วนต่าง ๆ ของร่างกาย",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "word": "Origin",
+        "th": "จุดเกาะต้น",
+        "phon": "/ˈɒr.ɪ.dʒɪn/",
+        "pos": "noun",
+        "cat": "body",
+        "level": 3,
+        "short": "The fixed attachment point of a muscle, used when describing where a muscle begins.",
+        "example": "Can you tell me the origin of this muscle?",
+        "exampleTh": "บอกจุดเกาะต้นของกล้ามเนื้อมัดนี้ได้ไหมคะ",
+        "collocation": "the origin of the muscle",
+        "added": true,
+        "def": "The fixed attachment point of a muscle, used when describing where a muscle begins.",
+        "id": "spa-v-origin",
+        "progressKey": "Origin",
+        "audience": "both",
+        "levelNote": "Editorial learning level, not CEFR certification.",
+        "relatedPhraseIds": []
+      }
+    },
+    "spa-v-insertion": {
+      "id": "spa-v-insertion",
+      "kind": "word",
+      "en": "Insertion",
+      "th": "จุดเกาะปลาย",
+      "description": "The moving attachment point of a muscle, used when describing where a muscle ends.",
+      "descriptionTh": "",
+      "example": "The origin and insertion tell you how the muscle moves.",
+      "exampleTh": "จุดเกาะต้นและจุดเกาะปลายบอกให้รู้ว่ากล้ามเนื้อทำงานอย่างไร",
+      "level": 3,
+      "category": "Body parts",
+      "categoryTh": "ส่วนต่าง ๆ ของร่างกาย",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "word": "Insertion",
+        "th": "จุดเกาะปลาย",
+        "phon": "/ɪnˈsɜː.ʃən/",
+        "pos": "noun",
+        "cat": "body",
+        "level": 3,
+        "short": "The moving attachment point of a muscle, used when describing where a muscle ends.",
+        "example": "The origin and insertion tell you how the muscle moves.",
+        "exampleTh": "จุดเกาะต้นและจุดเกาะปลายบอกให้รู้ว่ากล้ามเนื้อทำงานอย่างไร",
+        "collocation": "origin and insertion",
+        "added": true,
+        "def": "The moving attachment point of a muscle, used when describing where a muscle ends.",
+        "id": "spa-v-insertion",
+        "progressKey": "Insertion",
+        "audience": "both",
+        "levelNote": "Editorial learning level, not CEFR certification.",
+        "relatedPhraseIds": []
+      }
+    },
+    "spa-v-hygiene": {
+      "id": "spa-v-hygiene",
+      "kind": "word",
+      "en": "Hygiene",
+      "th": "สุขอนามัย",
+      "description": "Keeping yourself, your tools and the treatment room clean and safe.",
+      "descriptionTh": "",
+      "example": "Hygiene is checked throughout the practical test.",
+      "exampleTh": "สุขอนามัยจะถูกประเมินตลอดการทดสอบภาคปฏิบัติ",
+      "level": 2,
+      "category": "Safety & hygiene",
+      "categoryTh": "ความปลอดภัยและสุขอนามัย",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "word": "Hygiene",
+        "th": "สุขอนามัย",
+        "phon": "/ˈhaɪ.dʒiːn/",
+        "pos": "noun",
+        "cat": "safety",
+        "level": 2,
+        "short": "Keeping yourself, your tools and the treatment room clean and safe.",
+        "example": "Hygiene is checked throughout the practical test.",
+        "exampleTh": "สุขอนามัยจะถูกประเมินตลอดการทดสอบภาคปฏิบัติ",
+        "collocation": "hand hygiene",
+        "added": true,
+        "def": "Keeping yourself, your tools and the treatment room clean and safe.",
+        "id": "spa-v-hygiene",
+        "progressKey": "Hygiene",
+        "audience": "both",
+        "levelNote": "Editorial learning level, not CEFR certification.",
+        "relatedPhraseIds": []
+      }
+    },
+    "spa-v-upgrade": {
+      "id": "spa-v-upgrade",
+      "kind": "word",
+      "en": "Upgrade",
+      "th": "อัปเกรด",
+      "description": "A longer or higher-value version of the treatment the guest has booked.",
+      "descriptionTh": "",
+      "example": "Would you like to upgrade to a ninety-minute treatment?",
+      "exampleTh": "ต้องการอัปเกรดเป็นทรีตเมนต์ 90 นาทีไหมคะ",
+      "level": 2,
+      "category": "Client care & front desk",
+      "categoryTh": "การดูแลลูกค้าและหน้าเคาน์เตอร์",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "word": "Upgrade",
+        "th": "อัปเกรด",
+        "phon": "/ˈʌp.ɡreɪd/",
+        "pos": "noun",
+        "cat": "care",
+        "level": 2,
+        "short": "A longer or higher-value version of the treatment the guest has booked.",
+        "example": "Would you like to upgrade to a ninety-minute treatment?",
+        "exampleTh": "ต้องการอัปเกรดเป็นทรีตเมนต์ 90 นาทีไหมคะ",
+        "collocation": "offer an upgrade",
+        "added": true,
+        "def": "A longer or higher-value version of the treatment the guest has booked.",
+        "id": "spa-v-upgrade",
+        "progressKey": "Upgrade",
+        "audience": "both",
+        "levelNote": "Editorial learning level, not CEFR certification.",
+        "relatedPhraseIds": []
+      }
+    },
+    "spa-p-interview-001": {
+      "id": "spa-p-interview-001",
+      "kind": "phrase",
+      "en": "I have three years of experience in a five-star hotel spa.",
+      "th": "ดิฉันมีประสบการณ์ 3 ปีในสปาโรงแรมระดับห้าดาวค่ะ",
+      "description": "Answering the opening question. Give the number of years, the type of spa or hotel, and be truthful.",
+      "descriptionTh": "ใช้ตอบคำถามเปิด ระบุจำนวนปี ประเภทสปาหรือโรงแรม และตอบตามความจริง",
+      "example": "",
+      "exampleTh": "",
+      "level": 2,
+      "category": "Interview answers",
+      "categoryTh": "การตอบสัมภาษณ์",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "level": 2,
+        "text": "I have three years of experience in a five-star hotel spa.",
+        "th": "ดิฉันมีประสบการณ์ 3 ปีในสปาโรงแรมระดับห้าดาวค่ะ",
+        "note": "Answering the opening question. Give the number of years, the type of spa or hotel, and be truthful.",
+        "id": "spa-p-interview-001",
+        "audience": "both",
+        "context": "Interview answers",
+        "contextTh": "การตอบสัมภาษณ์",
+        "noteTh": "ใช้ตอบคำถามเปิด ระบุจำนวนปี ประเภทสปาหรือโรงแรม และตอบตามความจริง",
+        "trainingExample": true,
+        "relatedVocabularyIds": [],
+        "dialogueIds": []
+      }
+    },
+    "spa-p-interview-002": {
+      "id": "spa-p-interview-002",
+      "kind": "phrase",
+      "en": "I specialise in Swedish and deep tissue massage.",
+      "th": "ดิฉันถนัดการนวดแบบสวีดิชและการนวดเนื้อเยื่อชั้นลึกค่ะ",
+      "description": "Name only the techniques you are actually trained to demonstrate.",
+      "descriptionTh": "ระบุเฉพาะเทคนิคที่คุณได้รับการฝึกและสาธิตได้จริง",
+      "example": "",
+      "exampleTh": "",
+      "level": 2,
+      "category": "Interview answers",
+      "categoryTh": "การตอบสัมภาษณ์",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "level": 2,
+        "text": "I specialise in Swedish and deep tissue massage.",
+        "th": "ดิฉันถนัดการนวดแบบสวีดิชและการนวดเนื้อเยื่อชั้นลึกค่ะ",
+        "note": "Name only the techniques you are actually trained to demonstrate.",
+        "id": "spa-p-interview-002",
+        "audience": "both",
+        "context": "Interview answers",
+        "contextTh": "การตอบสัมภาษณ์",
+        "noteTh": "ระบุเฉพาะเทคนิคที่คุณได้รับการฝึกและสาธิตได้จริง",
+        "trainingExample": true,
+        "relatedVocabularyIds": [],
+        "dialogueIds": []
+      }
+    },
+    "spa-p-interview-003": {
+      "id": "spa-p-interview-003",
+      "kind": "phrase",
+      "en": "I am currently working as a spa therapist at a day spa in Chiang Mai.",
+      "th": "ปัจจุบันดิฉันทำงานเป็นนักบำบัดสปาที่เดย์สปาในเชียงใหม่ค่ะ",
+      "description": "State your current workplace and position. Change the details to your own.",
+      "descriptionTh": "ระบุสถานที่ทำงานและตำแหน่งปัจจุบัน ปรับรายละเอียดให้ตรงกับของคุณเอง",
+      "example": "",
+      "exampleTh": "",
+      "level": 2,
+      "category": "Interview answers",
+      "categoryTh": "การตอบสัมภาษณ์",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "level": 2,
+        "text": "I am currently working as a spa therapist at a day spa in Chiang Mai.",
+        "th": "ปัจจุบันดิฉันทำงานเป็นนักบำบัดสปาที่เดย์สปาในเชียงใหม่ค่ะ",
+        "note": "State your current workplace and position. Change the details to your own.",
+        "id": "spa-p-interview-003",
+        "audience": "both",
+        "context": "Interview answers",
+        "contextTh": "การตอบสัมภาษณ์",
+        "noteTh": "ระบุสถานที่ทำงานและตำแหน่งปัจจุบัน ปรับรายละเอียดให้ตรงกับของคุณเอง",
+        "trainingExample": true,
+        "relatedVocabularyIds": [],
+        "dialogueIds": []
+      }
+    },
+    "spa-p-interview-004": {
+      "id": "spa-p-interview-004",
+      "kind": "phrase",
+      "en": "My main responsibilities are consultation, massage treatments and aftercare advice.",
+      "th": "หน้าที่หลักของดิฉันคือการซักประวัติ การนวด และการให้คำแนะนำหลังทรีตเมนต์ค่ะ",
+      "description": "Describe duties, not just the job title.",
+      "descriptionTh": "อธิบายหน้าที่ ไม่ใช่เพียงชื่อตำแหน่ง",
+      "example": "",
+      "exampleTh": "",
+      "level": 2,
+      "category": "Interview answers",
+      "categoryTh": "การตอบสัมภาษณ์",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "level": 2,
+        "text": "My main responsibilities are consultation, massage treatments and aftercare advice.",
+        "th": "หน้าที่หลักของดิฉันคือการซักประวัติ การนวด และการให้คำแนะนำหลังทรีตเมนต์ค่ะ",
+        "note": "Describe duties, not just the job title.",
+        "id": "spa-p-interview-004",
+        "audience": "both",
+        "context": "Interview answers",
+        "contextTh": "การตอบสัมภาษณ์",
+        "noteTh": "อธิบายหน้าที่ ไม่ใช่เพียงชื่อตำแหน่ง",
+        "trainingExample": true,
+        "relatedVocabularyIds": [],
+        "dialogueIds": []
+      }
+    },
+    "spa-p-interview-005": {
+      "id": "spa-p-interview-005",
+      "kind": "phrase",
+      "en": "I start with a health history, then check for contraindications, areas of concern and pressure preference.",
+      "th": "ดิฉันเริ่มจากซักประวัติสุขภาพ จากนั้นตรวจสอบข้อห้าม บริเวณที่กังวล และระดับน้ำหนักมือที่ต้องการค่ะ",
+      "description": "The consultation sequence the assessment looks for, in one sentence.",
+      "descriptionTh": "ลำดับการซักประวัติที่ผู้ประเมินต้องการได้ยิน สรุปในประโยคเดียว",
+      "example": "",
+      "exampleTh": "",
+      "level": 2,
+      "category": "Interview answers",
+      "categoryTh": "การตอบสัมภาษณ์",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "level": 2,
+        "text": "I start with a health history, then check for contraindications, areas of concern and pressure preference.",
+        "th": "ดิฉันเริ่มจากซักประวัติสุขภาพ จากนั้นตรวจสอบข้อห้าม บริเวณที่กังวล และระดับน้ำหนักมือที่ต้องการค่ะ",
+        "note": "The consultation sequence the assessment looks for, in one sentence.",
+        "id": "spa-p-interview-005",
+        "audience": "both",
+        "context": "Interview answers",
+        "contextTh": "การตอบสัมภาษณ์",
+        "noteTh": "ลำดับการซักประวัติที่ผู้ประเมินต้องการได้ยิน สรุปในประโยคเดียว",
+        "trainingExample": true,
+        "relatedVocabularyIds": [],
+        "dialogueIds": []
+      }
+    },
+    "spa-p-interview-006": {
+      "id": "spa-p-interview-006",
+      "kind": "phrase",
+      "en": "If I am unsure about a guest's condition, I postpone the treatment and recommend medical clearance.",
+      "th": "หากไม่แน่ใจเกี่ยวกับภาวะสุขภาพของลูกค้า ดิฉันจะเลื่อนการให้บริการและแนะนำให้ปรึกษาแพทย์ก่อนค่ะ",
+      "description": "The safe answer. A therapist does not diagnose; postponing and referring is the professional response.",
+      "descriptionTh": "คำตอบที่ปลอดภัย นักบำบัดไม่วินิจฉัยโรค การเลื่อนบริการและส่งต่อให้แพทย์คือการปฏิบัติอย่างมืออาชีพ",
+      "example": "",
+      "exampleTh": "",
+      "level": 2,
+      "category": "Interview answers",
+      "categoryTh": "การตอบสัมภาษณ์",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "level": 2,
+        "text": "If I am unsure about a guest's condition, I postpone the treatment and recommend medical clearance.",
+        "th": "หากไม่แน่ใจเกี่ยวกับภาวะสุขภาพของลูกค้า ดิฉันจะเลื่อนการให้บริการและแนะนำให้ปรึกษาแพทย์ก่อนค่ะ",
+        "note": "The safe answer. A therapist does not diagnose; postponing and referring is the professional response.",
+        "id": "spa-p-interview-006",
+        "audience": "both",
+        "context": "Interview answers",
+        "contextTh": "การตอบสัมภาษณ์",
+        "noteTh": "คำตอบที่ปลอดภัย นักบำบัดไม่วินิจฉัยโรค การเลื่อนบริการและส่งต่อให้แพทย์คือการปฏิบัติอย่างมืออาชีพ",
+        "trainingExample": true,
+        "relatedVocabularyIds": [],
+        "dialogueIds": []
+      }
+    },
+    "spa-p-interview-007": {
+      "id": "spa-p-interview-007",
+      "kind": "phrase",
+      "en": "I would not massage over a recent injury, an open wound or an inflamed area.",
+      "th": "ดิฉันจะไม่นวดบริเวณที่บาดเจ็บใหม่ แผลเปิด หรือบริเวณที่มีการอักเสบค่ะ",
+      "description": "Naming contraindications in English. Describe what you avoid; do not give a medical opinion.",
+      "descriptionTh": "การบอกข้อห้ามเป็นภาษาอังกฤษ ให้บอกว่าจะเลี่ยงบริเวณใด ไม่ใช่การวินิจฉัยทางการแพทย์",
+      "example": "",
+      "exampleTh": "",
+      "level": 2,
+      "category": "Interview answers",
+      "categoryTh": "การตอบสัมภาษณ์",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "level": 2,
+        "text": "I would not massage over a recent injury, an open wound or an inflamed area.",
+        "th": "ดิฉันจะไม่นวดบริเวณที่บาดเจ็บใหม่ แผลเปิด หรือบริเวณที่มีการอักเสบค่ะ",
+        "note": "Naming contraindications in English. Describe what you avoid; do not give a medical opinion.",
+        "id": "spa-p-interview-007",
+        "audience": "both",
+        "context": "Interview answers",
+        "contextTh": "การตอบสัมภาษณ์",
+        "noteTh": "การบอกข้อห้ามเป็นภาษาอังกฤษ ให้บอกว่าจะเลี่ยงบริเวณใด ไม่ใช่การวินิจฉัยทางการแพทย์",
+        "trainingExample": true,
+        "relatedVocabularyIds": [],
+        "dialogueIds": []
+      }
+    },
+    "spa-p-interview-008": {
+      "id": "spa-p-interview-008",
+      "kind": "phrase",
+      "en": "I would stop the treatment if the guest felt dizzy, short of breath or in unusual pain.",
+      "th": "ดิฉันจะหยุดให้บริการทันทีหากลูกค้ารู้สึกเวียนศีรษะ หายใจลำบาก หรือเจ็บผิดปกติค่ะ",
+      "description": "Answering when you would stop. Name the signs and say you would stop, not what the cause might be.",
+      "descriptionTh": "ใช้ตอบว่าจะหยุดเมื่อใด ให้ระบุอาการและบอกว่าจะหยุด ไม่ต้องคาดเดาสาเหตุ",
+      "example": "",
+      "exampleTh": "",
+      "level": 2,
+      "category": "Interview answers",
+      "categoryTh": "การตอบสัมภาษณ์",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "level": 2,
+        "text": "I would stop the treatment if the guest felt dizzy, short of breath or in unusual pain.",
+        "th": "ดิฉันจะหยุดให้บริการทันทีหากลูกค้ารู้สึกเวียนศีรษะ หายใจลำบาก หรือเจ็บผิดปกติค่ะ",
+        "note": "Answering when you would stop. Name the signs and say you would stop, not what the cause might be.",
+        "id": "spa-p-interview-008",
+        "audience": "both",
+        "context": "Interview answers",
+        "contextTh": "การตอบสัมภาษณ์",
+        "noteTh": "ใช้ตอบว่าจะหยุดเมื่อใด ให้ระบุอาการและบอกว่าจะหยุด ไม่ต้องคาดเดาสาเหตุ",
+        "trainingExample": true,
+        "relatedVocabularyIds": [],
+        "dialogueIds": []
+      }
+    },
+    "spa-p-interview-009": {
+      "id": "spa-p-interview-009",
+      "kind": "phrase",
+      "en": "Swedish massage uses gentler, flowing techniques for relaxation and circulation.",
+      "th": "การนวดแบบสวีดิชใช้เทคนิคที่นุ่มนวลและต่อเนื่องเพื่อการผ่อนคลายและการไหลเวียนค่ะ",
+      "description": "Describing a treatment without making medical claims.",
+      "descriptionTh": "อธิบายทรีตเมนต์โดยไม่กล่าวอ้างทางการแพทย์",
+      "example": "",
+      "exampleTh": "",
+      "level": 2,
+      "category": "Interview answers",
+      "categoryTh": "การตอบสัมภาษณ์",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "level": 2,
+        "text": "Swedish massage uses gentler, flowing techniques for relaxation and circulation.",
+        "th": "การนวดแบบสวีดิชใช้เทคนิคที่นุ่มนวลและต่อเนื่องเพื่อการผ่อนคลายและการไหลเวียนค่ะ",
+        "note": "Describing a treatment without making medical claims.",
+        "id": "spa-p-interview-009",
+        "audience": "both",
+        "context": "Interview answers",
+        "contextTh": "การตอบสัมภาษณ์",
+        "noteTh": "อธิบายทรีตเมนต์โดยไม่กล่าวอ้างทางการแพทย์",
+        "trainingExample": true,
+        "relatedVocabularyIds": [],
+        "dialogueIds": []
+      }
+    },
+    "spa-p-interview-010": {
+      "id": "spa-p-interview-010",
+      "kind": "phrase",
+      "en": "Deep tissue massage works on the deeper muscle layers with firmer, controlled pressure.",
+      "th": "การนวดเนื้อเยื่อชั้นลึกทำงานกับกล้ามเนื้อชั้นลึกด้วยน้ำหนักมือที่หนักขึ้นและควบคุมได้ค่ะ",
+      "description": "The contrast the interviewer is listening for against Swedish massage.",
+      "descriptionTh": "จุดต่างที่ผู้สัมภาษณ์ต้องการได้ยินเมื่อเทียบกับการนวดสวีดิช",
+      "example": "",
+      "exampleTh": "",
+      "level": 2,
+      "category": "Interview answers",
+      "categoryTh": "การตอบสัมภาษณ์",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "level": 2,
+        "text": "Deep tissue massage works on the deeper muscle layers with firmer, controlled pressure.",
+        "th": "การนวดเนื้อเยื่อชั้นลึกทำงานกับกล้ามเนื้อชั้นลึกด้วยน้ำหนักมือที่หนักขึ้นและควบคุมได้ค่ะ",
+        "note": "The contrast the interviewer is listening for against Swedish massage.",
+        "id": "spa-p-interview-010",
+        "audience": "both",
+        "context": "Interview answers",
+        "contextTh": "การตอบสัมภาษณ์",
+        "noteTh": "จุดต่างที่ผู้สัมภาษณ์ต้องการได้ยินเมื่อเทียบกับการนวดสวีดิช",
+        "trainingExample": true,
+        "relatedVocabularyIds": [],
+        "dialogueIds": []
+      }
+    },
+    "spa-p-interview-011": {
+      "id": "spa-p-interview-011",
+      "kind": "phrase",
+      "en": "I begin with lighter pressure, increase it gradually, and keep checking with the guest.",
+      "th": "ดิฉันจะเริ่มด้วยน้ำหนักเบา แล้วค่อย ๆ เพิ่มขึ้น พร้อมสอบถามลูกค้าเป็นระยะค่ะ",
+      "description": "How to answer the pressure-control question in a deep tissue treatment.",
+      "descriptionTh": "วิธีตอบคำถามเรื่องการควบคุมน้ำหนักมือในการนวดเนื้อเยื่อชั้นลึก",
+      "example": "",
+      "exampleTh": "",
+      "level": 2,
+      "category": "Interview answers",
+      "categoryTh": "การตอบสัมภาษณ์",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "level": 2,
+        "text": "I begin with lighter pressure, increase it gradually, and keep checking with the guest.",
+        "th": "ดิฉันจะเริ่มด้วยน้ำหนักเบา แล้วค่อย ๆ เพิ่มขึ้น พร้อมสอบถามลูกค้าเป็นระยะค่ะ",
+        "note": "How to answer the pressure-control question in a deep tissue treatment.",
+        "id": "spa-p-interview-011",
+        "audience": "both",
+        "context": "Interview answers",
+        "contextTh": "การตอบสัมภาษณ์",
+        "noteTh": "วิธีตอบคำถามเรื่องการควบคุมน้ำหนักมือในการนวดเนื้อเยื่อชั้นลึก",
+        "trainingExample": true,
+        "relatedVocabularyIds": [],
+        "dialogueIds": []
+      }
+    },
+    "spa-p-interview-012": {
+      "id": "spa-p-interview-012",
+      "kind": "phrase",
+      "en": "Before using hot stones I check the temperature, the guest's skin and their heat sensitivity.",
+      "th": "ก่อนใช้หินร้อน ดิฉันจะตรวจอุณหภูมิ สภาพผิว และความไวต่อความร้อนของลูกค้าค่ะ",
+      "description": "Hot stone precautions, said as a checking routine.",
+      "descriptionTh": "ข้อควรระวังของการนวดหินร้อน พูดในรูปแบบขั้นตอนการตรวจสอบ",
+      "example": "",
+      "exampleTh": "",
+      "level": 2,
+      "category": "Interview answers",
+      "categoryTh": "การตอบสัมภาษณ์",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "level": 2,
+        "text": "Before using hot stones I check the temperature, the guest's skin and their heat sensitivity.",
+        "th": "ก่อนใช้หินร้อน ดิฉันจะตรวจอุณหภูมิ สภาพผิว และความไวต่อความร้อนของลูกค้าค่ะ",
+        "note": "Hot stone precautions, said as a checking routine.",
+        "id": "spa-p-interview-012",
+        "audience": "both",
+        "context": "Interview answers",
+        "contextTh": "การตอบสัมภาษณ์",
+        "noteTh": "ข้อควรระวังของการนวดหินร้อน พูดในรูปแบบขั้นตอนการตรวจสอบ",
+        "trainingExample": true,
+        "relatedVocabularyIds": [],
+        "dialogueIds": []
+      }
+    },
+    "spa-p-interview-013": {
+      "id": "spa-p-interview-013",
+      "kind": "phrase",
+      "en": "The five main Swedish techniques are effleurage, petrissage, friction, tapotement and vibration.",
+      "th": "เทคนิคหลักห้าอย่างของการนวดสวีดิชคือ เอฟเฟลอราจ เพทริสสาจ ฟริกชัน แทโพเทเมนต์ และการสั่นสะเทือนค่ะ",
+      "description": "You may be asked to name these and then demonstrate them.",
+      "descriptionTh": "คุณอาจถูกขอให้บอกชื่อเทคนิคเหล่านี้แล้วสาธิตจริง",
+      "example": "",
+      "exampleTh": "",
+      "level": 2,
+      "category": "Interview answers",
+      "categoryTh": "การตอบสัมภาษณ์",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "level": 2,
+        "text": "The five main Swedish techniques are effleurage, petrissage, friction, tapotement and vibration.",
+        "th": "เทคนิคหลักห้าอย่างของการนวดสวีดิชคือ เอฟเฟลอราจ เพทริสสาจ ฟริกชัน แทโพเทเมนต์ และการสั่นสะเทือนค่ะ",
+        "note": "You may be asked to name these and then demonstrate them.",
+        "id": "spa-p-interview-013",
+        "audience": "both",
+        "context": "Interview answers",
+        "contextTh": "การตอบสัมภาษณ์",
+        "noteTh": "คุณอาจถูกขอให้บอกชื่อเทคนิคเหล่านี้แล้วสาธิตจริง",
+        "trainingExample": true,
+        "relatedVocabularyIds": [],
+        "dialogueIds": []
+      }
+    },
+    "spa-p-interview-014": {
+      "id": "spa-p-interview-014",
+      "kind": "phrase",
+      "en": "The trapezius covers the back of the neck, the shoulders and the upper back.",
+      "th": "กล้ามเนื้อทราพีเซียสครอบคลุมบริเวณต้นคอ บ่า และหลังส่วนบนค่ะ",
+      "description": "Say it and point to it. The interviewer usually asks you to show the area.",
+      "descriptionTh": "พูดพร้อมชี้ตำแหน่ง ผู้สัมภาษณ์มักขอให้ชี้บริเวณด้วย",
+      "example": "",
+      "exampleTh": "",
+      "level": 2,
+      "category": "Interview answers",
+      "categoryTh": "การตอบสัมภาษณ์",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "level": 2,
+        "text": "The trapezius covers the back of the neck, the shoulders and the upper back.",
+        "th": "กล้ามเนื้อทราพีเซียสครอบคลุมบริเวณต้นคอ บ่า และหลังส่วนบนค่ะ",
+        "note": "Say it and point to it. The interviewer usually asks you to show the area.",
+        "id": "spa-p-interview-014",
+        "audience": "both",
+        "context": "Interview answers",
+        "contextTh": "การตอบสัมภาษณ์",
+        "noteTh": "พูดพร้อมชี้ตำแหน่ง ผู้สัมภาษณ์มักขอให้ชี้บริเวณด้วย",
+        "trainingExample": true,
+        "relatedVocabularyIds": [],
+        "dialogueIds": []
+      }
+    },
+    "spa-p-interview-015": {
+      "id": "spa-p-interview-015",
+      "kind": "phrase",
+      "en": "The scapula is the shoulder blade — a bone, not a muscle.",
+      "th": "กระดูกสะบักคือกระดูก ไม่ใช่กล้ามเนื้อค่ะ",
+      "description": "A common mix-up the assessment checks for deliberately.",
+      "descriptionTh": "เป็นจุดที่ผู้สมัครมักสับสน และผู้ประเมินตั้งใจตรวจสอบ",
+      "example": "",
+      "exampleTh": "",
+      "level": 2,
+      "category": "Interview answers",
+      "categoryTh": "การตอบสัมภาษณ์",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "level": 2,
+        "text": "The scapula is the shoulder blade — a bone, not a muscle.",
+        "th": "กระดูกสะบักคือกระดูก ไม่ใช่กล้ามเนื้อค่ะ",
+        "note": "A common mix-up the assessment checks for deliberately.",
+        "id": "spa-p-interview-015",
+        "audience": "both",
+        "context": "Interview answers",
+        "contextTh": "การตอบสัมภาษณ์",
+        "noteTh": "เป็นจุดที่ผู้สมัครมักสับสน และผู้ประเมินตั้งใจตรวจสอบ",
+        "trainingExample": true,
+        "relatedVocabularyIds": [],
+        "dialogueIds": []
+      }
+    },
+    "spa-p-interview-016": {
+      "id": "spa-p-interview-016",
+      "kind": "phrase",
+      "en": "I am working on the trapezius now, using petrissage.",
+      "th": "ตอนนี้ดิฉันกำลังนวดกล้ามเนื้อทราพีเซียสด้วยเทคนิคเพทริสสาจค่ะ",
+      "description": "Answering questions while you keep working. Name the muscle and the technique.",
+      "descriptionTh": "ใช้ตอบขณะนวดต่อเนื่อง ให้ระบุชื่อกล้ามเนื้อและเทคนิค",
+      "example": "",
+      "exampleTh": "",
+      "level": 2,
+      "category": "Interview answers",
+      "categoryTh": "การตอบสัมภาษณ์",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "level": 2,
+        "text": "I am working on the trapezius now, using petrissage.",
+        "th": "ตอนนี้ดิฉันกำลังนวดกล้ามเนื้อทราพีเซียสด้วยเทคนิคเพทริสสาจค่ะ",
+        "note": "Answering questions while you keep working. Name the muscle and the technique.",
+        "id": "spa-p-interview-016",
+        "audience": "both",
+        "context": "Interview answers",
+        "contextTh": "การตอบสัมภาษณ์",
+        "noteTh": "ใช้ตอบขณะนวดต่อเนื่อง ให้ระบุชื่อกล้ามเนื้อและเทคนิค",
+        "trainingExample": true,
+        "relatedVocabularyIds": [],
+        "dialogueIds": []
+      }
+    },
+    "spa-p-interview-017": {
+      "id": "spa-p-interview-017",
+      "kind": "phrase",
+      "en": "What areas would you like me to focus on today?",
+      "th": "วันนี้ต้องการให้เน้นบริเวณใดเป็นพิเศษไหมคะ",
+      "description": "Step 1, Consult: find out what the guest needs before suggesting anything.",
+      "descriptionTh": "ขั้นที่ 1 สอบถาม: ค้นหาความต้องการของลูกค้าก่อนเสนอสิ่งใด",
+      "example": "",
+      "exampleTh": "",
+      "level": 2,
+      "category": "Suggesting extras politely",
+      "categoryTh": "การเสนอบริการเสริมอย่างสุภาพ",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "level": 2,
+        "text": "What areas would you like me to focus on today?",
+        "th": "วันนี้ต้องการให้เน้นบริเวณใดเป็นพิเศษไหมคะ",
+        "note": "Step 1, Consult: find out what the guest needs before suggesting anything.",
+        "id": "spa-p-interview-017",
+        "audience": "guest",
+        "context": "Suggesting extras politely",
+        "contextTh": "การเสนอบริการเสริมอย่างสุภาพ",
+        "noteTh": "ขั้นที่ 1 สอบถาม: ค้นหาความต้องการของลูกค้าก่อนเสนอสิ่งใด",
+        "trainingExample": true,
+        "relatedVocabularyIds": [],
+        "dialogueIds": []
+      }
+    },
+    "spa-p-interview-018": {
+      "id": "spa-p-interview-018",
+      "kind": "phrase",
+      "en": "I understand you have some tension around your neck and shoulders.",
+      "th": "เข้าใจว่าคุณมีอาการตึงบริเวณคอและบ่าใช่ไหมคะ",
+      "description": "Step 2, Identify: say the concern back to the guest so they know you listened.",
+      "descriptionTh": "ขั้นที่ 2 ระบุปัญหา: ทวนสิ่งที่ลูกค้าบอกเพื่อแสดงว่าคุณรับฟัง",
+      "example": "",
+      "exampleTh": "",
+      "level": 2,
+      "category": "Suggesting extras politely",
+      "categoryTh": "การเสนอบริการเสริมอย่างสุภาพ",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "level": 2,
+        "text": "I understand you have some tension around your neck and shoulders.",
+        "th": "เข้าใจว่าคุณมีอาการตึงบริเวณคอและบ่าใช่ไหมคะ",
+        "note": "Step 2, Identify: say the concern back to the guest so they know you listened.",
+        "id": "spa-p-interview-018",
+        "audience": "guest",
+        "context": "Suggesting extras politely",
+        "contextTh": "การเสนอบริการเสริมอย่างสุภาพ",
+        "noteTh": "ขั้นที่ 2 ระบุปัญหา: ทวนสิ่งที่ลูกค้าบอกเพื่อแสดงว่าคุณรับฟัง",
+        "trainingExample": true,
+        "relatedVocabularyIds": [],
+        "dialogueIds": []
+      }
+    },
+    "spa-p-interview-019": {
+      "id": "spa-p-interview-019",
+      "kind": "phrase",
+      "en": "For that I would recommend a deep tissue massage focusing on your neck and shoulders.",
+      "th": "สำหรับกรณีนี้ ดิฉันขอแนะนำการนวดเนื้อเยื่อชั้นลึกโดยเน้นบริเวณคอและบ่าค่ะ",
+      "description": "Step 3, Recommend: one clear suggestion that matches what the guest just told you.",
+      "descriptionTh": "ขั้นที่ 3 แนะนำ: เสนอทางเลือกที่ชัดเจนหนึ่งอย่างที่ตรงกับสิ่งที่ลูกค้าบอก",
+      "example": "",
+      "exampleTh": "",
+      "level": 2,
+      "category": "Suggesting extras politely",
+      "categoryTh": "การเสนอบริการเสริมอย่างสุภาพ",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "level": 2,
+        "text": "For that I would recommend a deep tissue massage focusing on your neck and shoulders.",
+        "th": "สำหรับกรณีนี้ ดิฉันขอแนะนำการนวดเนื้อเยื่อชั้นลึกโดยเน้นบริเวณคอและบ่าค่ะ",
+        "note": "Step 3, Recommend: one clear suggestion that matches what the guest just told you.",
+        "id": "spa-p-interview-019",
+        "audience": "guest",
+        "context": "Suggesting extras politely",
+        "contextTh": "การเสนอบริการเสริมอย่างสุภาพ",
+        "noteTh": "ขั้นที่ 3 แนะนำ: เสนอทางเลือกที่ชัดเจนหนึ่งอย่างที่ตรงกับสิ่งที่ลูกค้าบอก",
+        "trainingExample": true,
+        "relatedVocabularyIds": [],
+        "dialogueIds": []
+      }
+    },
+    "spa-p-interview-020": {
+      "id": "spa-p-interview-020",
+      "kind": "phrase",
+      "en": "This treatment can help reduce muscle tension and leave you more relaxed.",
+      "th": "ทรีตเมนต์นี้ช่วยลดความตึงของกล้ามเนื้อและทำให้คุณผ่อนคลายมากขึ้นค่ะ",
+      "description": "Step 4, Explain: give the benefit in plain words. Do not make medical claims.",
+      "descriptionTh": "ขั้นที่ 4 อธิบาย: บอกประโยชน์ด้วยภาษาง่าย ๆ ไม่กล่าวอ้างทางการแพทย์",
+      "example": "",
+      "exampleTh": "",
+      "level": 2,
+      "category": "Suggesting extras politely",
+      "categoryTh": "การเสนอบริการเสริมอย่างสุภาพ",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "level": 2,
+        "text": "This treatment can help reduce muscle tension and leave you more relaxed.",
+        "th": "ทรีตเมนต์นี้ช่วยลดความตึงของกล้ามเนื้อและทำให้คุณผ่อนคลายมากขึ้นค่ะ",
+        "note": "Step 4, Explain: give the benefit in plain words. Do not make medical claims.",
+        "id": "spa-p-interview-020",
+        "audience": "guest",
+        "context": "Suggesting extras politely",
+        "contextTh": "การเสนอบริการเสริมอย่างสุภาพ",
+        "noteTh": "ขั้นที่ 4 อธิบาย: บอกประโยชน์ด้วยภาษาง่าย ๆ ไม่กล่าวอ้างทางการแพทย์",
+        "trainingExample": true,
+        "relatedVocabularyIds": [],
+        "dialogueIds": []
+      }
+    },
+    "spa-p-interview-021": {
+      "id": "spa-p-interview-021",
+      "kind": "phrase",
+      "en": "Would you like to upgrade to a ninety-minute treatment so we have more time for those areas?",
+      "th": "ต้องการอัปเกรดเป็นทรีตเมนต์ 90 นาที เพื่อให้มีเวลาดูแลบริเวณนั้นมากขึ้นไหมคะ",
+      "description": "Step 5, Confirm: ask clearly, state the change, and accept a no without pushing.",
+      "descriptionTh": "ขั้นที่ 5 ยืนยัน: ถามให้ชัดเจน แจ้งสิ่งที่เปลี่ยน และยอมรับหากลูกค้าปฏิเสธ",
+      "example": "",
+      "exampleTh": "",
+      "level": 2,
+      "category": "Suggesting extras politely",
+      "categoryTh": "การเสนอบริการเสริมอย่างสุภาพ",
+      "origin": "Interview & Practical Assessment source 2026-09-28 (Thai pending independent review)",
+      "raw": {
+        "level": 2,
+        "text": "Would you like to upgrade to a ninety-minute treatment so we have more time for those areas?",
+        "th": "ต้องการอัปเกรดเป็นทรีตเมนต์ 90 นาที เพื่อให้มีเวลาดูแลบริเวณนั้นมากขึ้นไหมคะ",
+        "note": "Step 5, Confirm: ask clearly, state the change, and accept a no without pushing.",
+        "id": "spa-p-interview-021",
+        "audience": "guest",
+        "context": "Suggesting extras politely",
+        "contextTh": "การเสนอบริการเสริมอย่างสุภาพ",
+        "noteTh": "ขั้นที่ 5 ยืนยัน: ถามให้ชัดเจน แจ้งสิ่งที่เปลี่ยน และยอมรับหากลูกค้าปฏิเสธ",
+        "trainingExample": true,
+        "relatedVocabularyIds": [],
+        "dialogueIds": []
+      }
     }
   },
   "mappings": {
@@ -40926,6 +41947,238 @@
         "primary": "s3",
         "also": [],
         "reason": "Spa anatomy expansion: treatment-room body vocabulary"
+      },
+      {
+        "id": "spa-v-vibration",
+        "primary": "s3",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-v-sen-sib",
+        "primary": "s3",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-v-scapula",
+        "primary": "s3",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-v-sciatic-nerve",
+        "primary": "s3",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-v-origin",
+        "primary": "s3",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-v-insertion",
+        "primary": "s3",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-v-hygiene",
+        "primary": "s3",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-v-upgrade",
+        "primary": "s3",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-p-interview-001",
+        "primary": "s5",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-p-interview-002",
+        "primary": "s5",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-p-interview-003",
+        "primary": "s5",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-p-interview-004",
+        "primary": "s5",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-p-interview-005",
+        "primary": "s5",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-p-interview-006",
+        "primary": "s5",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-p-interview-007",
+        "primary": "s5",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-p-interview-008",
+        "primary": "s5",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-p-interview-009",
+        "primary": "s5",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-p-interview-010",
+        "primary": "s5",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-p-interview-011",
+        "primary": "s5",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-p-interview-012",
+        "primary": "s5",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-p-interview-013",
+        "primary": "s5",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-p-interview-014",
+        "primary": "s5",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-p-interview-015",
+        "primary": "s5",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-p-interview-016",
+        "primary": "s5",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-p-interview-017",
+        "primary": "s5",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-p-interview-018",
+        "primary": "s5",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-p-interview-019",
+        "primary": "s5",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-p-interview-020",
+        "primary": "s5",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
+      },
+      {
+        "id": "spa-p-interview-021",
+        "primary": "s5",
+        "also": [
+          "s4"
+        ],
+        "reason": "Spa therapist interview and practical assessment preparation"
       }
     ],
     "salon": [

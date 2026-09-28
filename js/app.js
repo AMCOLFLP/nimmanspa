@@ -7,7 +7,7 @@ const Nav = {
     /* Which bottom-bar tab lights up for each screen. Daily lost its own tab
        (it is a card on Home, not a place you browse) and Pronunciation moved
        under Words, so both point at their new parent. */
-    home:'home', learning:'learning', customplay:'assess', customresults:'assess', account:'home', settings:'home', daily:'home', vocab:'vocab', anatomy:'vocab', pron:'vocab',
+    home:'home', learning:'learning', customplay:'assess', customresults:'assess', account:'home', settings:'home', daily:'home', vocab:'vocab', anatomy:'vocab', pron:'vocab', interview:'assess',
     phrases:'phrases', saythis:'phrases',
     assess:'assess', mcquiz:'assess', fillquiz:'assess', listen:'assess', speaking:'assess',
     builder:'assess', truefalse:'assess', errorfix:'assess', results:'assess', practiceplay:'assess',
@@ -46,6 +46,7 @@ const Nav = {
       if (screen === 'speaking') Speaking.open();
       if (screen === 'vocab'){ App.renderVocabHint(); Vocab.refreshChrome(); }
       if (screen === 'anatomy') Anatomy.render();
+      if (screen === 'interview') Interview.render();
       if (screen === 'assess') App.renderAssessHub();
       if (screen === 'learning') LearningHub.render();
       if (screen === 'customplay') AssessmentBuilder.renderSession();
@@ -651,6 +652,14 @@ const App = (() => {
 
   /* ---------------- assessment hub ---------------- */
   function renderAssessHub(){
+    // The interview rehearsal belongs to the Practice tab, so Practice has to
+    // lead there — the side panel must never be the only way in.
+    const links = document.getElementById('assessLinks');
+    if (links){
+      links.innerHTML = Interview.available()
+        ? `<button type="button" class="nav-link" data-goto="interview">${I18N.t('menuInterviewTitle')} <span aria-hidden="true">↗</span></button>`
+        : '';
+    }
     AssessmentBuilder.render();
     const legacy=document.getElementById('legacyPractice');
     if(legacy)legacy.hidden=Courses.currentId==='salon';
@@ -682,6 +691,10 @@ const App = (() => {
   }
 
   function bindAssess(){
+    document.getElementById('assessLinks').addEventListener('click', e => {
+      const link = e.target.closest('[data-goto]');
+      if (link) Nav.go(link.dataset.goto);
+    });
     document.getElementById('practiceJump').addEventListener('click', e => {
       const chip = e.target.closest('[data-jump]'); if (!chip) return;
       const target = document.getElementById(chip.dataset.jump);
@@ -952,6 +965,7 @@ const App = (() => {
     Speaking.init();
     LearningHub.init();AssessmentBuilder.init();
     Anatomy.init();
+    Interview.init();
     Sidebar.init();
     window.addEventListener('nimman:progress-status',()=>{
       const b=document.getElementById('learningSaveStatus');if(!b)return;
