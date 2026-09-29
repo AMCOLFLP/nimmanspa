@@ -5,6 +5,23 @@ A complete updated copy of the uploaded app. The existing branding, two-course
 structure, 500 vocabulary entries and 400 phrases are retained.
 This package has NOT been deployed to the live website.
 
+THE THREE COURSES
+  Spa Therapist at Sea   นักบำบัดสปาบนเรือสำราญ
+                         Consultation, treatments & interviews
+  Working at Sea         ทำงานบนเรือสำราญ
+                         Foundation, workplace English & interviews
+  Hair & Nails at Sea    ช่างผมและเล็บบนเรือสำราญ
+                         Hair, nails, guest service & interviews
+
+These are the course names the learner sees, and they name the job the
+course is for rather than describing the syllabus. The syllabus each one
+follows keeps its own title, which is the employer's document title and is
+not ours to rename: it is stated under "Course sources & details to
+confirm" on the Learn screen, beside the source filenames, as
+"Follows: Cruise Ship Spa Therapist English" and so on. The internal course
+ids (spa, cruise, salon) are unchanged, so saved progress is unaffected.
+The Thai names have not had independent review; see SOURCES.md.
+
 CURRENT PRACTICE BANKS
 Activity                            Spa       Cruise      Combined
 Workplace multiple-choice quiz      100       100         200

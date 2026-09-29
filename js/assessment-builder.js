@@ -46,7 +46,7 @@ const AssessmentBuilder = (() => {
  }
  function prepare(){if(!session)return;const q=session.questions[session.index];session.current={answered:false,typed:'',tokens:q?.entry.en.trim().split(/\s+/)||[],order:[],chosen:[],played:false,supported:false,audioError:false};session.current.order=M.shuffle(session.current.tokens.map((_,i)=>i));if(session.current.order.length>1&&session.current.order.every((v,i)=>v===i))session.current.order.push(session.current.order.shift());if(session.config.type==='match')prepareMatch();}
  function prepareMatch(){const qs=session.batches[session.batchIndex]||[];session.match={qs,left:null,matched:[],tried:{},firstChoices:{},right:M.shuffle(qs.map(q=>q.entry.id)),notice:''};}
- function sessionHead(){return `<div class="lh-course-line"><span class="lh-eyebrow">${E(T(D.courses[session.config.course].title,D.courses[session.config.course].th))}</span><button class="lh-link" data-ab="exit">${T('Exit assessment','ออกจากแบบฝึก')}</button></div><h2>${E(T(TYPES[session.config.type][0],TYPES[session.config.type][1]))}</h2>`;}
+ function sessionHead(){return `<div class="lh-course-line"><span class="lh-eyebrow">${E(Courses.name(session.config.course))}</span><button class="lh-link" data-ab="exit">${T('Exit assessment','ออกจากแบบฝึก')}</button></div><h2>${E(T(TYPES[session.config.type][0],TYPES[session.config.type][1]))}</h2>`;}
  function questionPrompt(q){if(q.type==='listen')return T('Listen. Which English entry did you hear?','ฟัง คุณได้ยินคำศัพท์หรือวลีภาษาอังกฤษใด');if(q.type==='gap')return q.gap.prompt;return q.entry.th;}
  function renderSession(){
   const el=document.getElementById('customPlayRoot');if(!el||!session)return;

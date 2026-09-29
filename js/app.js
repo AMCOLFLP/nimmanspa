@@ -722,9 +722,8 @@ const App = (() => {
   function renderPracticeCourseLine(){
     const el = document.getElementById('practiceCourseLine');
     if (!el) return;
-    const c = LearningModel.D.courses[Courses.currentId];
     el.innerHTML = `<div class="lh-course-line">
-      <span class="lh-eyebrow">${LearningModel.esc(I18N.current === 'th' ? c.th : c.title)}</span>
+      <span class="lh-eyebrow">${LearningModel.esc(Courses.name(Courses.currentId))}</span>
       <button class="lh-link" data-ab="switch">${I18N.t('switchCourse')} ↗</button></div>`;
   }
 
@@ -1008,6 +1007,10 @@ const App = (() => {
 
   function rerenderAll(){
     renderAll();
+    // The chooser is the one screen shown before a course exists, so renderAll
+    // does not reach it; without this, switching language there left the cards
+    // in the previous language.
+    if (document.getElementById('courseWrap').classList.contains('active')) renderCourseList();
     Vocab.rerender();
     if(Courses.currentId!=='salon')Practice.rerender();
     AssessmentBuilder.rerender();

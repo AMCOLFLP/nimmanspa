@@ -52,6 +52,25 @@ a clinical reference, and not a guarantee of any recruitment outcome. The
 rehearsal is unscored and says so. English, Thai and the transliterations of
 technique names are editorial and have not had independent review.
 
+## Course naming note (2026-09-29)
+
+The three courses are presented to learners as **Spa Therapist at Sea**,
+**Working at Sea** and **Hair & Nails at Sea** (Thai: นักบำบัดสปาบนเรือสำราญ,
+ทำงานบนเรือสำราญ, ช่างผมและเล็บบนเรือสำราญ). These are editorial product
+names for this app. They are not job titles offered by any employer, not a
+cruise line's own course names, and not a claim that completing a course
+leads to employment at sea.
+
+The syllabus titles from the source documents — "Cruise Ship Spa Therapist
+English", "English for Cruise Ship Employment", "Cruise Ship Hair & Nail
+English" — are unchanged and still shown, under "Course sources & details
+to confirm" next to the source filenames, so the mapping between the app's
+name and the document it follows stays visible. Course ids are unchanged.
+
+The Thai names and taglines are editorial and have not had independent
+review; they should be checked by a Thai-language editor with the rest of
+the course.
+
 ## Spa anatomy vocabulary note (2026-09-25)
 
 The spa course's "Body parts" category was extended from 20 basic external
