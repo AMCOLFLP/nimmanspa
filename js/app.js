@@ -650,18 +650,99 @@ const App = (() => {
       </div>`).join('');
   }
 
-  /* ---------------- assessment hub ---------------- */
+  /* ---------------- practice hub ----------------
+     One screen, two ways in. The ready-made activity library used to be a
+     text disclosure at the foot of the assessment builder, which read as a
+     footnote and buried twenty activities behind one line of prose. Both are
+     now equals behind a pair of buttons, and the library's groups are a row
+     of filter buttons rather than a scroll-jump into a very long page. */
+  const PRACTICE_MODE_KEY = 'nimman_practice_mode_v1';
+  let practiceMode = 'library', practiceGroup = 'all';
+
+  // The salon course has no legacy activity bank, so it only has the builder.
+  // That is a property of the course, never of the learner's choice: keep the
+  // two apart, or a trip through the salon leaves everyone in the builder.
+  function libraryAvailable(){ return Courses.currentId !== 'salon'; }
+  function effectiveMode(){ return libraryAvailable() ? practiceMode : 'builder'; }
+
+  function restorePracticeMode(){
+    try {
+      const saved = localStorage.getItem(PRACTICE_MODE_KEY);
+      if (saved === 'library' || saved === 'builder') practiceMode = saved;
+    } catch(e){}
+  }
+  function setPracticeMode(mode, opts = {}){
+    practiceMode = mode === 'builder' ? 'builder' : 'library';
+    if (opts.remember !== false){
+      try { localStorage.setItem(PRACTICE_MODE_KEY, practiceMode); } catch(e){}
+    }
+    if (document.getElementById('screen-assess').classList.contains('active')) renderAssessHub();
+  }
+
+  const MODE_ICONS = {
+    library: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2"/></svg>',
+    builder: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/><circle cx="9" cy="7" r="2.2" fill="var(--paper)"/><circle cx="15" cy="12" r="2.2" fill="var(--paper)"/><circle cx="8" cy="17" r="2.2" fill="var(--paper)"/></svg>',
+  };
+
+  function renderPracticeModes(){
+    const el = document.getElementById('practiceModes');
+    if (!el) return;
+    if (!libraryAvailable()){ el.innerHTML = ''; el.hidden = true; return; }
+    el.hidden = false;
+    const modes = [
+      ['library', 'pmLibraryTitle', 'pmLibraryDesc', PRACTICE_INDEX.length],
+      ['builder', 'pmBuilderTitle', 'pmBuilderDesc', null],
+    ];
+    el.innerHTML = modes.map(([id, titleKey, descKey, count]) => {
+      const on = effectiveMode() === id;
+      return `<button type="button" class="px-mode ${on ? 'selected' : ''}" id="pmode-${id}"
+        data-pmode="${id}" role="tab" aria-selected="${on}">
+        <span class="px-mode-icon" aria-hidden="true">${MODE_ICONS[id]}</span>
+        <span class="px-mode-text">
+          <b>${I18N.t(titleKey)}${count ? ` <span class="px-mode-count">${count}</span>` : ''}</b>
+          <small>${I18N.t(descKey)}</small>
+        </span>
+      </button>`;
+    }).join('');
+  }
+
+  function renderPracticeFilter(){
+    const el = document.getElementById('practiceFilter');
+    if (!el) return;
+    const groups = [['all', I18N.t('pxFilterAll'), PRACTICE_INDEX.length]]
+      .concat(PRACTICE_GROUPS.map((g, i) => [String(i), I18N.t(g.titleKey), g.items.length]));
+    el.innerHTML = groups.map(([id, label, n]) =>
+      `<button type="button" class="chip ${practiceGroup === id ? 'active' : ''}"
+        data-pgroup="${id}" aria-pressed="${practiceGroup === id}">${label} <span class="chip-count">${n}</span></button>`).join('');
+  }
+
+  /* The course line belongs to the screen, not to one of its two modes: it
+     used to be the first thing the builder drew, so switching to the library
+     lost the course name and the way to change it. */
+  function renderPracticeCourseLine(){
+    const el = document.getElementById('practiceCourseLine');
+    if (!el) return;
+    const c = LearningModel.D.courses[Courses.currentId];
+    el.innerHTML = `<div class="lh-course-line">
+      <span class="lh-eyebrow">${LearningModel.esc(I18N.current === 'th' ? c.th : c.title)}</span>
+      <button class="lh-link" data-ab="switch">${I18N.t('switchCourse')} ↗</button></div>`;
+  }
+
   function renderAssessHub(){
     AssessmentBuilder.render();
-    const legacy=document.getElementById('legacyPractice');
-    if(legacy)legacy.hidden=Courses.currentId==='salon';
-    if(Courses.currentId==='salon')return;
-    Practice.renderControls();
-    // A sixteen-card list is a long scroll, so offer a jump to each group.
-    document.getElementById('practiceJump').innerHTML = PRACTICE_GROUPS.map((g, i) =>
-      `<button class="chip" data-jump="pg-${i}">${I18N.t(g.titleKey)}</button>`).join('');
+    renderPracticeCourseLine();
+    renderPracticeModes();
+    const library = document.getElementById('practiceLibrary');
+    const builder = document.getElementById('assessmentBuilder');
+    const mode = effectiveMode();
+    if (library) library.hidden = mode !== 'library';
+    if (builder) builder.hidden = mode !== 'builder';
+    if (mode !== 'library') return;
 
-    document.getElementById('assessGrid').innerHTML = PRACTICE_GROUPS.map((group, i) => {
+    Practice.renderControls();
+    renderPracticeFilter();
+    const shown = PRACTICE_GROUPS.filter((g, i) => practiceGroup === 'all' || practiceGroup === String(i));
+    document.getElementById('assessGrid').innerHTML = shown.map(group => {
       const cards = group.items.map(a => {
         const best = a.score ? Progress.bestFor(a.score) : null;
         return `<div class="activity-card ${a.wide ? 'wide' : ''}" data-act="${a.key}" role="button" tabindex="0">
@@ -672,7 +753,7 @@ const App = (() => {
           ${Practice.cardMeta(a.key)}
         </div>`;
       }).join('');
-      return `<section class="practice-group" id="pg-${i}">
+      return `<section class="practice-group">
         <div class="pg-head">
           <h3>${I18N.t(group.titleKey)}</h3>
           <p>${I18N.t(group.descKey)}</p>
@@ -683,10 +764,14 @@ const App = (() => {
   }
 
   function bindAssess(){
-    document.getElementById('practiceJump').addEventListener('click', e => {
-      const chip = e.target.closest('[data-jump]'); if (!chip) return;
-      const target = document.getElementById(chip.dataset.jump);
-      if (target) target.scrollIntoView({ behavior:'smooth', block:'start' });
+    document.getElementById('practiceModes').addEventListener('click', e => {
+      const btn = e.target.closest('[data-pmode]'); if (!btn) return;
+      setPracticeMode(btn.dataset.pmode);
+    });
+    document.getElementById('practiceFilter').addEventListener('click', e => {
+      const btn = e.target.closest('[data-pgroup]'); if (!btn) return;
+      practiceGroup = btn.dataset.pgroup;
+      renderAssessHub();
     });
     document.getElementById('assessGrid').addEventListener('keydown', e => {
       const card=e.target.closest('[data-act]');
@@ -955,6 +1040,7 @@ const App = (() => {
     Anatomy.init();
     Interview.init();
     Sidebar.init();
+    restorePracticeMode();
     window.addEventListener('nimman:progress-status',()=>{
       const b=document.getElementById('learningSaveStatus');if(!b)return;
       const status=Progress.status;b.hidden=!['load-error','save-error'].includes(status);
@@ -998,7 +1084,7 @@ const App = (() => {
 
   return {
     init, showResults, refreshHome, renderAccount, renderAssessHub, rerenderAll,
-    renderSettings, speechRate, showCourseChooser,
+    renderSettings, speechRate, showCourseChooser, setPracticeMode,
     renderVocabHint(){ renderHint('vocabHint', 'vocab', 'hintVocab'); },
     get resultsBackTo(){ return resultsBackTo; },
   };

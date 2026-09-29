@@ -68,10 +68,20 @@ const Practice = (() => {
     else return '';
     return `<div class="px-card-meta">${total} ${esc(unit)}${settings().level==='all'?'':`<span>${available} ${T('at selected level','ในระดับที่เลือก')}</span>`}</div>`;
   }
+  /* Two dropdowns became two rows of buttons: both settings have four options,
+     which fit on one line each and show the current choice without opening
+     anything. The long explanation moved into a details note so the panel
+     stays a strip above the activities rather than a wall of text. */
   function renderControls(){
     const el=document.getElementById('practiceControls');if(!el||!Courses.active)return;
     const p=settings(),count=reviewCount();
-    el.innerHTML=`<div class="px-settings"><div class="px-eyebrow">${T('YOUR PRACTICE SESSION','ตั้งค่าการฝึก')}</div><div class="px-setting-grid"><label for="pxLength">${T('Items per session','จำนวนข้อต่อรอบ')}<select id="pxLength">${[5,10,15,20].map(n=>`<option value="${n}" ${p.length===n?'selected':''}>${n} ${T('items','ข้อ')}</option>`).join('')}</select></label><label for="pxLevel">${T('Difficulty','ระดับความยาก')}<select id="pxLevel"><option value="all">${T('All levels','ทุกระดับ')}</option>${[1,2,3].map(n=>`<option value="${n}" ${p.level===String(n)?'selected':''}>${levelName(n)}</option>`).join('')}</select></label></div><p class="px-small">${T('Settings apply to the quiz and real-world activity cards below. Reading keeps complete three-question passages together; dialogue length follows the selected conversation. Levels are editorial, not CEFR certification.','ใช้การตั้งค่านี้กับแบบทดสอบและกิจกรรมสถานการณ์ด้านล่าง บทอ่านจะคงชุดคำถามบทละสามข้อ และบทสนทนาใช้จำนวนข้อตามเรื่อง ระดับนี้เป็นการจัดเพื่อการเรียน ไม่ใช่การรับรอง CEFR')}</p><button class="btn btn-outline btn-block" id="pxReviewStart" ${count?'':'disabled'}>${T('Review my mistakes','ทบทวนข้อที่ตอบผิด')} <span class="px-badge">${count}</span></button><p class="px-small">${T('Review combines missed items from this course across all levels. Guest progress lasts only for this session.','การทบทวนรวมข้อที่ตอบผิดทุกระดับในวิชานี้ ความคืบหน้าของผู้เยี่ยมชมอยู่เฉพาะการใช้งานครั้งนี้')}</p></div>`;
+    const pill=(group,value,label,on)=>`<button type="button" class="px-pill ${on?'selected':''}" data-px="${group}" data-value="${esc(value)}" aria-pressed="${on}">${label}</button>`;
+    el.innerHTML=`<div class="px-settings">
+      <div class="px-setting-row"><span class="px-setting-label" id="pxLengthLabel">${T('Items per session','จำนวนข้อต่อรอบ')}</span><div class="px-pills" role="group" aria-labelledby="pxLengthLabel">${[5,10,15,20].map(n=>pill('length',n,String(n),p.length===n)).join('')}</div></div>
+      <div class="px-setting-row"><span class="px-setting-label" id="pxLevelLabel">${T('Difficulty','ระดับความยาก')}</span><div class="px-pills" role="group" aria-labelledby="pxLevelLabel">${pill('level','all',T('All','ทุกระดับ'),p.level==='all')}${[1,2,3].map(n=>pill('level',n,levelName(n),p.level===String(n))).join('')}</div></div>
+      <div class="px-setting-row"><span class="px-setting-label">${T('Missed items','ข้อที่ตอบผิด')}</span><button class="btn btn-outline px-review" id="pxReviewStart" ${count?'':'disabled'}>${T('Review my mistakes','ทบทวนข้อที่ตอบผิด')} <span class="px-badge">${count}</span></button></div>
+      <details class="px-note"><summary>${T('How these settings are applied','การตั้งค่านี้ใช้กับอะไรบ้าง')}</summary><p class="px-small">${T('Settings apply to the quiz and real-world activity cards below. Reading keeps complete three-question passages together; dialogue length follows the selected conversation. Levels are editorial, not CEFR certification.','ใช้การตั้งค่านี้กับแบบทดสอบและกิจกรรมสถานการณ์ด้านล่าง บทอ่านจะคงชุดคำถามบทละสามข้อ และบทสนทนาใช้จำนวนข้อตามเรื่อง ระดับนี้เป็นการจัดเพื่อการเรียน ไม่ใช่การรับรอง CEFR')}</p><p class="px-small">${T('Review combines missed items from this course across all levels. Guest progress lasts only for this session.','การทบทวนรวมข้อที่ตอบผิดทุกระดับในวิชานี้ ความคืบหน้าของผู้เยี่ยมชมอยู่เฉพาะการใช้งานครั้งนี้')}</p></details>
+    </div>`;
   }
   function openDialogues(){
     Nav.go('fillquiz');document.getElementById('fillPicker').style.display='block';document.getElementById('fillPlay').style.display='none';
@@ -229,8 +239,13 @@ const Practice = (() => {
   }
   function init(){
     if(bound)return;bound=true;
-    document.getElementById('practiceControls').addEventListener('change',()=>{Progress.setPracticeSettings({length:document.getElementById('pxLength').value,level:document.getElementById('pxLevel').value});App.renderAssessHub();});
-    document.getElementById('practiceControls').addEventListener('click',e=>{if(e.target.closest('#pxReviewStart'))start('review');});
+    document.getElementById('practiceControls').addEventListener('click',e=>{
+      if(e.target.closest('#pxReviewStart')){start('review');return;}
+      const pill=e.target.closest('[data-px]');if(!pill)return;
+      const p=settings();
+      Progress.setPracticeSettings({...p,[pill.dataset.px]:pill.dataset.value});
+      App.renderAssessHub();
+    });
     const stage=document.getElementById('pxStage');stage.addEventListener('click',handle);
     stage.addEventListener('input',e=>{if(e.target.id==='pxTyped'&&session?.current&&!session.current.answered){session.current.typed=e.target.value;document.getElementById('pxCheck').disabled=!e.target.value.trim();}});
     stage.addEventListener('submit',e=>{if(e.target.id==='pxAnswerForm'){e.preventDefault();grade();}});

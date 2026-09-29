@@ -53,7 +53,8 @@ HOW TO OPEN
    the app depends on the updated HTML, CSS, scripts and backend together.
 
 HOW TO USE THE NEW PRACTICE
-Choose 5, 10, 15 or 20 items and Starter / Everyday / Extended / All levels.
+Choose 5, 10, 15 or 20 items and Starter / Everyday / Extended / All levels,
+from the button rows at the top of the activity library.
 These are editorial difficulty labels, not CEFR certification.
 Settings affect the quiz and applied-activity cards, not all vocabulary drills.
 Unseen items come first; previously attempted items are ordered by recency.
@@ -128,10 +129,36 @@ Five tabs along the bottom, for the five things a learner does repeatedly:
   Learn     the module path for this course, and the interview rehearsal
   Words     vocabulary drills, plus Body map and Pronunciation
   Phrases   phrase banks, plus Say this, not that
-  Practice  build an assessment, and the original activity library
+  Practice  the activity library, and the build-your-own set builder
 
 Daily Five no longer has its own tab. It is a card on Home, which is where
 a once-a-day habit belongs, and Home stays highlighted while you are in it.
+
+THE PRACTICE TAB — TWO WAYS IN, ONE SCREEN
+Practice opens on two buttons, because there are two ways to practise and
+they deserve equal billing:
+  Ready-made activities   the 20 authored activities, ready to start
+  Build your own set      choose module, category, length and answer type
+The activity library used to be a single line of text ("Original activity
+library") folded shut at the foot of the builder, so twenty activities read
+as a footnote. Both are now buttons at the top of the screen, and the one
+you used last is the one that opens next time on that device. Opening the
+builder from a lesson shows the builder for that visit without changing
+which one you normally see.
+
+Inside the library, the four groups are filter buttons rather than a
+scrolling row that jumped down the page: tapping "Test yourself" shows those
+eight cards and nothing else, so you are not scrolling past sixteen cards
+you did not want. "All" brings them back.
+
+Session length and difficulty are rows of buttons rather than dropdowns, so
+the current choice is visible without opening anything. They apply to the
+library only; the builder has its own settings. The note explaining exactly
+what they affect is under "How these settings are applied".
+
+The salon course has no original activity bank, so it shows the builder
+alone with no buttons to choose between. Switching away from it does not
+change which mode you normally see.
 
 The side panel (button at the top left, or docked from 1024px) is the full
 index, grouped Learn / Words & phrases / Practice / Account. Everything in

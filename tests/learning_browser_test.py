@@ -124,7 +124,7 @@ try:
   p.locator('[data-ab="transcript"]').evaluate("(e)=>e.click()");check('Explicit supported fallback unlocks answering',p.locator('[data-ab="answer-choice"]').first.is_enabled())
   p.evaluate('Speech.speak=(text,opts={})=>{if(opts.onend)opts.onend();}')
   # Legacy libraries remain accessible, and the salon does not show empty old modes.
-  p.evaluate('Nav.go("assess")');p.locator('#legacyPractice').evaluate('(e)=>e.open=true');check('Original spa activity library retained',p.locator('#assessGrid [data-act]').count()==20)
+  p.evaluate('Nav.go("assess");App.setPracticeMode("library")');check('Original spa activity library retained',p.locator('#assessGrid [data-act]').count()==20)
   p.evaluate('Progress.setPracticeSettings({length:5,level:"all"});Practice.start("mc")');check('Original MC engine still opens',p.locator('#screen-practiceplay.active').count()==1)
   # Mobile, Thai and desktop checks include every new screen.
   for width in [390,320,1280]:
@@ -138,7 +138,7 @@ try:
    if width==390:shot(p,'learning-assessment-mobile.png')
    start(p,'salon','match',6);check(f'{width}px matching: no horizontal overflow',not p.evaluate('document.documentElement.scrollWidth>innerWidth+1'))
    if width==390:shot(p,'learning-matching-mobile.png')
-   check('Salon hides unmapped legacy modes',p.locator('#legacyPractice').is_hidden())
+   check('Salon hides unmapped legacy modes',p.locator('#practiceLibrary').is_hidden() and p.locator('#practiceModes').is_hidden())
   # Critical progress-load failure path, mocked transport only.
   p.evaluate('''async()=>{Auth.continueAsGuest();localStorage.setItem('spa_session',JSON.stringify({email:'qa@example.test',name:'QA',guest:false}));Progress.invalidate();window.qaPosts=[];Api.get=async()=>{throw new Error('test offline')};Api.post=async(path,body)=>{window.qaPosts.push({path,body});return {}};await Progress.hydrate();Progress.setLearningModule('h1',true);}''')
   p.wait_for_timeout(650);check('Failed server progress load blocks destructive replacement saves',p.evaluate('qaPosts.length')==0 and p.evaluate('Progress.status')=='load-error')

@@ -675,13 +675,15 @@
   <section class="screen" id="screen-customplay"><div id="customPlayRoot"></div></section>
   <section class="screen" id="screen-customresults"><div id="customResultsRoot"></div></section>
   <section class="screen" id="screen-assess">
-    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="practiceHeading">Practice &amp; tests</h2></div>
-    <div id="assessmentBuilder"></div>
-    <details class="lh-panel legacy-practice" id="legacyPractice"><summary><span data-i18n="legacyTitle">Browse original activity library</span></summary><p class="lh-caption" data-i18n="legacyNote">These original activities use their own settings below. They are not filtered by the module or word selection above.</p>
-    <div id="practiceControls"></div>
-    <div class="chip-scroll" id="practiceJump"></div>
-    <div id="assessGrid"></div>
-    </details>
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="practiceHeading">Practice</h2></div>
+    <div id="practiceCourseLine"></div>
+    <div class="px-modes" id="practiceModes" role="tablist" aria-label="Practice mode"></div>
+    <div id="practiceLibrary" role="tabpanel" aria-labelledby="pmode-library">
+      <div id="practiceControls"></div>
+      <div class="px-filter" id="practiceFilter" role="group" aria-label="Filter activities"></div>
+      <div id="assessGrid"></div>
+    </div>
+    <div id="assessmentBuilder" role="tabpanel" aria-labelledby="pmode-builder"></div>
   </section>
 
   <!-- ============================= MULTIPLE CHOICE (shared engine) ============================= -->
