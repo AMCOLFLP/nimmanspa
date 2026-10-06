@@ -41,10 +41,39 @@ const Daily = (() => {
     document.getElementById('dailyDone').style.display  = (ready && d.checkDone) ? 'block' : 'none';
 
     renderPills(d);
+    renderResetBar();
 
     if (!ready){ renderStack(); }
     else if (!d.checkDone){ renderReady(d); }
     else { renderDone(d); }
+  }
+
+  /* Seven swaps a week, spendable whenever the learner likes and refilled on
+     Monday. The count is always on screen rather than hidden behind the tap,
+     because spending one silently would be worse than not offering it. */
+  function renderResetBar(){
+    const bar = document.getElementById('dailyResetBar');
+    if (!bar) return;
+    const left = Progress.dailyResetsLeft();
+    const total = Progress.DAILY_RESETS_PER_WEEK;
+    bar.innerHTML = `
+      <button type="button" class="daily-reset-btn" id="dailyResetBtn" ${left ? '' : 'disabled'}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 5v6h-6"/></svg>
+        <span>${I18N.t('dailyResetCta')}</span>
+      </button>
+      <span class="daily-reset-left ${left ? '' : 'spent'}">${
+        left ? I18N.t('dailyResetLeft').replace('{n}', left).replace('{t}', total)
+             : I18N.t('dailyResetSpent')}</span>`;
+  }
+
+  function doReset(){
+    if (!Progress.dailyResetsLeft()) return;
+    if (!window.confirm(I18N.t('dailyResetConfirm'))) return;
+    if (!Progress.dailyReset()) return;
+    buildQueue();
+    render();
+    App.refreshHome();
+    announce(I18N.t('dailyResetDone'));
   }
 
   function renderPills(d){
@@ -291,8 +320,9 @@ const Daily = (() => {
     document.getElementById('dailyStartCheck').addEventListener('click', startCheck);
     document.getElementById('dailyRetake').addEventListener('click', startCheck);
 
-    // Speaker buttons on cards and word lists
+    // Speaker buttons on cards and word lists, plus the weekly reset
     document.getElementById('screen-daily').addEventListener('click', e => {
+      if (e.target.closest('#dailyResetBtn')){ doReset(); return; }
       const btn = e.target.closest('[data-speak]');
       if (!btn) return;
       e.stopPropagation();

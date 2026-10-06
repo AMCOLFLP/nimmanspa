@@ -52,6 +52,22 @@ a clinical reference, and not a guarantee of any recruitment outcome. The
 rehearsal is unscored and says so. English, Thai and the transliterations of
 technique names are editorial and have not had independent review.
 
+## Chapter naming note (2026-10-06)
+
+The course outlines call their sections "Day 1–5" (spa, salon) and "Module
+1–8" (cruise). In the app these are presented as **Chapter 1–N** throughout,
+so one word is used across the learning hub and so a learner is not told they
+are behind schedule by a label when they study at their own pace.
+
+The source documents' own section titles are otherwise unchanged — only the
+"Day"/"Module" prefix was replaced — and each course's source note on the
+Learn screen still names the syllabus and the documents it follows. The
+sequence, content and mapping of every section are untouched; the module ids
+(`s1`…`s5`, `c1`…`c8`, `ca2`, `n1`…) are unchanged, so saved progress and
+every content mapping carry over.
+
+The Thai prefix บทที่ is editorial and has not had independent review.
+
 ## Course naming note (2026-09-29)
 
 The three courses are presented to learners as **Spa Therapist at Sea**,

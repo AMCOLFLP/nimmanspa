@@ -273,9 +273,20 @@ const Progress = (() => {
      marked known come first; known words only fill a shortfall.
      --------------------------------------------------------------------- */
   const DAILY_SIZE = 5;
+  const DAILY_RESETS_PER_WEEK = 7;
 
   function todayKey(){ return new Date().toDateString(); }
   function isoToday(){ const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
+
+  /* The reset allowance runs Monday to Sunday, so "this week" means the same
+     seven days for everyone and the refill is predictable rather than a
+     rolling seven days from whenever the learner first reset. */
+  function weekKey(){
+    const d = new Date();
+    const day = (d.getDay() + 6) % 7;            // 0 = Monday
+    const monday = new Date(d.getFullYear(), d.getMonth(), d.getDate() - day);
+    return `${monday.getFullYear()}-${String(monday.getMonth()+1).padStart(2,'0')}-${String(monday.getDate()).padStart(2,'0')}`;
+  }
 
   function dateSeed(){
     const d = new Date();
@@ -297,9 +308,11 @@ const Progress = (() => {
      before Intermediate ones appear, and Advanced terms only once the earlier
      levels are done. Within a level the order is seeded by the date, so the
      set is stable for the day but varies day to day. */
-  function pickDailyWords(){
+  /* `nonce` is bumped by each reset, so asking again the same day returns a
+     genuinely different five rather than reshuffling into the same order. */
+  function pickDailyWords(nonce = 0){
     const knownSet = new Set(load().knownWords);
-    const seed = dateSeed();
+    const seed = dateSeed() + nonce * 7919;
     const unknown = VOCAB.filter(v => !knownSet.has(v.word));
 
     const byLevel = [1, 2, 3].map(lv =>
@@ -323,21 +336,57 @@ const Progress = (() => {
     return queue.slice(0, DAILY_SIZE).map(v => v.word);
   }
 
+  function freshDaily(nonce){
+    return {
+      date: todayKey(),
+      nonce,
+      words: pickDailyWords(nonce),
+      right: [],
+      againCount: 0,
+      checkDone: false,
+      checkScore: null,
+      checkTotal: null,
+    };
+  }
+
   function dailyState(){
     const p = load();
     if (!p.daily || p.daily.date !== todayKey()){
-      p.daily = {
-        date: todayKey(),
-        words: pickDailyWords(),
-        right: [],
-        againCount: 0,
-        checkDone: false,
-        checkScore: null,
-        checkTotal: null,
-      };
+      p.daily = freshDaily(0);
       save();
     }
     return p.daily;
+  }
+
+  /* ---- weekly reset allowance -------------------------------------------
+     Seven swaps a week, spendable whenever the learner likes, refilled
+     automatically on Monday. The allowance is read lazily: a stale week is
+     rolled over the first time anything asks, so no timer is needed and it
+     is correct even if the app was closed for a month. */
+  function dailyResetState(){
+    const p = load();
+    if (!p.dailyResets || p.dailyResets.week !== weekKey()){
+      p.dailyResets = { week: weekKey(), used: 0 };
+      save();
+    }
+    return p.dailyResets;
+  }
+
+  function dailyResetsLeft(){
+    return Math.max(0, DAILY_RESETS_PER_WEEK - dailyResetState().used);
+  }
+
+  /* Swaps today's five for a different five. Returns false (and changes
+     nothing) when the week's allowance is spent. */
+  function dailyReset(){
+    const r = dailyResetState();
+    if (r.used >= DAILY_RESETS_PER_WEEK) return false;
+    const p = load();
+    const prior = (p.daily && p.daily.nonce) || 0;
+    r.used += 1;
+    p.daily = freshDaily(prior + 1);
+    save();
+    return true;
   }
 
   function dailySwipeRight(word){
@@ -431,6 +480,7 @@ const Progress = (() => {
     recordQuizResult, quizAverage, activitiesCompleted, courseProgressPct,
     bestFor,
     dailyState, dailySwipeRight, dailySwipeLeft, dailyIsReadyForCheck, dailyCompleteCheck,
+    dailyResetState, dailyResetsLeft, dailyReset, DAILY_RESETS_PER_WEEK,
     DAILY_SIZE,
     get streak(){ return load().streak || 0; },
     reset, clearGuest, hydrate,

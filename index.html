@@ -193,100 +193,22 @@
   <div id="learningSaveStatus" class="ab-validation invalid" role="status" hidden></div>
   <main>
 
-  <!-- ============================= HOME ============================= -->
-  <section class="screen active" id="screen-home">
-    <div class="lh-panel lh-home-card" id="learningHomeCard"></div>
-    <div class="course-bar" id="courseBar">
-      <span class="cb-mark" id="courseBarMark"></span>
-      <span class="cb-body">
-        <span class="cb-label" data-i18n="courseStudying">Studying</span>
-        <span class="cb-name" id="courseBarName"></span>
-      </span>
-      <span class="cb-switch" data-i18n="courseSwitch">Switch</span>
-    </div>
 
-    <div class="greeting">
-      <p class="eyebrow" id="homeGreetEyebrow" data-i18n="greetingEyebrow">Good to see you</p>
-      <h2 data-i18n="greetingHeading">Ready for today's practice?</h2>
-      <p data-i18n="greetingBody">Fifteen quiet minutes a day is enough to sound calm, warm and confident with every guest who walks through your door.</p>
-      <div class="featured-quote" id="potdOpen">
-        <div class="fq-head">
-          <p class="fq-label" data-i18n="phraseOfDayLabel">Phrase of the day</p>
-          <button class="potd-play" id="potdPlay" aria-label="Listen to today's phrase"></button>
-        </div>
-        <div class="fq-meta"><span id="potdCat"></span><span id="potdLevel"></span></div>
-        <p id="potdText">&nbsp;</p>
-        <p class="gloss" id="potdTh">&nbsp;</p>
-        <p class="fq-note" id="potdNote">&nbsp;</p>
-        <p class="fq-cta" data-i18n="potdOpenCta">Tap to see more like this</p>
+  <!-- ============================= TEACHER DASHBOARD ============================= -->
+  <section class="screen" id="screen-teacher">
+    <div class="tm-top">
+      <div>
+        <p class="eyebrow" data-i18n="teacherEyebrow">Teacher</p>
+        <h2 data-i18n="teacherHeading">Class dashboard</h2>
       </div>
-      <div class="cta-row">
-        <button class="btn btn-gold" onclick="Nav.go('vocab')">
-          <span data-i18n="continueLearning">Continue learning</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M9 5l7 7-7 7"/></svg>
-        </button>
-      </div>
+      <button type="button" class="btn btn-line" id="teacherSignOut" data-i18n="accountLogout">Log out</button>
     </div>
-
-    <div class="daily-cta" id="homeDailyCta" onclick="Nav.go('daily')">
-      <div class="dc-mark" id="homeDailyMark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M8 3.5v3M16 3.5v3M3.5 10h17"/><path d="M9 14.5l2 2 4-4"/></svg>
-      </div>
-      <div class="dc-body">
-        <div class="dc-kicker" id="homeDailyKicker"></div>
-        <h4 id="homeDailyTitle"></h4>
-        <p id="homeDailyBody"></p>
-        <div class="dc-pills" id="homeDailyPills"></div>
-      </div>
-    </div>
-
-    <div class="stat-strip">
-      <div class="stat-cell"><div class="stat-num" id="statWords">0</div><div class="stat-label" data-i18n="statWords">WORDS LEARNED</div></div>
-      <div class="stat-cell"><div class="stat-num" id="statQuiz">—</div><div class="stat-label" data-i18n="statQuiz">QUIZ AVERAGE</div></div>
-      <div class="stat-cell"><div class="stat-num" id="statLessons">0</div><div class="stat-label" data-i18n="statLessons">ACTIVITIES DONE</div></div>
-    </div>
-
-    <div class="menu-heading"><h3 data-i18n="exploreCourse">Explore the course</h3><span data-i18n="modulesCount">6 modules</span></div>
-    <div class="menu-list">
-      <div class="menu-row" onclick="Nav.go('daily')">
-        <div class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M8 3.5v3M16 3.5v3M3.5 10h17"/><path d="M9 14.5l2 2 4-4"/></svg></div>
-        <div class="menu-body"><h4 data-i18n="menuDailyTitle">Daily Five</h4><p data-i18n="menuDailyDesc">Five words a day, swiped and checked</p></div>
-        <div class="menu-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
-      </div>
-      <div class="menu-row" id="homeAnatomyRow" onclick="Nav.go('anatomy')">
-        <div class="menu-icon sage"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.6" r="2.4"/><path d="M6 9.2h12"/><path d="M12 9.2V15"/><path d="M9 15l-1.2 5.4M15 15l1.2 5.4"/></svg></div>
-        <div class="menu-body"><h4 data-i18n="menuAnatomyTitle">Body map</h4><p data-i18n="menuAnatomyDesc">Tap any part of the body to learn its English name</p></div>
-        <div class="menu-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
-      </div>
-      <div class="menu-row" onclick="Nav.go('pron')">
-        <div class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="4" y2="12"/><line x1="8" y1="7" x2="8" y2="17"/><line x1="12" y1="4" x2="12" y2="20"/><line x1="16" y1="7" x2="16" y2="17"/><line x1="20" y1="12" x2="20" y2="12"/></svg></div>
-        <div class="menu-body"><h4 data-i18n="menuPronTitle">Pronunciation</h4><p data-i18n="menuPronDesc">Hear and repeat the industry's trickiest words</p></div>
-        <div class="menu-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
-      </div>
-      <div class="menu-row" onclick="Nav.go('saythis')">
-        <div class="menu-icon sage"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="17" y2="8"/><path d="M14 5l3 3-3 3"/><line x1="20" y1="16" x2="7" y2="16"/><path d="M10 13l-3 3 3 3"/></svg></div>
-        <div class="menu-body"><h4 data-i18n="menuSaythisTitle">Say this, not that</h4><p data-i18n="menuSaythisDesc">Turn blunt phrases into polished, guest-ready ones</p></div>
-        <div class="menu-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
-      </div>
-    </div>
-
-    <div class="tip-block">
-      <div class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3C12 3 6.5 9.5 6.5 13.5a5.5 5.5 0 0 0 11 0C17.5 9.5 12 3 12 3Z"/></svg></div>
-      <div><h5 data-i18n="tipOfDay">Tip of the day</h5><p data-i18n="tipOfDayBody"></p></div>
-    </div>
-
-    <div class="home-divider"></div>
-    <p class="partner-caption" data-i18n="partnerCaption">A programme by</p>
-    <div class="partner-strip">
-      <img src="assets/nimman-logo.png" alt="Nimmanoradee International School" loading="lazy">
-      <span class="ps-divider"></span>
-      <img class="barter" src="assets/barter-logo.png" alt="Barter Group" loading="lazy">
-    </div>
+    <div id="teacherRoot"></div>
   </section>
 
   <!-- ============================= ACCOUNT ============================= -->
   <section class="screen" id="screen-account">
-    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="accountHeading">Your account</h2></div>
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('daily','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="accountHeading">Your account</h2></div>
 
     <div class="account-card">
       <div class="account-avatar" id="accAvatar">A</div>
@@ -409,14 +331,28 @@
   </section>
 
   <!-- ============================= DAILY FIVE ============================= -->
-  <section class="screen" id="screen-daily">
-    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="dailyHeading">Daily Five</h2></div>
-    <p class="lede" data-i18n="dailyLede"></p>
+  <section class="screen active" id="screen-daily">
+    <div class="course-bar" id="courseBar">
+      <span class="cb-mark" id="courseBarMark"></span>
+      <span class="cb-body">
+        <span class="cb-label" data-i18n="courseStudying">Studying</span>
+        <span class="cb-name" id="courseBarName"></span>
+      </span>
+      <span class="cb-switch" data-i18n="courseSwitch">Switch</span>
+    </div>
+
+    <div class="daily-hero">
+      <p class="eyebrow" id="dailyEyebrow" data-i18n="dailyEyebrow">Today's five</p>
+      <h2 data-i18n="dailyHeading">Daily Five</h2>
+      <p class="lede" data-i18n="dailyLede"></p>
+    </div>
 
     <div class="daily-head">
       <div class="daily-pills" id="dailyPills"></div>
       <div class="daily-count" id="dailyCount">0 / 5</div>
     </div>
+
+    <div class="daily-reset" id="dailyResetBar"></div>
 
     <div class="sr-live" id="dailyLive" aria-live="polite"></div>
 
@@ -457,11 +393,78 @@
       <div class="daily-wordlist" id="dailyDoneList"></div>
       <button class="btn btn-line btn-block" id="dailyRetake"></button>
     </div>
+
+    <!-- Everything below the deck is the old Home screen: the learner's day
+         starts with the five words, and the rest of the course sits under it. -->
+    <div class="home-divider"></div>
+
+    <div class="greeting">
+      <p class="eyebrow" id="homeGreetEyebrow" data-i18n="greetingEyebrow">Good to see you</p>
+      <h2 data-i18n="greetingHeading">Ready for today's practice?</h2>
+      <p data-i18n="greetingBody">Fifteen quiet minutes a day is enough to sound calm, warm and confident with every guest who walks through your door.</p>
+      <div class="featured-quote" id="potdOpen">
+        <div class="fq-head">
+          <p class="fq-label" data-i18n="phraseOfDayLabel">Phrase of the day</p>
+          <button class="potd-play" id="potdPlay" aria-label="Listen to today's phrase"></button>
+        </div>
+        <div class="fq-meta"><span id="potdCat"></span><span id="potdLevel"></span></div>
+        <p id="potdText">&nbsp;</p>
+        <p class="gloss" id="potdTh">&nbsp;</p>
+        <p class="fq-note" id="potdNote">&nbsp;</p>
+        <p class="fq-cta" data-i18n="potdOpenCta">Tap to see more like this</p>
+      </div>
+      <div class="cta-row">
+        <button class="btn btn-gold" onclick="Nav.go('vocab')">
+          <span data-i18n="continueLearning">Continue learning</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="lh-panel lh-home-card" id="learningHomeCard"></div>
+
+    <div class="stat-strip">
+      <div class="stat-cell"><div class="stat-num" id="statWords">0</div><div class="stat-label" data-i18n="statWords">WORDS LEARNED</div></div>
+      <div class="stat-cell"><div class="stat-num" id="statQuiz">—</div><div class="stat-label" data-i18n="statQuiz">QUIZ AVERAGE</div></div>
+      <div class="stat-cell"><div class="stat-num" id="statLessons">0</div><div class="stat-label" data-i18n="statLessons">ACTIVITIES DONE</div></div>
+    </div>
+
+    <div class="menu-heading"><h3 data-i18n="exploreCourse">Explore the course</h3><span data-i18n="modulesCount">6 modules</span></div>
+    <div class="menu-list">
+      <div class="menu-row" id="homeAnatomyRow" onclick="Nav.go('anatomy')">
+        <div class="menu-icon sage"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.6" r="2.4"/><path d="M6 9.2h12"/><path d="M12 9.2V15"/><path d="M9 15l-1.2 5.4M15 15l1.2 5.4"/></svg></div>
+        <div class="menu-body"><h4 data-i18n="menuAnatomyTitle">Body map</h4><p data-i18n="menuAnatomyDesc">Tap any part of the body to learn its English name</p></div>
+        <div class="menu-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="menu-row" onclick="Nav.go('pron')">
+        <div class="menu-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="4" y2="12"/><line x1="8" y1="7" x2="8" y2="17"/><line x1="12" y1="4" x2="12" y2="20"/><line x1="16" y1="7" x2="16" y2="17"/><line x1="20" y1="12" x2="20" y2="12"/></svg></div>
+        <div class="menu-body"><h4 data-i18n="menuPronTitle">Pronunciation</h4><p data-i18n="menuPronDesc">Hear and repeat the industry's trickiest words</p></div>
+        <div class="menu-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="menu-row" onclick="Nav.go('saythis')">
+        <div class="menu-icon sage"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="17" y2="8"/><path d="M14 5l3 3-3 3"/><line x1="20" y1="16" x2="7" y2="16"/><path d="M10 13l-3 3 3 3"/></svg></div>
+        <div class="menu-body"><h4 data-i18n="menuSaythisTitle">Say this, not that</h4><p data-i18n="menuSaythisDesc">Turn blunt phrases into polished, guest-ready ones</p></div>
+        <div class="menu-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+    </div>
+
+    <div class="tip-block">
+      <div class="tip-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3C12 3 6.5 9.5 6.5 13.5a5.5 5.5 0 0 0 11 0C17.5 9.5 12 3 12 3Z"/></svg></div>
+      <div><h5 data-i18n="tipOfDay">Tip of the day</h5><p data-i18n="tipOfDayBody"></p></div>
+    </div>
+
+    <div class="home-divider"></div>
+    <p class="partner-caption" data-i18n="partnerCaption">A programme by</p>
+    <div class="partner-strip">
+      <img src="assets/nimman-logo.png" alt="Nimmanoradee International School" loading="lazy">
+      <span class="ps-divider"></span>
+      <img class="barter" src="assets/barter-logo.png" alt="Barter Group" loading="lazy">
+    </div>
   </section>
 
   <!-- ============================= VOCABULARY ============================= -->
   <section class="screen" id="screen-vocab">
-    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="vocabHeading">Vocabulary &amp; practice</h2></div>
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('daily','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="vocabHeading">Vocabulary &amp; practice</h2></div>
     <p class="lede" data-i18n="vocabLede"></p>
 
     <div id="vocabHint"></div>
@@ -610,7 +613,7 @@
 
   <!-- ============================= BODY MAP ============================= -->
   <section class="screen" id="screen-anatomy">
-    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="anatomyHeading">Body map</h2></div>
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('daily','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="anatomyHeading">Body map</h2></div>
     <p class="lede" data-i18n="anatomyLede"></p>
     <div id="anatomyModelControls"></div>
     <div id="anatomyViewChips"></div>
@@ -628,7 +631,7 @@
 
   <!-- ============================= PRONUNCIATION ============================= -->
   <section class="screen" id="screen-pron">
-    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="pronHeading">Pronunciation guide</h2></div>
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('daily','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="pronHeading">Pronunciation guide</h2></div>
     <p class="lede" data-i18n="pronLede"></p>
     <p class="audio-note">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="8" r=".6" fill="currentColor" stroke="none"/></svg>
@@ -639,7 +642,7 @@
 
   <!-- ============================= PHRASES ============================= -->
   <section class="screen" id="screen-phrases">
-    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="phrasesHeading">Useful phrases</h2></div>
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('daily','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="phrasesHeading">Useful phrases</h2></div>
     <p class="lede" data-i18n="phrasesLede"></p>
     <div class="filter-bar">
       <label class="filter-field" id="phraseCatField">
@@ -665,7 +668,7 @@
 
   <!-- ============================= SAY THIS NOT THAT ============================= -->
   <section class="screen" id="screen-saythis">
-    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="saythisHeading">Say this, not that</h2></div>
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('daily','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="saythisHeading">Say this, not that</h2></div>
     <p class="lede" data-i18n="saythisLede"></p>
     <div id="ddList"></div>
   </section>
@@ -675,7 +678,7 @@
   <section class="screen" id="screen-customplay"><div id="customPlayRoot"></div></section>
   <section class="screen" id="screen-customresults"><div id="customResultsRoot"></div></section>
   <section class="screen" id="screen-assess">
-    <div class="crumb"><button class="crumb-back" onclick="Nav.go('home','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="practiceHeading">Practice</h2></div>
+    <div class="crumb"><button class="crumb-back" onclick="Nav.go('daily','back')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><h2 data-i18n="practiceHeading">Practice</h2></div>
     <div id="practiceCourseLine"></div>
     <div class="px-modes" id="practiceModes" role="tablist" aria-label="Practice mode"></div>
     <div id="practiceLibrary" role="tabpanel" aria-labelledby="pmode-library">
@@ -860,15 +863,15 @@
     </div>
     <div id="practiceResults"></div>
     <button class="btn btn-gold btn-block" id="resultsBackBtn" onclick="Nav.go(App.resultsBackTo,'back')" data-i18n="backToAssessments">Back to assessments</button>
-    <button class="btn btn-ghost btn-block" onclick="Nav.go('home','back')" data-i18n="returnHome">Return home</button>
+    <button class="btn btn-ghost btn-block" onclick="Nav.go('daily','back')" data-i18n="returnHome">Return home</button>
   </section>
 
   </main>
 
   <nav class="tab-bar">
-    <button class="tab-item active" data-tab="home" onclick="Nav.go('home')">
-      <div class="tab-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 4l8 7.5"/><path d="M6 10v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-9"/><path d="M10 20v-6h4v6"/></svg></div>
-      <span data-i18n="navHome">Home</span>
+    <button class="tab-item active" data-tab="daily" onclick="Nav.go('daily')">
+      <div class="tab-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M8 3.5v3M16 3.5v3M3.5 10h17"/><path d="M9 14.5l2 2 4-4"/></svg></div>
+      <span data-i18n="navDaily">Daily</span>
     </button>
     <button class="tab-item" data-tab="learning" onclick="LearningHub.open()">
       <div class="tab-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h6a3 3 0 0 1 3 3v14a4 4 0 0 0-4-3H4zM13 7a3 3 0 0 1 3-3h4v14h-3a4 4 0 0 0-4 3"/></svg></div>
@@ -913,6 +916,7 @@
 <script src="js/anatomy-data.js?v=png-bodymap-1"></script>
 <script src="js/anatomy.js?v=png-bodymap-1"></script>
 <script src="js/interview.js"></script>
+<script src="js/teacher.js"></script>
 <script src="js/sidebar.js"></script>
 <script src="js/app.js?v=png-bodymap-1"></script>
 </body>

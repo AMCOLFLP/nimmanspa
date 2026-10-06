@@ -1443,6 +1443,35 @@ html[lang="th"] .fc-hint{
   white-space:nowrap;
 }
 
+/* =========================================================================
+   Daily Five as the first tab
+   The deck is the first thing the app shows, so it gets a heading of its own
+   rather than a crumb, and the weekly swap allowance sits under the counter
+   where it is read before it is spent, never after.
+   ========================================================================= */
+.daily-hero{margin:4px 0 18px;}
+.daily-hero h2{font-family:var(--serif);font-weight:500;font-size:30px;line-height:1.25;margin:4px 0 8px;}
+html[lang="th"] .daily-hero h2{font-family:var(--thai);font-weight:700;font-size:26px;}
+.daily-hero .lede{margin:0;}
+.daily-reset{display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px;margin:0 0 16px;}
+.daily-reset-btn{
+  display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:8px 15px;
+  border-radius:100px;border:1.5px solid var(--stone-2);background:var(--paper);
+  color:var(--ink);font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;
+  transition:border-color .18s ease,background .18s ease,color .18s ease;
+}
+.daily-reset-btn svg{width:15px;height:15px;flex-shrink:0;}
+.daily-reset-btn:hover:not(:disabled){border-color:var(--gold);background:var(--gold-mist);color:var(--gold-deep);}
+.daily-reset-btn:disabled{opacity:.45;cursor:not-allowed;}
+.daily-reset-btn:focus-visible{outline:3px solid var(--gold-deep);outline-offset:2px;}
+.daily-reset-left{font-size:11.5px;font-weight:700;color:var(--ink-soft);line-height:1.5;}
+.daily-reset-left.spent{color:var(--clay-deep);}
+@media(max-width:420px){
+  .daily-hero h2{font-size:26px;}
+  .daily-reset{gap:7px 10px;}
+  .daily-reset-left{flex:1 0 100%;}
+}
+
 .swipe-stage{
   position:relative;
   height:376px;
@@ -2265,6 +2294,138 @@ html[lang="th"] .cc-title h3{ font-family:var(--thai); font-weight:700; font-siz
 .dialogue-th { display:block; font-size:13px; line-height:1.85; margin-top:9px; color:var(--ink-soft); }
 .phrase-copy,.dscript-text { min-width:0; overflow-wrap:anywhere; }
 @media(max-width:480px) { .word-context{padding:18px}.context-example{font-size:16px}.training-note{padding:12px}.context-heading{font-size:16px} }
+
+/* =========================================================================
+   TEACHER DASHBOARD
+   A cohort's headline numbers are a KPI row, not a chart; a student's
+   chapters-done is a ratio against a limit, so it is a meter whose unfilled
+   track is a lighter step of the same ramp; and a class is a table. State is
+   always written out beside the bar, never carried by colour alone.
+   ========================================================================= */
+/* A teacher is not studying a course, so none of the learner chrome applies:
+   no tabs, no side panel, no course-progress strip, no learner avatar. */
+body.teacher-mode .tab-bar,
+body.teacher-mode .sidebar-toggle,
+body.teacher-mode #sideBar,
+body.teacher-mode .sb-scrim,
+body.teacher-mode .progress-line,
+body.teacher-mode .progress-caption,
+body.teacher-mode #avatarBtn{display:none!important;}
+body.teacher-mode .app-main{padding-bottom:40px;}
+body.teacher-mode.app-visible{padding-left:0!important;}
+
+.tm-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:4px 0 20px;}
+.tm-top h2{font-family:var(--serif);font-weight:500;font-size:30px;line-height:1.25;margin:4px 0 0;}
+html[lang="th"] .tm-top h2{font-family:var(--thai);font-weight:700;font-size:26px;}
+.tm-top .btn{width:auto;min-height:38px;padding:8px 18px;font-size:13px;}
+
+.tm-banner{display:flex;flex-direction:column;gap:5px;padding:14px 16px;margin:0 0 20px;
+  border:1px solid var(--gold-line);border-left:3px solid var(--gold-deep);
+  border-radius:var(--radius-md);background:var(--gold-mist);}
+.tm-banner b{font-size:12.5px;color:var(--gold-deep);}
+.tm-banner span{font-size:11.5px;line-height:1.65;color:var(--ink-soft);}
+
+/* KPI row — the headline numbers, as tiles rather than a bar chart. */
+.tm-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0 0 20px;}
+.tm-kpi{padding:16px 18px;border:1px solid var(--stone-2);border-radius:var(--radius-lg);background:var(--paper);min-width:0;}
+.tm-kpi b{display:block;font-size:30px;font-weight:700;line-height:1.1;color:var(--ink);}
+.tm-kpi span{display:block;font-size:11px;line-height:1.5;color:var(--ink-soft);margin-top:6px;}
+.tm-kpi em{display:block;font-size:10.5px;font-style:normal;font-weight:700;color:var(--gold-deep);margin-top:4px;}
+
+.tm-controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 16px;}
+
+/* Table */
+.tm-table{border:1px solid var(--stone-2);border-radius:var(--radius-lg);background:var(--paper);overflow:hidden;}
+.tm-row{display:grid;grid-template-columns:2.1fr 1.3fr 1.5fr .6fr .6fr .9fr;gap:12px;align-items:center;
+  padding:13px 16px;border-bottom:1px solid var(--stone);cursor:pointer;
+  transition:background .15s ease;}
+.tm-row:last-child{border-bottom:0;}
+.tm-row:hover{background:var(--mist);}
+.tm-row.is-open{background:var(--gold-mist);}
+.tm-row:focus-visible{outline:3px solid var(--gold-deep);outline-offset:-3px;}
+.tm-head{cursor:default;background:var(--mist);font-size:10px;font-weight:800;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--ink-faint);padding:10px 16px;}
+.tm-head:hover{background:var(--mist);}
+.tm-name{min-width:0;}
+.tm-name b{display:inline;font-size:13.5px;line-height:1.4;}
+.tm-name small{display:block;font-size:10.5px;color:var(--ink-faint);overflow-wrap:anywhere;}
+.tm-sample{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:5px;background:var(--stone);
+  color:var(--ink-soft);font-size:8.5px;font-weight:800;letter-spacing:.06em;vertical-align:2px;}
+.tm-course{font-size:12px;color:var(--ink-soft);line-height:1.4;min-width:0;}
+.tm-num,.tm-when{font-size:12px;color:var(--ink-soft);font-variant-numeric:tabular-nums;}
+
+/* Meter: one ramp, light track → saturated fill, value written beside it. */
+.tm-meter{display:flex;align-items:center;gap:8px;min-width:0;}
+.tm-track{flex:1;height:7px;border-radius:7px;background:var(--gold-mist);overflow:hidden;min-width:34px;}
+.tm-fill{height:100%;border-radius:7px;background:var(--gold);transition:width .3s ease;}
+.tm-fill.is-done{background:var(--sage);}
+.tm-fill.is-behind{background:var(--clay);}
+.tm-meter-val{font-size:11px;font-weight:800;color:var(--ink-soft);white-space:nowrap;font-variant-numeric:tabular-nums;}
+
+/* Detail */
+.tm-detail{padding:4px 16px 20px;border-bottom:1px solid var(--stone);background:var(--gold-mist);}
+.tm-detail h4{font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--ink-faint);margin:16px 0 8px;}
+.tm-detail-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding-top:12px;}
+.tm-detail-stats>div{background:var(--paper);border-radius:var(--radius-sm);padding:12px 14px;min-width:0;}
+.tm-detail-stats b{display:block;font-size:19px;line-height:1.2;}
+.tm-detail-stats span{display:block;font-size:10.5px;color:var(--ink-soft);margin-top:4px;line-height:1.45;}
+.tm-nodata{font-size:12px;line-height:1.7;color:var(--ink-soft);background:var(--paper);
+  border-radius:var(--radius-sm);padding:14px;margin:12px 0 0;}
+.tm-chapters{list-style:none;margin:0;padding:0;}
+.tm-chapters li{display:grid;grid-template-columns:20px 1fr auto;gap:10px;align-items:center;
+  padding:9px 0;border-bottom:1px solid var(--gold-line);font-size:12.5px;line-height:1.5;color:var(--ink-soft);}
+.tm-chapters li:last-child{border-bottom:0;}
+.tm-chapters li.is-done{color:var(--ink);font-weight:600;}
+.tm-tick{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;
+  border:1.5px solid var(--stone-2);background:var(--paper);font-size:11px;font-weight:800;color:var(--sage-deep);}
+.tm-chapters li.is-done .tm-tick{border-color:var(--sage);background:var(--sage-mist);}
+.tm-chapters em{font-style:normal;font-size:10px;font-weight:800;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--ink-faint);white-space:nowrap;}
+.tm-chapters li.is-done em{color:var(--sage-deep);}
+.tm-detail-actions{margin-top:14px;}
+
+.tm-empty{padding:30px 20px;background:var(--mist);border-radius:var(--radius-lg);
+  font-size:13.5px;line-height:1.8;color:var(--ink-soft);text-align:center;}
+.tm-sample-note{font-size:11px;line-height:1.7;color:var(--ink-soft);margin:12px 0 0;}
+.tm-sample-note .lh-link{margin-left:6px;}
+
+/* Enrolment */
+.tm-enrol{margin-top:22px;}
+.tm-enrol-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px;}
+.tm-enrol-grid label{display:block;font-size:12px;font-weight:700;line-height:1.5;}
+.tm-enrol-grid input,.tm-enrol-grid select{display:block;width:100%;min-height:44px;margin-top:6px;
+  background:var(--mist);border:1px solid var(--stone-2);border-radius:10px;padding:9px 12px;
+  font:inherit;font-size:13px;color:var(--ink);}
+.tm-enrol .btn{width:auto;min-width:170px;}
+.tm-error{font-size:12px;line-height:1.6;color:var(--clay-deep);background:var(--clay-mist);
+  border-radius:8px;padding:10px 12px;margin:0 0 12px;}
+
+@media(max-width:900px){
+  .tm-kpis{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .tm-enrol-grid{grid-template-columns:1fr;}
+  .tm-head{display:none;}
+  .tm-row{grid-template-columns:1fr auto;gap:6px 12px;padding:14px 16px;}
+  .tm-name{grid-column:1/-1;}
+  .tm-course{grid-column:1/-1;font-size:11px;}
+  .tm-row>[role="cell"]:nth-child(3){grid-column:1/-1;}
+  .tm-num,.tm-when{font-size:11px;}
+  /* The header row is hidden at this width, so each number names itself. */
+  .tm-num[data-label]::before,.tm-when[data-label]::before{
+    content:attr(data-label) " ";font-size:9.5px;font-weight:800;letter-spacing:.05em;
+    text-transform:uppercase;color:var(--ink-faint);font-variant-numeric:normal;}
+  .tm-num{justify-self:start;}
+  .tm-when{justify-self:end;text-align:right;}
+  .tm-detail{padding:4px 14px 18px;}
+  .tm-detail-stats{grid-template-columns:1fr;}
+}
+@media(max-width:560px){
+  .tm-kpis{grid-template-columns:1fr 1fr;gap:9px;}
+  .tm-kpi{padding:13px 14px;}
+  .tm-kpi b{font-size:25px;}
+  .tm-controls{grid-template-columns:1fr;}
+  .tm-top h2{font-size:25px;}
+}
 
 /* =========================================================================
    Practice hub — two modes, one screen

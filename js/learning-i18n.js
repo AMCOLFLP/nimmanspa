@@ -32,8 +32,31 @@ Object.assign(UI_STRINGS.th,{
  pxFilterAll:'ทั้งหมด',switchCourse:'เปลี่ยนหลักสูตร',
 });
 
-Object.assign(UI_STRINGS.en,{courseProgress:'Modules marked studied',statQuiz:'LEGACY BEST AVERAGE',demoNote:'Account saving requires the configured PHP/MySQL server. Guest learning and practice are kept only for the current session.'});
-Object.assign(UI_STRINGS.th,{courseProgress:'โมดูลที่ทำเครื่องหมายว่าเรียนแล้ว',statQuiz:'ค่าเฉลี่ยคะแนนสูงสุดเดิม',demoNote:'การบันทึกบัญชีต้องใช้เซิร์ฟเวอร์ PHP/MySQL ที่ตั้งค่าแล้ว ผู้เยี่ยมชมเก็บบันทึกการเรียนและการฝึกเฉพาะครั้งนี้'});
+Object.assign(UI_STRINGS.en,{courseProgress:'Chapters marked studied',statQuiz:'LEGACY BEST AVERAGE',demoNote:'Account saving requires the configured PHP/MySQL server. Guest learning and practice are kept only for the current session.'});
+Object.assign(UI_STRINGS.th,{courseProgress:'บทที่ทำเครื่องหมายว่าเรียนแล้ว',statQuiz:'ค่าเฉลี่ยคะแนนสูงสุดเดิม',demoNote:'การบันทึกบัญชีต้องใช้เซิร์ฟเวอร์ PHP/MySQL ที่ตั้งค่าแล้ว ผู้เยี่ยมชมเก็บบันทึกการเรียนและการฝึกเฉพาะครั้งนี้'});
 
-Object.assign(UI_STRINGS.en,{courseSections:'Learning sections'});
-Object.assign(UI_STRINGS.th,{courseSections:'ส่วนการเรียนรู้'});
+Object.assign(UI_STRINGS.en,{courseSections:'Chapters'});
+Object.assign(UI_STRINGS.th,{courseSections:'บทเรียน'});
+
+/* Daily Five is the app's front door: the first tab opens on today's deck,
+   with the rest of the course below it. Seven swaps a week, refilled Monday. */
+Object.assign(UI_STRINGS.en,{
+ navDaily:'Daily',
+ dailyEyebrow:'TODAY’S FIVE',
+ dailyResetCta:'Get a new set',
+ dailyResetLeft:'{n} of {t} swaps left this week',
+ dailyResetSpent:'No swaps left — they refill on Monday',
+ dailyResetConfirm:'Swap today’s five for a different five? Today’s progress on this set is cleared, and this uses one of your weekly swaps.',
+ dailyResetDone:'New set of five loaded.',
+ teacherEyebrow:'TEACHER',teacherHeading:'Class dashboard',
+});
+Object.assign(UI_STRINGS.th,{
+ navDaily:'ประจำวัน',
+ dailyEyebrow:'ห้าคำของวันนี้',
+ dailyResetCta:'สุ่มชุดใหม่',
+ dailyResetLeft:'เหลือสิทธิ์เปลี่ยนชุด {n} จาก {t} ครั้งในสัปดาห์นี้',
+ dailyResetSpent:'ใช้สิทธิ์ครบแล้ว — รีเซ็ตใหม่ทุกวันจันทร์',
+ dailyResetConfirm:'เปลี่ยนคำศัพท์ห้าคำของวันนี้เป็นชุดใหม่หรือไม่? ความคืบหน้าของชุดเดิมในวันนี้จะถูกล้าง และจะใช้สิทธิ์เปลี่ยนชุดของสัปดาห์นี้หนึ่งครั้ง',
+ dailyResetDone:'โหลดคำศัพท์ชุดใหม่แล้ว',
+ teacherEyebrow:'ครูผู้สอน',teacherHeading:'แดชบอร์ดชั้นเรียน',
+});

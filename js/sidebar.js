@@ -92,11 +92,10 @@ const Sidebar = (() => {
      appear only where the active course actually has that content. */
   function navGroups(){
     return [
-      { items:[{ screen:'home', key:'navHome' }] },
+      { items:[{ screen:'daily', key:'navDaily' }] },
       { titleKey:'sidebarGroupLearn', items:[
         { screen:'learning', key:'navLearning' },
         ...(Interview.available() ? [{ screen:'interview', key:'menuInterviewTitle' }] : []),
-        { screen:'daily',    key:'navDaily' },
       ]},
       { titleKey:'sidebarGroupWords', items:[
         { screen:'vocab',   key:'navVocab' },
@@ -131,7 +130,7 @@ const Sidebar = (() => {
 
   function currentScreen(){
     const el = document.querySelector('.screen.active');
-    return el ? el.id.replace('screen-', '') : 'home';
+    return el ? el.id.replace('screen-', '') : 'daily';
   }
 
   /* --------------------------------------------------------------- render */

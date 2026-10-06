@@ -4,10 +4,10 @@
 
 const Nav = {
   tabFor: {
-    /* Which bottom-bar tab lights up for each screen. Daily lost its own tab
-       (it is a card on Home, not a place you browse) and Pronunciation moved
-       under Words, so both point at their new parent. */
-    home:'home', learning:'learning', customplay:'assess', customresults:'assess', account:'home', settings:'home', daily:'home', vocab:'vocab', anatomy:'vocab', pron:'vocab', interview:'learning',
+    /* Which bottom-bar tab lights up for each screen. Daily Five is the first
+       tab and the app's front door: the old Home screen's sections now sit
+       below the deck on that same screen. Pronunciation lives under Words. */
+    daily:'daily', learning:'learning', customplay:'assess', customresults:'assess', account:'daily', settings:'daily', teacher:'daily', vocab:'vocab', anatomy:'vocab', pron:'vocab', interview:'learning',
     phrases:'phrases', saythis:'phrases',
     assess:'assess', mcquiz:'assess', fillquiz:'assess', listen:'assess', speaking:'assess',
     builder:'assess', truefalse:'assess', errorfix:'assess', results:'assess', practiceplay:'assess',
@@ -16,7 +16,7 @@ const Nav = {
   // Left-to-right tab bar order, used only to pick a slide direction when
   // jumping directly between two root/tab screens (e.g. Home's "Phrase of
   // the day" card opening the Phrases tab).
-  rootOrder: ['home', 'learning', 'vocab', 'phrases', 'assess'],
+  rootOrder: ['daily', 'learning', 'vocab', 'phrases', 'assess'],
 
   /* screen (required), dir ('back' | 'forward', optional).
      Left unset, direction is inferred from the app's tab hierarchy: leaving
@@ -52,7 +52,7 @@ const Nav = {
       if (screen === 'customplay') AssessmentBuilder.renderSession();
       if (screen === 'customresults') AssessmentBuilder.renderResults();
       if (screen === 'account') App.renderAccount();
-      if (screen === 'home') App.refreshHome();
+      if (screen === 'daily') App.refreshHome();   // the sections below the deck
       Sidebar.setActive(screen);
     };
 
@@ -135,6 +135,12 @@ const App = (() => {
   function afterAuthSuccess(){
     document.getElementById('authWrap').classList.remove('active');
     const user = Auth.currentUser();
+    // A teacher has no course to pick: they go straight to their class list.
+    if (user && user.role === 'teacher'){
+      Courses.activate(Courses.saved() || 'spa', { remember:false });
+      Teacher.open();
+      return;
+    }
     if (user && !user.guest && user.lang && user.lang !== I18N.current){
       I18N.set(user.lang, rerenderAll);
     }
@@ -174,11 +180,22 @@ const App = (() => {
     document.getElementById('loginForm').addEventListener('submit', async e => {
       e.preventDefault();
       const form = e.target;
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+
+      /* The local teacher fixture is checked before the server, because it
+         does not exist there — see the warning at the top of teacher.js. */
+      if (Teacher.isLocalTeacher(email, password)){
+        Teacher.signIn();
+        hideAuthError();
+        form.reset();
+        Courses.activate(Courses.saved() || 'spa', { remember:false });
+        Teacher.open();
+        return;
+      }
+
       setFormBusy(form, true);
-      const res = await Auth.login({
-        email: document.getElementById('loginEmail').value.trim(),
-        password: document.getElementById('loginPassword').value,
-      });
+      const res = await Auth.login({ email, password });
       setFormBusy(form, false);
       if (!res.ok){ showAuthError(res.error); return; }
       hideAuthError();
@@ -287,7 +304,11 @@ const App = (() => {
       Progress.touchStreak();
       renderAll();
       Vocab.resetForCourse();
-      LearningHub.open();
+      // Land on Daily Five: it is the first tab and the thing a learner is
+      // meant to do every day. LearningHub.home() refreshes its card there
+      // without navigating away from the deck.
+      LearningHub.home();
+      Nav.go('daily');
     } finally {
       selectingCourse = false;
       if (card) card.classList.remove('loading');
@@ -303,7 +324,7 @@ const App = (() => {
     document.getElementById('courseBackBtn').addEventListener('click', () => {
       hideCourseChooser();
       document.getElementById('appShell').style.display = 'block';
-      Nav.go('home');
+      Nav.go('daily');
     });
     document.getElementById('courseBar').addEventListener('click', () => showCourseChooser({ cancellable:true }));
     document.getElementById('accSwitchCourse').addEventListener('click', () => showCourseChooser({ cancellable:true }));
@@ -326,7 +347,7 @@ const App = (() => {
   }
 
   function renderCourseChrome(){
-    document.querySelectorAll('#screen-home [onclick]').forEach(el=>{const action=el.getAttribute('onclick')||'';if(/Nav\.go\('(?:pron|saythis)'/.test(action))el.hidden=Courses.currentId==='salon';});
+    document.querySelectorAll('#screen-daily .menu-list [onclick]').forEach(el=>{const action=el.getAttribute('onclick')||'';if(/Nav\.go\('(?:pron|saythis)'/.test(action))el.hidden=Courses.currentId==='salon';});
     // The body map only exists where the course actually teaches body parts.
     const anatomyRow = document.getElementById('homeAnatomyRow');
     if (anatomyRow) anatomyRow.hidden = !Anatomy.available();
@@ -391,35 +412,13 @@ const App = (() => {
     document.getElementById('potdTh').textContent = p.th || '';
     document.getElementById('potdNote').textContent = I18N.current === 'th' ? (p.noteTh || p.note) : p.note;
 
-    renderDailyCta();
-  }
-
-  /* The home card mirrors whichever of the three daily states is live, so the
-     learner can see at a glance whether today's set still needs attention. */
-  function renderDailyCta(){
-    const s = Daily.summary();
-    const card = document.getElementById('homeDailyCta');
-    card.classList.toggle('is-done', s.checkDone);
-    document.getElementById('homeDailyKicker').textContent = I18N.t('dailyKicker');
-
-    if (s.checkDone){
-      document.getElementById('homeDailyTitle').textContent = I18N.t('dailyCtaDoneTitle');
-      document.getElementById('homeDailyBody').textContent =
-        `${I18N.t('dailyDoneScore')} ${s.score}/${s.scoreTotal} \u00b7 ${I18N.t('dailyComeBack')}`;
-    } else if (s.ready){
-      document.getElementById('homeDailyTitle').textContent = I18N.t('dailyCtaReadyTitle');
-      document.getElementById('homeDailyBody').textContent = I18N.t('dailyCtaReadyBody');
-    } else {
-      document.getElementById('homeDailyTitle').textContent = I18N.t('dailyCtaTitle');
-      document.getElementById('homeDailyBody').textContent =
-        `${s.done} / ${s.total} ${I18N.t('dailyCtaProgress')}`;
-    }
-
-    document.getElementById('homeDailyPills').innerHTML =
-      Array.from({ length: s.total }).map((_, i) =>
-        `<i class="${i < s.done ? 'on' : ''}"></i>`).join('');
-    // Home and the side panel show the same counters, so they refresh together.
+    // The deck itself is right above these sections now, so the summary card
+    // that used to stand in for it is gone; the side panel still mirrors the
+    // same counters and refreshes with them.
     Sidebar.render();
+    // A signed-in learner's figures are also what their teacher's dashboard
+    // reads, so snapshot them whenever the learner's own screen refreshes.
+    Teacher.capture();
   }
 
   function dayOfYear(){
@@ -1042,8 +1041,14 @@ const App = (() => {
     LearningHub.init();AssessmentBuilder.init();
     Anatomy.init();
     Interview.init();
+    Teacher.init();
     Sidebar.init();
     restorePracticeMode();
+    document.getElementById('teacherSignOut').addEventListener('click', () => {
+      Auth.logout();
+      Teacher.exit();
+      showAuth();
+    });
     window.addEventListener('nimman:progress-status',()=>{
       const b=document.getElementById('learningSaveStatus');if(!b)return;
       const status=Progress.status;b.hidden=!['load-error','save-error'].includes(status);

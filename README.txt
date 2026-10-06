@@ -142,14 +142,37 @@ No audio recording storage is added by this release.
 
 GETTING AROUND
 Five tabs along the bottom, for the five things a learner does repeatedly:
-  Home      today's card, streak, phrase of the day, continue your path
-  Learn     the module path for this course, and the interview rehearsal
+  Daily     today's five words, then streak, phrase of the day and the rest
+  Learn     the chapter path for this course, and the interview rehearsal
   Words     vocabulary drills, plus Body map and Pronunciation
   Phrases   phrase banks, plus Say this, not that
   Practice  the activity library, and the build-your-own set builder
 
-Daily Five no longer has its own tab. It is a card on Home, which is where
-a once-a-day habit belongs, and Home stays highlighted while you are in it.
+DAILY FIVE — THE FIRST TAB
+Daily Five is what the app opens on. The first tab is the deck itself: five
+words, swiped right when understood, then a knowledge check on exactly those
+five. Everything that used to be the Home screen — the greeting, phrase of
+the day, the stat strip, the course menu, the tip — now sits below the deck
+on that same screen, so the day starts with the words and the rest of the
+course is one scroll away. There is no separate Home tab; Daily is it.
+
+Swapping the day's five
+"Get a new set" exchanges today's five for a different five. Each learner has
+SEVEN swaps a week. The count is shown beside the button before it is spent,
+not after, and the confirm says plainly that today's progress on the current
+set is cleared. When the allowance runs out the button disables and says so.
+The allowance refills automatically every Monday — it is read lazily, so a
+stale week rolls over the first time the app asks, with no timer and no need
+for the app to have been open. A swapped set is genuinely different, not a
+reshuffle of the same five.
+
+CHAPTERS
+The course sections are Chapter 1–N in every course. The spa and salon
+courses have five chapters each; the cruise course has eight plus the A2
+interview chapter and a safety supplement. The source outlines call these
+"Day" and "Module"; the app uses one word throughout, and each course's
+source note on the Learn screen still names the syllabus it follows. See
+SOURCES.md.
 
 THE PRACTICE TAB — TWO WAYS IN, ONE SCREEN
 Practice opens on two buttons, because there are two ways to practise and
@@ -182,15 +205,15 @@ index, grouped Learn / Words & phrases / Practice / Account. Everything in
 the app is listed there exactly once. Nothing is reachable only from the
 panel: every entry in it can also be reached from the bottom bar, through
 the tab that owns it.
-  Daily Five           Home, the card at the top
-  Interview rehearsal  Learn, the last card in the module grid
+  Daily Five           the first tab — it IS that tab
+  Interview rehearsal  Learn, the last card in the chapter grid
   Body map             Words, link below the filters
   Pronunciation        Words, link below the filters
   Say this, not that   Phrases, link below the filters
   Your account         the avatar, top right
   Settings             Your account
-Home's list below the stats shows the same extras, so there are two routes
-to each of them and none depends on finding the panel.
+The Daily tab's course menu, below the stats, shows the same extras, so there
+are two routes to each of them and none depends on finding the panel.
 
 Entries appear only where the course has that content: the cruise course has
 no Body map, and the salon course has neither Body map, Pronunciation nor
@@ -206,8 +229,9 @@ loud, then opens each question to compare against a model answer. Questions
 can be played aloud. Progress through the steps is remembered on the device.
 It is self-study and unscored, and the copy says so: it is a rehearsal, not
 the employer's assessment and not a pass.
-It sits in the Learn tab as the last card in the module grid, after Day 5,
-because it is the last step of the course rather than a separate drill. The
+It sits in the Learn tab as the last card in the chapter grid, after the
+final chapter, because it is the last step of the course rather than a
+separate drill. The
 card shows how far through the six steps you are and resumes there.
 The answer language is also in Words and Phrases, so it can be drilled and
 built into a practice set like any other content.
@@ -218,8 +242,21 @@ SOURCES.md.
 Only the spa course has a rehearsal, so it does not appear for cruise or
 salon.
 
+TEACHER ACCOUNT & CLASS DASHBOARD
+Sign in as teacher@nimman.local / nimman-teacher to open a class dashboard:
+a KPI row (students, who studied this week, average chapters done, average
+streak), a class table with a chapters meter per student, a detail panel
+showing every chapter and whether it is marked studied, and an enrolment
+form. Six sample students are seeded so it is reviewable immediately; they
+are badged SAMPLE and removable in one tap.
+THIS ACCOUNT IS A LOCAL DEVELOPMENT FIXTURE, NOT SECURITY. The credentials
+are in js/teacher.js, which every browser downloads, so anyone can read them.
+It is acceptable only because everything it unlocks is also local to this
+browser. It must move to the PHP/MySQL backend, with a server-side role
+check, before any real student records exist. See TEACHER_SETUP.md.
+
 BODY MAP — WHERE TO FIND IT
-Home > Body map, the side panel, or the Body map chip in the Vocab screen's
+Daily > Body map, the side panel, or the Body map chip in the Vocab screen's
 row of drills. It does not have its own tab in the bottom bar: it is another
 route into the same vocabulary, so it lives under Vocab (that tab stays
 highlighted while the map is open), and a seventh tab would leave about 55px
@@ -234,7 +271,7 @@ without rebuilding the filter by hand. Body parts is also selectable as a
 category in the assessment builder.
 
 BODY MAP (SPA)
-Home > Body map opens an interactive diagram with front, back and face views.
+Daily > Body map opens an interactive diagram with front, back and face views.
 Tapping a region shows that part's English name, IPA, Thai, an example
 sentence you can say to a guest, and a play button. Regions are drawn from the
 course's own Body parts vocabulary, so nothing is duplicated: the spa course

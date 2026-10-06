@@ -102,8 +102,8 @@
     "cruise": [
       {
         "id": "c1",
-        "title": "Module 1 · Survival English for Cruise Work",
-        "th": "โมดูล 1 · ภาษาอังกฤษพื้นฐานสำหรับงานเรือสำราญ",
+        "title": "Chapter 1 · Survival English for Cruise Work",
+        "th": "บทที่ 1 · ภาษาอังกฤษพื้นฐานสำหรับงานเรือสำราญ",
         "source": "ECSE §5; presentation p.4",
         "goal": "Ask for clarification and confirm simple times, numbers and directions.",
         "goalTh": "ขอคำอธิบายเพิ่มเติมและยืนยันเวลา ตัวเลข และทิศทางอย่างง่าย",
@@ -143,8 +143,8 @@
       },
       {
         "id": "c2",
-        "title": "Module 2 · Introducing Yourself & Your Career",
-        "th": "โมดูล 2 · การแนะนำตัวและอาชีพ",
+        "title": "Chapter 2 · Introducing Yourself & Your Career",
+        "th": "บทที่ 2 · การแนะนำตัวและอาชีพ",
         "source": "ECSE §5; presentation p.4",
         "goal": "Introduce your background, skills, experience and career goals.",
         "goalTh": "แนะนำภูมิหลัง ทักษะ ประสบการณ์ และเป้าหมายในอาชีพ",
@@ -180,8 +180,8 @@
       },
       {
         "id": "c3",
-        "title": "Module 3 · Cruise Ship Vocabulary",
-        "th": "โมดูล 3 · คำศัพท์เรือสำราญ",
+        "title": "Chapter 3 · Cruise Ship Vocabulary",
+        "th": "บทที่ 3 · คำศัพท์เรือสำราญ",
         "source": "ECSE §5; presentation p.4",
         "goal": "Recognise ship areas, crew roles and common onboard places.",
         "goalTh": "เข้าใจคำศัพท์พื้นที่บนเรือ ตำแหน่งลูกเรือ และสถานที่ที่พบบ่อย",
@@ -217,8 +217,8 @@
       },
       {
         "id": "c4",
-        "title": "Module 4 · English for Daily Work",
-        "th": "โมดูล 4 · ภาษาอังกฤษสำหรับงานประจำวัน",
+        "title": "Chapter 4 · English for Daily Work",
+        "th": "บทที่ 4 · ภาษาอังกฤษสำหรับงานประจำวัน",
         "source": "ECSE §5; presentation p.4",
         "goal": "Receive, clarify, confirm and report routine work tasks.",
         "goalTh": "รับคำสั่ง สอบถาม ยืนยัน และรายงานงานประจำวัน",
@@ -258,8 +258,8 @@
       },
       {
         "id": "c5",
-        "title": "Module 5 · Guest Service English",
-        "th": "โมดูล 5 · ภาษาอังกฤษสำหรับบริการลูกค้า",
+        "title": "Chapter 5 · Guest Service English",
+        "th": "บทที่ 5 · ภาษาอังกฤษสำหรับบริการลูกค้า",
         "source": "ECSE §5; presentation p.4",
         "goal": "Greet guests, clarify requests and give helpful information.",
         "goalTh": "ทักทายลูกค้า สอบถามความต้องการ และให้ข้อมูลที่เป็นประโยชน์",
@@ -299,8 +299,8 @@
       },
       {
         "id": "c6",
-        "title": "Module 6 · Complaints & Problem Solving",
-        "th": "โมดูล 6 · ข้อร้องเรียนและการแก้ปัญหา",
+        "title": "Chapter 6 · Complaints & Problem Solving",
+        "th": "บทที่ 6 · ข้อร้องเรียนและการแก้ปัญหา",
         "source": "ECSE §5; presentation p.4",
         "goal": "Acknowledge a concern, clarify the facts and offer an approved next step.",
         "goalTh": "รับทราบข้อกังวล สอบถามข้อเท็จจริง และเสนอขั้นตอนถัดไปที่ได้รับอนุมัติ",
@@ -340,8 +340,8 @@
       },
       {
         "id": "c8",
-        "title": "Module 8 · Multicultural Communication",
-        "th": "โมดูล 8 · การสื่อสารข้ามวัฒนธรรม",
+        "title": "Chapter 8 · Multicultural Communication",
+        "th": "บทที่ 8 · การสื่อสารข้ามวัฒนธรรม",
         "source": "ECSE §5; presentation p.4 (source numbering retained)",
         "goal": "Check understanding respectfully with people from different backgrounds.",
         "goalTh": "ตรวจสอบความเข้าใจอย่างสุภาพกับผู้ที่มีภูมิหลังต่างกัน",
@@ -385,8 +385,8 @@
       },
       {
         "id": "ca2",
-        "title": "A2 Module · Cruise Ship Job Interview",
-        "th": "โมดูล A2 · การสัมภาษณ์งานเรือสำราญ",
+        "title": "Chapter A2 · Cruise Ship Job Interview",
+        "th": "บทที่ A2 · การสัมภาษณ์งานเรือสำราญ",
         "source": "ECSE §5; presentation p.5",
         "goal": "Answer interview questions with relevant, truthful examples.",
         "goalTh": "ตอบคำถามสัมภาษณ์ด้วยตัวอย่างที่ตรงประเด็นและเป็นจริง",
@@ -461,8 +461,8 @@
     "spa": [
       {
         "id": "s1",
-        "title": "Day 1 · Cruise Ship & Spa Industry Overview",
-        "th": "วันที่ 1 · ภาพรวมเรือสำราญและงานสปา",
+        "title": "Chapter 1 · Cruise Ship & Spa Industry Overview",
+        "th": "บทที่ 1 · ภาพรวมเรือสำราญและงานสปา",
         "source": "Spa Therapist DOCX / Day 1",
         "goal": "Describe the spa role and prepare truthful CV information.",
         "goalTh": "อธิบายบทบาทงานสปาและเตรียมข้อมูลประวัติย่อตามจริง",
@@ -498,8 +498,8 @@
       },
       {
         "id": "s2",
-        "title": "Day 2 · Professional Self-Introduction in English",
-        "th": "วันที่ 2 · การแนะนำตัวอย่างมืออาชีพเป็นภาษาอังกฤษ",
+        "title": "Chapter 2 · Professional Self-Introduction in English",
+        "th": "บทที่ 2 · การแนะนำตัวอย่างมืออาชีพเป็นภาษาอังกฤษ",
         "source": "Spa Therapist DOCX / Day 2",
         "goal": "Deliver a 60–90 second introduction using your own background.",
         "goalTh": "แนะนำตัวภายใน 60–90 วินาทีด้วยข้อมูลของคุณเอง",
@@ -535,8 +535,8 @@
       },
       {
         "id": "s3",
-        "title": "Day 3 · English for Spa & Cruise Ship Terminology",
-        "th": "วันที่ 3 · คำศัพท์ภาษาอังกฤษเฉพาะวิชาชีพ",
+        "title": "Chapter 3 · English for Spa & Cruise Ship Terminology",
+        "th": "บทที่ 3 · คำศัพท์ภาษาอังกฤษเฉพาะวิชาชีพ",
         "source": "Spa Therapist DOCX / Day 3",
         "goal": "Use job-specific words in consultation, service explanations and retail conversations.",
         "goalTh": "ใช้คำศัพท์เฉพาะงานในการปรึกษา อธิบายบริการ และสนทนาเรื่องผลิตภัณฑ์",
@@ -576,8 +576,8 @@
       },
       {
         "id": "s4",
-        "title": "Day 4 · Cruise Spa Interview Preparation",
-        "th": "วันที่ 4 · การเตรียมสัมภาษณ์และบริการลูกค้า",
+        "title": "Chapter 4 · Cruise Spa Interview Preparation",
+        "th": "บทที่ 4 · การเตรียมสัมภาษณ์และบริการลูกค้า",
         "source": "Spa Therapist DOCX / Day 4 + Interview Practice",
         "goal": "Respond professionally to interview, consultation, complaint and sales situations.",
         "goalTh": "ตอบอย่างมืออาชีพในสถานการณ์สัมภาษณ์ การปรึกษา ข้อร้องเรียน และการขาย",
@@ -613,8 +613,8 @@
       },
       {
         "id": "s5",
-        "title": "Day 5 · Interview Simulation & Mock Interview",
-        "th": "วันที่ 5 · สถานการณ์จำลองและการสัมภาษณ์จำลอง",
+        "title": "Chapter 5 · Interview Simulation & Mock Interview",
+        "th": "บทที่ 5 · สถานการณ์จำลองและการสัมภาษณ์จำลอง",
         "source": "Spa Therapist DOCX / Day 5 + Assessment",
         "goal": "Combine introduction, CV answers and workplace responses in a mock interview.",
         "goalTh": "รวมการแนะนำตัว คำตอบจากประวัติย่อ และการตอบสถานการณ์งานในการสัมภาษณ์จำลอง",
@@ -821,8 +821,8 @@
     "salon": [
       {
         "id": "h1",
-        "title": "Day 1 · Cruise Ship & Salon Industry Overview",
-        "th": "วันที่ 1 · ภาพรวมเรือสำราญและงานร้านเสริมสวย",
+        "title": "Chapter 1 · Cruise Ship & Salon Industry Overview",
+        "th": "บทที่ 1 · ภาพรวมเรือสำราญและงานร้านเสริมสวย",
         "source": "Hair & Nail DOCX / Day 1",
         "goal": "Describe the salon role and prepare truthful CV information.",
         "goalTh": "อธิบายบทบาทงานร้านเสริมสวยและเตรียมข้อมูลประวัติย่อตามจริง",
@@ -858,8 +858,8 @@
       },
       {
         "id": "h2",
-        "title": "Day 2 · Professional Self-Introduction in English",
-        "th": "วันที่ 2 · การแนะนำตัวอย่างมืออาชีพเป็นภาษาอังกฤษ",
+        "title": "Chapter 2 · Professional Self-Introduction in English",
+        "th": "บทที่ 2 · การแนะนำตัวอย่างมืออาชีพเป็นภาษาอังกฤษ",
         "source": "Hair & Nail DOCX / Day 2",
         "goal": "Deliver a 60–90 second introduction using your own background.",
         "goalTh": "แนะนำตัวภายใน 60–90 วินาทีด้วยข้อมูลของคุณเอง",
@@ -895,8 +895,8 @@
       },
       {
         "id": "h3",
-        "title": "Day 3 · Professional English & Specialized Terminology",
-        "th": "วันที่ 3 · คำศัพท์ภาษาอังกฤษเฉพาะวิชาชีพ",
+        "title": "Chapter 3 · Professional English & Specialized Terminology",
+        "th": "บทที่ 3 · คำศัพท์ภาษาอังกฤษเฉพาะวิชาชีพ",
         "source": "Hair & Nail DOCX / Day 3",
         "goal": "Use job-specific words in consultation, service explanations and retail conversations.",
         "goalTh": "ใช้คำศัพท์เฉพาะงานในการปรึกษา อธิบายบริการ และสนทนาเรื่องผลิตภัณฑ์",
@@ -936,8 +936,8 @@
       },
       {
         "id": "h4",
-        "title": "Day 4 · Interview & Guest Service Preparation",
-        "th": "วันที่ 4 · การเตรียมสัมภาษณ์และบริการลูกค้า",
+        "title": "Chapter 4 · Interview & Guest Service Preparation",
+        "th": "บทที่ 4 · การเตรียมสัมภาษณ์และบริการลูกค้า",
         "source": "Hair & Nail DOCX / Day 4 + Interview Practice",
         "goal": "Respond professionally to interview, consultation, complaint and sales situations.",
         "goalTh": "ตอบอย่างมืออาชีพในสถานการณ์สัมภาษณ์ การปรึกษา ข้อร้องเรียน และการขาย",
@@ -973,8 +973,8 @@
       },
       {
         "id": "h5",
-        "title": "Day 5 · Interview Simulation & Mock Interview",
-        "th": "วันที่ 5 · สถานการณ์จำลองและการสัมภาษณ์จำลอง",
+        "title": "Chapter 5 · Interview Simulation & Mock Interview",
+        "th": "บทที่ 5 · สถานการณ์จำลองและการสัมภาษณ์จำลอง",
         "source": "Hair & Nail DOCX / Day 5 + Assessment",
         "goal": "Combine introduction, CV answers and workplace responses in a mock interview.",
         "goalTh": "รวมการแนะนำตัว คำตอบจากประวัติย่อ และการตอบสถานการณ์งานในการสัมภาษณ์จำลอง",
