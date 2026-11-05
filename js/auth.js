@@ -6,12 +6,14 @@
    an extra round trip — it is NOT the security boundary. Every server call
    re-checks the real PHP session cookie, so a tampered-with local mirror
    simply can't grant access to another account's data.
-   Guest mode is unchanged: fully local, session-only, never touches the
-   server.
+   Guest previews remain local. Admin privileges and password requirements
+   are enforced again by the server; CSRF tokens stay in memory only.
    ========================================================================= */
 
 const Auth = (() => {
   const SESSION_KEY = 'spa_session';
+  let pendingLogout = Promise.resolve();
+  let csrf = '';
 
   function isValidEmail(email){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
 
@@ -21,6 +23,15 @@ const Auth = (() => {
   }
   function writeMirror(profile){ localStorage.setItem(SESSION_KEY, JSON.stringify(profile)); }
   function clearMirror(){ localStorage.removeItem(SESSION_KEY); }
+  function acceptSession(res){
+    if (!res.user || !res.user.email) throw { error:'invalid' };
+    csrf = typeof res.csrf_token === 'string' ? res.csrf_token : '';
+    CourseAccess.reset();
+    Progress.invalidate();
+    writeMirror({ ...res.user, is_admin:res.user.is_admin === true || res.user.is_admin === 1,
+      must_change_password:res.user.must_change_password === true || res.user.must_change_password === 1, guest:false });
+    return { ok:true, user:currentUser() };
+  }
 
   /* The server returns short machine-readable error codes (never revealing,
      e.g., whether an email is registered) which map to the existing
@@ -28,7 +39,7 @@ const Auth = (() => {
   function mapServerError(code){
     const map = {
       required: 'errRequired', email_format: 'errEmailFormat', password_short: 'errPasswordShort',
-      password_match: 'errPasswordMatch', email_used: 'errEmailUsed', login_failed: 'errLoginFailed',
+      password_match: 'errPasswordMatch', password_long:'errPasswordLong', email_used: 'errEmailUsed', login_failed: 'errLoginFailed',
       too_many_attempts: 'errTooManyAttempts', invalid: 'errServer', network: 'errServer',
     };
     return I18N.t(map[code] || 'errServer');
@@ -48,9 +59,9 @@ const Auth = (() => {
       return { ok:false, error: I18N.t('errPasswordMatch') };
     }
     try {
+      await pendingLogout;
       const res = await Api.post('register.php', { name: name.trim(), email: email.trim(), password, role: role || 'therapist', lang: lang || 'en' });
-      writeMirror({ ...res.user, guest:false });
-      return { ok:true, user: res.user };
+      return acceptSession(res);
     } catch (e){
       return { ok:false, error: mapServerError(e.error) };
     }
@@ -61,24 +72,36 @@ const Auth = (() => {
       return { ok:false, error: I18N.t('errRequired') };
     }
     try {
+      await pendingLogout;
       const res = await Api.post('login.php', { email, password });
-      writeMirror({ ...res.user, guest:false });
-      return { ok:true, user: res.user };
+      return acceptSession(res);
     } catch (e){
       return { ok:false, error: mapServerError(e.error) };
     }
   }
 
   function continueAsGuest(){
+    csrf = '';
+    CourseAccess.reset();
+    Progress.invalidate();
     writeMirror({ email:null, guest:true, since: Date.now() });
   }
 
-  /* Local sign-out is immediate; telling the server to drop its session is
-     best-effort and never blocks the UI on a network round trip. */
+  /* Finish pending progress before clearing the local identity, then end the
+     server session. A new login waits for that logout to complete. */
   function logout(){
     const mirror = readMirror();
-    clearMirror();
-    if (mirror && !mirror.guest) Api.post('logout.php', {}).catch(()=>{});
+    const saving = Progress.flush();
+    pendingLogout = saving.then(async saved => {
+      if (!saved) return false;
+      clearMirror();
+      csrf = '';
+      CourseAccess.reset();
+      Progress.invalidate();
+      if (mirror && !mirror.guest) await Api.post('logout.php', {}).catch(()=>{});
+      return true;
+    });
+    return pendingLogout;
   }
 
   function session(){ return readMirror(); }
@@ -98,10 +121,30 @@ const Auth = (() => {
      show the sign-in screen without this module knowing about navigation. */
   function forceSignedOut(){
     clearMirror();
+    csrf = '';
+    CourseAccess.reset();
+    Progress.invalidate();
     window.dispatchEvent(new CustomEvent('nimman:session-expired'));
   }
 
-  return { register, login, logout, continueAsGuest, session, currentUser, isLoggedIn, isValidEmail, forceSignedOut };
+  function requirePasswordChange(){
+    const user = currentUser();
+    if (!user || user.guest) return;
+    writeMirror({ ...user, must_change_password:true });
+    CourseAccess.reset();
+    Progress.invalidate();
+    window.dispatchEvent(new CustomEvent('nimman:password-change-required'));
+  }
+  async function changePassword(currentPassword, newPassword){
+    const email = currentUser()?.email, token = csrf;
+    const res = await Api.post('change-password.php', {current_password:currentPassword, new_password:newPassword});
+    if (!email || currentUser()?.email !== email || csrf !== token) throw {error:'session_changed',status:401};
+    return acceptSession(res);
+  }
+  return { register, login, logout, continueAsGuest, session, currentUser, isLoggedIn, isValidEmail, forceSignedOut,
+    changePassword, requirePasswordChange, csrfToken:() => csrf,
+    isAdmin:() => currentUser()?.is_admin === true,
+    needsPasswordChange:() => currentUser()?.must_change_password === true };
 })();
 
 /* =========================================================================
@@ -124,7 +167,11 @@ const Progress = (() => {
   let cacheKey = null;
   let guestCache = {};     // session-only per course, never sent to the server
   const saveTimers = new Map();
+  const pendingWrites = new Map();
+  const inFlightWrites = new Set();
+  const writeChains = new Map();
   const hydratedKeys = new Set();
+  let cacheGeneration = 0;
   let progressStatus = 'ready';
   function setStatus(status){progressStatus=status;window.dispatchEvent(new CustomEvent('nimman:progress-status',{detail:status}));}
 
@@ -132,7 +179,7 @@ const Progress = (() => {
      cruise English never overwrite each other's words and scores. */
   function keyFor(){
     const u = Auth.currentUser();
-    if (!u || u.guest) return null;
+    if (!u || u.guest || u.is_admin) return null;
     return `${u.email}__${Courses.currentId}`;
   }
 
@@ -173,37 +220,71 @@ const Progress = (() => {
      (App.selectCourse does this). A no-op for guests. */
   async function hydrate(){
     const key = keyFor();
-    if (!key){ load(); return; }
-    if (cache && cacheKey === key && hydratedKeys.has(key)) return; // successful load only
+    if (!key){ load(); return true; }
+    if (!CourseAccess.canLearn()) return false;
+    if (cache && cacheKey === key && hydratedKeys.has(key)) return true; // successful load only
+    const generation = cacheGeneration, course = Courses.currentId;
     try {
-      const res = await Api.get(`progress.php?course=${encodeURIComponent(Courses.currentId)}`);
+      const res = await Api.get(`progress.php?course=${encodeURIComponent(course)}`);
+      if (generation !== cacheGeneration || keyFor() !== key) return false;
       cache = Object.assign(blank(), res.data || {});
       hydratedKeys.add(key);setStatus('ready');
     } catch (e){
+      if (generation !== cacheGeneration || keyFor() !== key) return false;
       if (e && e.status === 401) Auth.forceSignedOut();
+      CourseAccess.handleApiError(e, course);
       hydratedKeys.delete(key);setStatus('load-error');
       console.error('Saved progress could not be loaded. Account writes are blocked to protect existing records.', e);
       cache = blank();
+      cacheKey = key;
+      return false;
     }
     cacheKey = key;
+    return true;
   }
 
   function save(){
     const key = keyFor();
     if (!key) return; // guest: session memory only
+    if (!CourseAccess.canLearn()) return;
     if (!hydratedKeys.has(key)){setStatus('load-error');return;}
     const snapshot = JSON.parse(JSON.stringify(cache));
-    const course = Courses.currentId, email = Auth.currentUser()?.email;
+    const course = Courses.currentId, email = Auth.currentUser()?.email, generation = cacheGeneration;
     clearTimeout(saveTimers.get(key));setStatus('saving');
-    saveTimers.set(key,setTimeout(() => {
+    const write = () => {
       saveTimers.delete(key);
-      if (Auth.currentUser()?.email !== email) return;
-      Api.post('progress.php', { course, data: snapshot }).then(()=>setStatus('ready')).catch(e => {
+      pendingWrites.delete(key);
+      // Whole progress snapshots must reach the server in order; a slow older
+      // save must never overwrite a newer study action.
+      const previous = writeChains.get(key) || Promise.resolve(true);
+      const request = previous.then(() => {
+        if (Auth.currentUser()?.email !== email || generation !== cacheGeneration || !CourseAccess.canLearn(course)) return false;
+        return Api.post('progress.php', { course, data: snapshot }).then(()=>{ if (generation === cacheGeneration) setStatus('ready'); return true; });
+      }).catch(e => {
+        if (generation !== cacheGeneration || Auth.currentUser()?.email !== email) return false;
         if (e && e.status === 401) Auth.forceSignedOut();
+        CourseAccess.handleApiError(e, course);
         setStatus('save-error');
         console.error('Could not save progress. It will retry on the next change.',e);
+        return false;
       });
-    },500));
+      writeChains.set(key, request);
+      inFlightWrites.add(request);
+      request.finally(() => { inFlightWrites.delete(request); if (writeChains.get(key) === request) writeChains.delete(key); });
+      return request;
+    };
+    pendingWrites.set(key, write);
+    saveTimers.set(key,setTimeout(write,500));
+  }
+
+  function flush(){
+    // Send the latest snapshot before a course switch or logout can invalidate
+    // its cache. A failed switch stays on the chooser so it can be retried.
+    if (progressStatus === 'save-error' && cache && cacheKey === keyFor()) save();
+    const writes = [...pendingWrites.entries()];
+    writes.forEach(([key]) => clearTimeout(saveTimers.get(key)));
+    const requests = writes.map(([,write]) => write());
+    return Promise.all([...inFlightWrites, ...requests]).then(results => results.every(Boolean));
   }
 
   function clearGuest(){ guestCache = {}; }
@@ -483,7 +564,8 @@ const Progress = (() => {
     dailyResetState, dailyResetsLeft, dailyReset, DAILY_RESETS_PER_WEEK,
     DAILY_SIZE,
     get streak(){ return load().streak || 0; },
-    reset, clearGuest, hydrate,
-    invalidate(){ cache = null; cacheKey = null; },
+    reset, clearGuest, hydrate, flush,
+    isHydrated(){ const key = keyFor(); return !!key && key === cacheKey && hydratedKeys.has(key); },
+    invalidate(){ cacheGeneration++; saveTimers.forEach(clearTimeout); saveTimers.clear(); pendingWrites.clear(); inFlightWrites.clear(); writeChains.clear(); hydratedKeys.clear(); cache = null; cacheKey = null; setStatus('ready'); },
   };
 })();

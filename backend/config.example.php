@@ -10,6 +10,7 @@
 return [
     'db' => [
         'host'    => getenv('NIMMAN_DB_HOST') ?: '127.0.0.1',
+        'port'    => (int) (getenv('NIMMAN_DB_PORT') ?: 3306),
         'name'    => getenv('NIMMAN_DB_NAME') ?: 'nimman_english',
         'user'    => getenv('NIMMAN_DB_USER') ?: 'nimman_english',
         'pass'    => getenv('NIMMAN_DB_PASS') ?: '',

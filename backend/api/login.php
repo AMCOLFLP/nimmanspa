@@ -23,11 +23,11 @@ if ((int) $window->fetchColumn() >= 8) {
     json_error('too_many_attempts', 'Too many attempts. Please wait a few minutes and try again.', 429);
 }
 
-$stmt = $pdo->prepare('SELECT id, name, email, password_hash, role, lang FROM users WHERE email = ?');
+$stmt = $pdo->prepare('SELECT id, name, email, password_hash, role, lang, is_admin, is_active, must_change_password, session_version FROM users WHERE email = ?');
 $stmt->execute([$email]);
 $user = $stmt->fetch();
 
-if (!$user || !password_verify($password, $user['password_hash'])) {
+if (!$user || !password_verify($password, $user['password_hash']) || !(bool) $user['is_active']) {
     $pdo->prepare('INSERT INTO login_attempts (email) VALUES (?)')->execute([$email]);
     // Deliberately the same message whether the email or the password was
     // wrong, so the response never reveals which accounts exist.
@@ -36,12 +36,6 @@ if (!$user || !password_verify($password, $user['password_hash'])) {
 
 $pdo->prepare('DELETE FROM login_attempts WHERE email = ?')->execute([$email]);
 
-$_SESSION['user_id'] = (int) $user['id'];
-session_regenerate_id(true);
-
-json_response(['user' => [
-    'name'  => $user['name'],
-    'email' => $user['email'],
-    'role'  => $user['role'],
-    'lang'  => $user['lang'],
-]]);
+$pdo->prepare('UPDATE users SET last_login_at = UTC_TIMESTAMP() WHERE id = ?')->execute([$user['id']]);
+establish_session($user);
+json_response(['user' => public_user($user), 'csrf_token' => csrf_token()]);

@@ -1,91 +1,69 @@
-# Teacher account & class dashboard
+# NIMMANSPA administration
 
-## Signing in (local build)
+The admin dashboard uses real PHP/MySQL accounts and saved student progress.
+The previous browser-only teacher demo and its built-in login have been removed.
+Old local demo records are not imported into the server.
 
-| | |
-|---|---|
-| Email | `teacher@nimman.local` |
-| Password | `nimman-teacher` |
+## First-time setup
 
-Enter those on the normal sign-in form. The teacher goes straight to the class
-dashboard; there is no course to choose, and the learner chrome (tabs, side
-panel, course progress) is hidden.
+1. Apply `backend/migrations/20261105_course_access.sql` if the 30-day access
+   update has not already been installed.
+2. Apply `backend/migrations/20261105_admin_dashboard.sql`. Existing accounts,
+   progress and course windows are preserved. Old sessions must sign in again.
+3. Register an account normally using your own email and password.
+4. From the PHP host's command line, promote that account:
 
-## ⚠ This account is a development fixture, not security
+   ```sh
+   php backend/tools/promote-admin.php your-email@example.com
+   ```
 
-The credentials above are written in `js/teacher.js`, which is served to every
-browser that opens the app. **Anyone can read them and sign in as the teacher.**
+5. Sign in again through the normal login page. The server-issued admin flag
+   opens the dashboard automatically. There is no shared/default admin password.
 
-That is acceptable today only because everything the teacher account unlocks is
-also local to the browser: a class list and progress snapshots in `localStorage`.
-It is not acceptable the moment real students' records are involved.
+The promotion helper runs only from the command line. Account registration and
+student management cannot create administrators. Keep server configuration and
+CLI access with the site operator. See `backend/README.md` for database setup.
 
-**Do not deploy this as the way teachers sign in.** What has to happen first is
-listed under "Moving it to the server" below.
+## Student progress
 
-## What the dashboard shows
+Search students by name or email and filter by course, access period or account
+status. Open a student to inspect each course's chapter checklist, known words,
+practice summary, last saved activity and 30-day access dates. Progress is read
+from the database, including expired courses, across devices.
 
-- **A KPI row** — students enrolled, how many studied this week, the average
-  share of chapters marked studied, and the average daily streak.
-- **A class table** — one row per student with a chapters meter (`3/5`), words
-  learned, daily streak and when they last studied. Sort is by progress.
-- **A student detail panel**, opened by tapping a row: activities done, practice
-  average, whether today's Daily Five is finished, and the full chapter list
-  with each one ticked or not.
-- **Enrolment** — name, email and course adds a student to the class list.
+Chapter checkmarks are self-study records. Practice scores are not official
+course grades. No saved activity is shown separately from zero completion.
 
-"Studied" is the learner's own mark on a chapter, not a graded result. The
-dashboard says so, and nothing here should be read as an assessment outcome.
+## Accounts
 
-## Where the data comes from
+Create a student account, correct their name/email, choose their occupation and
+preferred language, or suspend/re-enable sign-in. Suspension revokes existing
+sessions and keeps progress and course dates. Account creation does not start
+course access. Students start each course themselves.
 
-Two sources, and the difference matters:
+This dashboard manages students only. It does not delete accounts, assign admin
+privileges, renew course windows or send email automatically.
 
-1. **Sample students** — six seeded rows so the dashboard is reviewable on a
-   fresh install. Every one is badged `SAMPLE` and they can all be removed in
-   one tap. They are fabricated; they are not real learners.
-2. **Real snapshots** — whenever a signed-in learner (not a guest) opens their
-   Daily tab in *this browser*, their figures are written to
-   `localStorage.nimman_student_progress_v1`, keyed by email and course. The
-   dashboard matches those to the roster by email.
+## Password resets
 
-So a student enrolled here who has never studied **on this device** shows "No
-study data on this device yet", not zeros. Guests are never recorded — they have
-no email to attribute anything to.
+1. Open the intended student and choose Reset password.
+2. Review the student's name/email and confirm the reset.
+3. Copy the temporary password shown once and provide it to the student through
+   your usual private channel. The app does not send it automatically.
+4. The student signs in with it and must set a new password before continuing.
 
-This is the honest limit of a local build: one browser's worth of data. A class
-spread across the students' own phones cannot be seen from here. That is what
-the server version fixes.
+The previous password stops working and existing student sessions are revoked.
+The database stores a password hash; neither old passwords nor temporary
+passwords can be retrieved later. If the temporary password is lost, reset it
+again. Resetting never changes course dates or learning progress.
 
-### Storage keys
+Students can also change their password from Account. Administrators can change
+their own password from the dashboard. Password changes sign out other sessions.
 
-| Key | Holds |
-|---|---|
-| `nimman_roster_v1` | the class list |
-| `nimman_student_progress_v1` | progress snapshots, keyed `email__course` |
-| `nimman_roster_seeded_v1` | whether the samples have been seeded |
+## Validation and deployment
 
-## Moving it to the server
-
-The backend in `backend/` already has `users` (with a `role` column) and
-`progress` (one JSON blob per user per course). To make this real:
-
-1. **Give the teacher a real account.** Insert a user with `role = 'teacher'`
-   and a `password_hash` from `password_hash()`, exactly like any learner.
-   Delete `LOCAL_TEACHER` from `js/teacher.js` and the fixture branch in
-   `app.js`'s login handler; the normal login path already returns the role, and
-   `afterAuthSuccess` already routes a `teacher` role to the dashboard.
-2. **Add enrolment tables.** A `classes` table and an `enrolments` table
-   (`class_id`, `user_id`) — the roster then belongs to a class, not a browser.
-3. **Add `backend/api/class.php`.** It must check `$_SESSION` role is `teacher`
-   *on the server* before returning anything, and return only students enrolled
-   in that teacher's own classes. A client-side role check is not a check.
-4. **Read progress server-side.** The dashboard then reads the `progress` rows
-   for those students instead of `localStorage` snapshots, so it works wherever
-   the teacher signs in and whatever device the student studied on.
-5. **Decide what a teacher may see.** Progress figures are personal data. Agree
-   with the school what is shown, tell the learners, and keep a teacher to their
-   own class.
-
-Until step 3 exists, treat the dashboard as a demo of the interface, not as a
-place to keep records.
+Admin changes require a live server-side admin role and CSRF validation. Account
+updates and password resets have an audit record without passwords or tokens.
+See `backend/tests/admin_integration_test.py` for isolated endpoint checks and
+`tests/README.md` for frontend tests. These changes are local until deployed to
+the configured PHP host; a static preview cannot provide the dashboard.

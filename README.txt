@@ -1,330 +1,121 @@
-NIMMAN ENGLISH — EXPANDED QUIZZES & ACTIVITIES
-22 September 2026
+NIMMANSPA — YOUR MONTH OF ENGLISH
+5 November 2026 · local implementation, not deployed
 
-A complete updated copy of the uploaded app. The existing branding, two-course
-structure, 500 vocabulary entries and 400 phrases are retained.
-This package has NOT been deployed to the live website.
+ADMIN DASHBOARD
+Real administrators sign in through the normal login page. The dashboard
+reads student accounts and progress from the server across devices, with
+search, course/access/account filters, chapter status and practice results.
+Admins can create/edit student accounts, suspend sign-in, and issue a
+temporary password. Students must replace temporary passwords before learning.
+Password resets revoke old sessions and preserve course dates and progress.
 
-THE THREE COURSES
-  Spa Therapist at Sea   นักบำบัดสปาบนเรือสำราญ
-                         Consultation, treatments & interviews
-  Working at Sea         ทำงานบนเรือสำราญ
-                         Foundation, workplace English & interviews
-  Hair & Nails at Sea    ช่างผมและเล็บบนเรือสำราญ
-                         Hair, nails, guest service & interviews
+Apply backend/migrations/20261105_admin_dashboard.sql before deployment.
+Register the intended admin account, then run on the PHP host:
+  php backend/tools/promote-admin.php your-email@example.com
+Sign in again. There is no shared/default admin password. The former local
+teacher demo has been removed. See TEACHER_SETUP.md for complete instructions.
 
-These are the course names the learner sees, and they name the job the
-course is for rather than describing the syllabus. The syllabus each one
-follows keeps its own title, which is the employer's document title and is
-not ours to rename: it is stated under "Course sources & details to
-confirm" on the Learn screen, beside the source filenames, as
-"Follows: Cruise Ship Spa Therapist English" and so on. The internal course
-ids (spa, cruise, salon) are unchanged, so saved progress is unaffected.
-The Thai names have not had independent review; see SOURCES.md.
+WHAT CHANGED
+A learner registers without starting any access period. Choosing “Start my
+30 days” opens 30 consecutive 24-hour days for that course. Each course has
+its own start and expiry. Signing out, changing devices, resetting progress
+or clicking Start again never renews an existing period.
 
-CURRENT PRACTICE BANKS
-Activity                            Spa       Cruise      Combined
-Workplace multiple-choice quiz      100       100         200
-True / false                         50        50         100
-Correct the sentence                 50        50         100
-Hear the word                        80        80         160
-Build a sentence                     80        80         160
-Guided dialogues                     30        30          60
-Workplace scenarios                  30        30          60
-Reading passages                     10        10          20
-  Questions across those passages    30        30          60
-Listen & respond                     20        20          40
-Order the conversation               10        10          20
-Word in context                      30        30          60
+The app shows the deadline and remaining days. At expiry, lessons and
+practice lock, while saved progress stays in the database. Account settings
+and course selection remain available. There is no automatic renewal or
+payment flow. Free preview contains five words and three phrases per course.
 
-There are 90 spa and 87 cruise dialogue blanks. Including those blanks, there
-are 1,137 authored scored prompts. This is NOT a count of unique words or wholly
-distinct situations: modes deliberately reuse language and some conversations.
-Dynamic definition quizzes additionally draw from 250 vocabulary entries per
-course. Existing vocabulary drills and speaking activities are retained.
+A FOUR-WEEK STUDY PLAN
+Each course follows four suggested weeks, then days 29–30 for review.
+All chapters remain available during the access period; weeks guide pacing.
+The daily suggestion is 15–20 minutes: read, practise aloud, then apply.
+This is a self-study schedule, not a replacement for the source course’s
+teaching hours or teacher-assessed tasks.
 
-Core content: spa 250 words / 220 phrases; cruise 250 words / 180 phrases.
-Pronunciation guides: 40 per course. All 900 core vocabulary/phrase entries from
-the previous content-expanded release remain.
+  Spa Therapist at Sea
+    Week 1: Introduce your professional self
+    Week 2: Build your spa service language
+    Week 3: Handle guest and interview situations
+    Week 4: Put your interview together
 
-HOW TO OPEN
-1. Extract the ZIP. Keep index.html, styles.css, js, assets and backend together.
-2. Guest mode only, quick preview: open index.html directly in a browser, or
-   serve it with:
-   python -m http.server 8000 --bind 127.0.0.1
-   Then visit http://localhost:8000 and choose Continue as guest.
-   Account sign-in/registration needs the PHP backend (step 3) and will not
-   work from a plain file:// preview or a plain static file server.
-3. For accounts (sign-in/registration and server-saved progress), you need a
-   host that runs PHP 8+ with a MySQL/MariaDB database. See backend/README.md
-   to create the database, import backend/schema.sql and configure
-   backend/config.php, then serve the whole folder (front end + backend/)
-   from that PHP host. GitHub Pages cannot run PHP, so it can only host the
-   guest-mode experience, not accounts.
-4. Choose Continue as guest (or sign in/register, once the backend is set up),
-   choose a course, and open Practice.
-5. For deployment, back up the old app and upload the complete folder contents
-   — including backend/ with your own backend/config.php — to your PHP host.
-   Use the host's secure HTTPS configuration and set 'secure_cookies' => true
-   in backend/config.php once HTTPS is live. Do not upload only one JS file:
-   the app depends on the updated HTML, CSS, scripts and backend together.
+  Working at Sea
+    Week 1: Start with everyday English
+    Week 2: Find your way through work
+    Week 3: Support guests with confidence
+    Week 4: Prepare for your crew role
 
-HOW TO USE THE NEW PRACTICE
-Choose 5, 10, 15 or 20 items and Starter / Everyday / Extended / All levels,
-from the button rows at the top of the activity library.
-These are editorial difficulty labels, not CEFR certification.
-Settings affect the quiz and applied-activity cards, not all vocabulary drills.
-Unseen items come first; previously attempted items are ordered by recency.
-Reading keeps each passage's three questions together, so length settings
-5 / 10 / 15 / 20 yield up to 3 / 9 / 15 / 18 reading questions.
-Dialogue length follows its own number of blanks. Small filtered banks may
-return fewer items than the selected session length.
+  Hair & Nails at Sea
+    Week 1: Introduce your salon experience
+    Week 2: Explain hair and nail services
+    Week 3: Practise guest conversations
+    Week 4: Rehearse your salon interview
 
-New activities:
-- Read a workplace message: find purpose, details and a next action.
-- Listen & respond: hear a guest/colleague and choose a relevant reply.
-- Order the conversation: keep the opening fixed; arrange the next three turns.
-- Word in context: type a word using a meaning clue, initial letter and length.
+The Learn screen opens with the next lesson, weekly outcomes and studied
+chapters. Source notes and formal assessment details are available below.
+Lessons start with a manageable reference list; search and Show 12 more
+expose additional words and phrases without a long initial page.
 
-Words/turns are clickable buttons: select, undo by tapping the placed item, or
-Clear. Typed marking ignores case and surrounding punctuation and accepts
-listed variants only. It does not guess misspellings or assess open-ended writing.
-
-Feedback gives a model and an explanation. Newly authored items include Thai
-support; some inherited explanations remain English-only.
-The end screen retains first responses and offers Retry missed items or a new
-set. Review my mistakes combines missed questions in the CURRENT course across
-levels. Retrying does not overwrite the original activity score.
-
-Listening transcripts are hidden until requested or the answer is submitted.
-Opening the transcript, known playback failure, or answering without pressing
-Play records supported practice with a separate score key. This is not evidence
-that playback succeeded or that the learner heard the audio. A correct supported
-answer does not clear an earlier mistake from the review list.
-Audio is browser text-to-speech, not human recordings.
-
-TEACHER RESOURCES & CONTENT FILES
-QUIZ_ACTIVITY_GUIDE.html — searchable guide and answer bank for all 1,137 authored
-scored prompts. Contains answers; intended for teacher preparation, not a secure
-exam. Keep this optional file private when independent learner testing matters.
-CONTENT_LIBRARY.html — previous standalone catalogue of 900 core words/phrases.
-content/content.json — complete structured export for content review.
-CHANGELOG.md — current changes and clearly labelled previous-release history.
-SOURCES.md — editorial reference notes and review boundaries.
-
-RUNTIME DATA / EDITING
-The app loads js/data.js, js/activities.js, js/data-cruise.js, then
-js/practice-data.js before js/courses.js. practice-data.js applies the expanded
-assessment banks to existing arrays in place. It is authoritative for those
-banks. js/practice-lab.js supplies the new player and hub controls.
-Changing content/content.json alone does NOT change the running application.
-Keep the runtime overlay and JSON review copy in sync when editing.
-Old word keys, course IDs and existing question IDs have been retained.
-
-PROGRESS, PRIVACY AND ACCOUNTS
-Accounts and their progress are now stored server-side in a MySQL/MariaDB
-database via a PHP backend (see backend/README.md), course-specific per
-account. Passwords are hashed (never stored in plain text); the PHP session
-cookie, not anything the browser sends, is what the server trusts. Progress
-now follows the account across devices, since it lives on the server rather
-than in one browser's storage.
-Guests are unchanged: session-only, browser-local, never sent to the server.
-Signing out (or the app's automatic sign-out on load, for shared devices)
-ends the session; progress is safe on the server until signed back in.
-
-The backend requires PHP 8+ with a MySQL/MariaDB database — it will not run
-on GitHub Pages or another static-only host. See backend/README.md for setup.
-There is still no email verification or password-reset flow; "Forgot
-password" remains a placeholder note, as in the previous localStorage-only
-demo.
-Browser speech recognition may involve the browser provider's remote service.
-No audio recording storage is added by this release.
+THE COURSE LIBRARIES
+Current canonical targets (shared entries may occur across courses):
+  Spa:    321 words, 257 phrases, 5 chapters
+  Cruise: 273 words, 200 phrases, 9 sections including safety supplement
+  Salon:  194 words, 135 phrases, 5 chapters
+Original content IDs and saved course IDs (spa, cruise, salon) are retained.
+The earlier spa/cruise activity banks and custom practice builder remain.
+Self-study checkmarks and practice scores are not official grades.
 
 GETTING AROUND
-Five tabs along the bottom, for the five things a learner does repeatedly:
-  Daily     today's five words, then streak, phrase of the day and the rest
-  Learn     the chapter path for this course, and the interview rehearsal
-  Words     vocabulary drills, plus Body map and Pronunciation
-  Phrases   phrase banks, plus Say this, not that
-  Practice  the activity library, and the build-your-own set builder
+Learn: your month plan, chapters and the spa interview rehearsal.
+Daily: five words and a knowledge check, plus revision shortcuts.
+Words: vocabulary, pronunciation and the spa body map where available.
+Phrases: practical English with Thai support.
+Practice: ready-made activities or a custom set; salon uses the builder.
+Account: access deadline, language, progress and course switching.
+The sidebar provides the same destinations on larger screens.
 
-DAILY FIVE — THE FIRST TAB
-Daily Five is what the app opens on. The first tab is the deck itself: five
-words, swiped right when understood, then a knowledge check on exactly those
-five. Everything that used to be the Home screen — the greeting, phrase of
-the day, the stat strip, the course menu, the tip — now sits below the deck
-on that same screen, so the day starts with the words and the rest of the
-course is one scroll away. There is no separate Home tab; Daily is it.
+LOCAL PREVIEW AND ACCOUNT SETUP
+A static preview can be opened with:
+  python -m http.server 8000 --bind 127.0.0.1
+Visit http://localhost:8000 and choose Explore a free sample.
+Account registration, login, access dates and saved progress require PHP 8+
+with MySQL/MariaDB; a static server or GitHub Pages cannot provide them.
+See backend/README.md for database and private configuration setup.
 
-Swapping the day's five
-"Get a new set" exchanges today's five for a different five. Each learner has
-SEVEN swaps a week. The count is shown beside the button before it is spent,
-not after, and the confirm says plainly that today's progress on the current
-set is cleared. When the allowance runs out the button disables and says so.
-The allowance refills automatically every Monday — it is read lazily, so a
-stale week rolls over the first time the app asks, with no timer and no need
-for the app to have been open. A swapped set is genuinely different, not a
-reshuffle of the same five.
+EXISTING INSTALLATION — REQUIRED MIGRATION
+Before deploying, back up the database and apply:
+  backend/migrations/20261105_course_access.sql
+This adds course_access without changing existing user/progress records.
+Existing learners start their period on their next explicit course start.
+Deploy the updated HTML, CSS, JS and backend together. Preserve the private
+backend/config.php and use the host’s HTTPS configuration.
 
-CHAPTERS
-The course sections are Chapter 1–N in every course. The spa and salon
-courses have five chapters each; the cruise course has eight plus the A2
-interview chapter and a safety supplement. The source outlines call these
-"Day" and "Module"; the app uses one word throughout, and each course's
-source note on the Learn screen still names the syllabus it follows. See
-SOURCES.md.
+The server protects account progress and access dates. Course content is
+still shipped as public static JS and reference HTML, so the learning lock
+is not private content delivery. Static preview hosts cannot enforce account
+access or provide the admin dashboard. Admin account management does not
+renew course access periods.
 
-THE PRACTICE TAB — TWO WAYS IN, ONE SCREEN
-Practice opens on two buttons, because there are two ways to practise and
-they deserve equal billing:
-  Ready-made activities   the 20 authored activities, ready to start
-  Build your own set      choose module, category, length and answer type
-The activity library used to be a single line of text ("Original activity
-library") folded shut at the foot of the builder, so twenty activities read
-as a footnote. Both are now buttons at the top of the screen, and the one
-you used last is the one that opens next time on that device. Opening the
-builder from a lesson shows the builder for that visit without changing
-which one you normally see.
+CONTENT MAINTENANCE
+js/study-plan.js: suggested weeks and bilingual outcomes.
+content/curriculum.json: canonical curriculum and mappings.
+Run python tools/sync_curriculum.py after changing that JSON.
+js/practice-data.js: authoritative overlay for original activity banks.
+content/content.json: review export of the older core/activity banks;
+changing it alone does not update the runtime app.
+SOURCES.md and LEARNING_GUIDE.html: source provenance and review boundaries.
+The standalone guides are reference resources, not the new month plan.
 
-Inside the library, the four groups are filter buttons rather than a
-scrolling row that jumped down the page: tapping "Test yourself" shows those
-eight cards and nothing else, so you are not scrolling past sixteen cards
-you did not want. "All" brings them back.
+VERIFICATION
+See tests/README.md and backend/README.md for commands. Automated content,
+activity, curriculum, study-plan, frontend lifecycle and PHP/MySQL access
+checks pass. Tests cover immutable dates, exact expiry, repeated starts,
+user/course isolation, migration safety and retained progress.
+The browser access host was unavailable in this session; the refreshed UI
+has not been visually verified in a live browser. Historical screenshots
+and guest-mode browser reports do not verify this release.
 
-Session length and difficulty are rows of buttons rather than dropdowns, so
-the current choice is visible without opening anything. They apply to the
-library only; the builder has its own settings. The note explaining exactly
-what they affect is under "How these settings are applied".
-
-The salon course has no original activity bank, so it shows the builder
-alone with no buttons to choose between. Switching away from it does not
-change which mode you normally see.
-
-The side panel (button at the top left, or docked from 1024px) is the full
-index, grouped Learn / Words & phrases / Practice / Account. Everything in
-the app is listed there exactly once. Nothing is reachable only from the
-panel: every entry in it can also be reached from the bottom bar, through
-the tab that owns it.
-  Daily Five           the first tab — it IS that tab
-  Interview rehearsal  Learn, the last card in the chapter grid
-  Body map             Words, link below the filters
-  Pronunciation        Words, link below the filters
-  Say this, not that   Phrases, link below the filters
-  Your account         the avatar, top right
-  Settings             Your account
-The Daily tab's course menu, below the stats, shows the same extras, so there
-are two routes to each of them and none depends on finding the panel.
-
-Entries appear only where the course has that content: the cruise course has
-no Body map, and the salon course has neither Body map, Pronunciation nor
-Say this, not that.
-
-INTERVIEW REHEARSAL (SPA)
-Learn > Interview rehearsal walks the six steps of the employer's spa
-therapist interview and practical test: introduction and experience, guest
-consultation, confirming the booking, the practical massage, the questions
-asked during the massage, and sales and guest service. Each step states what
-the interviewer is checking and lists the questions; the learner answers out
-loud, then opens each question to compare against a model answer. Questions
-can be played aloud. Progress through the steps is remembered on the device.
-It is self-study and unscored, and the copy says so: it is a rehearsal, not
-the employer's assessment and not a pass.
-It sits in the Learn tab as the last card in the chapter grid, after the
-final chapter, because it is the last step of the course rather than a
-separate drill. The
-card shows how far through the six steps you are and resumes there.
-The answer language is also in Words and Phrases, so it can be drilled and
-built into a practice set like any other content.
-Contraindications are taught as language and professional conduct — name the
-condition, ask, do not diagnose, postpone, refer for medical clearance. The
-source document's clinical thresholds are not reproduced here; see
-SOURCES.md.
-Only the spa course has a rehearsal, so it does not appear for cruise or
-salon.
-
-TEACHER ACCOUNT & CLASS DASHBOARD
-Sign in as teacher@nimman.local / nimman-teacher to open a class dashboard:
-a KPI row (students, who studied this week, average chapters done, average
-streak), a class table with a chapters meter per student, a detail panel
-showing every chapter and whether it is marked studied, and an enrolment
-form. Six sample students are seeded so it is reviewable immediately; they
-are badged SAMPLE and removable in one tap.
-THIS ACCOUNT IS A LOCAL DEVELOPMENT FIXTURE, NOT SECURITY. The credentials
-are in js/teacher.js, which every browser downloads, so anyone can read them.
-It is acceptable only because everything it unlocks is also local to this
-browser. It must move to the PHP/MySQL backend, with a server-side role
-check, before any real student records exist. See TEACHER_SETUP.md.
-
-BODY MAP — WHERE TO FIND IT
-Daily > Body map, the side panel, or the Body map chip in the Vocab screen's
-row of drills. It does not have its own tab in the bottom bar: it is another
-route into the same vocabulary, so it lives under Vocab (that tab stays
-highlighted while the map is open), and a seventh tab would leave about 55px
-per tab on a phone.
-On phones the selected word, its Thai and a play button stay pinned above the
-bottom bar while you use the map, because the full-body photo is taller than
-a phone screen and the word panel would otherwise sit below the fold.
-"Word details" opens the full entry.
-"Match pairs" under the word list starts an assessment built from this
-course's body vocabulary, so the parts you have just learned can be practised
-without rebuilding the filter by hand. Body parts is also selectable as a
-category in the assessment builder.
-
-BODY MAP (SPA)
-Daily > Body map opens an interactive diagram with front, back and face views.
-Tapping a region shows that part's English name, IPA, Thai, an example
-sentence you can say to a guest, and a play button. Regions are drawn from the
-course's own Body parts vocabulary, so nothing is duplicated: the spa course
-has 53 such words. Body words with no place on a diagram (tendon, joint,
-pressure point, muscle knot and similar) appear as chips below it.
-The diagram is a simplified service illustration for naming areas in English.
-It is not a clinical or anatomical reference and does not indicate what any
-treatment should do. It appears only for courses that teach enough body
-vocabulary to fill it, so the cruise and salon courses do not show it.
-
-SIDE PANEL, TABLET AND PHONE LAYOUT
-A side panel carries the learner's profile, course, progress bars and a full
-navigation list. Below 1024px it is a drawer: closed by default, opened with
-the button at the top left, and dismissed by tapping the dimmed background,
-pressing Escape, or choosing a destination. The bottom tab bar stays in place
-as the main navigation on phones and small tablets.
-From 1024px up the panel docks beside the content and the tab bar is hidden,
-because the panel already lists every destination. Hiding the panel brings
-the tab bar straight back, so there is never a state with no navigation, and
-the choice is remembered on that device.
-
-MICROPHONE AND THE SPEAKING TEST
-The speaking test needs an https:// address on phones. Browsers only allow
-the microphone in a secure context: https, or localhost on a computer. A LAN
-address such as http://192.168.0.10:8000 counts as insecure, so the test
-works on the development machine and the microphone is silently blocked on
-the handset. The app now detects this and says so on the speaking screen
-instead of offering a microphone that cannot work.
-Scoring also needs a browser that exposes speech recognition. On iPhone and
-iPad that is Safari only — Chrome, Firefox and Edge there cannot reach the
-recogniser. On Android, use Chrome. Android's recogniser needs an internet
-connection.
-Where scoring is unavailable, or the learner declines the microphone
-permission, the test falls back to self-check: record, compare with the
-model voice, and self-rate. Those results are labelled as self-rated, never
-presented as measured accuracy.
-
-TESTING
-See tests/README.md, activity-validation-report.json and
-activity-browser-test-report.json. Structural checks cover counts, options,
-answer keys, IDs, levels, links and matching runtime/export data. Chromium UI
-checks use the actual app in an in-memory HTML/localStorage harness because
-local HTTP navigation is blocked in the authoring environment. TTS is stubbed
-for those checks. Screenshots omit remote fonts and reflect local fallbacks.
-Live deployment, real-origin persistence, Safari/iOS, actual audio playback and
-live microphone recognition have NOT been verified. A formal accessibility
-or psychometric assessment has not been performed. The Chromium checks run in
-guest mode only; the PHP/MySQL backend (accounts and server-saved progress)
-has no automated test coverage yet — see tests/README.md.
-
-WORKPLACE REVIEW
-Examples are language practice, not medical advice, treatment protocols,
-emergency training or a replacement for approved workplace procedures. Confirm
-actual prices, times, locations, permissions and compensation arrangements.
-Independent Thai-language and workplace-specialist review is recommended before
-formal rollout. Incorrect answer choices are deliberately unsuitable examples.
+Browser audio uses text-to-speech. Actual playback, microphone recognition,
+Safari/iOS behavior and independent Thai/workplace review remain separate
+checks. Examples teach language, not treatment protocols or emergency
+procedures. Use approved workplace instructions and real experience.

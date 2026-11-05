@@ -1,5 +1,29 @@
 # Current-release checks
 
+For the 30-day programme (5 November 2026), run these additional checks:
+
+```sh
+node tests/course-access.test.js
+node tests/validate_study_plan.cjs
+node tests/validate_learning.cjs
+php backend/tests/course_access_test.php
+python backend/tests/admin_integration_test.py
+```
+
+For PHP/MySQL endpoint coverage, see `backend/tests/access_integration_test.py`
+and `backend/README.md`. These checks use isolated test data. On Windows, set
+`PYTHONUTF8=1` before running the Python content validators below.
+
+The admin integration harness covers permissions, CSRF, safe migration,
+student metrics, account creation/editing/suspension, password hashing,
+mandatory password changes, session revocation, and unchanged course periods.
+`tests/admin-ui.test.cjs` checks dashboard rendering, escaping, request races
+and temporary-password cleanup with a mocked DOM/transport.
+
+The previous browser harnesses expect unrestricted guest learning. Guests now
+receive a small preview; full-course browser checks need a mocked or real active
+account. Historical browser reports are not visual QA of the refreshed UI.
+
 Run from the app directory:
 
 ```sh
@@ -30,7 +54,7 @@ live microphone, formal accessibility or independent language review is implied.
 900-entry vocabulary/phrase release. They are not the current assessment counts
 or a substitute for the reports above.
 
-## Backend (accounts & progress) is not covered here
+## Historical browser coverage
 
 `activity_browser_test.py` runs entirely in guest mode. Account registration,
 login and progress save/load now call the PHP+MySQL backend in `backend/`

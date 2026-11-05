@@ -1,0 +1,14 @@
+body.security-mode.app-visible{padding-left:0!important}
+body.security-mode #sideBar,body.security-mode #sideBackdrop,body.security-mode .tab-bar,body.security-mode #sbToggle,body.security-mode #avatarBtn,body.security-mode .progress-line,body.security-mode .progress-caption,body.security-mode #courseAccessBanner,body.security-mode #learningSaveStatus{display:none!important}
+body.security-mode .app-shell{padding-bottom:32px}
+#screen-security{max-width:620px;padding:28px 20px}
+.security-card{background:white;border:1px solid #dce4dd;border-radius:16px;padding:30px;box-shadow:0 10px 35px #173c2e08}
+.security-card h2{font:500 30px/1.25 var(--serif);margin:12px 0 16px;color:#203f3a}
+.security-card>p{font-size:13px;line-height:1.8;color:var(--ink-soft)}
+.security-card .security-kicker{font-size:10px;font-weight:800;letter-spacing:.12em;color:#4e6b57;margin:0}
+.security-card .security-identity{font-size:12px;padding:10px 14px;background:#f0f4ed;border-radius:8px;overflow-wrap:anywhere;margin:18px 0 24px}
+#securityPasswordHint{font-size:11px;color:var(--ink-soft);line-height:1.7;margin:8px 0}
+#securityError{padding:12px 14px;border-radius:8px;background:var(--clay-mist);color:var(--clay-deep);font-size:12px;line-height:1.7}
+.security-card .btn-gold{background:#244b40;color:white;box-shadow:none}
+.security-card .btn-ghost{font-size:12px;margin-top:16px}
+@media(max-width:480px){.security-card{padding:22px}.security-card h2{font-size:26px}}

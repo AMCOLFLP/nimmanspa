@@ -24,6 +24,9 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL) || mb_strlen($email) > 190) {
 if (mb_strlen($password) < 6) {
     json_error('password_short', 'Password must be at least 6 characters.');
 }
+if (strlen($password) > 72) {
+    json_error('password_long', 'Password must be no more than 72 UTF-8 bytes.');
+}
 if (!in_array($role, ['therapist', 'reception', 'manager', 'other'], true)) {
     $role = 'other';
 }
@@ -47,12 +50,14 @@ try {
     json_error('server', 'Could not create the account.', 500);
 }
 
-$_SESSION['user_id'] = (int) $pdo->lastInsertId();
-session_regenerate_id(true);
-
-json_response(['user' => [
+$user = [
+    'id' => (int) $pdo->lastInsertId(),
     'name'  => $name,
     'email' => $email,
     'role'  => $role,
     'lang'  => $lang,
-]]);
+    'is_admin' => false, 'is_active' => true, 'must_change_password' => false,
+    'session_version' => 1,
+];
+establish_session($user);
+json_response(['user' => public_user($user), 'csrf_token' => csrf_token()]);

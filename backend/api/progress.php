@@ -1,18 +1,11 @@
 <?php
 declare(strict_types=1);
 require __DIR__ . '/../lib/bootstrap.php';
+require __DIR__ . '/../lib/course_access.php';
 
 start_session();
 $userId = require_login();
 $pdo = get_pdo();
-
-function valid_course(string $course): bool
-{
-    // Matches Courses.REGISTRY ids in js/courses.js (spa, cruise). Kept as a
-    // format check rather than a hardcoded list so a future course id just
-    // works; the real safety guarantee is the prepared statement below.
-    return (bool) preg_match('/^[a-z0-9_-]{1,30}$/', $course);
-}
 
 $method = $_SERVER['REQUEST_METHOD'] ?? '';
 
@@ -21,6 +14,7 @@ if ($method === 'GET') {
     if (!valid_course($course)) {
         json_error('invalid', 'Unknown course.');
     }
+    require_learning_access($pdo, $userId, $course);
     $stmt = $pdo->prepare('SELECT data FROM progress WHERE user_id = ? AND course_id = ?');
     $stmt->execute([$userId, $course]);
     $row = $stmt->fetch();
@@ -35,6 +29,7 @@ if ($method === 'POST') {
     if (!valid_course($course)) {
         json_error('invalid', 'Unknown course.');
     }
+    require_learning_access($pdo, $userId, $course);
     if (!is_array($data)) {
         json_error('invalid', 'Malformed progress data.');
     }
@@ -44,7 +39,7 @@ if ($method === 'POST') {
     }
 
     $stmt = $pdo->prepare(
-        'INSERT INTO progress (user_id, course_id, data) VALUES (?, ?, CAST(? AS JSON))
+        'INSERT INTO progress (user_id, course_id, data) VALUES (?, ?, ?)
          ON DUPLICATE KEY UPDATE data = VALUES(data)'
     );
     $stmt->execute([$userId, $course, $encoded]);

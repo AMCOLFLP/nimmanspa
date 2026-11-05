@@ -10,15 +10,22 @@ const Api = (() => {
 
   async function request(path, options = {}){
     let res;
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000);
+    const token = typeof Auth !== 'undefined' ? Auth.csrfToken() : '';
     try {
       res = await fetch(BASE + path, {
         method: options.method || 'GET',
         credentials: 'same-origin',
-        headers: options.body ? { 'Content-Type': 'application/json' } : {},
+        cache: 'no-store',
+        signal: controller.signal,
+        headers: { 'Accept':'application/json', ...(options.body ? {'Content-Type':'application/json'} : {}), ...(token ? {'X-CSRF-Token':token} : {}) },
         body: options.body ? JSON.stringify(options.body) : undefined,
       });
     } catch (e) {
       throw { ok:false, error:'network', message:'Could not reach the server.' };
+    } finally {
+      clearTimeout(timeout);
     }
 
     let json = null;
@@ -27,6 +34,7 @@ const Api = (() => {
     if (!res.ok || !json || json.ok === false){
       const err = (json && json.error) || 'server';
       const message = (json && json.message) || 'Something went wrong.';
+      if (err === 'password_change_required' && typeof Auth !== 'undefined') Auth.requirePasswordChange();
       throw { ok:false, status:res.status, error:err, message };
     }
     return json;

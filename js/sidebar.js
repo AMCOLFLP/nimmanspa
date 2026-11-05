@@ -91,6 +91,16 @@ const Sidebar = (() => {
      exactly once and nothing is reachable only from one screen. Entries
      appear only where the active course actually has that content. */
   function navGroups(){
+    const user = Auth.currentUser();
+    if (user?.guest || !CourseAccess.canLearn()){
+      return [
+        { items:[{ screen:user?.guest ? 'preview' : 'access', key:user?.guest ? 'navPreview' : 'navAccess' }] },
+        { titleKey:'sidebarGroupAccount', items:[
+          { screen:'account', key:'accountHeading' },
+          { screen:'settings', key:'settingsHeading' },
+        ]},
+      ];
+    }
     return [
       { items:[{ screen:'daily', key:'navDaily' }] },
       { titleKey:'sidebarGroupLearn', items:[
@@ -147,8 +157,9 @@ const Sidebar = (() => {
     const role = guest ? '' : I18N.t(roleKeys[user.role] || 'roleOther');
 
     const course = Courses.active;
-    const mp = moduleProgress();
-    const avg = Progress.quizAverage();
+    const canLearn = CourseAccess.canLearn();
+    const mp = canLearn ? moduleProgress() : null;
+    const avg = canLearn ? Progress.quizAverage() : null;
     const vocabTotal = (typeof VOCAB !== 'undefined' && VOCAB.length) || 0;
 
     host.innerHTML = `
@@ -170,7 +181,7 @@ const Sidebar = (() => {
         <span class="sb-course-switch">${esc(I18N.t('courseSwitch'))}</span>
       </button>` : ''}
 
-      <div class="sb-section">
+      ${canLearn ? `<div class="sb-section">
         ${mp ? bar(I18N.t('courseProgress'), mp.studied, mp.total, `${mp.studied}/${mp.total}`) : ''}
         ${bar(I18N.t('statWords'), Progress.knownCount(), vocabTotal, `${Progress.knownCount()}/${vocabTotal}`)}
         ${bar(I18N.t('statLessons'), Progress.activitiesCompleted(), 8, String(Progress.activitiesCompleted()))}
@@ -178,7 +189,7 @@ const Sidebar = (() => {
           <span><b>${avg === null ? '—' : avg + '%'}</b>${esc(I18N.t('statQuiz'))}</span>
           <span><b>${Progress.streak || 0}</b>${esc(I18N.t('sidebarStreak'))}</span>
         </div>
-      </div>
+      </div>` : `<div class="sb-access-note"><b>${esc(CourseAccess.label())}</b><p>${esc(I18N.t(guest ? 'previewProgressNote' : 'retainedProgressNote'))}</p></div>`}
 
       <nav class="sb-nav" aria-label="${esc(I18N.t('sidebarGoTo'))}">
         ${navMarkup()}

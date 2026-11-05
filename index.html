@@ -5,13 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#f2f6f6">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="description" content="NIMMAN Willow &amp; Stone English — bilingual English/Thai learning modules and custom word/phrase assessments for cruise employment, spa therapists, and hair and nail professionals.">
-<title>NIMMAN Willow &amp; Stone English</title>
+<meta name="description" content="NIMMANSPA — a focused 30-day English learning journey for spa, cruise, hair and nail professionals. Short bilingual lessons, practical phrases and guided practice.">
+<title>NIMMANSPA · Your month of English</title>
 <link rel="icon" type="image/png" href="assets/nimman-logo-small.png">
 <link rel="apple-touch-icon" href="assets/nimman-logo.png">
 <link rel="stylesheet" href="styles.css?v=png-bodymap-1">
 <link rel="stylesheet" href="learning.css?v=png-bodymap-1">
 <link rel="stylesheet" href="anatomy.css?v=png-bodymap-1">
+<link rel="stylesheet" href="program.css?v=30day-1">
+<link rel="stylesheet" href="admin.css?v=admin-1">
+<link rel="stylesheet" href="account-security.css?v=admin-1">
 </head>
 <body>
 
@@ -26,24 +29,39 @@
     </div>
   </div>
 
+  <div class="auth-story">
   <div class="auth-hero">
     <div class="auth-brands">
       <img src="assets/nimman-logo.png" alt="Nimmanoradee International School" loading="eager">
       <span class="ab-divider"></span>
       <img class="barter" src="assets/barter-logo.png" alt="Barter Group" loading="eager">
     </div>
-    <p class="auth-appname" data-i18n="programName">NIMMAN English for Service Professionals</p>
-    <p class="auth-appsub" data-i18n="programTagline">Spa, wellness &amp; cruise ship English &middot; Sriracha</p>
-    <h2 data-i18n="authWelcome">Welcome</h2>
-    <p data-i18n="authTagline">Sign in to save progress in this browser. Accounts are local demo accounts.</p>
+    <p class="auth-appname" data-i18n="programName">NIMMANSPA</p>
+    <p class="auth-appsub" data-i18n="programTagline">ENGLISH FOR YOUR NEXT CHAPTER</p>
+    <h1 data-i18n="authWelcome">A little practice. A more confident you.</h1>
+    <p class="auth-intro" data-i18n="programIntro">Build the English you need to welcome guests, explain services and prepare for interviews. One focused month, at your pace.</p>
   </div>
-
+  <div class="program-facts">
+    <div><b>30</b><span data-i18n="programDays">days of course access</span></div>
+    <div><b>4</b><span data-i18n="programWeeks">weeks with a clear plan</span></div>
+    <div><b>EN / ไทย</b><span data-i18n="programLanguages">English with Thai support</span></div>
+  </div>
+  <ol class="program-steps">
+    <li><span>01</span><div><b data-i18n="programStepOne">Choose your career path</b><p data-i18n="programStepOneBody">Spa therapy, cruise work, or hair and nails.</p></div></li>
+    <li><span>02</span><div><b data-i18n="programStepTwo">Start your learning month</b><p data-i18n="programStepTwoBody">Your 30 days begin when you start a course.</p></div></li>
+    <li><span>03</span><div><b data-i18n="programStepThree">Learn, say it, try it</b><p data-i18n="programStepThreeBody">Short lessons, useful language and practice with feedback.</p></div></li>
+  </ol>
+  </div>
+  <div class="auth-panel">
+  <p class="program-kicker" data-i18n="authPanelKicker">YOUR LEARNING SPACE</p>
+  <h2 data-i18n="authPanelHeading">Make time for your next step.</h2>
+  <p class="auth-panel-note" data-i18n="authTagline">Sign in to continue, or create an account and choose your course.</p>
   <div class="auth-tabs">
     <button class="auth-tab active" id="tabLogin" data-i18n="loginTab">Log in</button>
     <button class="auth-tab" id="tabRegister" data-i18n="registerTab">Register</button>
   </div>
 
-  <div class="auth-error" id="authError">
+  <div class="auth-error" id="authError" role="alert">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
     <span id="authErrorText"></span>
   </div>
@@ -104,17 +122,19 @@
         </select>
       </div>
     </div>
+    <p class="registration-policy" data-i18n="registrationPolicy">Registration alone does not start your access. Starting a course opens 30 consecutive days, including days you do not study.</p>
     <button type="submit" class="btn btn-gold btn-block" data-i18n="registerBtn">Create account</button>
     <div class="auth-divider"><span data-i18n="haveAccount">Already have an account?</span></div>
     <button type="button" class="btn btn-line btn-block" id="goLogin" data-i18n="loginBtn">Log in</button>
   </form>
 
-  <button type="button" class="btn btn-ghost btn-block" id="guestBtn" data-i18n="continueGuest">Continue as guest</button>
+  <button type="button" class="btn btn-ghost btn-block" id="guestBtn" data-i18n="continueGuest">Explore a free sample</button>
 
   <p class="demo-note">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><circle cx="12" cy="8" r=".6" fill="currentColor" stroke="none"/></svg>
-    <span data-i18n="demoNote">Demo mode — accounts are stored only on this device, not on a secure server.</span>
+    <span data-i18n="demoNote">Account progress is saved across devices. Sample progress lasts only for this visit.</span>
   </p>
+  </div>
 </div>
 
 <!-- =====================================================================
@@ -134,13 +154,16 @@
       <span class="ab-divider"></span>
       <img class="barter" src="assets/barter-logo.png" alt="Barter Group">
     </div>
-    <h2 data-i18n="courseChooseHeading">What would you like to study?</h2>
-    <p data-i18n="courseChooseLede">Pick a course. You can switch between them at any time, and each keeps its own progress.</p>
+    <p class="program-kicker" data-i18n="courseKicker">ONE MONTH. A CLEAR DIRECTION.</p>
+    <h2 data-i18n="courseChooseHeading">English for the work you want to do.</h2>
+    <p data-i18n="courseChooseLede">Choose a career path. Each course has its own 30-day access period and saved progress.</p>
   </div>
-
+  <div class="course-policy"><span class="policy-number">30<span data-i18n="programDaysShort">DAYS</span></span><div><b data-i18n="coursePolicyTitle">Start when you’re ready.</b><p data-i18n="coursePolicyBody">The clock begins when you start a course and keeps running between visits. Your end date is always visible; your saved progress is kept after access ends.</p></div></div>
+  <div id="courseChooserStatus" role="status" aria-live="polite"></div>
   <div id="courseList"></div>
-
+  <details class="course-faq"><summary data-i18n="courseFaqTitle">What is included in my learning month?</summary><p data-i18n="courseFaqBody">Follow a four-week study plan, learn English with Thai support, and practise with model answers. Use days 29–30 to review. Lessons stay available throughout your access period, so you can learn at your own pace. Practice scores are for self-study; teacher-assessed tasks are shown separately.</p></details>
   <button class="btn btn-ghost btn-block" id="courseBackBtn" style="display:none;" data-i18n="courseCancel">Cancel</button>
+  <button class="btn btn-ghost btn-block" id="courseSignOutBtn" data-i18n="accountLogout">Log out</button>
 </div>
 
 <!-- =====================================================================
@@ -189,22 +212,14 @@
     <div class="progress-line"><i id="courseProgressFill" style="--pct:0%"></i></div>
     <p class="progress-caption"><span data-i18n="courseProgress">Course progress</span> &nbsp;·&nbsp; <b id="courseProgressLabel">0%</b></p>
   </header>
-
+  <div id="courseAccessBanner" aria-live="polite"></div>
   <div id="learningSaveStatus" class="ab-validation invalid" role="status" hidden></div>
   <main>
+  <section class="screen" id="screen-access"><div id="courseAccessPanel"></div></section>
+  <section class="screen" id="screen-preview"><div id="coursePreviewRoot"></div></section>
 
-
-  <!-- ============================= TEACHER DASHBOARD ============================= -->
-  <section class="screen" id="screen-teacher">
-    <div class="tm-top">
-      <div>
-        <p class="eyebrow" data-i18n="teacherEyebrow">Teacher</p>
-        <h2 data-i18n="teacherHeading">Class dashboard</h2>
-      </div>
-      <button type="button" class="btn btn-line" id="teacherSignOut" data-i18n="accountLogout">Log out</button>
-    </div>
-    <div id="teacherRoot"></div>
-  </section>
+  <section class="screen" id="screen-admin" aria-label="Administration"><div id="adminRoot"></div></section>
+  <section class="screen" id="screen-security" aria-label="Password settings"><div id="accountSecurityRoot"></div></section>
 
   <!-- ============================= ACCOUNT ============================= -->
   <section class="screen" id="screen-account">
@@ -219,6 +234,7 @@
       </div>
     </div>
 
+    <div id="accountAccessSummary"></div>
     <div class="menu-heading"><h3 data-i18n="accountStats">Your progress</h3></div>
     <div class="progress-bars" id="accProgressBars"></div>
 
@@ -246,6 +262,7 @@
     </div>
 
     <button class="btn btn-line btn-block" id="accRegisterCta" style="display:none;margin-bottom:10px;" data-i18n="accountRegisterCta">Create a free account to save this progress</button>
+    <button class="btn btn-line btn-block" id="changePasswordBtn" data-i18n="changePassword" style="margin-bottom:12px;" hidden>Change password</button>
     <button class="btn btn-ghost btn-block" id="logoutBtn" data-i18n="accountLogout">Log out</button>
 
     <div class="home-divider"></div>
@@ -900,8 +917,9 @@
 <script src="js/curriculum-data.js"></script>
 <script src="js/curriculum-bank.js"></script>
 <script src="js/courses.js"></script>
-<script src="js/api.js"></script>
-<script src="js/auth.js"></script>
+<script src="js/api.js?v=admin-1"></script>
+<script src="js/auth.js?v=admin-1"></script>
+<script src="js/course-access.js?v=admin-1"></script>
 <script src="js/speech.js"></script>
 <script src="js/content-ui.js"></script>
 <script src="js/vocab.js"></script>
@@ -910,14 +928,17 @@
 <script src="js/daily.js"></script>
 <script src="js/speaking.js"></script>
 <script src="js/learning-model.js"></script>
-<script src="js/learning-hub.js"></script>
+<script src="js/study-plan.js?v=30day-1"></script>
+<script src="js/learning-hub.js?v=30day-1"></script>
 <script src="js/assessment-builder.js"></script>
-<script src="js/learning-i18n.js"></script>
+<script src="js/learning-i18n.js?v=30day-1"></script>
+<script src="js/program-i18n.js?v=admin-1"></script>
 <script src="js/anatomy-data.js?v=png-bodymap-1"></script>
 <script src="js/anatomy.js?v=png-bodymap-1"></script>
 <script src="js/interview.js"></script>
-<script src="js/teacher.js"></script>
-<script src="js/sidebar.js"></script>
-<script src="js/app.js?v=png-bodymap-1"></script>
+<script src="js/account-security.js?v=admin-1"></script>
+<script src="js/admin.js?v=admin-1"></script>
+<script src="js/sidebar.js?v=30day-1"></script>
+<script src="js/app.js?v=admin-1"></script>
 </body>
 </html>
