@@ -20,6 +20,7 @@ const AccountSecurity = (() => {
       return;
     }
     if (Auth.currentUser()?.email !== user.email) return;
+    Tutorial.close({restoreFocus:false});
     generation++; required = force; opened = true; busy = false;
     Admin.exit();
     Vocab.stopTimers(); Speaking.stopAll(); Speech.stop();

@@ -198,6 +198,7 @@ const App = (() => {
 
   /* ---------------- auth screen ---------------- */
   function showAuth(){
+    Tutorial.close({restoreFocus:false});
     stopLearning();
     Admin.exit();
     AccountSecurity.exit();
@@ -218,9 +219,15 @@ const App = (() => {
       I18N.set(user.lang, rerenderAll);
     }
     if (user?.must_change_password){ AccountSecurity.open({required:true}); return; }
-    if (user?.is_admin){ await Admin.open(); return; }
+    if (user?.is_admin){
+      await Admin.open();
+      if (Auth.currentUser()?.email === user.email) Tutorial.maybeOpen();
+      return;
+    }
     showCourseChooser({ cancellable:false });
     if (!user?.guest) await CourseAccess.load();
+    const current = Auth.currentUser();
+    if (current && current.email === user?.email && current.guest === user?.guest) Tutorial.maybeOpen();
   }
 
   function switchAuthTab(which){
@@ -1148,6 +1155,7 @@ const App = (() => {
   }
 
   function rerenderAll(){
+    Tutorial.render();
     renderAll();
     if (AccountSecurity.isOpen() || Admin.isOpen()) return;
     // The chooser is the one screen shown before a course exists, so renderAll
@@ -1194,6 +1202,7 @@ const App = (() => {
     AccountSecurity.init();
     Sidebar.init();
     CourseAccess.init();
+    Tutorial.init();
     window.addEventListener('nimman:access-change', () => {
       renderAccessChrome();
       if (document.getElementById('courseWrap').classList.contains('active')){

@@ -80,6 +80,19 @@ Practice: ready-made activities or a custom set; salon uses the builder.
 Account: access deadline, language, progress and course switching.
 The sidebar provides the same destinations on larger screens.
 
+APP TUTORIAL
+The English/Thai tutorial opens after the first sign-in or guest entry on a
+browser. Use the ? Help button, How to use the app on the course chooser or
+sidebar, or Read the tutorial again in Account to reopen it at any time.
+The sign-in screen also has a How to use the app button. Back, Next and the
+topic list let you read the guide in order or jump to a reminder.
+The guide explains learning tools, practice, audio, temporary guest progress,
+registered course deadlines and account help. Administrators get a guide to
+student progress, account management and password resets. Opening the guide
+does not start a course or change progress; it stops microphone/audio activity.
+Only a browser preference remembers that the tutorial has been shown. Guests
+can replay it even after their temporary learning progress has cleared.
+
 LOCAL PREVIEW AND ACCOUNT SETUP
 A static preview can be opened with:
   python -m http.server 8000 --bind 127.0.0.1

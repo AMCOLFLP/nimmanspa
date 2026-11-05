@@ -194,6 +194,8 @@ const Sidebar = (() => {
         ${navMarkup()}
       </nav>
 
+      <button type="button" class="tutorial-link" data-tutorial-open>${esc(I18N.t('tutorialOpen'))}</button>
+
       <button class="sb-hide" data-sb-action="hide">${esc(I18N.t('sidebarHide'))}</button>
     `;
     applyState();

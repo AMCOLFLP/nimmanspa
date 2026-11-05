@@ -6,6 +6,7 @@ For the 30-day programme (5 November 2026), run these additional checks:
 node tests/course-access.test.js
 node tests/validate_study_plan.cjs
 node tests/validate_learning.cjs
+node --test --test-isolation=none tests/tutorial.test.cjs
 php backend/tests/course_access_test.php
 python backend/tests/admin_integration_test.py
 ```
@@ -19,6 +20,10 @@ student metrics, account creation/editing/suspension, password hashing,
 mandatory password changes, session revocation, and unchanged course periods.
 `tests/admin-ui.test.cjs` checks dashboard rendering, escaping, request races
 and temporary-password cleanup with a mocked DOM/transport.
+
+`tests/tutorial.test.cjs` covers the replayable English/Thai tutorial, including
+guest access, first-use preference, topic navigation and modal cleanup. This
+uses a DOM harness; it does not replace browser visual or screen-reader QA.
 
 Guests have unrestricted course and practice access, with temporary in-memory
 progress that clears on refresh or sign-out. Registered-account browser checks

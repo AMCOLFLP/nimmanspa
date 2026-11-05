@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="program.css?v=guest-1">
 <link rel="stylesheet" href="admin.css?v=admin-1">
 <link rel="stylesheet" href="account-security.css?v=admin-1">
+<link rel="stylesheet" href="tutorial.css?v=tutorial-1">
 </head>
 <body>
 
@@ -129,6 +130,7 @@
   </form>
 
   <button type="button" class="btn btn-ghost btn-block" id="guestBtn" data-i18n="continueGuest">Continue as guest</button>
+  <button type="button" class="tutorial-link" data-tutorial-open data-i18n="tutorialOpen">How to use the app</button>
 
   <p class="demo-note">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><circle cx="12" cy="8" r=".6" fill="currentColor" stroke="none"/></svg>
@@ -160,6 +162,7 @@
   </div>
   <div class="course-policy"><span class="policy-number">30<span data-i18n="programDaysShort">DAYS</span></span><div><b data-i18n="coursePolicyTitle">Start when you’re ready.</b><p data-i18n="coursePolicyBody">The clock begins when you start a course and keeps running between visits. Your end date is always visible; your saved progress is kept after access ends.</p></div></div>
   <div id="courseChooserStatus" role="status" aria-live="polite"></div>
+  <button type="button" class="tutorial-link" data-tutorial-open data-i18n="tutorialOpen">How to use the app</button>
   <div id="courseList"></div>
   <details class="course-faq"><summary data-i18n="courseFaqTitle">What is included in my learning month?</summary><p data-i18n="courseFaqBody">Follow a four-week study plan, learn English with Thai support, and practise with model answers. Use days 29–30 to review. Lessons stay available throughout your access period, so you can learn at your own pace. Practice scores are for self-study; teacher-assessed tasks are shown separately.</p></details>
   <button class="btn btn-ghost btn-block" id="courseBackBtn" style="display:none;" data-i18n="courseCancel">Cancel</button>
@@ -202,6 +205,7 @@
         </div>
       </div>
       <div class="topbar-actions">
+        <button type="button" class="tutorial-trigger" id="tutorialHelpBtn" data-tutorial-open data-i18n-aria="tutorialOpen" aria-label="How to use the app"><span aria-hidden="true">?</span></button>
         <div class="lang-toggle">
           <button class="lang-opt" data-lang="en">EN</button>
           <button class="lang-opt" data-lang="th">ไทย</button>
@@ -260,6 +264,7 @@
       </div>
     </div>
 
+    <button type="button" class="tutorial-link" data-tutorial-open data-i18n="tutorialReplay">Read the tutorial again</button>
     <button class="btn btn-line btn-block" id="accRegisterCta" style="display:none;margin-bottom:10px;" data-i18n="accountRegisterCta">Create a free account to save this progress</button>
     <button class="btn btn-line btn-block" id="changePasswordBtn" data-i18n="changePassword" style="margin-bottom:12px;" hidden>Change password</button>
     <button class="btn btn-ghost btn-block" id="logoutBtn" data-i18n="accountLogout">Log out</button>
@@ -908,6 +913,8 @@
 
 </div>
 
+<dialog id="tutorialDialog" class="tutorial-dialog" aria-labelledby="tutorialTitle"><div id="tutorialRoot"></div></dialog>
+
 <script src="js/i18n.js?v=png-bodymap-1"></script>
 <script src="js/data.js"></script>
 <script src="js/activities.js"></script>
@@ -931,13 +938,15 @@
 <script src="js/learning-hub.js?v=guest-1"></script>
 <script src="js/assessment-builder.js"></script>
 <script src="js/learning-i18n.js?v=30day-1"></script>
-<script src="js/program-i18n.js?v=guest-1"></script>
+<script src="js/program-i18n.js?v=tutorial-1"></script>
 <script src="js/anatomy-data.js?v=png-bodymap-1"></script>
 <script src="js/anatomy.js?v=png-bodymap-1"></script>
 <script src="js/interview.js"></script>
-<script src="js/account-security.js?v=admin-1"></script>
+<script src="js/account-security.js?v=tutorial-1"></script>
 <script src="js/admin.js?v=admin-1"></script>
-<script src="js/sidebar.js?v=guest-1"></script>
-<script src="js/app.js?v=guest-1"></script>
+<script src="js/tutorial-content.js?v=tutorial-1"></script>
+<script src="js/tutorial.js?v=tutorial-1"></script>
+<script src="js/sidebar.js?v=tutorial-1"></script>
+<script src="js/app.js?v=tutorial-1"></script>
 </body>
 </html>
