@@ -40,6 +40,8 @@ run(`
  const document={getElementById:id=>elements[id]||null};
  const I18N={current:'en',t:k=>k};
  const Courses={currentId:'spa',name:id=>CURRICULUM_DATA.courses[id].title};
+ let currentUser={guest:false};
+ const Auth={currentUser:()=>currentUser};
  let learningState={modules:{},items:{}};
  const Progress={learningState:()=>learningState};
  const Nav={go:()=>LearningHub.render()};
@@ -77,6 +79,27 @@ for(const course of ['spa','cruise','salon']){
   run(`learningState.modules=Object.fromEntries(CURRICULUM_DATA.modules.${course}.map(m=>[m.id,true]));LearningHub.open();LearningHub.home()`);
   assert(run('elements.learningRoot.innerHTML').includes('All chapters marked studied'));
   assert(run('elements.learningHomeCard.innerHTML').includes('final review'));
+ });
+}
+for(const language of ['en','th']){
+ check(`${language}: guest plan titles have no access duration and registered titles remain timed`,()=>{
+  run(`Courses.currentId='spa';I18N.current='${language}';currentUser={guest:true};learningState={modules:{},items:{}};LearningHub.open();LearningHub.home()`);
+  const guestTitle=language==='en'?'Your learning plan':'แผนการเรียนรู้ของคุณ';
+  const overview=run('elements.learningRoot.innerHTML');
+  assert(overview.includes(`<h2>${guestTitle}</h2>`));
+  assert.equal((overview.match(/<details class="lh-week /g)||[]).length,4);
+  assert(run('elements.learningHomeCard.innerHTML').includes(`<span class="lh-eyebrow">${guestTitle}</span>`));
+  run("LearningHub.open(CURRICULUM_DATA.modules.spa[0].id)");
+  assert(run('elements.learningRoot.innerHTML').includes(`data-lh="back">← ${guestTitle}</button>`));
+
+  run('currentUser={guest:false};LearningHub.render();LearningHub.home()');
+  const registeredBack=language==='en'?'Your 30-day plan':'แผนการเรียน 30 วันของคุณ';
+  const registeredHome=language==='en'?'YOUR 30-DAY PLAN':'แผนการเรียน 30 วันของคุณ';
+  assert(run('elements.learningRoot.innerHTML').includes(`data-lh="back">← ${registeredBack}</button>`));
+  assert(run('elements.learningHomeCard.innerHTML').includes(`<span class="lh-eyebrow">${registeredHome}</span>`));
+  run('LearningHub.open()');
+  const registeredTitle=language==='en'?'Your 30-day learning plan':'แผนการเรียนรู้ 30 วันของคุณ';
+  assert(run('elements.learningRoot.innerHTML').includes(`<h2>${registeredTitle}</h2>`));
  });
 }
 console.log(JSON.stringify({passed:checks.length,checks},null,2));

@@ -6,7 +6,7 @@
    an extra round trip — it is NOT the security boundary. Every server call
    re-checks the real PHP session cookie, so a tampered-with local mirror
    simply can't grant access to another account's data.
-   Guest previews remain local. Admin privileges and password requirements
+   Guest learning remains local. Admin privileges and password requirements
    are enforced again by the server; CSRF tokens stay in memory only.
    ========================================================================= */
 
@@ -27,6 +27,7 @@ const Auth = (() => {
     if (!res.user || !res.user.email) throw { error:'invalid' };
     csrf = typeof res.csrf_token === 'string' ? res.csrf_token : '';
     CourseAccess.reset();
+    Progress.clearGuest();
     Progress.invalidate();
     writeMirror({ ...res.user, is_admin:res.user.is_admin === true || res.user.is_admin === 1,
       must_change_password:res.user.must_change_password === true || res.user.must_change_password === 1, guest:false });
@@ -83,6 +84,7 @@ const Auth = (() => {
   function continueAsGuest(){
     csrf = '';
     CourseAccess.reset();
+    Progress.clearGuest();
     Progress.invalidate();
     writeMirror({ email:null, guest:true, since: Date.now() });
   }
@@ -97,6 +99,7 @@ const Auth = (() => {
       clearMirror();
       csrf = '';
       CourseAccess.reset();
+      Progress.clearGuest();
       Progress.invalidate();
       if (mirror && !mirror.guest) await Api.post('logout.php', {}).catch(()=>{});
       return true;
@@ -123,6 +126,7 @@ const Auth = (() => {
     clearMirror();
     csrf = '';
     CourseAccess.reset();
+    Progress.clearGuest();
     Progress.invalidate();
     window.dispatchEvent(new CustomEvent('nimman:session-expired'));
   }
@@ -565,7 +569,7 @@ const Progress = (() => {
     DAILY_SIZE,
     get streak(){ return load().streak || 0; },
     reset, clearGuest, hydrate, flush,
-    isHydrated(){ const key = keyFor(); return !!key && key === cacheKey && hydratedKeys.has(key); },
+    isHydrated(){ if (Auth.currentUser()?.guest) return true; const key = keyFor(); return !!key && key === cacheKey && hydratedKeys.has(key); },
     invalidate(){ cacheGeneration++; saveTimers.forEach(clearTimeout); saveTimers.clear(); pendingWrites.clear(); inFlightWrites.clear(); writeChains.clear(); hydratedKeys.clear(); cache = null; cacheKey = null; setStatus('ready'); },
   };
 })();

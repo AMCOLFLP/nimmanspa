@@ -1,6 +1,7 @@
 /* The 30-day programme: calm, readable learning with a clear next step. */
 :root{--ink-faint:#667872;--learn-navy:#203f3a;--program-border:#dce4dd;--program-cream:#f7f6f0}
 body{background:var(--program-cream)}
+.policy-number[hidden]{display:none}
 button,a,input,select,summary{touch-action:manipulation}
 button:focus-visible,a:focus-visible,summary:focus-visible,[role=button]:focus-visible{outline:3px solid #386b60;outline-offset:4px}
 .auth-wrap,.course-wrap{background:transparent}

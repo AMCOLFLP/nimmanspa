@@ -3,7 +3,10 @@
 Registered learners receive **30 consecutive days per course**, beginning when
 they explicitly press **Start course**. Signing in, browsing the chooser, and
 saving progress do not start or extend that period. Accounts, access dates, and
-progress live on the server. Guest previews never call this backend.
+progress live on the server. Guests can use every course and practice activity
+without a timer. Guest learning uses temporary in-memory progress and does not
+call the account/access/progress APIs. It clears on refresh or sign-out and
+does not transfer into an account or appear in the admin dashboard.
 
 ## Requirements
 
@@ -177,8 +180,9 @@ are outside PATH and the default XAMPP installation.
 The backend enforces account and progress access. Lesson JavaScript, images,
 and standalone HTML guides remain public static assets. Frontend route checks
 do not make those files private; a paid or confidential content boundary needs
-authenticated content delivery and web-server rules. Guest previews do not
-create account access. There is no identity verification to prevent a person
+authenticated content delivery and web-server rules. Full guest learning is
+intentionally open and does not create or extend account access. There is no
+identity verification to prevent a person
 from creating another account.
 
 ## Security notes for whoever deploys this

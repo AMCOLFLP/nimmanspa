@@ -131,13 +131,74 @@ test('expiry is exact and moving the device clock backwards does not extend acce
   assert.equal(h.events.at(-1).type, 'nimman:access-change');
 });
 
-test('preview has no API calls and no normal lesson routes', async () => {
+test('guest access opens every learning route without a trial clock or API calls', async () => {
   const h = harness(); h.Auth.continueAsGuest();
   await h.CourseAccess.load(); await h.CourseAccess.start('spa'); await h.Progress.hydrate();
   h.Progress.markWordKnown('welcome',true); await h.flushWrites();
   assert.equal(h.calls.length, 0);
-  assert.equal(h.CourseAccess.canVisit('preview'), true);
-  for (const route of ['daily','learning','vocab','phrases','assess','speaking','interview']) assert.equal(h.CourseAccess.canVisit(route), false);
+  for (const course of ['spa','cruise','salon']) {
+    const access = h.CourseAccess.get(course);
+    assert.equal(access.status, 'guest');
+    assert.equal(access.started_at, null);
+    assert.equal(access.expires_at, null);
+    assert.equal(h.CourseAccess.canLearn(course), true);
+  }
+  for (const route of ['daily','learning','vocab','anatomy','pron','phrases','saythis','assess','speaking','interview',
+    'mcquiz','fillquiz','listen','builder','truefalse','errorfix','results','practiceplay','customplay','customresults','account','settings','access']) {
+    assert.equal(h.CourseAccess.canVisit(route), true, `Guest should be able to open ${route}`);
+  }
+  assert.equal(h.CourseAccess.canVisit('admin'), false);
+  assert.equal(h.CourseAccess.canVisit('security'), false);
+  h.clock(100 * DAY); h.CourseAccess.check();
+  assert.equal(h.CourseAccess.get().status, 'guest');
+  assert.equal(h.CourseAccess.canLearn(), true);
+  assert.doesNotMatch(h.CourseAccess.label(), /trial|preview|days? left/i);
+  assert.equal(h.calls.length, 0);
+});
+
+test('guest progress is isolated per course and survives switching within the session', async () => {
+  const h = harness(); h.Auth.continueAsGuest();
+  assert.equal(await h.Progress.hydrate(), true);
+  assert.equal(h.Progress.isHydrated(), true);
+  h.Progress.markWordKnown('guest spa word', true);
+  h.Progress.setLearningModule('spa-first-chapter', true);
+  h.Progress.recordQuizResult('mc', 80);
+  assert.equal(await h.Progress.flush(), true);
+  h.context.Courses.currentId = 'cruise'; h.Progress.invalidate();
+  await h.Progress.hydrate();
+  assert.equal(h.Progress.knownCount(), 0);
+  assert.equal(h.Progress.quizAverage(), null);
+  h.Progress.markWordKnown('guest cruise word', true);
+  h.Progress.recordQuizResult('mc', 60);
+  h.context.Courses.currentId = 'spa'; h.Progress.invalidate();
+  await h.Progress.hydrate();
+  assert.equal(h.Progress.isKnown('guest spa word'), true);
+  assert.equal(h.Progress.isKnown('guest cruise word'), false);
+  assert.equal(h.Progress.learningState().modules['spa-first-chapter'], START);
+  assert.equal(h.Progress.quizAverage(), 80);
+  assert.equal(h.calls.length, 0);
+  assert.equal([...h.storage.values()].some(value => /guest spa word|guest cruise word|spa-first-chapter/.test(value)), false);
+});
+
+test('signing out clears guest progress before another guest or registered account begins', async () => {
+  const h = harness(); h.Auth.continueAsGuest();
+  await h.Progress.hydrate();
+  h.Progress.markWordKnown('previous guest word', true);
+  h.Progress.recordQuizResult('mc', 80);
+  assert.equal(await h.Auth.logout(), true);
+  assert.equal(h.calls.length, 0);
+  h.Auth.continueAsGuest(); await h.Progress.hydrate();
+  assert.equal(h.Progress.knownCount(), 0);
+  assert.equal(h.Progress.quizAverage(), null);
+  h.Progress.markWordKnown('new guest word', true);
+  await h.Auth.login({email:'learner@example.test',password:'password'});
+  await h.CourseAccess.load(); await h.CourseAccess.start('spa'); await h.Progress.hydrate();
+  assert.equal(h.Progress.isKnown('welcome'), true);
+  assert.equal(h.Progress.isKnown('new guest word'), false);
+  assert.equal(h.Progress.quizAverage(), null);
+  assert.equal(h.calls.filter(call => call.route === 'progress.php' && call.method === 'POST').length, 0);
+  await h.Auth.logout(); h.Auth.continueAsGuest(); await h.Progress.hydrate();
+  assert.equal(h.Progress.knownCount(), 0);
 });
 
 test('resetting progress and logging out do not renew the server deadline', async () => {
@@ -160,7 +221,7 @@ test('late access replies cannot revive a signed-out account', async () => {
   h.Auth.continueAsGuest();
   resolve(h.payload()); await load;
   assert.equal(h.CourseAccess.ready, false);
-  assert.equal(h.CourseAccess.get().status, 'preview');
+  assert.equal(h.CourseAccess.get().status, 'guest');
 });
 
 test('failed progress hydration cannot overwrite previously saved records', async () => {
@@ -179,17 +240,31 @@ test('server expiry blocks a course even if the local deadline has not passed', 
   assert.equal(h.CourseAccess.get().status,'expired');
 });
 
-test('normal navigation redirects preview and expired learners', async () => {
+test('normal navigation opens guest lessons and still redirects expired registered learners', async () => {
   const h = harness();
   vm.runInContext(source('app.js') + '\n globalThis.routes = {Nav,App};', h.context);
-  let preview = 0, locked = 0;
-  h.context.routes.App.showPreviewScreen = () => { preview++; };
+  let lessons = 0, locked = 0, chooser = 0;
+  const target = {id:'screen-learning',classList:{add(){},remove(){}}};
+  h.context.document.querySelector = () => null;
+  h.context.document.querySelectorAll = () => [];
+  h.context.document.getElementById = id => id === target.id ? target : null;
+  h.context.window.scrollTo = () => {};
+  h.context.Vocab = {stopTimers(){}};
+  h.context.Speaking = {stopAll(){}};
+  h.context.Speech = {stop(){}};
+  h.context.LearningHub = {render(){ lessons++; }};
+  h.context.Sidebar = {setActive(){}};
+  h.context.routes.App.showCourseChooser = () => { chooser++; };
   h.context.routes.App.showAccessScreen = () => { locked++; };
-  h.Auth.continueAsGuest(); h.context.routes.Nav.go('vocab');
-  assert.equal(preview,1);
+  h.Auth.continueAsGuest(); await h.Progress.hydrate();
+  h.context.routes.Nav.go('learning');
+  assert.equal(lessons,1);
+  assert.equal(chooser,0);
+  assert.equal(locked,0);
   await h.Auth.login({email:'learner@example.test',password:'password'});
   await h.CourseAccess.load(); await h.CourseAccess.start('spa'); h.clock(30 * DAY);
   h.context.routes.Nav.go('learning');
+  assert.equal(lessons,1);
   assert.equal(locked,1);
 });
 

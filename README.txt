@@ -24,7 +24,13 @@ or clicking Start again never renews an existing period.
 The app shows the deadline and remaining days. At expiry, lessons and
 practice lock, while saved progress stays in the database. Account settings
 and course selection remain available. There is no automatic renewal or
-payment flow. Free preview contains five words and three phrases per course.
+payment flow.
+
+Guest access keeps every course and practice activity open without a timer.
+Guest progress is held in memory for the current visit, separately by course,
+and clears on refresh or sign-out. It does not transfer to a registered account
+or appear in the admin dashboard. Registered accounts keep saved progress and
+the 30-day access period for each course they start.
 
 A FOUR-WEEK STUDY PLAN
 Each course follows four suggested weeks, then days 29–30 for review.
@@ -77,7 +83,7 @@ The sidebar provides the same destinations on larger screens.
 LOCAL PREVIEW AND ACCOUNT SETUP
 A static preview can be opened with:
   python -m http.server 8000 --bind 127.0.0.1
-Visit http://localhost:8000 and choose Explore a free sample.
+Visit http://localhost:8000 and choose Continue as guest.
 Account registration, login, access dates and saved progress require PHP 8+
 with MySQL/MariaDB; a static server or GitHub Pages cannot provide them.
 See backend/README.md for database and private configuration setup.

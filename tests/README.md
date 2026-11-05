@@ -20,9 +20,10 @@ mandatory password changes, session revocation, and unchanged course periods.
 `tests/admin-ui.test.cjs` checks dashboard rendering, escaping, request races
 and temporary-password cleanup with a mocked DOM/transport.
 
-The previous browser harnesses expect unrestricted guest learning. Guests now
-receive a small preview; full-course browser checks need a mocked or real active
-account. Historical browser reports are not visual QA of the refreshed UI.
+Guests have unrestricted course and practice access, with temporary in-memory
+progress that clears on refresh or sign-out. Registered-account browser checks
+need a mocked or real active account. Historical browser reports are not visual
+QA of the refreshed UI or proof of the current guest workflow.
 
 Run from the app directory:
 
@@ -61,5 +62,6 @@ login and progress save/load now call the PHP+MySQL backend in `backend/`
 (see `backend/README.md`), which this no-network, in-memory harness has no
 server to talk to. Verifying that code path currently means either running
 against a real PHP+MySQL instance, or adding Playwright route mocks for
-`backend/api/*.php`. Guest mode is unaffected and still fully covered — it
-never calls the backend.
+`backend/api/*.php`. Guest learning uses no account/access/progress API, so its
+course and practice flows can be tested without a backend. Historical results
+must be rerun to verify changes to guest access and progress.

@@ -8,7 +8,8 @@ Registration creates an account without starting an access period. Choosing
 days. Each of `spa`, `cruise`, and `salon` has a separate period. Signing out,
 switching devices, repeating Start or resetting progress does not renew it.
 The server supplies the dates; the learner sees the deadline and days remaining.
-After expiry the app locks lessons/practice and retains the saved progress.
+After expiry the app locks lessons/practice for that account and retains its
+saved progress.
 
 Each course now has four suggested study weeks and two final review days.
 All original chapters remain accessible during the active period. Week labels
@@ -20,8 +21,10 @@ entries on demand. Source notes and formal assessment details remain available
 in disclosures.
 
 The signed-out screen, course chooser, learning plan and access states use a
-refreshed responsive design. Free preview offers five words and three phrases
-per course, without starting a period. Full learning requires an active account.
+refreshed responsive design. Guest access opens all courses and practice
+activities without a timer. Guest progress is kept in memory for the current
+visit, separately for each course, and clears on refresh or sign-out. Registered
+learners keep their own saved progress and 30-day course periods.
 
 **Before deployment:** run `backend/migrations/20261105_course_access.sql`
 against the existing database. It adds the access table without changing users
@@ -32,7 +35,7 @@ standalone reference HTML remain publicly downloadable; this release does not
 provide a private content delivery system.
 
 ## Start here
-Open `index.html` from a web server. Choose Explore a free sample, then a course.
+Open `index.html` from a web server. Choose Continue as guest, then a course.
 For accounts, retain/configure the existing PHP/MySQL backend as documented in
 `backend/README.md`. The standalone HTML preview is guest-only and has no account server.
 
@@ -84,7 +87,8 @@ user database. Deploy to staging and check registration, login, per-course savin
 New self-study progress, assessment preferences, per-entry review state and the latest
 50 compact attempt summaries are stored separately from legacy best-score records.
 Detailed answers are available in the current results view and JSON export.
-Sample previews do not save or transfer progress to an account.
+Guest progress is temporary, does not transfer to an account, and does not
+appear in the administrator dashboard.
 
 An unsuccessful initial server-progress load blocks replacement writes to protect
 existing data. Account errors are shown. Restore the connection and reopen the course;
@@ -103,7 +107,7 @@ outcomes, next-lesson logic, and rendering each plan/lesson.
 On this release, automated content, activity, curriculum, study-plan and access
 checks passed. The browser access host was unavailable, so the refreshed layout
 has not been visually verified in a live browser. The older browser reports
-below describe earlier releases and unrestricted guest workflows.
+below describe earlier releases. They do not verify the current guest workflow.
 
 `node tests/validate_learning.cjs` — mapping, original coverage, count, uniqueness,
 compatibility, manual selection, review filters and answer-normalisation checks.

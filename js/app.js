@@ -29,13 +29,12 @@ const Nav = {
   go(screen, dir){
     if (Auth.currentUser()?.must_change_password && screen !== 'security') { AccountSecurity.open({required:true}); return false; }
     if (Auth.currentUser()?.is_admin && !['admin','security'].includes(screen)) { Admin.open(); return false; }
-    if (CourseAccess.canLearn() && !Progress.isHydrated() && !['account','settings','access','security','preview'].includes(screen)){
+    if (CourseAccess.canLearn() && !Progress.isHydrated() && !['account','settings','access','security'].includes(screen)){
       App.showCourseChooser({ cancellable:false });
       return false;
     }
     if (!CourseAccess.canVisit(screen)){
-      if (Auth.currentUser()?.guest) App.showPreviewScreen();
-      else App.showAccessScreen();
+      App.showAccessScreen();
       return false;
     }
     Vocab.stopTimers();
@@ -165,12 +164,12 @@ const App = (() => {
     const user = Auth.currentUser(), r = CourseAccess.get();
     const banner = document.getElementById('courseAccessBanner');
     const account = document.getElementById('accountAccessSummary');
-    const preview = user?.guest;
-    const detail = preview
-      ? T('A small sample. Register to start your 30-day course.', 'ตัวอย่างบทเรียนสั้น ๆ สมัครบัญชีเพื่อเริ่มหลักสูตร 30 วัน')
+    const guest = user?.guest;
+    const detail = guest
+      ? I18N.t('guestProgressNote')
       : r.expires_at ? T('Access ends ', 'เรียนได้ถึง ') + CourseAccess.formatDate(r.expires_at)
       : T('Your 30 days begin when you start this course.', 'ระยะเวลา 30 วันเริ่มเมื่อคุณเริ่มหลักสูตรนี้');
-    const markup = `<div><span class="access-eyebrow">${esc(preview ? T('COURSE PREVIEW', 'ตัวอย่างหลักสูตร') : T('YOUR LEARNING WINDOW', 'ระยะเวลาเรียนของคุณ'))}</span><strong>${esc(CourseAccess.label())}</strong><p>${esc(detail)}</p></div><button type="button" class="btn btn-line" data-access-action="courses">${T('My courses', 'หลักสูตรของฉัน')}</button>`;
+    const markup = `<div><span class="access-eyebrow">${esc(guest ? T('GUEST ACCOUNT', 'บัญชีผู้เยี่ยมชม') : T('YOUR LEARNING WINDOW', 'ระยะเวลาเรียนของคุณ'))}</span><strong>${esc(CourseAccess.label())}</strong><p>${esc(detail)}</p></div><button type="button" class="btn btn-line" data-access-action="courses">${T('My courses', 'หลักสูตรของฉัน')}</button>`;
     if (banner){ banner.hidden = !user || user.is_admin || user.must_change_password; banner.className = 'access-banner ' + r.status; banner.innerHTML = markup; }
     if (account){ account.className = 'access-summary ' + r.status; account.innerHTML = markup; }
     const progressCaption = document.querySelector('.progress-caption');
@@ -178,12 +177,12 @@ const App = (() => {
     if (progressCaption) progressCaption.hidden = !CourseAccess.canLearn();
     if (progressLine) progressLine.hidden = !CourseAccess.canLearn();
     const reset = document.getElementById('resetProgressBtn');
-    if (reset) reset.disabled = !preview && !CourseAccess.canLearn();
+    if (reset) reset.disabled = !CourseAccess.canLearn();
   }
 
   function showAccessScreen(){
     if (!Auth.currentUser()){ showAuth(); return; }
-    if (Auth.currentUser().guest){ showPreviewScreen(); return; }
+    if (Auth.currentUser().guest){ showCourseChooser({ cancellable:true }); return; }
     stopLearning(); hideCourseChooser();
     document.getElementById('appShell').style.display = 'block';
     renderCourseChrome(); renderAccessChrome();
@@ -196,25 +195,6 @@ const App = (() => {
     document.querySelectorAll('.tab-item').forEach(el => el.classList.remove('active'));
     window.scrollTo(0, 0);
   }
-
-  function showPreviewScreen(){
-    if (!Auth.currentUser()?.guest){ showAccessScreen(); return; }
-    stopLearning(); hideCourseChooser();
-    document.getElementById('appShell').style.display = 'block';
-    renderCourseChrome(); renderAccessChrome();
-    Sidebar.render(); Sidebar.setActive('preview');
-    const course = Courses.active, root = document.getElementById('coursePreviewRoot');
-    const words = course.content.vocab().slice(0, 5);
-    const phrases = course.content.phrases().flatMap(cat => cat.items).slice(0, 3);
-    const sample = (text, meaning) => `<article class="preview-card"><h3>${esc(text)}</h3><p lang="th">${esc(meaning || '')}</p><button type="button" class="btn btn-line" data-preview-speak="${esc(text)}">${T('Listen', 'ฟังเสียง')}</button></article>`;
-    if (root) root.innerHTML = `<div class="access-panel"><span class="access-eyebrow">${T('TRY A SHORT SAMPLE', 'ลองเรียนตัวอย่างสั้น ๆ')}</span><h2>${esc(Courses.name(course.id))}</h2><p>${T('Listen, read the Thai meaning, and repeat each line out loud. This preview includes five words and three phrases.', 'ฟังเสียง อ่านความหมายภาษาไทย แล้วฝึกพูดตาม ตัวอย่างนี้มีคำศัพท์ 5 คำและวลี 3 ประโยค')}</p><div class="access-actions"><button type="button" class="btn btn-gold" data-access-action="register">${T('Create account', 'สร้างบัญชี')}</button><button type="button" class="btn btn-line" data-access-action="courses">${T('Explore other courses', 'ดูหลักสูตรอื่น')}</button></div></div><h2 class="preview-heading">${T('Five useful words', 'คำศัพท์น่ารู้ 5 คำ')}</h2><div class="preview-grid">${words.map(w => sample(w.word, w.th)).join('')}</div><h2 class="preview-heading">${T('Three phrases to try', 'ลองพูด 3 ประโยค')}</h2><div class="preview-grid">${phrases.map(p => sample(p.text, p.th)).join('')}</div><p class="access-date">${T('Preview activity is not saved. Full lessons and practice require an active course.', 'กิจกรรมตัวอย่างไม่บันทึกความคืบหน้า การเรียนและฝึกเต็มหลักสูตรต้องมีสิทธิ์เรียนที่ยังใช้งานได้')}</p>`;
-    document.querySelectorAll('.screen.active').forEach(el => el.classList.remove('active'));
-    document.getElementById('screen-preview')?.classList.add('active');
-    document.querySelectorAll('.tab-item').forEach(el => el.classList.remove('active'));
-    const avatar = document.getElementById('avatarBtn'); if (avatar) avatar.textContent = 'G';
-    window.scrollTo(0, 0);
-  }
-
 
   /* ---------------- auth screen ---------------- */
   function showAuth(){
@@ -337,8 +317,18 @@ const App = (() => {
 
   function renderCourseList(){
     const current = Courses.saved();
-    const user = Auth.currentUser(), preview = !!user?.guest;
-    const unavailable = !preview && (!CourseAccess.ready || CourseAccess.loading);
+    const user = Auth.currentUser(), guest = !!user?.guest;
+    const unavailable = !guest && (!CourseAccess.ready || CourseAccess.loading);
+    for (const key of ['courseKicker','courseChooseLede','coursePolicyTitle','coursePolicyBody','courseFaqTitle','courseFaqBody']){
+      const guestKey = 'guest' + key[0].toUpperCase() + key.slice(1);
+      const element = document.querySelector(`#courseWrap [data-i18n="${key}"], #courseWrap [data-i18n="${guestKey}"]`);
+      if (element){
+        element.dataset.i18n = guest ? guestKey : key;
+        element.textContent = I18N.t(element.dataset.i18n);
+      }
+    }
+    const duration = document.querySelector('#courseWrap .policy-number');
+    if (duration) duration.hidden = guest;
     const status = document.getElementById('courseChooserStatus');
     if (status){
       status.hidden = !courseMessage && !CourseAccess.error && !unavailable;
@@ -350,7 +340,7 @@ const App = (() => {
       const st = Courses.stats(c.id);
       const isCurrent = c.id === current;
       const access = CourseAccess.get(c.id);
-      const cta = preview ? T('Preview this course', 'ดูตัวอย่างหลักสูตร') : access.status === 'active' ? T('Continue learning', 'เรียนต่อ') : access.status === 'expired' ? T('View course status', 'ดูสถานะหลักสูตร') : T('Start my 30 days', 'เริ่มเรียน 30 วัน');
+      const cta = guest ? T('Open course', 'เข้าเรียนหลักสูตร') : access.status === 'active' ? T('Continue learning', 'เรียนต่อ') : access.status === 'expired' ? T('View course status', 'ดูสถานะหลักสูตร') : T('Start my 30 days', 'เริ่มเรียน 30 วัน');
       return `<div class="course-card ${isCurrent ? 'current' : ''} ${access.status}" data-course="${c.id}" role="button" tabindex="${unavailable ? '-1' : '0'}" aria-disabled="${unavailable}" aria-label="${esc(I18N.t(c.nameKey) + ' · ' + cta)}">
         <div class="cc-top">
           <span class="cc-mark ${c.id}">${COURSE_ICONS[c.icon]}</span>
@@ -366,7 +356,7 @@ const App = (() => {
           <span class="cc-stat"><b>${st.phrases}</b><span>${I18N.t('coursePhrases')}</span></span>
           <span class="cc-stat"><b>${CURRICULUM_DATA.modules[c.id].length}</b><span>${I18N.t('courseSections')}</span></span>
         </div>
-        <div class="cc-access"><strong class="cc-access-state">${esc(CourseAccess.label(c.id))}</strong><span class="cc-access-detail">${esc(access.expires_at ? T('Until ', 'ถึง ') + CourseAccess.formatDate(access.expires_at) : preview ? T('5 words + 3 phrases · no account needed', 'คำศัพท์ 5 คำ + วลี 3 ประโยค · ไม่ต้องมีบัญชี') : T('Your progress is saved to your account.', 'ความคืบหน้าจะบันทึกในบัญชีของคุณ'))}</span></div>
+        <div class="cc-access"><strong class="cc-access-state">${esc(CourseAccess.label(c.id))}</strong><span class="cc-access-detail">${esc(access.expires_at ? T('Until ', 'ถึง ') + CourseAccess.formatDate(access.expires_at) : guest ? T('Full lessons and practice · progress for this visit', 'บทเรียนและแบบฝึกครบ · ความคืบหน้าเฉพาะการเข้าชมครั้งนี้') : T('Your progress is saved to your account.', 'ความคืบหน้าจะบันทึกในบัญชีของคุณ'))}</span></div>
         <div class="cc-go">
           ${unavailable ? T('Please wait…', 'กรุณารอสักครู่…') : cta}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
@@ -402,7 +392,6 @@ const App = (() => {
       if (!Auth.currentUser()) return;
       Courses.activate(id);
       Progress.invalidate();      // re-read progress under the new course key
-      if (Auth.currentUser().guest){ showPreviewScreen(); return; }
       if (!CourseAccess.canLearn(id)){ showAccessScreen(); return; }
       if (!await Progress.hydrate()){
         if (!Auth.currentUser()) return;
@@ -465,8 +454,6 @@ const App = (() => {
       if (action === 'account') Nav.go('account');
       if (action === 'register') await signOut(true);
       if (action === 'retry'){ courseMessage = ''; await CourseAccess.load(); }
-      const sample = e.target.closest('[data-preview-speak]');
-      if (sample && Auth.currentUser()?.guest) Speech.speak(sample.dataset.previewSpeak, { rate:speechRate() });
     });
   }
 
@@ -579,8 +566,8 @@ const App = (() => {
     document.getElementById('accRegisterCta').style.display = isGuest ? 'block' : 'none';
 
     const barsRoot = document.getElementById('accProgressBars');
-    if (isGuest || !Progress.isHydrated()){
-      barsRoot.innerHTML = `<p class="access-date">${isGuest ? T('This is a short course preview. Create an account to save your learning progress.', 'นี่คือตัวอย่างหลักสูตรสั้น ๆ สร้างบัญชีเพื่อบันทึกความคืบหน้าการเรียน') : T('Your saved progress stays with your account. Progress details are available while this course is active and loaded.', 'ความคืบหน้าที่บันทึกไว้ยังอยู่ในบัญชี รายละเอียดจะแสดงเมื่อหลักสูตรยังใช้งานได้และโหลดข้อมูลสำเร็จ')}</p>`;
+    if (!Progress.isHydrated()){
+      barsRoot.innerHTML = `<p class="access-date">${T('Your saved progress stays with your account. Progress details are available while this course is active and loaded.', 'ความคืบหน้าที่บันทึกไว้ยังอยู่ในบัญชี รายละเอียดจะแสดงเมื่อหลักสูตรยังใช้งานได้และโหลดข้อมูลสำเร็จ')}</p>`;
       return;
     }
     const modules = CURRICULUM_DATA.modules[Courses.currentId] || [];
@@ -1144,7 +1131,6 @@ const App = (() => {
     renderAccessChrome();
     if (!CourseAccess.canLearn()){
       renderCourseChrome();
-      if (document.getElementById('screen-preview')?.classList.contains('active')) showPreviewScreen();
       if (document.getElementById('screen-access')?.classList.contains('active')) showAccessScreen();
       return;
     }
@@ -1254,7 +1240,7 @@ const App = (() => {
 
   return {
     init, showResults, refreshHome, renderAccount, renderAssessHub, rerenderAll,
-    renderSettings, speechRate, showCourseChooser, showAccessScreen, showPreviewScreen, setPracticeMode, signOut, afterAuthSuccess,
+    renderSettings, speechRate, showCourseChooser, showAccessScreen, setPracticeMode, signOut, afterAuthSuccess,
     renderVocabHint(){ renderHint('vocabHint', 'vocab', 'hintVocab'); },
     get resultsBackTo(){ return resultsBackTo; },
   };

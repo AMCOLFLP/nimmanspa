@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="styles.css?v=png-bodymap-1">
 <link rel="stylesheet" href="learning.css?v=png-bodymap-1">
 <link rel="stylesheet" href="anatomy.css?v=png-bodymap-1">
-<link rel="stylesheet" href="program.css?v=30day-1">
+<link rel="stylesheet" href="program.css?v=guest-1">
 <link rel="stylesheet" href="admin.css?v=admin-1">
 <link rel="stylesheet" href="account-security.css?v=admin-1">
 </head>
@@ -128,11 +128,11 @@
     <button type="button" class="btn btn-line btn-block" id="goLogin" data-i18n="loginBtn">Log in</button>
   </form>
 
-  <button type="button" class="btn btn-ghost btn-block" id="guestBtn" data-i18n="continueGuest">Explore a free sample</button>
+  <button type="button" class="btn btn-ghost btn-block" id="guestBtn" data-i18n="continueGuest">Continue as guest</button>
 
   <p class="demo-note">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><circle cx="12" cy="8" r=".6" fill="currentColor" stroke="none"/></svg>
-    <span data-i18n="demoNote">Account progress is saved across devices. Sample progress lasts only for this visit.</span>
+    <span data-i18n="demoNote">Guests can use every course and practice activity without a timer. Guest progress clears on refresh or sign-out. Register to save progress across devices.</span>
   </p>
   </div>
 </div>
@@ -216,7 +216,6 @@
   <div id="learningSaveStatus" class="ab-validation invalid" role="status" hidden></div>
   <main>
   <section class="screen" id="screen-access"><div id="courseAccessPanel"></div></section>
-  <section class="screen" id="screen-preview"><div id="coursePreviewRoot"></div></section>
 
   <section class="screen" id="screen-admin" aria-label="Administration"><div id="adminRoot"></div></section>
   <section class="screen" id="screen-security" aria-label="Password settings"><div id="accountSecurityRoot"></div></section>
@@ -918,8 +917,8 @@
 <script src="js/curriculum-bank.js"></script>
 <script src="js/courses.js"></script>
 <script src="js/api.js?v=admin-1"></script>
-<script src="js/auth.js?v=admin-1"></script>
-<script src="js/course-access.js?v=admin-1"></script>
+<script src="js/auth.js?v=guest-1"></script>
+<script src="js/course-access.js?v=guest-1"></script>
 <script src="js/speech.js"></script>
 <script src="js/content-ui.js"></script>
 <script src="js/vocab.js"></script>
@@ -929,16 +928,16 @@
 <script src="js/speaking.js"></script>
 <script src="js/learning-model.js"></script>
 <script src="js/study-plan.js?v=30day-1"></script>
-<script src="js/learning-hub.js?v=30day-1"></script>
+<script src="js/learning-hub.js?v=guest-1"></script>
 <script src="js/assessment-builder.js"></script>
 <script src="js/learning-i18n.js?v=30day-1"></script>
-<script src="js/program-i18n.js?v=admin-1"></script>
+<script src="js/program-i18n.js?v=guest-1"></script>
 <script src="js/anatomy-data.js?v=png-bodymap-1"></script>
 <script src="js/anatomy.js?v=png-bodymap-1"></script>
 <script src="js/interview.js"></script>
 <script src="js/account-security.js?v=admin-1"></script>
 <script src="js/admin.js?v=admin-1"></script>
-<script src="js/sidebar.js?v=30day-1"></script>
-<script src="js/app.js?v=admin-1"></script>
+<script src="js/sidebar.js?v=guest-1"></script>
+<script src="js/app.js?v=guest-1"></script>
 </body>
 </html>

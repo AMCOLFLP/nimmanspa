@@ -91,10 +91,9 @@ const Sidebar = (() => {
      exactly once and nothing is reachable only from one screen. Entries
      appear only where the active course actually has that content. */
   function navGroups(){
-    const user = Auth.currentUser();
-    if (user?.guest || !CourseAccess.canLearn()){
+    if (!CourseAccess.canLearn()){
       return [
-        { items:[{ screen:user?.guest ? 'preview' : 'access', key:user?.guest ? 'navPreview' : 'navAccess' }] },
+        { items:[{ screen:'access', key:'navAccess' }] },
         { titleKey:'sidebarGroupAccount', items:[
           { screen:'account', key:'accountHeading' },
           { screen:'settings', key:'settingsHeading' },
@@ -189,7 +188,7 @@ const Sidebar = (() => {
           <span><b>${avg === null ? '—' : avg + '%'}</b>${esc(I18N.t('statQuiz'))}</span>
           <span><b>${Progress.streak || 0}</b>${esc(I18N.t('sidebarStreak'))}</span>
         </div>
-      </div>` : `<div class="sb-access-note"><b>${esc(CourseAccess.label())}</b><p>${esc(I18N.t(guest ? 'previewProgressNote' : 'retainedProgressNote'))}</p></div>`}
+      </div>` : `<div class="sb-access-note"><b>${esc(CourseAccess.label())}</b><p>${esc(I18N.t('retainedProgressNote'))}</p></div>`}
 
       <nav class="sb-nav" aria-label="${esc(I18N.t('sidebarGoTo'))}">
         ${navMarkup()}

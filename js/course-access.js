@@ -19,7 +19,7 @@ const CourseAccess = (() => {
     serverAt = 0; receivedAt = 0; wallAt = 0; lastSync = 0; trigger = 'course_start';
   }
   function get(id = Courses.currentId){
-    if (localMode()) return { course_id:id, status:'preview', started_at:null, expires_at:null, remaining_days:0 };
+    if (localMode()) return { course_id:id, status:Auth.currentUser()?.guest ? 'guest' : 'unavailable', started_at:null, expires_at:null, remaining_days:0 };
     if (owner !== Auth.currentUser()?.email || !loaded) return { course_id:id, status:'unavailable' };
     const r = records[id];
     if (!r) return { course_id:id, status:'unavailable' };
@@ -78,7 +78,11 @@ const CourseAccess = (() => {
       if (token === generation){ loading = false; emit(); }
     }
   }
-  function canLearn(id = Courses.currentId){ return !localMode() && get(id).status === 'active'; }
+  function canLearn(id = Courses.currentId){
+    const user = Auth.currentUser();
+    if (!user || user.is_admin || user.must_change_password) return false;
+    return user.guest || get(id).status === 'active';
+  }
   function canVisit(screen){
     const user = Auth.currentUser();
     if (user?.must_change_password) return screen === 'security';
@@ -86,7 +90,6 @@ const CourseAccess = (() => {
     if (screen === 'admin') return false;
     if (screen === 'security') return !!user && !user.guest;
     if (['account','settings','access'].includes(screen)) return !!Auth.currentUser();
-    if (Auth.currentUser()?.guest) return screen === 'preview';
     return canLearn();
   }
   function formatDate(value){
@@ -97,7 +100,7 @@ const CourseAccess = (() => {
   }
   function label(id){
     const r = get(id);
-    if (r.status === 'preview') return T('Free course preview', 'ตัวอย่างหลักสูตรฟรี');
+    if (r.status === 'guest') return T('Guest access · no time limit', 'เข้าเรียนแบบผู้เยี่ยมชม · ไม่จำกัดเวลา');
     if (r.status === 'not_started') return T('30 days · starts when you begin', '30 วัน · เริ่มนับเมื่อเริ่มหลักสูตร');
     if (r.status === 'expired') return T('Learning period ended', 'สิ้นสุดระยะเวลาเรียนแล้ว');
     if (r.status === 'active') return T(`${r.remaining_days} ${r.remaining_days === 1 ? 'day' : 'days'} left`, `เหลือ ${r.remaining_days} วัน`);
