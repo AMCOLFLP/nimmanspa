@@ -10,15 +10,25 @@ Old local demo records are not imported into the server.
    update has not already been installed.
 2. Apply `backend/migrations/20261105_admin_dashboard.sql`. Existing accounts,
    progress and course windows are preserved. Old sessions must sign in again.
-3. Register an account normally using your own email and password.
-4. From the PHP host's command line, promote that account:
+3. Apply `backend/migrations/20261106_default_admin.sql` to add the default
+   administrator. A new installation using `backend/schema.sql` already includes
+   this account and does not need the migrations.
+4. Open the normal login page and enter username `ADMIN` and password `admin123`.
+5. Choose a new password of at least 10 characters when prompted. The dashboard
+   opens after the password is changed. Use your new password for later sign-ins.
+
+The database stores a bcrypt hash of the initial password. Reapplying setup does
+not reset an existing account's password, privileges, or disabled status.
+
+For additional administrators, register an account normally using an email and
+password, then promote it from the PHP host's command line:
 
    ```sh
    php backend/tools/promote-admin.php your-email@example.com
    ```
 
-5. Sign in again through the normal login page. The server-issued admin flag
-   opens the dashboard automatically. There is no shared/default admin password.
+Sign in again through the normal login page. The server-issued admin flag
+opens the dashboard automatically.
 
 The promotion helper runs only from the command line. Account registration and
 student management cannot create administrators. Keep server configuration and
@@ -64,6 +74,7 @@ their own password from the dashboard. Password changes sign out other sessions.
 
 Admin changes require a live server-side admin role and CSRF validation. Account
 updates and password resets have an audit record without passwords or tokens.
-See `backend/tests/admin_integration_test.py` for isolated endpoint checks and
+See `backend/tests/admin_integration_test.py` and
+`backend/tests/default_admin_integration_test.py` for isolated endpoint checks and
 `tests/README.md` for frontend tests. These changes are local until deployed to
 the configured PHP host; a static preview cannot provide the dashboard.

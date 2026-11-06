@@ -1,18 +1,18 @@
 /* New section labels and corrected menu/account descriptions. */
 Object.assign(UI_STRINGS.en,{
  navLearning:'Learn',navPractice:'Practice',practiceHeading:'Practice',practiceLede:'',menuPracticeDesc:'Ready-made activities, or build your own set',modulesCount:'Learning tools',
- courseSpaName:'Spa Therapist at Sea',courseSpaTagline:'Consultation, treatments & interviews',courseSpaDesc:'Build your spa English over four weeks: introduce yourself, explain services, support guests and rehearse your interview. Finish with two days of review.',
- courseCruiseName:'Working at Sea',courseCruiseTagline:'Foundation, workplace English & interviews',courseCruiseDesc:'A four-week path from everyday English to shipboard tasks, guest service and job interviews, with a safety-language supplement and two final review days.',
- courseSalonName:'Hair & Nails at Sea',courseSalonTagline:'Hair, nails, guest service & interviews',courseSalonDesc:'Develop salon English over four weeks: describe your experience, explain hair and nail services, practise guest conversations and prepare for interviews. Review on days 29–30.',
+ courseSpaName:'Spa Therapist at Sea',courseSpaTagline:'Consultation, treatments & interviews',courseSpaDesc:'Learn spa English in 30 daily lessons: introduce yourself, explain services, support guests and rehearse interviews, with weekly checks and a final practical project.',
+ courseCruiseName:'Working at Sea',courseCruiseTagline:'Foundation, workplace English & interviews',courseCruiseDesc:'30 daily lessons from everyday English to shipboard tasks, guest service and interviews, with weekly checks, safety language and a final practical project.',
+ courseSalonName:'Hair & Nails at Sea',courseSalonTagline:'Hair, nails, guest service & interviews',courseSalonDesc:'Build salon English in 30 daily lessons: describe your experience, explain hair and nail services, support guests and prepare for interviews, with weekly checks and a final project.',
  domainSalon:'hair, nail and salon',domainSalonShort:'salon',tipSalon:'Confirm the guest’s preference, service details and price before you begin.',
  courseChooseLede:'Choose one of three learning paths. Each has its own learning and practice record. Shared items may appear in more than one path.',
  courseProgress:'Legacy library activity',authTagline:'Sign in to save progress to your account, or continue as a guest for session-only practice.',
 });
 Object.assign(UI_STRINGS.th,{
  navLearning:'เรียนรู้',navPractice:'แบบฝึก',practiceHeading:'แบบฝึก',practiceLede:'',menuPracticeDesc:'กิจกรรมสำเร็จรูป หรือจัดชุดฝึกเอง',modulesCount:'เครื่องมือเรียนรู้',
- courseSpaName:'นักบำบัดสปาบนเรือสำราญ',courseSpaTagline:'ให้คำปรึกษา ทรีตเมนต์ และการสัมภาษณ์',courseSpaDesc:'พัฒนาภาษาอังกฤษงานสปาในสี่สัปดาห์: แนะนำตัว อธิบายบริการ ดูแลลูกค้า และซ้อมสัมภาษณ์ ปิดท้ายด้วยการทบทวนสองวัน',
- courseCruiseName:'ทำงานบนเรือสำราญ',courseCruiseTagline:'พื้นฐาน ภาษาในที่ทำงาน และการสัมภาษณ์',courseCruiseDesc:'แผนสี่สัปดาห์จากภาษาอังกฤษในชีวิตประจำวันสู่งานบนเรือ การบริการลูกค้า และการสัมภาษณ์ พร้อมบทเสริมภาษาด้านความปลอดภัยและการทบทวนสองวันสุดท้าย',
- courseSalonName:'ช่างผมและเล็บบนเรือสำราญ',courseSalonTagline:'ผม เล็บ บริการลูกค้า และการสัมภาษณ์',courseSalonDesc:'พัฒนาภาษาอังกฤษงานผมและเล็บในสี่สัปดาห์: บอกเล่าประสบการณ์ อธิบายบริการ ฝึกสนทนากับลูกค้า และเตรียมสัมภาษณ์ ทบทวนในวันที่ 29–30',
+ courseSpaName:'นักบำบัดสปาบนเรือสำราญ',courseSpaTagline:'ให้คำปรึกษา ทรีตเมนต์ และการสัมภาษณ์',courseSpaDesc:'เรียนภาษาอังกฤษงานสปาผ่าน 30 บทเรียนประจำวัน แนะนำตัว อธิบายบริการ ดูแลลูกค้า และฝึกสัมภาษณ์ พร้อมตรวจความเข้าใจทุกสัปดาห์และงานฝึกสุดท้าย',
+ courseCruiseName:'ทำงานบนเรือสำราญ',courseCruiseTagline:'พื้นฐาน ภาษาในที่ทำงาน และการสัมภาษณ์',courseCruiseDesc:'30 บทเรียนประจำวัน จากภาษาอังกฤษในชีวิตประจำวันสู่งานบนเรือ บริการลูกค้า และสัมภาษณ์ พร้อมทบทวนทุกสัปดาห์ ภาษาด้านความปลอดภัย และงานฝึกสุดท้าย',
+ courseSalonName:'ช่างผมและเล็บบนเรือสำราญ',courseSalonTagline:'ผม เล็บ บริการลูกค้า และการสัมภาษณ์',courseSalonDesc:'พัฒนาภาษาอังกฤษงานผมและเล็บผ่าน 30 บทเรียนประจำวัน บอกเล่าประสบการณ์ อธิบายบริการ ดูแลลูกค้า และเตรียมสัมภาษณ์ พร้อมทบทวนทุกสัปดาห์และงานฝึกสุดท้าย',
  domainSalon:'งานผม เล็บ และร้านเสริมสวย',domainSalonShort:'งานร้านเสริมสวย',tipSalon:'ยืนยันความต้องการของลูกค้า รายละเอียดบริการ และราคาก่อนเริ่ม',
  courseChooseLede:'เลือกหนึ่งในสามเส้นทางการเรียน แต่ละเส้นทางมีบันทึกการเรียนและการฝึกแยกกัน รายการที่ใช้ร่วมกันอาจปรากฏในหลายเส้นทาง',
  courseProgress:'กิจกรรมคลังเดิม',authTagline:'เข้าสู่ระบบเพื่อบันทึกความคืบหน้าในบัญชี หรือใช้งานแบบผู้เยี่ยมชมเพื่อฝึกเฉพาะครั้งนี้',

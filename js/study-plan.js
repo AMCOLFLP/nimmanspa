@@ -1,5 +1,5 @@
-/* A suggested 30-day self-study sequence. The source curriculum and its
-   teacher-assessed requirements remain unchanged. No enrollment side effects. */
+/* Daily learning sequence. Lesson progress is independent of access dates.
+   Source chapter IDs and teacher-assessed requirements remain unchanged. */
 const StudyPlan = (() => {
  const plans = {
   spa: [
@@ -28,5 +28,24 @@ const StudyPlan = (() => {
   return null;
  }
  function weekForModule(course,id){return get(course).find(week=>week.modules.includes(id))||null;}
- return {get,next,weekForModule};
+ const clone=value=>JSON.parse(JSON.stringify(value));
+ function rawDays(course){return typeof DAILY_PROGRAM_DATA==='undefined'?[]:(DAILY_PROGRAM_DATA[course]||[]);}
+ function days(course){return clone(rawDays(course));}
+ function day(course,number){return clone(rawDays(course).find(d=>d.day===Number(number))||null);}
+ function dayKey(number){return 'day-'+number;}
+ function stateFor(states,number){return states?.[dayKey(number)]||{};}
+ function ready(lesson,state={}){
+  return !!lesson && state.learned===true && typeof state.response==='string' && state.response.trim().length>=10
+   && lesson.practice.criteria.every((_,i)=>state.criteria?.[i]===true)
+   && lesson.checks.every((q,i)=>state.answers?.[i]===q.answer);
+ }
+ function complete(lesson,state={}){return ready(lesson,state)&&Number.isFinite(state.completedAt)&&state.completedAt>0;}
+ function nextDay(course,states={}){return days(course).find(d=>!complete(d,stateFor(states,d.day)))||null;}
+ function completedCount(course,states={}){return days(course).filter(d=>complete(d,stateFor(states,d.day))).length;}
+ function forModule(course,id){return clone(rawDays(course).filter(d=>d.moduleId===id));}
+ function groups(course){
+  return [...get(course).map(w=>({...w,days:days(course).filter(d=>d.day>=w.startDay&&d.day<=w.endDay)})),
+   {number:5,startDay:29,endDay:30,title:'Bring it all together',th:'นำทุกทักษะมาใช้ร่วมกัน',outcome:'Review the full course, then complete a practical final scenario and choose your next learning goal.',outcomeTh:'ทบทวนทั้งหลักสูตร ทำสถานการณ์ฝึกสุดท้าย และเลือกเป้าหมายการเรียนต่อไป',days:days(course).filter(d=>d.day>=29)}];
+ }
+ return {get,next,weekForModule,days,day,dayKey,stateFor,ready,complete,nextDay,completedCount,forModule,groups};
 })();

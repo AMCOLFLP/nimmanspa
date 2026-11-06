@@ -121,7 +121,8 @@ def main():
                                                  text=True, creationflags=HIDDEN)
         sql("USE nimman_access_test; INSERT INTO users (name,email,password_hash) VALUES "
             f"('Legacy Learner','legacy@example.test','{password_hash}'); "
-            "INSERT INTO progress (user_id,course_id,data) VALUES (1,'spa','{\"known\":[\"welcome\"]}');")
+            "INSERT INTO progress (user_id,course_id,data) VALUES (LAST_INSERT_ID(),'spa','{\"known\":[\"welcome\"]}');")
+        learner_id = int(sql("SELECT id FROM nimman_access_test.users WHERE email='legacy@example.test'"))
         migration = (BACKEND / "migrations/20261105_course_access.sql").read_text(encoding="utf-8")
         sql("USE nimman_access_test; " + migration)
         sql("USE nimman_access_test; " + migration)
@@ -162,17 +163,28 @@ def main():
         assert repeated["started_at"] == window["started_at"] and repeated["expires_at"] == window["expires_at"]
         assert request(learner, "progress.php?course=spa")[1]["data"] == {"known": ["welcome"]}
         assert request(learner, "progress.php", {"course": "spa", "data": {"known": ["welcome", "towel"]}})[0] == 200
+        # Daily lesson drafts/checks use the existing per-course progress document.
+        daily_data = {"known": ["welcome", "towel"], "learningDays": {
+            "day-1": {"learned": True, "response": "I welcome guests and confirm their requests.",
+                      "criteria": [True, True, True], "answers": [0, 1], "completedAt": 1793923200000},
+            "day-2": {"response": "My unfinished introduction"},
+        }}
+        assert request(learner, "progress.php", {"course": "spa", "data": daily_data})[0] == 200
+        restored = client()
+        assert request(restored, "login.php", {"email": "legacy@example.test", "password": "testing123"})[0] == 200
+        assert request(restored, "progress.php?course=spa")[1]["data"] == daily_data
+        assert request(restored, "logout.php", {})[0] == 200
         assert request(learner, "progress.php?course=cruise")[0] == 403
 
         sql("UPDATE nimman_access_test.course_access SET started_at=UTC_TIMESTAMP()-INTERVAL 30 DAY, "
-            "expires_at=UTC_TIMESTAMP() WHERE user_id=1 AND course_id='spa'")
-        expired_dates = sql("SELECT CONCAT(started_at,'/',expires_at) FROM nimman_access_test.course_access WHERE user_id=1 AND course_id='spa'")
+            f"expires_at=UTC_TIMESTAMP() WHERE user_id={learner_id} AND course_id='spa'")
+        expired_dates = sql(f"SELECT CONCAT(started_at,'/',expires_at) FROM nimman_access_test.course_access WHERE user_id={learner_id} AND course_id='spa'")
         assert request(learner, "access.php")[1]["courses"]["spa"]["status"] == "expired"
         assert request(learner, "progress.php?course=spa")[1]["error"] == "access_expired"
         assert request(learner, "progress.php", {"course": "spa", "data": {"known": []}})[1]["error"] == "access_expired"
         assert request(learner, "access.php", {"course": "spa"})[1]["courses"]["spa"]["status"] == "expired"
-        assert sql("SELECT CONCAT(started_at,'/',expires_at) FROM nimman_access_test.course_access WHERE user_id=1 AND course_id='spa'") == expired_dates
-        assert json.loads(sql("SELECT data FROM nimman_access_test.progress WHERE user_id=1 AND course_id='spa'"))["known"] == ["welcome", "towel"]
+        assert sql(f"SELECT CONCAT(started_at,'/',expires_at) FROM nimman_access_test.course_access WHERE user_id={learner_id} AND course_id='spa'") == expired_dates
+        assert json.loads(sql(f"SELECT data FROM nimman_access_test.progress WHERE user_id={learner_id} AND course_id='spa'"))["known"] == ["welcome", "towel"]
         assert request(learner, "access.php", {"course": "salon"})[1]["courses"]["salon"]["status"] == "active"
 
         newcomer = client()

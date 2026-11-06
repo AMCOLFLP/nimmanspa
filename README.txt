@@ -9,11 +9,14 @@ Admins can create/edit student accounts, suspend sign-in, and issue a
 temporary password. Students must replace temporary passwords before learning.
 Password resets revoke old sessions and preserve course dates and progress.
 
-Apply backend/migrations/20261105_admin_dashboard.sql before deployment.
-Register the intended admin account, then run on the PHP host:
+For existing installations, apply backend/migrations/20261105_admin_dashboard.sql,
+then backend/migrations/20261106_default_admin.sql before deployment. New installs
+include the default administrator when backend/schema.sql is imported.
+Log in with username ADMIN and initial password admin123, then choose a new
+password before the dashboard opens. Reimporting setup preserves changed passwords.
+For additional administrators, register an account, then run on the PHP host:
   php backend/tools/promote-admin.php your-email@example.com
-Sign in again. There is no shared/default admin password. The former local
-teacher demo has been removed. See TEACHER_SETUP.md for complete instructions.
+Sign in again. See TEACHER_SETUP.md for complete instructions.
 
 WHAT CHANGED
 A learner registers without starting any access period. Choosing “Start my
@@ -32,12 +35,16 @@ and clears on refresh or sign-out. It does not transfer to a registered account
 or appear in the admin dashboard. Registered accounts keep saved progress and
 the 30-day access period for each course they start.
 
-A FOUR-WEEK STUDY PLAN
-Each course follows four suggested weeks, then days 29–30 for review.
-All chapters remain available during the access period; weeks guide pacing.
-The daily suggestion is 15–20 minutes: read, practise aloud, then apply.
-This is a self-study schedule, not a replacement for the source course’s
-teaching hours or teacher-assessed tasks.
+A COMPLETE 30-DAY LEARNING PATH
+Each course has 30 daily lessons, grouped into four weeks and two final days.
+Every day teaches a specific skill through recall, explanations, examples,
+spoken models, an original written response, self-checks and two explained
+knowledge questions. Plan for 25–35 minutes. Days 7, 14, 21 and 28 review the
+week; days 29–30 bring skills together in a review and final practical project.
+All lessons remain open during the access period, including catch-up/revision.
+Drafts and completed days save with registered course progress. Guest work is
+temporary. Source chapters, vocabulary libraries and teacher tasks remain.
+Daily completion records self-study; it does not award certification.
 
   Spa Therapist at Sea
     Week 1: Introduce your professional self

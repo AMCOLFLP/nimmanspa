@@ -1,5 +1,5 @@
 # NIMMANSPA — 30-day learning programme
-Release: 5 November 2026. Local implementation; not deployed.
+Release: 6 November 2026. Local implementation; not deployed.
 
 ## Access and learning plan
 
@@ -11,11 +11,23 @@ The server supplies the dates; the learner sees the deadline and days remaining.
 After expiry the app locks lessons/practice for that account and retains its
 saved progress.
 
-Each course now has four suggested study weeks and two final review days.
-All original chapters remain accessible during the active period. Week labels
-guide pacing; they do not lock content or replace the source teaching hours.
-The suggested 15–20 minute daily routine combines reading, spoken practice and
-application. Short, bilingual outcomes explain what to practise each week.
+Each course now contains **30 individually authored daily lessons**: 90 lessons
+across Spa, Cruise, and Hair & Nail. Four seven-day weeks end in checkpoints on
+days 7, 14, 21 and 28; day 29 reviews combined skills and day 30 is a practical
+capstone. All source chapter IDs are retained and every chapter has daily lessons.
+Day numbers describe the sequence, not calendar locks or a reset of access dates.
+The suggested 25–35 minute session has five parts: recall, two explained language
+points with examples, a spoken model, the learner's own response and self-checks,
+then two knowledge checks with explanations and retries. English models remain
+visible when Thai support is selected. Speaking and writing criteria are learner
+self-checks; they are not automatic language assessment or certification.
+
+A day can be completed after the teaching/model checkbox, a response of at least
+10 characters, all three self-checks, and two correct answers. Editing work reopens
+the day. Daily drafts, checks and completion persist in `learningDays` inside the
+existing per-course progress JSON. Completion updates the corresponding chapter
+after all its daily lessons are finished. Older chapter/reference marks remain
+available but do not skip the new daily sequence. Home and sidebar track days / 30.
 The lesson reference library initially shows 12 entries, with search and more
 entries on demand. Source notes and formal assessment details remain available
 in disclosures.
@@ -75,6 +87,12 @@ Additional specialist entries were authored as support, not extracted verbatim.
 Shared entries are reused, not copied as repeated assessment targets.
 Edit the JSON and run `python tools/sync_curriculum.py`, then
 `node tests/validate_learning.cjs`. Update the guide/counts after substantial edits.
+Daily teaching is authored separately in `content/program-spa.json`,
+`content/program-cruise.json` and `content/program-salon.json`. Run
+`python tools/sync_daily_program.py` to validate their bilingual structure and
+rebuild `js/daily-program-data.js`, then `node tests/validate_study_plan.cjs`.
+Deploy the generated bundle, `js/daily-learning.js`, and `daily-learning.css`
+alongside the updated frontend. No new database migration is needed for daily work.
 Original learning/practice banks remain in the original files. Their archival
 `content/content.json` is not the full new curriculum map.
 
@@ -98,8 +116,9 @@ The change is not a full offline synchronisation or concurrent multi-device merg
 ## Tests and limits
 `node tests/course-access.test.js` — access dates, expiry, route restrictions,
 account changes and saving behavior with mocked transport/time.
-`node tests/validate_study_plan.cjs` — all chapters assigned once, bilingual
-outcomes, next-lesson logic, and rendering each plan/lesson.
+`node tests/validate_study_plan.cjs` — all 90 bilingual daily lessons, chapter
+coverage, completion requirements, retries, resume, course isolation, API draft
+saving, escaped learner text and rendering every day in English and Thai.
 `php backend/tests/course_access_test.php` — timestamp boundaries.
 `python backend/tests/access_integration_test.py` — isolated PHP/MySQL API checks
 (Windows harness; starts and removes its own disposable database instance).

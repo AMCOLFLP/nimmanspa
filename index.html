@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="learning.css?v=png-bodymap-1">
 <link rel="stylesheet" href="anatomy.css?v=png-bodymap-1">
 <link rel="stylesheet" href="program.css?v=guest-1">
+<link rel="stylesheet" href="daily-learning.css?v=daily-1">
 <link rel="stylesheet" href="admin.css?v=admin-1">
 <link rel="stylesheet" href="account-security.css?v=admin-1">
 <link rel="stylesheet" href="tutorial.css?v=tutorial-1">
@@ -70,8 +71,8 @@
   <!-- LOGIN -->
   <form class="auth-form" id="loginForm" novalidate>
     <div class="field">
-      <label for="loginEmail" data-i18n="fieldEmail">Email</label>
-      <input type="email" id="loginEmail" autocomplete="email" inputmode="email" data-i18n-ph="fieldEmail">
+      <label for="loginEmail" data-i18n="fieldLoginIdentifier">Email or username</label>
+      <input type="text" id="loginEmail" autocomplete="username" autocapitalize="none" spellcheck="false" data-i18n-ph="fieldLoginIdentifier">
     </div>
     <div class="field">
       <label for="loginPassword" data-i18n="fieldPassword">Password</label>
@@ -915,7 +916,7 @@
 
 <dialog id="tutorialDialog" class="tutorial-dialog" aria-labelledby="tutorialTitle"><div id="tutorialRoot"></div></dialog>
 
-<script src="js/i18n.js?v=png-bodymap-1"></script>
+<script src="js/i18n.js?v=default-admin-1"></script>
 <script src="js/data.js"></script>
 <script src="js/activities.js"></script>
 <script src="js/data-cruise.js"></script>
@@ -924,7 +925,7 @@
 <script src="js/curriculum-bank.js"></script>
 <script src="js/courses.js"></script>
 <script src="js/api.js?v=admin-1"></script>
-<script src="js/auth.js?v=guest-1"></script>
+<script src="js/auth.js?v=daily-1"></script>
 <script src="js/course-access.js?v=guest-1"></script>
 <script src="js/speech.js"></script>
 <script src="js/content-ui.js"></script>
@@ -934,19 +935,21 @@
 <script src="js/daily.js"></script>
 <script src="js/speaking.js"></script>
 <script src="js/learning-model.js"></script>
-<script src="js/study-plan.js?v=30day-1"></script>
-<script src="js/learning-hub.js?v=guest-1"></script>
+<script src="js/daily-program-data.js?v=daily-1"></script>
+<script src="js/study-plan.js?v=daily-1"></script>
+<script src="js/daily-learning.js?v=daily-1"></script>
+<script src="js/learning-hub.js?v=daily-1"></script>
 <script src="js/assessment-builder.js"></script>
-<script src="js/learning-i18n.js?v=30day-1"></script>
-<script src="js/program-i18n.js?v=tutorial-1"></script>
+<script src="js/learning-i18n.js?v=daily-1"></script>
+<script src="js/program-i18n.js?v=daily-1"></script>
 <script src="js/anatomy-data.js?v=png-bodymap-1"></script>
 <script src="js/anatomy.js?v=png-bodymap-1"></script>
 <script src="js/interview.js"></script>
 <script src="js/account-security.js?v=tutorial-1"></script>
 <script src="js/admin.js?v=admin-1"></script>
-<script src="js/tutorial-content.js?v=tutorial-1"></script>
+<script src="js/tutorial-content.js?v=daily-1"></script>
 <script src="js/tutorial.js?v=tutorial-1"></script>
-<script src="js/sidebar.js?v=tutorial-1"></script>
-<script src="js/app.js?v=tutorial-1"></script>
+<script src="js/sidebar.js?v=daily-1"></script>
+<script src="js/app.js?v=daily-1"></script>
 </body>
 </html>

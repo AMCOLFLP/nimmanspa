@@ -68,3 +68,10 @@ CREATE TABLE IF NOT EXISTS admin_audit_log (
   CONSTRAINT fk_audit_actor FOREIGN KEY (actor_user_id) REFERENCES users(id) ON DELETE SET NULL,
   CONSTRAINT fk_audit_target FOREIGN KEY (target_user_id) REFERENCES users(id) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Reserved administrator username uses the existing login identifier column.
+-- Initial password: admin123 (bcrypt only); replace it at the first sign-in.
+-- Never overwrite an existing account, changed password, or disabled status.
+INSERT INTO users (name, email, password_hash, role, lang, is_admin, is_active, must_change_password)
+SELECT 'Administrator', 'ADMIN', '$2y$10$XVrk5mntplgR/hNlYmdU9erRxW3LJOk4yBElffgTKsd584vUaOB.q', 'manager', 'en', 1, 1, 1
+WHERE NOT EXISTS (SELECT 1 FROM users WHERE email = 'ADMIN');

@@ -6,6 +6,7 @@ require_method('POST');
 start_session();
 
 $body     = read_json_body();
+// Keep the API field name for existing clients; ADMIN is a reserved username.
 $email    = trim((string) ($body['email'] ?? ''));
 $password = (string) ($body['password'] ?? '');
 
@@ -31,7 +32,7 @@ if (!$user || !password_verify($password, $user['password_hash']) || !(bool) $us
     $pdo->prepare('INSERT INTO login_attempts (email) VALUES (?)')->execute([$email]);
     // Deliberately the same message whether the email or the password was
     // wrong, so the response never reveals which accounts exist.
-    json_error('login_failed', 'Incorrect email or password.', 401);
+    json_error('login_failed', 'Incorrect email/username or password.', 401);
 }
 
 $pdo->prepare('DELETE FROM login_attempts WHERE email = ?')->execute([$email]);

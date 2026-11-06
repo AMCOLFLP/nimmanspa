@@ -1,0 +1,4352 @@
+[
+  {
+    "day": 1,
+    "moduleId": "h1",
+    "kind": "lesson",
+    "title": [
+      "Your role in the salon",
+      "บทบาทของคุณในร้านเสริมสวย"
+    ],
+    "objective": [
+      "Introduce your role and name two responsibilities.",
+      "แนะนำตำแหน่งและหน้าที่สองอย่างของคุณ"
+    ],
+    "review": {
+      "prompt": [
+        "Before reading, say your name and job in English.",
+        "ก่อนอ่าน ลองบอกชื่อและอาชีพเป็นภาษาอังกฤษ"
+      ],
+      "model": [
+        "My name is Mali. I am a nail technician.",
+        "ฉันชื่อมะลิ ฉันเป็นช่างทำเล็บ"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "A role uses a noun",
+          "บอกตำแหน่งด้วยคำนาม"
+        ],
+        "body": [
+          "Use I am a + job title: a hair stylist, a nail technician, or a salon assistant. A department is a work area, so say I work in the salon. These sentences answer different questions: your role and your workplace.",
+          "ใช้ I am a ตามด้วยตำแหน่ง เช่น hair stylist ช่างทำผม nail technician ช่างทำเล็บ หรือ salon assistant ผู้ช่วยร้าน ส่วนแผนกเป็นพื้นที่ทำงาน จึงใช้ I work in the salon สองประโยคนี้ตอบเรื่องตำแหน่งและสถานที่ทำงานต่างกัน"
+        ],
+        "example": [
+          "I am a hair stylist. I work in the salon.",
+          "ฉันเป็นช่างทำผม ฉันทำงานในร้านเสริมสวย"
+        ]
+      },
+      {
+        "title": [
+          "Responsibilities use action verbs",
+          "บอกหน้าที่ด้วยคำกริยา"
+        ],
+        "body": [
+          "After I, use a simple action verb: welcome, prepare, check, or explain. Join two duties with and. Select duties you actually perform; a training example is not evidence that you have held that job.",
+          "หลัง I ใช้กริยารูปพื้นฐาน เช่น welcome ต้อนรับ prepare เตรียม check ตรวจสอบ หรือ explain อธิบาย เชื่อมหน้าที่ด้วย and เลือกงานที่คุณทำจริง ตัวอย่างฝึกไม่ใช่หลักฐานว่าคุณเคยทำงานนั้น"
+        ],
+        "example": [
+          "I welcome guests and explain the service menu.",
+          "ฉันต้อนรับลูกค้าและอธิบายเมนูบริการ"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Supervisor",
+        "en": "What is your role?",
+        "th": "คุณทำหน้าที่อะไร"
+      },
+      {
+        "speaker": "Learner",
+        "en": "I am a salon assistant. I prepare the service area.",
+        "th": "ฉันเป็นผู้ช่วยร้านเสริมสวย ฉันเตรียมพื้นที่บริการ"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Say your actual role and two duties. If you are training, say I am a trainee.",
+        "บอกตำแหน่งจริงและหน้าที่สองอย่าง หากกำลังฝึก ให้พูดว่า I am a trainee"
+      ],
+      "model": [
+        "I am a trainee. I welcome guests and check appointments.",
+        "ฉันเป็นผู้ฝึกงาน ฉันต้อนรับลูกค้าและตรวจสอบการนัดหมาย"
+      ],
+      "criteria": [
+        [
+          "Name a truthful role.",
+          "บอกตำแหน่งตามจริง"
+        ],
+        [
+          "Use two action verbs.",
+          "ใช้คำกริยาสองคำ"
+        ],
+        [
+          "Speak in complete sentences.",
+          "พูดเป็นประโยคสมบูรณ์"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "Which sentence names a job?",
+          "ประโยคใดบอกอาชีพ"
+        ],
+        "options": [
+          [
+            "I am in the salon.",
+            "ฉันอยู่ในร้านเสริมสวย"
+          ],
+          [
+            "I am a nail technician.",
+            "ฉันเป็นช่างทำเล็บ"
+          ],
+          [
+            "I have a nail appointment.",
+            "ฉันมีนัดทำเล็บ"
+          ]
+        ],
+        "answer": 1,
+        "explanation": [
+          "A nail technician is a job title; a place or appointment is not.",
+          "Nail technician เป็นตำแหน่งงาน ส่วนอีกสองข้อบอกสถานที่และการนัดหมาย"
+        ]
+      },
+      {
+        "question": [
+          "Which sentence describes a responsibility?",
+          "ประโยคใดอธิบายหน้าที่"
+        ],
+        "options": [
+          [
+            "I am appointments.",
+            "ฉันเป็นการนัดหมาย"
+          ],
+          [
+            "I work appointment.",
+            "ฉันทำงานการนัดหมาย"
+          ],
+          [
+            "I check appointments.",
+            "ฉันตรวจสอบการนัดหมาย"
+          ]
+        ],
+        "answer": 2,
+        "explanation": [
+          "Check is an action verb followed by the thing you check.",
+          "Check เป็นกริยา ตามด้วยสิ่งที่ตรวจสอบ"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 2,
+    "moduleId": "h1",
+    "kind": "lesson",
+    "title": [
+      "CV facts and dates",
+      "ข้อมูลและวันที่ในประวัติย่อ"
+    ],
+    "objective": [
+      "Describe training and employment without changing the facts.",
+      "อธิบายการฝึกอบรมและการทำงานตามข้อเท็จจริง"
+    ],
+    "review": {
+      "prompt": [
+        "Recall one sentence about your role and one duty from Day 1.",
+        "นึกประโยคบอกตำแหน่งและหน้าที่จากวันที่ 1"
+      ],
+      "model": [
+        "I am a salon assistant. I welcome guests.",
+        "ฉันเป็นผู้ช่วยร้านเสริมสวย ฉันต้อนรับลูกค้า"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Present work and finished work",
+          "งานปัจจุบันและงานที่สิ้นสุดแล้ว"
+        ],
+        "body": [
+          "Use I work for a current job and I worked for a finished job. Add at + workplace and from + starting year + to + ending year. If you have no paid experience, describe training honestly instead of inventing employment.",
+          "ใช้ I work สำหรับงานปัจจุบัน และ I worked สำหรับงานที่จบแล้ว เติม at ตามด้วยที่ทำงาน และ from ปีเริ่มต้น to ปีสิ้นสุด หากยังไม่มีประสบการณ์งานที่ได้รับค่าจ้าง ให้บอกการฝึกตามจริง"
+        ],
+        "example": [
+          "I worked at a local salon from 2023 to 2025.",
+          "ฉันเคยทำงานที่ร้านเสริมสวยในท้องถิ่นตั้งแต่ปี 2023 ถึง 2025"
+        ]
+      },
+      {
+        "title": [
+          "Training is specific",
+          "ระบุการฝึกอบรมให้ชัดเจน"
+        ],
+        "body": [
+          "Use I completed + course + in + year for completed training. Use I am studying for ongoing learning. A certificate title must match your document. Keep dates consistent when you later discuss your CV in an interview.",
+          "ใช้ I completed ตามด้วยหลักสูตรและ in ปี สำหรับการฝึกที่จบแล้ว ใช้ I am studying สำหรับสิ่งที่กำลังเรียน ชื่อประกาศนียบัตรต้องตรงกับเอกสาร และใช้วันที่ตรงกันเมื่ออธิบายประวัติย่อในการสัมภาษณ์"
+        ],
+        "example": [
+          "I completed a nail care course in 2025.",
+          "ฉันจบหลักสูตรดูแลเล็บในปี 2025"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Interviewer",
+        "en": "When did you complete your training?",
+        "th": "คุณจบการฝึกอบรมเมื่อไร"
+      },
+      {
+        "speaker": "Applicant",
+        "en": "I completed my hair styling course in 2025.",
+        "th": "ฉันจบหลักสูตรจัดแต่งทรงผมในปี 2025"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Write two CV sentences using your real training and work dates. Replace every fictional detail.",
+        "เขียนประวัติย่อสองประโยคด้วยข้อมูลการฝึกและวันที่ทำงานจริง แทนที่ข้อมูลสมมติทุกจุด"
+      ],
+      "model": [
+        "I am studying nail care. I worked as a receptionist from 2024 to 2025.",
+        "ฉันกำลังเรียนการดูแลเล็บ ฉันเคยเป็นพนักงานต้อนรับตั้งแต่ปี 2024 ถึง 2025"
+      ],
+      "criteria": [
+        [
+          "Separate current and past activity.",
+          "แยกกิจกรรมปัจจุบันและอดีต"
+        ],
+        [
+          "Include an accurate date.",
+          "ระบุวันที่ถูกต้อง"
+        ],
+        [
+          "Use verifiable training information.",
+          "ใช้ข้อมูลการฝึกที่ตรวจสอบได้"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "Your course is still continuing. Which phrase fits?",
+          "หลักสูตรยังเรียนไม่จบ ควรใช้วลีใด"
+        ],
+        "options": [
+          [
+            "I completed hair styling.",
+            "ฉันเรียนการจัดแต่งทรงผมจบแล้ว"
+          ],
+          [
+            "I worked hair styling.",
+            "ฉันทำงานการจัดแต่งทรงผม"
+          ],
+          [
+            "I am studying hair styling.",
+            "ฉันกำลังเรียนการจัดแต่งทรงผม"
+          ]
+        ],
+        "answer": 2,
+        "explanation": [
+          "Am studying describes learning that is still continuing.",
+          "Am studying อธิบายการเรียนที่ยังดำเนินอยู่"
+        ]
+      },
+      {
+        "question": [
+          "Which sentence gives a finished employment period?",
+          "ประโยคใดระบุช่วงงานที่สิ้นสุดแล้ว"
+        ],
+        "options": [
+          [
+            "I worked there from 2022 to 2024.",
+            "ฉันเคยทำงานที่นั่นตั้งแต่ปี 2022 ถึง 2024"
+          ],
+          [
+            "I work there since tomorrow.",
+            "ฉันทำงานที่นั่นตั้งแต่พรุ่งนี้"
+          ],
+          [
+            "I am there in two years.",
+            "ฉันอยู่ที่นั่นในอีกสองปี"
+          ]
+        ],
+        "answer": 0,
+        "explanation": [
+          "Worked and from…to describe a completed period clearly.",
+          "Worked และ from…to บอกช่วงเวลาที่จบแล้วชัดเจน"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 3,
+    "moduleId": "h1",
+    "kind": "lesson",
+    "title": [
+      "Skills and reliable information",
+      "ทักษะและข้อมูลที่เชื่อถือได้"
+    ],
+    "objective": [
+      "Name a real skill and ask for missing workplace information.",
+      "ระบุทักษะจริงและถามข้อมูลสถานที่ทำงานที่ยังขาด"
+    ],
+    "review": {
+      "prompt": [
+        "Give one accurate sentence about completed or ongoing training.",
+        "พูดข้อมูลการฝึกที่จบแล้วหรือกำลังเรียนหนึ่งประโยค"
+      ],
+      "model": [
+        "I am studying hair styling.",
+        "ฉันกำลังเรียนการจัดแต่งทรงผม"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Can plus an action",
+          "Can ตามด้วยการกระทำ"
+        ],
+        "body": [
+          "Use I can + base verb for an ability: I can explain, not I can explaining. Name an observable task instead of saying I can do everything. For a developing skill, I am learning to… tells the listener your current level honestly.",
+          "ใช้ I can ตามด้วยกริยารูปพื้นฐาน เช่น I can explain ไม่ใช่ I can explaining ระบุงานที่สังเกตได้ แทนคำว่าทำได้ทุกอย่าง หากยังพัฒนาอยู่ ใช้ I am learning to… เพื่อบอกระดับปัจจุบันตามจริง"
+        ],
+        "example": [
+          "I can confirm appointments. I am learning to explain nail services in English.",
+          "ฉันยืนยันการนัดหมายได้ ฉันกำลังเรียนการอธิบายบริการเล็บเป็นภาษาอังกฤษ"
+        ]
+      },
+      {
+        "title": [
+          "Ask instead of assuming",
+          "ถามแทนการคาดเดา"
+        ],
+        "body": [
+          "Could you explain…? politely requests information. Use it for a team role, an unfamiliar term, or an employer briefing. I will check… marks information that is not yet confirmed; avoid presenting an example schedule as an actual workplace rule.",
+          "Could you explain…? ใช้ขอข้อมูลอย่างสุภาพ เช่น บทบาททีม คำที่ไม่คุ้น หรือข้อมูลนายจ้าง I will check… บอกว่ายังต้องตรวจสอบ อย่าใช้ตารางสมมติเป็นกฎจริงของสถานที่ทำงาน"
+        ],
+        "example": [
+          "Could you explain the salon assistant's responsibilities?",
+          "ช่วยอธิบายหน้าที่ของผู้ช่วยร้านเสริมสวยได้ไหม"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Supervisor",
+        "en": "Can you explain our booking policy?",
+        "th": "คุณอธิบายนโยบายการจองของเราได้ไหม"
+      },
+      {
+        "speaker": "Learner",
+        "en": "I will check the current policy first. Could you show me where it is?",
+        "th": "ฉันจะตรวจสอบนโยบายปัจจุบันก่อน ช่วยบอกได้ไหมว่าอยู่ที่ไหน"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Name two real abilities, then ask about one unfamiliar workplace detail.",
+        "บอกความสามารถจริงสองอย่าง แล้วถามรายละเอียดงานที่ยังไม่รู้หนึ่งอย่าง"
+      ],
+      "model": [
+        "I can welcome guests and confirm names. Could you explain the booking system?",
+        "ฉันต้อนรับลูกค้าและยืนยันชื่อได้ ช่วยอธิบายระบบจองได้ไหม"
+      ],
+      "criteria": [
+        [
+          "Use can with a base verb.",
+          "ใช้ can กับกริยารูปพื้นฐาน"
+        ],
+        [
+          "State an honest ability.",
+          "บอกความสามารถตามจริง"
+        ],
+        [
+          "Ask a specific question.",
+          "ถามให้เฉพาะเจาะจง"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "Which form follows can?",
+          "รูปคำใดใช้ตามหลัง can"
+        ],
+        "options": [
+          [
+            "I can explain the menu.",
+            "ฉันอธิบายเมนูได้"
+          ],
+          [
+            "I can explaining the menu.",
+            "ฉันสามารถกำลังอธิบายเมนู"
+          ],
+          [
+            "I can explained the menu.",
+            "ฉันสามารถอธิบายแล้วเมนู"
+          ]
+        ],
+        "answer": 0,
+        "explanation": [
+          "A modal such as can takes the base verb explain.",
+          "คำกริยาช่วย can ตามด้วยกริยารูปพื้นฐาน explain"
+        ]
+      },
+      {
+        "question": [
+          "You do not know the current policy. What should you say?",
+          "คุณยังไม่รู้นโยบายปัจจุบัน ควรพูดอย่างไร"
+        ],
+        "options": [
+          [
+            "Our example policy is always correct.",
+            "นโยบายตัวอย่างของเราถูกต้องเสมอ"
+          ],
+          [
+            "I will check the current policy.",
+            "ฉันจะตรวจสอบนโยบายปัจจุบัน"
+          ],
+          [
+            "I can promise any booking time.",
+            "ฉันรับรองเวลาจองได้ทุกเวลา"
+          ]
+        ],
+        "answer": 1,
+        "explanation": [
+          "Will check clearly separates a next action from confirmed information.",
+          "Will check แยกสิ่งที่จะตรวจสอบออกจากข้อมูลที่ยืนยันแล้ว"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 4,
+    "moduleId": "h2",
+    "kind": "lesson",
+    "title": [
+      "Build a clear introduction",
+      "สร้างการแนะนำตัวที่ชัดเจน"
+    ],
+    "objective": [
+      "Connect your name, training and role in a short introduction.",
+      "เชื่อมชื่อ การฝึกอบรม และตำแหน่งเป็นการแนะนำตัวสั้น ๆ"
+    ],
+    "review": {
+      "prompt": [
+        "Recall one can sentence and one truthful training sentence.",
+        "นึกประโยค can และข้อมูลการฝึกตามจริงอย่างละหนึ่งประโยค"
+      ],
+      "model": [
+        "I can welcome guests. I completed a salon course in 2025.",
+        "ฉันต้อนรับลูกค้าได้ ฉันจบหลักสูตรงานร้านเสริมสวยในปี 2025"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Give the listener a sequence",
+          "เรียงข้อมูลให้ผู้ฟังติดตามได้"
+        ],
+        "body": [
+          "Start with your name, continue with training, and finish with your current role or goal. Use one main idea per sentence. An introduction is easier to follow when related information stays together instead of jumping between dates and duties.",
+          "เริ่มด้วยชื่อ ต่อด้วยการฝึกอบรม แล้วจบด้วยตำแหน่งปัจจุบันหรือเป้าหมาย ใช้หนึ่งใจความต่อประโยค การจัดเรื่องที่เกี่ยวกันไว้ด้วยกันช่วยให้ติดตามง่ายกว่าการสลับวันที่และหน้าที่ไปมา"
+        ],
+        "example": [
+          "My name is Dao. I completed a nail course. I am now a salon assistant.",
+          "ฉันชื่อดาว ฉันจบหลักสูตรทำเล็บ ตอนนี้เป็นผู้ช่วยร้านเสริมสวย"
+        ]
+      },
+      {
+        "title": [
+          "Connect with and and now",
+          "เชื่อมด้วย and และ now"
+        ],
+        "body": [
+          "And adds a related fact. Now signals your present situation after a past event. Avoid beginning every sentence with and. Pause between ideas so your listener can hear where training ends and current experience begins.",
+          "And เพิ่มข้อมูลที่สัมพันธ์กัน ส่วน now บอกสถานการณ์ปัจจุบันหลังเหตุการณ์ในอดีต ไม่จำเป็นต้องขึ้นต้นทุกประโยคด้วย and เว้นจังหวะเพื่อให้ผู้ฟังแยกการฝึกในอดีตกับประสบการณ์ปัจจุบันได้"
+        ],
+        "example": [
+          "I studied hair styling and guest service. Now I work at a local salon.",
+          "ฉันเรียนการจัดแต่งทรงผมและบริการลูกค้า ตอนนี้ทำงานที่ร้านเสริมสวยในท้องถิ่น"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Interviewer",
+        "en": "Please introduce yourself.",
+        "th": "กรุณาแนะนำตัว"
+      },
+      {
+        "speaker": "Applicant",
+        "en": "My name is Dao. I completed salon training last year. Now I assist with bookings and guest consultations.",
+        "th": "ฉันชื่อดาว ฉันจบการฝึกงานร้านเสริมสวยปีที่แล้ว ตอนนี้ช่วยดูแลการจองและการปรึกษากับลูกค้า"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Speak for 30 seconds using your own name, training and current situation. Pause after each idea.",
+        "พูด 30 วินาทีด้วยชื่อ การฝึก และสถานการณ์ปัจจุบันของคุณ เว้นจังหวะหลังแต่ละใจความ"
+      ],
+      "model": [
+        "My name is Mali. I am studying nail care and English. I am preparing for my first salon role.",
+        "ฉันชื่อมะลิ ฉันกำลังเรียนการดูแลเล็บและภาษาอังกฤษ ฉันกำลังเตรียมตัวสำหรับงานร้านเสริมสวยครั้งแรก"
+      ],
+      "criteria": [
+        [
+          "Include three clear ideas.",
+          "มีใจความชัดเจนสามอย่าง"
+        ],
+        [
+          "Use your own facts.",
+          "ใช้ข้อมูลของคุณเอง"
+        ],
+        [
+          "Pause between sentences.",
+          "เว้นจังหวะระหว่างประโยค"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "Which word signals the present after past training?",
+          "คำใดบอกสถานการณ์ปัจจุบันหลังการฝึกในอดีต"
+        ],
+        "options": [
+          [
+            "Yesterday",
+            "เมื่อวาน"
+          ],
+          [
+            "Now",
+            "ตอนนี้"
+          ],
+          [
+            "Previously",
+            "ก่อนหน้านี้"
+          ]
+        ],
+        "answer": 1,
+        "explanation": [
+          "Now introduces what is true at the present time.",
+          "Now นำเข้าสิ่งที่เป็นจริงในปัจจุบัน"
+        ]
+      },
+      {
+        "question": [
+          "Which introduction is easiest to follow?",
+          "การแนะนำตัวใดติดตามได้ง่ายที่สุด"
+        ],
+        "options": [
+          [
+            "Several unrelated dates without a role.",
+            "หลายวันที่ไม่สัมพันธ์กันโดยไม่บอกตำแหน่ง"
+          ],
+          [
+            "One long sentence with every detail.",
+            "ประโยคยาวประโยคเดียวรวมทุกรายละเอียด"
+          ],
+          [
+            "Name, training, current role.",
+            "ชื่อ การฝึก ตำแหน่งปัจจุบัน"
+          ]
+        ],
+        "answer": 2,
+        "explanation": [
+          "A clear sequence helps the interviewer connect your background to your role.",
+          "ลำดับที่ชัดเจนช่วยให้ผู้สัมภาษณ์เชื่อมภูมิหลังกับตำแหน่งได้"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 5,
+    "moduleId": "h2",
+    "kind": "lesson",
+    "title": [
+      "Show a strength with evidence",
+      "แสดงจุดแข็งด้วยตัวอย่าง"
+    ],
+    "objective": [
+      "Support one strength with a specific example of your behavior.",
+      "สนับสนุนจุดแข็งหนึ่งอย่างด้วยตัวอย่างพฤติกรรมที่ชัดเจน"
+    ],
+    "review": {
+      "prompt": [
+        "Recall the three-part introduction from Day 4.",
+        "ทบทวนการแนะนำตัวสามส่วนจากวันที่ 4"
+      ],
+      "model": [
+        "My name is Dao. I completed salon training. Now I assist guests.",
+        "ฉันชื่อดาว ฉันจบการฝึกงานร้านเสริมสวย ตอนนี้ช่วยดูแลลูกค้า"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Strength plus example",
+          "จุดแข็งและตัวอย่าง"
+        ],
+        "body": [
+          "Use My strength is + noun or -ing phrase: patience or listening carefully. Then add For example,… with a real action. An example makes a broad quality understandable; friendly alone does not explain what you do for guests.",
+          "ใช้ My strength is ตามด้วยคำนามหรือวลี -ing เช่น patience ความอดทน หรือ listening carefully การฟังอย่างตั้งใจ แล้วเติม For example,… พร้อมการกระทำจริง ตัวอย่างช่วยให้เข้าใจคุณสมบัติที่กว้าง คำว่าเป็นมิตรอย่างเดียวยังไม่บอกการกระทำ"
+        ],
+        "example": [
+          "My strength is careful listening. For example, I repeat the guest's requested nail shape.",
+          "จุดแข็งของฉันคือการฟังอย่างตั้งใจ เช่น ฉันทวนรูปทรงเล็บที่ลูกค้าต้องการ"
+        ]
+      },
+      {
+        "title": [
+          "Explain why it matters",
+          "อธิบายว่ามีประโยชน์อย่างไร"
+        ],
+        "body": [
+          "Because gives a reason. Connect a communication habit to its purpose using because + subject + verb. Keep the claim modest and observable. Say it helps me check the request, rather than claiming that every guest is always satisfied.",
+          "Because ใช้บอกเหตุผล ตามด้วยประธานและกริยา เชื่อมนิสัยการสื่อสารกับจุดประสงค์ ใช้ผลที่สมเหตุสมผลและสังเกตได้ เช่น ช่วยตรวจสอบคำขอ แทนการอ้างว่าลูกค้าทุกคนพอใจเสมอ"
+        ],
+        "example": [
+          "I repeat the length because I want to confirm the guest's request.",
+          "ฉันทวนความยาวเพราะต้องการยืนยันคำขอของลูกค้า"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Interviewer",
+        "en": "What is one of your strengths?",
+        "th": "จุดแข็งอย่างหนึ่งของคุณคืออะไร"
+      },
+      {
+        "speaker": "Applicant",
+        "en": "My strength is careful listening. I repeat the requested haircut length because clear agreement matters.",
+        "th": "จุดแข็งของฉันคือการฟังอย่างตั้งใจ ฉันทวนความยาวผมที่ต้องการเพราะการตกลงให้ชัดเจนเป็นเรื่องสำคัญ"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Choose a real strength. Add one hair or nail example and explain its purpose.",
+        "เลือกจุดแข็งจริง เพิ่มตัวอย่างงานผมหรือเล็บหนึ่งอย่างและอธิบายจุดประสงค์"
+      ],
+      "model": [
+        "My strength is organisation. I check appointment names because I want guests to receive the correct service.",
+        "จุดแข็งของฉันคือการจัดระบบ ฉันตรวจสอบชื่อนัดหมายเพราะต้องการให้ลูกค้าได้รับบริการที่ถูกต้อง"
+      ],
+      "criteria": [
+        [
+          "State one strength.",
+          "ระบุจุดแข็งหนึ่งอย่าง"
+        ],
+        [
+          "Describe a concrete action.",
+          "อธิบายการกระทำที่ชัดเจน"
+        ],
+        [
+          "Explain a relevant reason.",
+          "อธิบายเหตุผลที่เกี่ยวข้อง"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "Which phrase introduces evidence?",
+          "วลีใดนำเข้าสู่ตัวอย่างสนับสนุน"
+        ],
+        "options": [
+          [
+            "My name is…",
+            "ฉันชื่อ…"
+          ],
+          [
+            "Next year,…",
+            "ปีหน้า…"
+          ],
+          [
+            "For example,…",
+            "ตัวอย่างเช่น…"
+          ]
+        ],
+        "answer": 2,
+        "explanation": [
+          "For example signals a particular case supporting the statement.",
+          "For example บอกกรณีเฉพาะที่สนับสนุนข้อความ"
+        ]
+      },
+      {
+        "question": [
+          "Which reason completes I confirm the colour because…?",
+          "เหตุผลใดเติม I confirm the colour because… ได้เหมาะสม"
+        ],
+        "options": [
+          [
+            "I want to check the guest's choice.",
+            "ฉันต้องการตรวจสอบสีที่ลูกค้าเลือก"
+          ],
+          [
+            "a blue bottle.",
+            "ขวดสีน้ำเงิน"
+          ],
+          [
+            "confirming colour.",
+            "กำลังยืนยันสี"
+          ]
+        ],
+        "answer": 0,
+        "explanation": [
+          "Because needs a reason expressed as a clause with a subject and verb.",
+          "Because ต้องตามด้วยเหตุผลที่มีประธานและกริยา"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 6,
+    "moduleId": "h2",
+    "kind": "lesson",
+    "title": [
+      "Career goals and honest limits",
+      "เป้าหมายอาชีพและขอบเขตความสามารถ"
+    ],
+    "objective": [
+      "Explain your motivation and identify a skill you are developing.",
+      "อธิบายแรงจูงใจและทักษะที่คุณกำลังพัฒนา"
+    ],
+    "review": {
+      "prompt": [
+        "State a strength with one example, without looking at yesterday's model.",
+        "บอกจุดแข็งพร้อมตัวอย่างโดยไม่ดูแบบจากเมื่อวาน"
+      ],
+      "model": [
+        "My strength is organisation. I check appointment details before the guest arrives.",
+        "จุดแข็งของฉันคือการจัดระบบ ฉันตรวจสอบรายละเอียดนัดหมายก่อนลูกค้ามาถึง"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Would like to expresses a goal",
+          "Would like to ใช้บอกเป้าหมาย"
+        ],
+        "body": [
+          "Use I would like to + base verb for a professional goal. Add because to give a personal reason connected to the role. A goal describes what you hope to do; it does not claim you already have that experience.",
+          "ใช้ I would like to ตามด้วยกริยารูปพื้นฐานสำหรับเป้าหมายอาชีพ เติม because เพื่อให้เหตุผลส่วนตัวที่เกี่ยวกับงาน เป้าหมายบอกสิ่งที่หวังจะทำ ไม่ได้อ้างว่ามีประสบการณ์นั้นแล้ว"
+        ],
+        "example": [
+          "I would like to work in an international salon because I enjoy meeting guests from different places.",
+          "ฉันอยากทำงานในร้านเสริมสวยนานาชาติเพราะชอบพบลูกค้าจากหลายที่"
+        ]
+      },
+      {
+        "title": [
+          "Developing skills without exaggeration",
+          "บอกทักษะที่กำลังพัฒนาโดยไม่กล่าวเกินจริง"
+        ],
+        "body": [
+          "I am improving my… names an area for development. Follow it with a specific learning action in the present: I practise… every day. This gives useful information about progress without using vague promises such as I will be perfect soon.",
+          "I am improving my… บอกด้านที่กำลังพัฒนา ตามด้วยกิจกรรมการเรียนที่ชัดเจนในปัจจุบัน เช่น I practise… every day ข้อมูลนี้แสดงการพัฒนาได้ดีกว่าสัญญากว้าง ๆ ว่าจะสมบูรณ์แบบในเร็ว ๆ นี้"
+        ],
+        "example": [
+          "I am improving my consultation English. I practise confirming hair and nail preferences every day.",
+          "ฉันกำลังพัฒนาภาษาอังกฤษสำหรับการปรึกษา ฉันฝึกยืนยันความต้องการเรื่องผมและเล็บทุกวัน"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Interviewer",
+        "en": "What are you working to improve?",
+        "th": "คุณกำลังพัฒนาเรื่องอะไร"
+      },
+      {
+        "speaker": "Applicant",
+        "en": "I am improving my spoken English. I practise explaining services and asking follow-up questions.",
+        "th": "ฉันกำลังพัฒนาภาษาอังกฤษพูด ฉันฝึกอธิบายบริการและถามคำถามต่อเนื่อง"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Give one career goal, its reason, and one learning habit you actually use.",
+        "บอกเป้าหมายอาชีพ เหตุผล และนิสัยการเรียนที่คุณทำจริงอย่างละหนึ่งข้อ"
+      ],
+      "model": [
+        "I would like to assist international guests. I practise polite questions for ten minutes each day.",
+        "ฉันอยากช่วยดูแลลูกค้านานาชาติ ฉันฝึกคำถามสุภาพวันละสิบนาที"
+      ],
+      "criteria": [
+        [
+          "Use would like to correctly.",
+          "ใช้ would like to ถูกต้อง"
+        ],
+        [
+          "Connect the goal to a reason.",
+          "เชื่อมเป้าหมายกับเหตุผล"
+        ],
+        [
+          "Name a real learning action.",
+          "ระบุสิ่งที่เรียนจริง"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "Which sentence states a future professional goal?",
+          "ประโยคใดบอกเป้าหมายอาชีพในอนาคต"
+        ],
+        "options": [
+          [
+            "I would like to work in an international team.",
+            "ฉันอยากทำงานในทีมงานนานาชาติ"
+          ],
+          [
+            "I worked in an international team.",
+            "ฉันเคยทำงานในทีมงานนานาชาติ"
+          ],
+          [
+            "I am working in an international team.",
+            "ฉันกำลังทำงานในทีมงานนานาชาติ"
+          ]
+        ],
+        "answer": 0,
+        "explanation": [
+          "Would like to describes an aspiration; worked describes past experience.",
+          "Would like to บอกความตั้งใจ ส่วน worked บอกประสบการณ์ในอดีต"
+        ]
+      },
+      {
+        "question": [
+          "Which answer shows a concrete improvement habit?",
+          "คำตอบใดแสดงนิสัยพัฒนาที่ชัดเจน"
+        ],
+        "options": [
+          [
+            "I will know everything soon.",
+            "ฉันจะรู้ทุกอย่างเร็ว ๆ นี้"
+          ],
+          [
+            "I practise appointment questions every evening.",
+            "ฉันฝึกคำถามเรื่องนัดหมายทุกเย็น"
+          ],
+          [
+            "English is important.",
+            "ภาษาอังกฤษสำคัญ"
+          ]
+        ],
+        "answer": 1,
+        "explanation": [
+          "A named activity and frequency show what you actually do.",
+          "กิจกรรมและความถี่ที่ระบุชัดแสดงสิ่งที่คุณทำจริง"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 7,
+    "moduleId": "h2",
+    "kind": "checkpoint",
+    "title": [
+      "Week 1 checkpoint: your professional story",
+      "ทบทวนสัปดาห์ที่ 1 เรื่องราวอาชีพของคุณ"
+    ],
+    "objective": [
+      "Deliver a truthful introduction and answer a follow-up question.",
+      "แนะนำตัวตามจริงและตอบคำถามต่อเนื่อง"
+    ],
+    "review": {
+      "prompt": [
+        "Without notes, recall your role, training, strength and goal.",
+        "ทบทวนตำแหน่ง การฝึก จุดแข็ง และเป้าหมายโดยไม่ดูบันทึก"
+      ],
+      "model": [
+        "I am a trainee. I am studying nail care. I listen carefully and would like to assist international guests.",
+        "ฉันเป็นผู้ฝึกงาน กำลังเรียนการดูแลเล็บ ฉันฟังอย่างตั้งใจและอยากช่วยดูแลลูกค้านานาชาติ"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Combine facts without a list",
+          "เชื่อมข้อเท็จจริงให้เป็นเรื่องราว"
+        ],
+        "body": [
+          "Use now to move from training to your present role, for example to support a strength, and because to explain a goal. These links show relationships between ideas. Use only facts that match your own CV or training record.",
+          "ใช้ now เชื่อมการฝึกกับตำแหน่งปัจจุบัน for example สนับสนุนจุดแข็ง และ because อธิบายเป้าหมาย คำเชื่อมแสดงความสัมพันธ์ระหว่างใจความ ใช้เฉพาะข้อมูลที่ตรงกับประวัติย่อหรือบันทึกการฝึกของคุณ"
+        ],
+        "example": [
+          "I completed training last year. Now I assist guests. My strength is listening; for example, I confirm their preferences.",
+          "ฉันจบการฝึกปีที่แล้ว ตอนนี้ช่วยดูแลลูกค้า จุดแข็งคือการฟัง เช่น ฉันยืนยันความต้องการของลูกค้า"
+        ]
+      },
+      {
+        "title": [
+          "Repair a missing detail",
+          "แก้ไขข้อมูลที่ตกหล่น"
+        ],
+        "body": [
+          "A follow-up asks for more detail about your answer. Respond to that detail directly. If you miss a word, say Could you repeat the question, please? If you give a wrong date, say Sorry, I meant… and correct it calmly.",
+          "คำถามต่อเนื่องต้องการรายละเอียดเพิ่ม ให้ตอบตรงประเด็นนั้น หากฟังคำไม่ทัน พูด Could you repeat the question, please? หากบอกวันที่ผิด พูด Sorry, I meant… แล้วแก้ไขอย่างใจเย็น"
+        ],
+        "example": [
+          "Sorry, I meant 2025, not 2024.",
+          "ขอโทษ ฉันหมายถึงปี 2025 ไม่ใช่ 2024"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Interviewer",
+        "en": "Please introduce yourself.",
+        "th": "กรุณาแนะนำตัว"
+      },
+      {
+        "speaker": "Applicant",
+        "en": "I am Dao, a salon assistant. I completed training in 2025, and I enjoy helping guests choose services.",
+        "th": "ฉันชื่อดาว เป็นผู้ช่วยร้านเสริมสวย ฉันจบการฝึกในปี 2025 และชอบช่วยลูกค้าเลือกบริการ"
+      },
+      {
+        "speaker": "Interviewer",
+        "en": "What do you do to check their choices?",
+        "th": "คุณทำอย่างไรเพื่อตรวจสอบสิ่งที่ลูกค้าเลือก"
+      },
+      {
+        "speaker": "Applicant",
+        "en": "I repeat the requested service and ask if it is correct.",
+        "th": "ฉันทวนบริการที่ต้องการและถามว่าถูกต้องไหม"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Record a 60–90 second introduction, then answer one unscripted follow-up. Compare it with your real CV.",
+        "บันทึกการแนะนำตัว 60–90 วินาที แล้วตอบคำถามต่อเนื่องที่ไม่ได้เตรียมหนึ่งข้อ เทียบกับประวัติย่อจริง"
+      ],
+      "model": [
+        "My strength is listening. For example, I confirm a guest's requested nail shape before discussing the service.",
+        "จุดแข็งของฉันคือการฟัง เช่น ฉันยืนยันรูปทรงเล็บที่ลูกค้าต้องการก่อนพูดคุยเรื่องบริการ"
+      ],
+      "criteria": [
+        [
+          "Include role, training, strength and goal.",
+          "มีตำแหน่ง การฝึก จุดแข็ง และเป้าหมาย"
+        ],
+        [
+          "Support a strength with an example.",
+          "มีตัวอย่างสนับสนุนจุดแข็ง"
+        ],
+        [
+          "Answer or clarify the follow-up.",
+          "ตอบหรือขอความชัดเจนเรื่องคำถามต่อเนื่อง"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "You said the wrong training year. What is the clearest repair?",
+          "คุณบอกปีที่ฝึกผิด ควรแก้ไขอย่างไร"
+        ],
+        "options": [
+          [
+            "My training is good.",
+            "การฝึกของฉันดี"
+          ],
+          [
+            "Sorry, I meant 2025.",
+            "ขอโทษ ฉันหมายถึงปี 2025"
+          ],
+          [
+            "Yes, many years.",
+            "ใช่ หลายปี"
+          ]
+        ],
+        "answer": 1,
+        "explanation": [
+          "I meant identifies and replaces the incorrect detail.",
+          "I meant ระบุและแทนที่รายละเอียดที่ผิด"
+        ]
+      },
+      {
+        "question": [
+          "What makes a strength convincing in an introduction?",
+          "อะไรทำให้จุดแข็งในการแนะนำตัวน่าเชื่อถือ"
+        ],
+        "options": [
+          [
+            "Repeating perfect several times.",
+            "พูดว่าสมบูรณ์แบบซ้ำหลายครั้ง"
+          ],
+          [
+            "Using a colleague's experience as your own.",
+            "ใช้ประสบการณ์เพื่อนร่วมงานเป็นของตนเอง"
+          ],
+          [
+            "A truthful example of your action.",
+            "ตัวอย่างการกระทำจริงของคุณ"
+          ]
+        ],
+        "answer": 2,
+        "explanation": [
+          "A specific truthful action gives the listener evidence.",
+          "การกระทำจริงที่ชัดเจนเป็นหลักฐานให้ผู้ฟัง"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 8,
+    "moduleId": "h3",
+    "kind": "lesson",
+    "title": [
+      "Service names and guest needs",
+      "ชื่อบริการและความต้องการลูกค้า"
+    ],
+    "objective": [
+      "Distinguish hair and nail services and clarify a general request.",
+      "แยกบริการผมและเล็บและถามให้คำขอชัดเจน"
+    ],
+    "review": {
+      "prompt": [
+        "Recall a polite phrase for asking for more information.",
+        "ทบทวนวลีสุภาพสำหรับขอข้อมูลเพิ่ม"
+      ],
+      "model": [
+        "Could you explain that, please?",
+        "ช่วยอธิบายเรื่องนั้นได้ไหม"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Name the service accurately",
+          "เรียกชื่อบริการให้ถูกต้อง"
+        ],
+        "body": [
+          "A haircut changes hair length or shape; a blow-dry is a styling service. A manicure concerns hands and nails; a pedicure concerns feet and toenails. These are service labels. Use the actual menu to explain what a particular booking includes.",
+          "Haircut คือการตัดผม ส่วน blow-dry คือบริการเป่าจัดทรง Manicure เป็นบริการมือและเล็บมือ ส่วน pedicure เป็นบริการเท้าและเล็บเท้า คำเหล่านี้เป็นชื่อบริการ รายละเอียดที่รวมอยู่ต้องดูจากเมนูจริง"
+        ],
+        "example": [
+          "Would you like a manicure or a pedicure?",
+          "คุณต้องการทำเล็บมือหรือเล็บเท้า"
+        ]
+      },
+      {
+        "title": [
+          "Start broad, then narrow",
+          "เริ่มคำถามกว้างแล้วเจาะจง"
+        ],
+        "body": [
+          "What would you like today? invites the guest to explain. Which service would you like? asks them to select from known choices. If the guest says just my hair, ask a focused follow-up instead of choosing a service for them.",
+          "What would you like today? เปิดโอกาสให้ลูกค้าอธิบาย ส่วน Which service would you like? ให้เลือกบริการที่ทราบแล้ว หากลูกค้าพูดเพียงว่าทำผม ให้ถามเจาะจงแทนการเลือกให้"
+        ],
+        "example": [
+          "Would you like a haircut, a blow-dry, or both?",
+          "คุณต้องการตัดผม เป่าจัดทรง หรือทั้งสองอย่าง"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Guest",
+        "en": "I would like to do my nails.",
+        "th": "ฉันอยากทำเล็บ"
+      },
+      {
+        "speaker": "Staff",
+        "en": "Certainly. Would you like a manicure or a pedicure?",
+        "th": "ได้เลย คุณต้องการทำเล็บมือหรือเล็บเท้า"
+      },
+      {
+        "speaker": "Guest",
+        "en": "A manicure, please.",
+        "th": "ทำเล็บมือ"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Clarify a vague hair request, then a vague nail request. Check the service name before discussing details.",
+        "ถามคำขอทำผมและเล็บที่ไม่ชัดเจนให้แน่ใจ ยืนยันชื่อบริการก่อนคุยรายละเอียด"
+      ],
+      "model": [
+        "Which service would you like: a haircut or a blow-dry?",
+        "คุณต้องการบริการใด ตัดผมหรือเป่าจัดทรง"
+      ],
+      "criteria": [
+        [
+          "Use the correct service noun.",
+          "ใช้ชื่อบริการถูกต้อง"
+        ],
+        [
+          "Ask a focused follow-up.",
+          "ถามต่ออย่างเฉพาะเจาะจง"
+        ],
+        [
+          "Let the guest choose.",
+          "ให้ลูกค้าเป็นผู้เลือก"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "Which service refers to hands and nails?",
+          "บริการใดเกี่ยวกับมือและเล็บมือ"
+        ],
+        "options": [
+          [
+            "Pedicure",
+            "ทำเล็บเท้า"
+          ],
+          [
+            "Blow-dry",
+            "เป่าจัดทรง"
+          ],
+          [
+            "Manicure",
+            "ทำเล็บมือ"
+          ]
+        ],
+        "answer": 2,
+        "explanation": [
+          "Manicure and pedicure refer to different service areas.",
+          "Manicure และ pedicure หมายถึงบริการคนละส่วน"
+        ]
+      },
+      {
+        "question": [
+          "The guest says I want my hair done. What comes next?",
+          "ลูกค้าบอกว่าอยากทำผม ควรถามอะไรต่อ"
+        ],
+        "options": [
+          [
+            "Would you like a haircut or a blow-dry?",
+            "ต้องการตัดผมหรือเป่าจัดทรง"
+          ],
+          [
+            "I have booked a haircut for you.",
+            "ฉันจองตัดผมให้แล้ว"
+          ],
+          [
+            "You need both services.",
+            "คุณต้องทำทั้งสองบริการ"
+          ]
+        ],
+        "answer": 0,
+        "explanation": [
+          "A focused question checks the intended service before booking.",
+          "คำถามที่เจาะจงตรวจสอบบริการที่ต้องการก่อนจอง"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 9,
+    "moduleId": "h3",
+    "kind": "lesson",
+    "title": [
+      "Hair length and reference pictures",
+      "ความยาวผมและภาพอ้างอิง"
+    ],
+    "objective": [
+      "Clarify the difference between final length and amount removed.",
+      "แยกความยาวที่ต้องการเหลือกับความยาวที่ตัดออก"
+    ],
+    "review": {
+      "prompt": [
+        "Ask which hair service a guest wants.",
+        "ถามว่าลูกค้าต้องการบริการผมแบบใด"
+      ],
+      "model": [
+        "Would you like a haircut or a blow-dry?",
+        "คุณต้องการตัดผมหรือเป่าจัดทรง"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Two different length questions",
+          "คำถามความยาวสองแบบ"
+        ],
+        "body": [
+          "How much would you like taken off? asks about the amount removed. How long would you like it? asks about the final length. A little is not a precise measurement; confirm a number or an agreed reference before continuing the consultation.",
+          "How much would you like taken off? ถามปริมาณที่ตัดออก ส่วน How long would you like it? ถามความยาวที่เหลือ คำว่า a little ไม่ชัดเจน ควรยืนยันตัวเลขหรือจุดอ้างอิงที่ตกลงกันก่อนคุยต่อ"
+        ],
+        "example": [
+          "About two centimetres off, keeping it below the shoulders. Is that right?",
+          "ตัดออกประมาณสองเซนติเมตร โดยยังยาวเลยไหล่ ถูกต้องไหม"
+        ]
+      },
+      {
+        "title": [
+          "Use a picture to clarify",
+          "ใช้ภาพช่วยถามให้ชัดเจน"
+        ],
+        "body": [
+          "In this picture locates a detail. Which part do you like? separates length, shape, and styling preferences. A picture supports conversation but does not promise an identical result. Ask what matters most rather than assuming every feature is wanted.",
+          "In this picture ระบุตำแหน่งในภาพ Which part do you like? ช่วยแยกความยาว รูปทรง และการจัดทรง ภาพช่วยการสนทนาแต่ไม่ใช่คำรับรองผลเหมือนกันทุกอย่าง ถามสิ่งที่สำคัญที่สุดแทนการเดา"
+        ],
+        "example": [
+          "Do you like the length or the shape in this picture?",
+          "คุณชอบความยาวหรือรูปทรงในภาพนี้"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Guest",
+        "en": "Just a little off, please.",
+        "th": "ตัดออกนิดเดียว"
+      },
+      {
+        "speaker": "Staff",
+        "en": "Do you mean about two centimetres, keeping it below your shoulders?",
+        "th": "หมายถึงประมาณสองเซนติเมตร โดยยังยาวเลยไหล่ใช่ไหม"
+      },
+      {
+        "speaker": "Guest",
+        "en": "Yes, keep it below my shoulders.",
+        "th": "ใช่ ให้ยังยาวเลยไหล่"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Use a fictional reference picture. Ask about final length and repeat the agreed amount.",
+        "ใช้ภาพอ้างอิงสมมติ ถามความยาวที่ต้องการและทวนปริมาณที่ตกลง"
+      ],
+      "model": [
+        "You would like two centimetres off and the length below your shoulders. Is that correct?",
+        "คุณต้องการตัดออกสองเซนติเมตรและให้ยาวเลยไหล่ ถูกต้องไหม"
+      ],
+      "criteria": [
+        [
+          "Distinguish amount and final length.",
+          "แยกปริมาณตัดกับความยาวที่เหลือ"
+        ],
+        [
+          "Confirm an agreed reference.",
+          "ยืนยันจุดอ้างอิงที่ตกลง"
+        ],
+        [
+          "Ask for confirmation.",
+          "ถามเพื่อยืนยัน"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "Two centimetres off describes what?",
+          "Two centimetres off หมายถึงอะไร"
+        ],
+        "options": [
+          [
+            "The amount to remove.",
+            "ปริมาณที่จะตัดออก"
+          ],
+          [
+            "The total final hair length.",
+            "ความยาวผมทั้งหมดหลังตัด"
+          ],
+          [
+            "The appointment length.",
+            "ระยะเวลานัดหมาย"
+          ]
+        ],
+        "answer": 0,
+        "explanation": [
+          "Off refers to the amount removed in this request.",
+          "Off ในคำขอนี้หมายถึงส่วนที่ตัดออก"
+        ]
+      },
+      {
+        "question": [
+          "A guest shows a picture. Which question clarifies it?",
+          "ลูกค้าแสดงภาพ คำถามใดช่วยให้ชัดเจน"
+        ],
+        "options": [
+          [
+            "You want everything exactly the same.",
+            "คุณต้องการเหมือนทุกอย่างแน่นอน"
+          ],
+          [
+            "Which part of this style do you like?",
+            "คุณชอบส่วนใดของทรงนี้"
+          ],
+          [
+            "This result is guaranteed.",
+            "รับรองผลแบบนี้"
+          ]
+        ],
+        "answer": 1,
+        "explanation": [
+          "Asking about a feature reveals the actual preference.",
+          "การถามลักษณะเฉพาะทำให้รู้ความต้องการจริง"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 10,
+    "moduleId": "h3",
+    "kind": "lesson",
+    "title": [
+      "Nail shape, length and finish",
+      "รูปทรง ความยาว และผิวเล็บ"
+    ],
+    "objective": [
+      "Confirm three separate nail preferences in clear English.",
+      "ยืนยันความต้องการเล็บสามด้านเป็นภาษาอังกฤษ"
+    ],
+    "review": {
+      "prompt": [
+        "Recall the difference between amount removed and final length.",
+        "ทบทวนความต่างระหว่างปริมาณที่ตัดออกกับความยาวที่เหลือ"
+      ],
+      "model": [
+        "How long would you like it? asks about the final length.",
+        "How long would you like it? ถามความยาวที่ต้องการเหลือ"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Separate shape from length",
+          "แยกรูปทรงกับความยาว"
+        ],
+        "body": [
+          "Short and long describe length. Round and square describe shape. Ask one question at a time so the guest can choose each detail. Do not treat short as a shape or assume the same preference for every guest.",
+          "Short และ long บอกความยาว ส่วน round และ square บอกรูปทรง ถามทีละเรื่องเพื่อให้ลูกค้าเลือกแต่ละรายละเอียด อย่าถือว่าคำว่า short เป็นรูปทรง หรือเดาว่าทุกคนต้องการเหมือนกัน"
+        ],
+        "example": [
+          "What shape would you like? Would you prefer them short or long?",
+          "คุณต้องการรูปทรงแบบไหน ชอบเล็บสั้นหรือยาว"
+        ]
+      },
+      {
+        "title": [
+          "Check the finish with a sample",
+          "ตรวจสอบลักษณะผิวด้วยตัวอย่าง"
+        ],
+        "body": [
+          "Glossy means shiny; matte means not shiny. Use this and that when pointing to labelled samples. Confirm the sample name or number because words such as pink can refer to many shades. Show available choices from the current menu.",
+          "Glossy หมายถึงมันวาว ส่วน matte หมายถึงด้าน ใช้ this และ that เมื่อชี้ตัวอย่างที่มีป้าย ยืนยันชื่อหรือหมายเลขเพราะคำว่า pink อาจหมายถึงชมพูหลายเฉด ให้ดูตัวเลือกที่มีจริงในเมนูปัจจุบัน"
+        ],
+        "example": [
+          "Would you prefer this glossy pink or that matte pink?",
+          "คุณชอบสีชมพูมันวาวนี้หรือสีชมพูด้านนั้น"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Staff",
+        "en": "What nail shape would you like?",
+        "th": "คุณต้องการรูปทรงเล็บแบบไหน"
+      },
+      {
+        "speaker": "Guest",
+        "en": "Round and short, with a glossy finish.",
+        "th": "ทรงมนและสั้น พร้อมผิวมันวาว"
+      },
+      {
+        "speaker": "Staff",
+        "en": "Short, round nails with a glossy finish. Is that correct?",
+        "th": "เล็บสั้นทรงมนและผิวมันวาว ถูกต้องไหม"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Ask about shape, length and finish, then repeat all three choices.",
+        "ถามรูปทรง ความยาว และลักษณะผิว แล้วทวนทั้งสามอย่าง"
+      ],
+      "model": [
+        "You would like short, square nails with a matte finish. Is that right?",
+        "คุณต้องการเล็บสั้นทรงเหลี่ยมและผิวด้าน ใช่ไหม"
+      ],
+      "criteria": [
+        [
+          "Ask three separate details.",
+          "ถามรายละเอียดสามด้าน"
+        ],
+        [
+          "Use the correct descriptors.",
+          "ใช้คำบรรยายถูกต้อง"
+        ],
+        [
+          "Repeat the complete preference.",
+          "ทวนความต้องการครบถ้วน"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "Which word describes shape?",
+          "คำใดบอกรูปทรง"
+        ],
+        "options": [
+          [
+            "Short",
+            "สั้น"
+          ],
+          [
+            "Round",
+            "มน"
+          ],
+          [
+            "Glossy",
+            "มันวาว"
+          ]
+        ],
+        "answer": 1,
+        "explanation": [
+          "Round describes shape; short is length and glossy is finish.",
+          "Round บอกรูปทรง short บอกความยาว glossy บอกลักษณะผิว"
+        ]
+      },
+      {
+        "question": [
+          "Why confirm a colour sample number?",
+          "ทำไมควรยืนยันหมายเลขตัวอย่างสี"
+        ],
+        "options": [
+          [
+            "Every pink is identical.",
+            "สีชมพูทุกสีเหมือนกัน"
+          ],
+          [
+            "A number confirms the price automatically.",
+            "หมายเลขยืนยันราคาโดยอัตโนมัติ"
+          ],
+          [
+            "A colour name can cover several shades.",
+            "ชื่อสีเดียวอาจมีหลายเฉด"
+          ]
+        ],
+        "answer": 2,
+        "explanation": [
+          "The sample identifies a specific shade; price needs its own confirmation.",
+          "ตัวอย่างระบุเฉดที่ชัดเจน ส่วนราคาต้องยืนยันต่างหาก"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 11,
+    "moduleId": "h3",
+    "kind": "lesson",
+    "title": [
+      "Explain a service and its price",
+      "อธิบายบริการและราคา"
+    ],
+    "objective": [
+      "State what a service includes, its estimated duration and confirmed price.",
+      "บอกสิ่งที่รวมในบริการ เวลาโดยประมาณ และราคาที่ยืนยันแล้ว"
+    ],
+    "review": {
+      "prompt": [
+        "Recall three nail preferences you can confirm.",
+        "ทบทวนความต้องการเล็บสามด้านที่ยืนยันได้"
+      ],
+      "model": [
+        "Short, round nails with a glossy finish. Is that correct?",
+        "เล็บสั้นทรงมนและผิวมันวาว ถูกต้องไหม"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Includes versus costs extra",
+          "สิ่งที่รวมและสิ่งที่คิดเพิ่ม"
+        ],
+        "body": [
+          "Includes introduces an item already covered by the quoted service. Costs extra identifies a separate charge. Explain the actual menu clearly before asking for agreement. All prices in these examples are fictional practice figures; replace them with confirmed workplace information.",
+          "Includes บอกสิ่งที่รวมในราคาบริการแล้ว Costs extra บอกค่าใช้จ่ายแยก อธิบายเมนูจริงให้ชัดก่อนขอการตกลง ราคาตัวอย่างทั้งหมดเป็นตัวเลขสมมติสำหรับฝึก ให้ใช้ข้อมูลที่ยืนยันแล้วของสถานที่ทำงานแทน"
+        ],
+        "example": [
+          "This manicure costs 30 dollars. Nail art costs extra.",
+          "บริการทำเล็บมือนี้ราคา 30 ดอลลาร์ ลายเล็บคิดเพิ่ม"
+        ]
+      },
+      {
+        "title": [
+          "Duration and total price",
+          "ระยะเวลาและราคารวม"
+        ],
+        "body": [
+          "Takes about + time gives an estimate, not a guaranteed finish time. Costs + amount states a price. Distinguish thirty and thirteen by saying the number clearly and repeating the total when needed. Check any service charges before quoting the final total.",
+          "Takes about ตามด้วยเวลาเป็นการประมาณ ไม่ใช่การรับรองเวลาเสร็จ Costs ตามด้วยจำนวนเงินบอกราคา พูด thirty และ thirteen ให้ชัด และทวนยอดรวมเมื่อจำเป็น ตรวจสอบค่าบริการอื่นก่อนแจ้งยอดสุดท้าย"
+        ],
+        "example": [
+          "The blow-dry takes about thirty minutes. The confirmed total is forty dollars.",
+          "การเป่าจัดทรงใช้เวลาประมาณสามสิบนาที ยอดรวมที่ยืนยันแล้วคือสี่สิบดอลลาร์"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Guest",
+        "en": "Is nail art included?",
+        "th": "รวมลายเล็บไหม"
+      },
+      {
+        "speaker": "Staff",
+        "en": "It costs extra. Let me check the total before you decide.",
+        "th": "มีค่าใช้จ่ายเพิ่ม ขอฉันตรวจสอบยอดรวมก่อนคุณตัดสินใจ"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Use a fictional menu to explain one included item, one extra charge and an estimated duration.",
+        "ใช้เมนูสมมติอธิบายสิ่งที่รวม รายการคิดเพิ่ม และเวลาโดยประมาณ"
+      ],
+      "model": [
+        "This service includes the listed finish and takes about forty minutes. I will confirm the total with nail art.",
+        "บริการนี้รวมลักษณะผิวตามรายการและใช้เวลาประมาณสี่สิบนาที ฉันจะยืนยันยอดรวมเมื่อเพิ่มลายเล็บ"
+      ],
+      "criteria": [
+        [
+          "Separate included and extra items.",
+          "แยกสิ่งที่รวมกับรายการเพิ่ม"
+        ],
+        [
+          "Mark duration as an estimate.",
+          "ระบุเวลาเป็นการประมาณ"
+        ],
+        [
+          "Confirm the total before agreement.",
+          "ยืนยันยอดรวมก่อนตกลง"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "What does costs extra mean?",
+          "Costs extra หมายถึงอะไร"
+        ],
+        "options": [
+          [
+            "It is already included.",
+            "รวมอยู่แล้ว"
+          ],
+          [
+            "The service takes longer.",
+            "บริการใช้เวลานานขึ้น"
+          ],
+          [
+            "There is an additional charge.",
+            "มีค่าใช้จ่ายเพิ่มเติม"
+          ]
+        ],
+        "answer": 2,
+        "explanation": [
+          "Extra describes an added cost here, not duration.",
+          "Extra ในที่นี้บอกค่าใช้จ่ายเพิ่ม ไม่ใช่ระยะเวลา"
+        ]
+      },
+      {
+        "question": [
+          "Which phrase marks an estimated duration?",
+          "วลีใดบอกเวลาโดยประมาณ"
+        ],
+        "options": [
+          [
+            "It takes about thirty minutes.",
+            "ใช้เวลาประมาณสามสิบนาที"
+          ],
+          [
+            "It costs thirty dollars.",
+            "ราคา 30 ดอลลาร์"
+          ],
+          [
+            "It finishes at exactly three.",
+            "เสร็จตรงสามโมง"
+          ]
+        ],
+        "answer": 0,
+        "explanation": [
+          "About makes the duration an estimate.",
+          "About ทำให้ระยะเวลาเป็นการประมาณ"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 12,
+    "moduleId": "h3",
+    "kind": "lesson",
+    "title": [
+      "Tools, products and permission",
+      "อุปกรณ์ ผลิตภัณฑ์ และการขออนุญาต"
+    ],
+    "objective": [
+      "Identify a tool and ask permission before a proposed action.",
+      "ระบุอุปกรณ์และขออนุญาตก่อนการกระทำที่เสนอ"
+    ],
+    "review": {
+      "prompt": [
+        "Explain the difference between includes and costs extra.",
+        "อธิบายความต่างระหว่าง includes และ costs extra"
+      ],
+      "model": [
+        "Includes means covered by the service; costs extra means an additional charge.",
+        "Includes คือรวมในบริการแล้ว ส่วน costs extra คือคิดเงินเพิ่ม"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Tool or product?",
+          "อุปกรณ์หรือผลิตภัณฑ์"
+        ],
+        "body": [
+          "A comb and a nail file are tools. Shampoo and nail polish are products. Use This is a… to identify an item and It is used for… to explain its general purpose. These sentences practise vocabulary, not instructions for carrying out a procedure.",
+          "หวี comb และตะไบเล็บ nail file เป็นอุปกรณ์ ส่วน shampoo และ nail polish เป็นผลิตภัณฑ์ ใช้ This is a… ระบุสิ่งของ และ It is used for… บอกจุดประสงค์ทั่วไป ประโยคนี้ฝึกศัพท์ ไม่ใช่ขั้นตอนปฏิบัติบริการ"
+        ],
+        "example": [
+          "This is a comb. This is a bottle of shampoo.",
+          "นี่คือหวี นี่คือขวดแชมพู"
+        ]
+      },
+      {
+        "title": [
+          "Permission needs a response",
+          "การขออนุญาตต้องรอคำตอบ"
+        ],
+        "body": [
+          "May I…? asks permission for an action. Would you like…? offers a choice. Explain what you propose, ask, and allow the guest to answer. Silence is not a clear yes. Reconfirm when the proposed service changes.",
+          "May I…? ขออนุญาตทำบางอย่าง ส่วน Would you like…? เสนอตัวเลือก อธิบายสิ่งที่จะทำ ถาม และให้ลูกค้าตอบ ความเงียบไม่ใช่คำตอบตกลงที่ชัดเจน ควรยืนยันใหม่เมื่อบริการที่เสนอเปลี่ยนไป"
+        ],
+        "example": [
+          "May I show you the colour samples before we confirm your choice?",
+          "ขออนุญาตให้ดูตัวอย่างสีก่อนยืนยันตัวเลือกได้ไหม"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Staff",
+        "en": "Would you like to see the nail colour samples?",
+        "th": "คุณอยากดูตัวอย่างสีเล็บไหม"
+      },
+      {
+        "speaker": "Guest",
+        "en": "Yes, please.",
+        "th": "อยากดู"
+      },
+      {
+        "speaker": "Staff",
+        "en": "May I place them here for you?",
+        "th": "ขอวางไว้ตรงนี้ให้คุณได้ไหม"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Identify one hair tool and one nail product. Then ask permission for a consultation action and wait for an answer.",
+        "ระบุอุปกรณ์ผมและผลิตภัณฑ์เล็บอย่างละหนึ่ง จากนั้นขออนุญาตทำสิ่งหนึ่งในการปรึกษาและรอคำตอบ"
+      ],
+      "model": [
+        "This is a comb, and this is nail polish. May I show you the service menu?",
+        "นี่คือหวี และนี่คือยาทาเล็บ ขอให้ดูเมนูบริการได้ไหม"
+      ],
+      "criteria": [
+        [
+          "Name items accurately.",
+          "เรียกสิ่งของถูกต้อง"
+        ],
+        [
+          "Ask permission politely.",
+          "ขออนุญาตอย่างสุภาพ"
+        ],
+        [
+          "Allow a clear response.",
+          "เปิดโอกาสให้ตอบชัดเจน"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "Which item is a tool?",
+          "สิ่งใดเป็นอุปกรณ์"
+        ],
+        "options": [
+          [
+            "A nail file.",
+            "ตะไบเล็บ"
+          ],
+          [
+            "Nail polish.",
+            "ยาทาเล็บ"
+          ],
+          [
+            "Shampoo.",
+            "แชมพู"
+          ]
+        ],
+        "answer": 0,
+        "explanation": [
+          "A nail file is a tool; polish and shampoo are products.",
+          "ตะไบเล็บเป็นอุปกรณ์ ส่วนยาทาเล็บและแชมพูเป็นผลิตภัณฑ์"
+        ]
+      },
+      {
+        "question": [
+          "Which phrase asks permission?",
+          "วลีใดขออนุญาต"
+        ],
+        "options": [
+          [
+            "I showed you the samples.",
+            "ฉันให้ดูตัวอย่างแล้ว"
+          ],
+          [
+            "May I show you the samples?",
+            "ขอให้ดูตัวอย่างได้ไหม"
+          ],
+          [
+            "You must choose this sample.",
+            "คุณต้องเลือกตัวอย่างนี้"
+          ]
+        ],
+        "answer": 1,
+        "explanation": [
+          "May I asks whether the proposed action is acceptable.",
+          "May I ถามว่าผู้ฟังยอมรับการกระทำที่เสนอหรือไม่"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 13,
+    "moduleId": "h3",
+    "kind": "lesson",
+    "title": [
+      "Product facts and clear boundaries",
+      "ข้อมูลผลิตภัณฑ์และขอบเขตที่ชัดเจน"
+    ],
+    "objective": [
+      "Explain approved product information and check an unknown claim.",
+      "อธิบายข้อมูลผลิตภัณฑ์ที่อนุมัติและตรวจสอบสิ่งที่ยังไม่รู้"
+    ],
+    "review": {
+      "prompt": [
+        "Ask permission to show a product or sample.",
+        "ขออนุญาตแสดงผลิตภัณฑ์หรือตัวอย่าง"
+      ],
+      "model": [
+        "May I show you the product information?",
+        "ขอให้ดูข้อมูลผลิตภัณฑ์ได้ไหม"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Attribute the information",
+          "บอกที่มาของข้อมูล"
+        ],
+        "body": [
+          "According to the product label,… identifies where a fact comes from. Use only current approved information. For means intended use, as in a product for styling. It does not mean a guaranteed result for every guest or permission to invent benefits.",
+          "According to the product label,… บอกแหล่งข้อมูล ใช้เฉพาะข้อมูลปัจจุบันที่ได้รับอนุมัติ For บอกจุดประสงค์ เช่น ผลิตภัณฑ์สำหรับจัดทรง ไม่ได้หมายถึงการรับรองผลกับทุกคนหรืออนุญาตให้แต่งประโยชน์ขึ้นเอง"
+        ],
+        "example": [
+          "According to this label, it is a styling product.",
+          "ตามฉลากนี้ ผลิตภัณฑ์นี้ใช้สำหรับจัดทรง"
+        ]
+      },
+      {
+        "title": [
+          "Separate knowing from checking",
+          "แยกสิ่งที่รู้กับสิ่งที่ต้องตรวจสอบ"
+        ],
+        "body": [
+          "I will check the approved information is useful when you cannot answer. Avoid absolute words such as always, guaranteed, and everyone unless the statement is genuinely supported and appropriate. For a suitability concern, use the workplace consultation process and the responsible colleague.",
+          "เมื่อยังตอบไม่ได้ ใช้ I will check the approved information หลีกเลี่ยงคำรับรองเด็ดขาดอย่าง always guaranteed และ everyone เว้นแต่ข้อมูลรองรับและเหมาะสมจริง หากมีข้อกังวลเรื่องความเหมาะสม ให้ใช้กระบวนการปรึกษาของสถานที่ทำงานและผู้รับผิดชอบ"
+        ],
+        "example": [
+          "I cannot confirm that claim. Let me check the approved information with my supervisor.",
+          "ฉันยังยืนยันคำกล่าวนั้นไม่ได้ ขอฉันตรวจสอบข้อมูลที่อนุมัติกับหัวหน้างาน"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Guest",
+        "en": "Will this polish last exactly two weeks for everyone?",
+        "th": "ยาทาเล็บนี้จะอยู่ครบสองสัปดาห์สำหรับทุกคนไหม"
+      },
+      {
+        "speaker": "Staff",
+        "en": "I cannot promise that. I can check the approved product information for you.",
+        "th": "ฉันรับรองแบบนั้นไม่ได้ แต่ตรวจสอบข้อมูลผลิตภัณฑ์ที่อนุมัติให้ได้"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Use a real approved label or a fictional label supplied by your teacher. Explain one fact and identify one unanswered question.",
+        "ใช้ฉลากจริงที่อนุมัติหรือฉลากสมมติจากครู อธิบายข้อเท็จจริงหนึ่งอย่างและคำถามที่ยังตอบไม่ได้"
+      ],
+      "model": [
+        "The label describes this as a styling product. I will check your question with the responsible colleague.",
+        "ฉลากระบุว่าเป็นผลิตภัณฑ์จัดทรง ฉันจะตรวจสอบคำถามของคุณกับเพื่อนร่วมงานที่รับผิดชอบ"
+      ],
+      "criteria": [
+        [
+          "Identify the information source.",
+          "บอกแหล่งข้อมูล"
+        ],
+        [
+          "Avoid unsupported promises.",
+          "ไม่ให้คำสัญญาที่ไม่มีข้อมูลรองรับ"
+        ],
+        [
+          "Name a clear checking action.",
+          "ระบุการตรวจสอบที่ชัดเจน"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "Which phrase identifies a source?",
+          "วลีใดบอกแหล่งข้อมูล"
+        ],
+        "options": [
+          [
+            "I suppose everybody…",
+            "ฉันคิดว่าทุกคน…"
+          ],
+          [
+            "According to the label,…",
+            "ตามฉลาก…"
+          ],
+          [
+            "It always guarantees…",
+            "รับรองเสมอว่า…"
+          ]
+        ],
+        "answer": 1,
+        "explanation": [
+          "According to attributes the statement to a specific source.",
+          "According to ระบุว่าข้อความมาจากแหล่งใด"
+        ]
+      },
+      {
+        "question": [
+          "You cannot confirm a product claim. What is appropriate?",
+          "คุณยืนยันคำกล่าวเรื่องผลิตภัณฑ์ไม่ได้ ควรพูดอย่างไร"
+        ],
+        "options": [
+          [
+            "It definitely works for everyone.",
+            "ได้ผลกับทุกคนแน่นอน"
+          ],
+          [
+            "The price proves the result.",
+            "ราคาพิสูจน์ผลลัพธ์"
+          ],
+          [
+            "Let me check the approved information.",
+            "ขอฉันตรวจสอบข้อมูลที่อนุมัติ"
+          ]
+        ],
+        "answer": 2,
+        "explanation": [
+          "Checking provides a responsible next step without inventing facts.",
+          "การตรวจสอบเป็นขั้นตอนถัดไปที่รับผิดชอบโดยไม่แต่งข้อมูล"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 14,
+    "moduleId": "h3",
+    "kind": "checkpoint",
+    "title": [
+      "Week 2 checkpoint: explain and confirm",
+      "ทบทวนสัปดาห์ที่ 2 อธิบายและยืนยัน"
+    ],
+    "objective": [
+      "Combine service vocabulary, preferences, price and permission.",
+      "รวมชื่อบริการ ความต้องการ ราคา และการขออนุญาต"
+    ],
+    "review": {
+      "prompt": [
+        "Recall a hair length question, a nail shape question and a price phrase.",
+        "ทบทวนคำถามความยาวผม รูปทรงเล็บ และวลีบอกราคา"
+      ],
+      "model": [
+        "How much would you like taken off? What shape would you like? The total is forty dollars.",
+        "ต้องการตัดออกเท่าไร ต้องการรูปทรงแบบไหน ยอดรวมคือสี่สิบดอลลาร์"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Use a complete read-back",
+          "ทวนรายละเอียดให้ครบ"
+        ],
+        "body": [
+          "A read-back repeats the important details for correction. Use So, you would like… followed by the service and preferences. Add the confirmed price separately. Finish with Is that correct? so the guest can change a mistaken detail before agreement.",
+          "การทวนเปิดโอกาสให้แก้ไขรายละเอียดสำคัญ ใช้ So, you would like… ตามด้วยบริการและความต้องการ แล้วบอกราคาที่ยืนยันแล้วแยกต่างหาก จบด้วย Is that correct? เพื่อให้แก้ข้อมูลผิดก่อนตกลง"
+        ],
+        "example": [
+          "So, you would like a manicure with short, round nails. The total is thirty dollars. Is that correct?",
+          "สรุปว่าต้องการทำเล็บมือแบบสั้นทรงมน ยอดรวมสามสิบดอลลาร์ ถูกต้องไหม"
+        ]
+      },
+      {
+        "title": [
+          "Check a change explicitly",
+          "ยืนยันการเปลี่ยนแปลงให้ชัด"
+        ],
+        "body": [
+          "Instead of replaces an earlier choice. When the guest changes a preference, repeat the new choice and check whether it affects the service or price. Do not carry the old choice forward in the summary. Use a fictional menu for this rehearsal.",
+          "Instead of ใช้แทนตัวเลือกเดิม เมื่อลูกค้าเปลี่ยนความต้องการ ให้ทวนตัวเลือกใหม่และตรวจสอบผลต่อบริการหรือราคา อย่าใช้ตัวเลือกเก่าในสรุป ใช้เมนูสมมติสำหรับการฝึกนี้"
+        ],
+        "example": [
+          "You would like a glossy finish instead of matte. Let me confirm the updated details.",
+          "คุณต้องการผิวมันวาวแทนผิวด้าน ขอฉันยืนยันรายละเอียดที่ปรับใหม่"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Guest",
+        "en": "Actually, I would prefer square nails.",
+        "th": "จริง ๆ แล้วฉันชอบเล็บทรงเหลี่ยมมากกว่า"
+      },
+      {
+        "speaker": "Staff",
+        "en": "Square instead of round, keeping them short. Is that right?",
+        "th": "ทรงเหลี่ยมแทนทรงมน โดยยังให้สั้น ใช่ไหม"
+      },
+      {
+        "speaker": "Guest",
+        "en": "Yes, that is right.",
+        "th": "ใช่ ถูกต้อง"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Run two short consultations: one haircut and one manicure. Use these fictional confirmed menu facts: the haircut total is 40 dollars and the manicure total is 30 dollars, including all charges; the preference changes below do not change those totals. The hair guest changes from three to two centimetres off, keeping the final length below the shoulders. The nail guest changes from round to square, keeping the nails short with a glossy finish. Clarify each change, confirm the total and obtain clear agreement. For real workplace practice, replace these figures with verified menu facts.",
+        "ฝึกปรึกษาสั้นสองครั้งสำหรับตัดผมและทำเล็บมือ ใช้ข้อมูลเมนูสมมติที่ยืนยันแล้วดังนี้ ตัดผมยอดรวม 40 ดอลลาร์ และทำเล็บมือยอดรวม 30 ดอลลาร์ รวมค่าใช้จ่ายทั้งหมด การเปลี่ยนความต้องการต่อไปนี้ไม่ทำให้ยอดเปลี่ยน ลูกค้าทำผมเปลี่ยนจากตัดออกสามเป็นสองเซนติเมตร โดยความยาวที่เหลือยังเลยไหล่ ลูกค้าทำเล็บเปลี่ยนจากทรงมนเป็นทรงเหลี่ยม โดยยังสั้นและผิวมันวาว ถามการเปลี่ยนให้ชัด ยืนยันยอดรวม และขอคำตกลงชัดเจน หากฝึกในสถานที่ทำงานจริง ให้แทนตัวเลขด้วยข้อมูลเมนูที่ตรวจสอบแล้ว"
+      ],
+      "model": [
+        "Hair consultation — Staff: You originally requested three centimetres off. Would you like to keep that choice? Guest: Actually, only two centimetres, please. Staff: Two centimetres off instead of three, keeping the length below your shoulders. The confirmed total is 40 dollars, including all charges. Is that correct, and would you like to proceed? Guest: Yes, that is correct. Please go ahead. Nail consultation — Staff: You chose short, round nails with a glossy finish. Is that still your preference? Guest: I would prefer square instead of round. Staff: Short, square nails with a glossy finish. The total remains 30 dollars, including all charges. Is that correct, and would you like to proceed? Guest: Yes, please.",
+        "ปรึกษาทำผม — พนักงาน: เดิมคุณต้องการตัดออกสามเซนติเมตร ยังต้องการตามนั้นไหม ลูกค้า: ขอเพียงสองเซนติเมตรแทน พนักงาน: ตัดออกสองแทนสามเซนติเมตร โดยยังยาวเลยไหล่ ยอดรวมที่ยืนยันคือ 40 ดอลลาร์ รวมค่าใช้จ่ายทั้งหมด ถูกต้องไหม และต้องการดำเนินการต่อไหม ลูกค้า: ใช่ ถูกต้อง เริ่มได้เลย ปรึกษาทำเล็บ — พนักงาน: คุณเลือกเล็บสั้นทรงมนและผิวมันวาว ยังต้องการแบบนี้ไหม ลูกค้า: ฉันชอบทรงเหลี่ยมแทนทรงมน พนักงาน: เล็บสั้นทรงเหลี่ยมและผิวมันวาว ยอดรวมยังเป็น 30 ดอลลาร์ รวมค่าใช้จ่ายทั้งหมด ถูกต้องไหม และต้องการดำเนินการต่อไหม ลูกค้า: ใช่ เริ่มได้เลย"
+      ],
+      "criteria": [
+        [
+          "Summarise service and preferences.",
+          "สรุปบริการและความต้องการ"
+        ],
+        [
+          "Confirm price and any change.",
+          "ยืนยันราคาและสิ่งที่เปลี่ยน"
+        ],
+        [
+          "Ask for clear agreement.",
+          "ขอคำตกลงที่ชัดเจน"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "What should a read-back invite?",
+          "การทวนควรเปิดโอกาสให้ทำอะไร"
+        ],
+        "options": [
+          [
+            "Automatic payment.",
+            "ชำระเงินโดยอัตโนมัติ"
+          ],
+          [
+            "A new unrelated service.",
+            "บริการใหม่ที่ไม่เกี่ยวข้อง"
+          ],
+          [
+            "Confirmation or correction.",
+            "ยืนยันหรือแก้ไข"
+          ]
+        ],
+        "answer": 2,
+        "explanation": [
+          "A read-back checks shared understanding before proceeding.",
+          "การทวนตรวจสอบความเข้าใจร่วมกันก่อนดำเนินการ"
+        ]
+      },
+      {
+        "question": [
+          "The guest changes round to square. What belongs in the final summary?",
+          "ลูกค้าเปลี่ยนทรงมนเป็นทรงเหลี่ยม สรุปควรระบุอะไร"
+        ],
+        "options": [
+          [
+            "The new square shape.",
+            "ทรงเหลี่ยมที่เลือกใหม่"
+          ],
+          [
+            "The original round shape.",
+            "ทรงมนที่เลือกเดิม"
+          ],
+          [
+            "Both shapes without clarification.",
+            "ทั้งสองทรงโดยไม่ถามเพิ่ม"
+          ]
+        ],
+        "answer": 0,
+        "explanation": [
+          "The final summary must reflect the latest confirmed preference.",
+          "สรุปสุดท้ายต้องตรงกับความต้องการล่าสุดที่ยืนยันแล้ว"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 15,
+    "moduleId": "h4",
+    "kind": "lesson",
+    "title": [
+      "Book the correct appointment",
+      "จองนัดหมายให้ถูกต้อง"
+    ],
+    "objective": [
+      "Check a name, service and exact time before confirming a booking.",
+      "ตรวจสอบชื่อ บริการ และเวลาที่แน่นอนก่อนยืนยันการจอง"
+    ],
+    "review": {
+      "prompt": [
+        "Give a read-back of a service and its preferences.",
+        "ทวนบริการและความต้องการหนึ่งรายการ"
+      ],
+      "model": [
+        "A manicure with short, square nails. Is that correct?",
+        "ทำเล็บมือแบบสั้นทรงเหลี่ยม ถูกต้องไหม"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Ask for missing booking details",
+          "ถามรายละเอียดการจองที่ยังขาด"
+        ],
+        "body": [
+          "May I have your name? collects a name politely. Could you spell that, please? checks unfamiliar spelling. Which service would you like? identifies the booking type. Ask only for information needed by the booking process, and repeat uncertain details instead of guessing.",
+          "May I have your name? ขอชื่ออย่างสุภาพ Could you spell that, please? ตรวจสอบการสะกดชื่อที่ไม่คุ้น Which service would you like? ระบุบริการที่จะจอง ถามเฉพาะข้อมูลที่ระบบจองต้องใช้ และทวนสิ่งที่ไม่แน่ใจแทนการเดา"
+        ],
+        "example": [
+          "May I have your name? Could you spell your surname, please?",
+          "ขอทราบชื่อได้ไหม ช่วยสะกดนามสกุลได้ไหม"
+        ]
+      },
+      {
+        "title": [
+          "At for time, on for day",
+          "At สำหรับเวลา on สำหรับวัน"
+        ],
+        "body": [
+          "Use at three thirty and on Tuesday. Confirm morning or afternoon when needed. I can offer… describes an available slot only after checking the schedule; I will check… describes a search. Finish by reading back the service, date and time.",
+          "ใช้ at three thirty และ on Tuesday ยืนยันเช้าหรือบ่ายเมื่อจำเป็น I can offer… บอกเวลาที่ว่างหลังตรวจตารางแล้ว ส่วน I will check… บอกว่าจะค้นหา จบด้วยการทวนบริการ วันที่ และเวลา"
+        ],
+        "example": [
+          "Your haircut is on Tuesday at three thirty in the afternoon.",
+          "คุณมีนัดตัดผมวันอังคารเวลาบ่ายสามโมงครึ่ง"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Guest",
+        "en": "Could I book a manicure tomorrow?",
+        "th": "ขอจองทำเล็บมือพรุ่งนี้ได้ไหม"
+      },
+      {
+        "speaker": "Staff",
+        "en": "Let me check availability. Would ten thirty in the morning suit you?",
+        "th": "ขอตรวจสอบเวลาว่างก่อน สิบโมงครึ่งตอนเช้าสะดวกไหม"
+      },
+      {
+        "speaker": "Guest",
+        "en": "Yes, please.",
+        "th": "สะดวก"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Use a fictional schedule. Book one hair appointment and repeat a name, service, day and time.",
+        "ใช้ตารางสมมติ จองนัดทำผมและทวนชื่อ บริการ วัน และเวลา"
+      ],
+      "model": [
+        "Dao, your blow-dry is on Friday at two in the afternoon. Is that correct?",
+        "คุณดาว นัดเป่าจัดทรงของคุณคือวันศุกร์เวลาบ่ายสอง ถูกต้องไหม"
+      ],
+      "criteria": [
+        [
+          "Check availability before offering.",
+          "ตรวจเวลาว่างก่อนเสนอ"
+        ],
+        [
+          "Clarify any uncertain name or time.",
+          "ถามชื่อหรือเวลาที่ยังไม่แน่ใจ"
+        ],
+        [
+          "Read back all booking details.",
+          "ทวนรายละเอียดการจองครบถ้วน"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "Which sentence uses time prepositions correctly?",
+          "ประโยคใดใช้คำบุพบทเวลาถูกต้อง"
+        ],
+        "options": [
+          [
+            "On Friday at two thirty.",
+            "วันศุกร์เวลาสองโมงครึ่ง"
+          ],
+          [
+            "At Friday on two thirty.",
+            "ใช้ at กับวันและ on กับเวลาผิด"
+          ],
+          [
+            "In Friday from two thirty.",
+            "ใช้คำบอกวันและเวลาผิด"
+          ]
+        ],
+        "answer": 0,
+        "explanation": [
+          "On introduces a day; at introduces a clock time.",
+          "On ใช้กับวัน และ at ใช้กับเวลานาฬิกา"
+        ]
+      },
+      {
+        "question": [
+          "You did not catch the surname. What should you ask?",
+          "คุณฟังนามสกุลไม่ชัด ควรถามอย่างไร"
+        ],
+        "options": [
+          [
+            "May I choose another name?",
+            "ขอเลือกชื่ออื่นได้ไหม"
+          ],
+          [
+            "Could you spell your surname, please?",
+            "ช่วยสะกดนามสกุลได้ไหม"
+          ],
+          [
+            "You must be the previous guest.",
+            "คุณต้องเป็นลูกค้าคนก่อนแน่"
+          ]
+        ],
+        "answer": 1,
+        "explanation": [
+          "Spelling checks the exact name without making an assumption.",
+          "การสะกดช่วยตรวจสอบชื่อที่แน่นอนโดยไม่คาดเดา"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 16,
+    "moduleId": "h4",
+    "kind": "lesson",
+    "title": [
+      "Consultation and a changed decision",
+      "การปรึกษาและการเปลี่ยนการตัดสินใจ"
+    ],
+    "objective": [
+      "Use open questions, summaries and renewed agreement when a guest changes their mind.",
+      "ใช้คำถามเปิด สรุป และขอคำตกลงใหม่เมื่อลูกค้าเปลี่ยนใจ"
+    ],
+    "review": {
+      "prompt": [
+        "Recall how to confirm a booking day and time.",
+        "ทบทวนการยืนยันวันและเวลานัดหมาย"
+      ],
+      "model": [
+        "Your manicure is on Tuesday at ten thirty in the morning.",
+        "คุณมีนัดทำเล็บมือวันอังคารเวลาสิบโมงครึ่งตอนเช้า"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Open questions before choices",
+          "ถามเปิดก่อนให้ตัวเลือก"
+        ],
+        "body": [
+          "What would you like to change? invites a fuller answer than Do you want it shorter? The second question checks one possibility. Use an open question first, listen, then narrow the discussion to the guest’s stated priorities rather than your own assumptions.",
+          "What would you like to change? เปิดโอกาสให้ตอบกว้างกว่า Do you want it shorter? ซึ่งตรวจสอบเพียงตัวเลือกเดียว เริ่มด้วยคำถามเปิด ฟัง แล้วเจาะจงสิ่งที่ลูกค้าให้ความสำคัญแทนการเดาเอง"
+        ],
+        "example": [
+          "What would you like to change about your hairstyle today?",
+          "วันนี้คุณอยากเปลี่ยนอะไรเกี่ยวกับทรงผม"
+        ]
+      },
+      {
+        "title": [
+          "Agreement can change",
+          "ลูกค้าเปลี่ยนการตกลงได้"
+        ],
+        "body": [
+          "That is fine acknowledges a changed decision. Before we continue,… introduces a fresh check. Repeat the revised service and confirm any changed cost. A previous yes does not answer a new proposal, so ask again and allow a clear response.",
+          "That is fine รับทราบการเปลี่ยนใจ Before we continue,… นำเข้าสู่การตรวจสอบใหม่ ทวนบริการที่ปรับและยืนยันค่าใช้จ่ายที่เปลี่ยน คำตกลงเดิมไม่ใช่คำตอบของข้อเสนอใหม่ จึงต้องถามและรอคำตอบชัดเจน"
+        ],
+        "example": [
+          "That is fine. Before we continue, would you like to keep the original colour?",
+          "ได้เลย ก่อนทำต่อ คุณต้องการคงสีเดิมไว้ใช่ไหม"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Guest",
+        "en": "I have changed my mind about the nail colour.",
+        "th": "ฉันเปลี่ยนใจเรื่องสีเล็บ"
+      },
+      {
+        "speaker": "Staff",
+        "en": "That is fine. Which colour would you prefer now?",
+        "th": "ได้เลย ตอนนี้คุณชอบสีใด"
+      },
+      {
+        "speaker": "Guest",
+        "en": "This pale pink, please.",
+        "th": "สีชมพูอ่อนนี้"
+      },
+      {
+        "speaker": "Staff",
+        "en": "Pale pink instead of red. Let us confirm the revised details.",
+        "th": "ชมพูอ่อนแทนสีแดง มายืนยันรายละเอียดใหม่กัน"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Role-play a guest changing a hair or nail preference. Acknowledge, clarify and confirm again.",
+        "จำลองลูกค้าเปลี่ยนความต้องการผมหรือเล็บ รับทราบ ถามให้ชัด และยืนยันอีกครั้ง"
+      ],
+      "model": [
+        "Of course. You would like to keep the length and change only the styling. Is that right?",
+        "ได้เลย คุณต้องการคงความยาวและเปลี่ยนเฉพาะการจัดทรง ใช่ไหม"
+      ],
+      "criteria": [
+        [
+          "Begin with an open question.",
+          "เริ่มด้วยคำถามเปิด"
+        ],
+        [
+          "Acknowledge the changed decision.",
+          "รับทราบการเปลี่ยนใจ"
+        ],
+        [
+          "Obtain updated agreement.",
+          "ขอคำตกลงสำหรับข้อมูลใหม่"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "Which question invites the broadest response?",
+          "คำถามใดเปิดให้ตอบได้กว้างที่สุด"
+        ],
+        "options": [
+          [
+            "Do you want short nails?",
+            "คุณต้องการเล็บสั้นไหม"
+          ],
+          [
+            "What would you like to change?",
+            "คุณอยากเปลี่ยนอะไร"
+          ],
+          [
+            "Is this red correct?",
+            "สีแดงนี้ถูกต้องไหม"
+          ]
+        ],
+        "answer": 1,
+        "explanation": [
+          "What would you like… invites the guest to describe their own priorities.",
+          "What would you like… เปิดให้ลูกค้าบอกสิ่งที่ต้องการเอง"
+        ]
+      },
+      {
+        "question": [
+          "A guest changes the proposed service. What is needed?",
+          "ลูกค้าเปลี่ยนบริการที่เสนอ ต้องทำอะไร"
+        ],
+        "options": [
+          [
+            "Rely on the earlier yes.",
+            "ใช้คำตกลงก่อนหน้า"
+          ],
+          [
+            "Continue with the original service.",
+            "ทำบริการเดิมต่อ"
+          ],
+          [
+            "Confirm the revised details and agreement.",
+            "ยืนยันรายละเอียดใหม่และการตกลง"
+          ]
+        ],
+        "answer": 2,
+        "explanation": [
+          "New details need a new check of shared understanding and permission.",
+          "รายละเอียดใหม่ต้องตรวจความเข้าใจและความยินยอมอีกครั้ง"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 17,
+    "moduleId": "h4",
+    "kind": "lesson",
+    "title": [
+      "Respond to a concern calmly",
+      "ตอบข้อกังวลอย่างใจเย็น"
+    ],
+    "objective": [
+      "Acknowledge a complaint, clarify the detail and explain an approved next step.",
+      "รับทราบข้อร้องเรียน ถามรายละเอียด และบอกขั้นตอนถัดไปที่อนุมัติ"
+    ],
+    "review": {
+      "prompt": [
+        "Ask an open question about a guest’s preference.",
+        "ถามคำถามเปิดเรื่องความต้องการลูกค้า"
+      ],
+      "model": [
+        "What would you like to change about the style?",
+        "คุณอยากเปลี่ยนอะไรเกี่ยวกับทรงนี้"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Acknowledge before solving",
+          "รับทราบก่อนแก้ปัญหา"
+        ],
+        "body": [
+          "I understand that… repeats the concern without arguing. I am sorry about the delay acknowledges inconvenience. Avoid but immediately after an apology because it can sound dismissive. Ask What concerns you most? when the exact problem is unclear.",
+          "I understand that… ทวนข้อกังวลโดยไม่โต้แย้ง I am sorry about the delay รับทราบความไม่สะดวก หลีกเลี่ยง but ต่อทันทีหลังขอโทษเพราะอาจฟังเหมือนไม่ใส่ใจ ถ้าปัญหาไม่ชัดให้ถาม What concerns you most?"
+        ],
+        "example": [
+          "I am sorry about the wait. I understand you have another appointment.",
+          "ขอโทษที่ให้รอ ฉันเข้าใจว่าคุณมีนัดอื่น"
+        ]
+      },
+      {
+        "title": [
+          "Offer only an approved next step",
+          "เสนอเฉพาะขั้นตอนที่ทำได้ตามอนุมัติ"
+        ],
+        "body": [
+          "I can check… and I will ask… name actions within your role. Refunds, free services and revised technical work may require approval. If discomfort is reported, pause and contact the responsible colleague under workplace procedure rather than diagnosing or dismissing it.",
+          "I can check… และ I will ask… ระบุสิ่งที่อยู่ในหน้าที่ การคืนเงิน บริการฟรี และการแก้งานอาจต้องอนุมัติ หากลูกค้ารายงานความไม่สบาย ให้หยุดพักและติดต่อผู้รับผิดชอบตามขั้นตอน แทนการวินิจฉัยหรือมองข้าม"
+        ],
+        "example": [
+          "I will pause the service and ask my supervisor to assist.",
+          "ฉันจะหยุดบริการไว้ก่อนและขอให้หัวหน้างานช่วย"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Guest",
+        "en": "This is not the nail colour I requested.",
+        "th": "นี่ไม่ใช่สีเล็บที่ฉันขอ"
+      },
+      {
+        "speaker": "Staff",
+        "en": "I am sorry. Let us check the agreed sample, and I will ask my supervisor about the available next step.",
+        "th": "ขอโทษ มาตรวจตัวอย่างสีที่ตกลงกัน และฉันจะถามหัวหน้างานเรื่องขั้นตอนถัดไปที่ทำได้"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Respond to a fictional wait-time complaint. Acknowledge, clarify and offer one action you can verify.",
+        "ตอบข้อร้องเรียนสมมติเรื่องรอ รับทราบ ถามให้ชัด และเสนอสิ่งหนึ่งที่ตรวจสอบได้"
+      ],
+      "model": [
+        "I am sorry about the delay. What time do you need to leave? I will check the schedule with reception.",
+        "ขอโทษที่ล่าช้า คุณต้องออกกี่โมง ฉันจะตรวจตารางกับพนักงานต้อนรับ"
+      ],
+      "criteria": [
+        [
+          "Acknowledge the specific concern.",
+          "รับทราบข้อกังวลที่เฉพาะเจาะจง"
+        ],
+        [
+          "Ask one useful question.",
+          "ถามคำถามที่มีประโยชน์หนึ่งข้อ"
+        ],
+        [
+          "Avoid an unauthorised promise.",
+          "ไม่ให้คำสัญญาเกินอำนาจ"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "Which response acknowledges a delay?",
+          "คำตอบใดรับทราบความล่าช้า"
+        ],
+        "options": [
+          [
+            "You are wrong about the time.",
+            "คุณจำเวลาผิด"
+          ],
+          [
+            "Everybody waits here.",
+            "ทุกคนก็รอที่นี่"
+          ],
+          [
+            "I am sorry about the wait.",
+            "ขอโทษที่ให้รอ"
+          ]
+        ],
+        "answer": 2,
+        "explanation": [
+          "The apology addresses the inconvenience directly.",
+          "คำขอโทษกล่าวถึงความไม่สะดวกโดยตรง"
+        ]
+      },
+      {
+        "question": [
+          "You cannot authorise a refund. Which response fits?",
+          "คุณไม่มีอำนาจคืนเงิน ควรตอบอย่างไร"
+        ],
+        "options": [
+          [
+            "I will ask my supervisor about the options.",
+            "ฉันจะถามหัวหน้างานเรื่องทางเลือก"
+          ],
+          [
+            "I promise a full refund now.",
+            "ฉันรับรองคืนเงินทั้งหมดเดี๋ยวนี้"
+          ],
+          [
+            "There are never any options.",
+            "ไม่มีทางเลือกใดเลย"
+          ]
+        ],
+        "answer": 0,
+        "explanation": [
+          "Asking the supervisor provides a next step without promising an unapproved outcome.",
+          "การถามหัวหน้าเป็นขั้นตอนถัดไปโดยไม่รับรองผลที่ยังไม่อนุมัติ"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 18,
+    "moduleId": "h4",
+    "kind": "lesson",
+    "title": [
+      "Recommend without pressure",
+      "แนะนำโดยไม่กดดัน"
+    ],
+    "objective": [
+      "Link an optional recommendation to a stated need and respect a refusal.",
+      "เชื่อมคำแนะนำที่เลือกได้กับความต้องการและเคารพการปฏิเสธ"
+    ],
+    "review": {
+      "prompt": [
+        "Recall an approved next-step phrase for a concern.",
+        "ทบทวนวลีบอกขั้นตอนถัดไปสำหรับข้อกังวล"
+      ],
+      "model": [
+        "I will check the available options with my supervisor.",
+        "ฉันจะตรวจสอบทางเลือกที่มีอยู่กับหัวหน้างาน"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Need before recommendation",
+          "เข้าใจความต้องการก่อนแนะนำ"
+        ],
+        "body": [
+          "You mentioned… links the recommendation to something the guest actually said. You might like… offers a possibility rather than an instruction. Explain a relevant feature from approved information, then state the confirmed additional cost before asking whether the guest is interested.",
+          "You mentioned… เชื่อมกับสิ่งที่ลูกค้าพูดจริง You might like… เสนอความเป็นไปได้แทนการสั่ง อธิบายคุณสมบัติที่เกี่ยวข้องจากข้อมูลที่อนุมัติ แล้วแจ้งราคาเพิ่มที่ยืนยันก่อนถามความสนใจ"
+        ],
+        "example": [
+          "You mentioned wanting a glossy finish. Would you like to see the available options and prices?",
+          "คุณบอกว่าต้องการผิวมันวาว อยากดูตัวเลือกและราคาไหม"
+        ]
+      },
+      {
+        "title": [
+          "Make optional mean optional",
+          "ให้ตัวเลือกเป็นสิ่งที่เลือกได้จริง"
+        ],
+        "body": [
+          "Would you like to add…? gives a choice. No problem closes a declined offer politely. Avoid repeating the offer after a clear no or suggesting the original service is inadequate. If accepted, update the total and reconfirm it before agreement.",
+          "Would you like to add…? เปิดให้เลือก No problem จบข้อเสนอที่ถูกปฏิเสธอย่างสุภาพ อย่าเสนอซ้ำหลังปฏิเสธชัดเจนหรือทำให้บริการเดิมดูไม่เพียงพอ หากตอบรับ ให้ปรับยอดรวมและยืนยันก่อนตกลง"
+        ],
+        "example": [
+          "No problem. We will keep the original service and price.",
+          "ไม่มีปัญหา เราจะใช้บริการและราคาเดิม"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Staff",
+        "en": "Would you like to hear about the optional styling product?",
+        "th": "คุณอยากฟังข้อมูลผลิตภัณฑ์จัดทรงเพิ่มเติมที่เลือกซื้อได้ไหม"
+      },
+      {
+        "speaker": "Guest",
+        "en": "No, thank you.",
+        "th": "ไม่ ขอบคุณ"
+      },
+      {
+        "speaker": "Staff",
+        "en": "No problem. We will continue with your original choice.",
+        "th": "ไม่มีปัญหา เราจะดำเนินตามตัวเลือกเดิมของคุณ"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Make one relevant optional offer using a fictional menu. Practise both acceptance and refusal.",
+        "เสนอทางเลือกเสริมที่เกี่ยวข้องหนึ่งอย่างจากเมนูสมมติ ฝึกทั้งตอบรับและปฏิเสธ"
+      ],
+      "model": [
+        "Would you like to add nail art? I can confirm the additional cost first. No problem if you prefer the original service.",
+        "ต้องการเพิ่มลายเล็บไหม ฉันยืนยันค่าใช้จ่ายเพิ่มให้ก่อนได้ หากชอบบริการเดิมก็ไม่มีปัญหา"
+      ],
+      "criteria": [
+        [
+          "Connect to a stated need.",
+          "เชื่อมกับความต้องการที่ลูกค้าบอก"
+        ],
+        [
+          "State the optional cost clearly.",
+          "บอกราคาของตัวเลือกเสริมชัดเจน"
+        ],
+        [
+          "Accept a refusal politely.",
+          "รับการปฏิเสธอย่างสุภาพ"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "Which phrase connects an offer to a guest’s stated need?",
+          "วลีใดเชื่อมข้อเสนอกับความต้องการที่ลูกค้าบอก"
+        ],
+        "options": [
+          [
+            "You mentioned wanting…",
+            "คุณบอกว่าต้องการ…"
+          ],
+          [
+            "Everybody must buy…",
+            "ทุกคนต้องซื้อ…"
+          ],
+          [
+            "You cannot refuse…",
+            "คุณปฏิเสธไม่ได้…"
+          ]
+        ],
+        "answer": 0,
+        "explanation": [
+          "You mentioned refers back to information from the guest.",
+          "You mentioned อ้างถึงข้อมูลที่ลูกค้าให้ไว้"
+        ]
+      },
+      {
+        "question": [
+          "The guest clearly declines an optional product. What comes next?",
+          "ลูกค้าปฏิเสธผลิตภัณฑ์เสริมชัดเจน ควรทำอะไร"
+        ],
+        "options": [
+          [
+            "Add it without asking again.",
+            "เพิ่มให้โดยไม่ถามอีก"
+          ],
+          [
+            "Acknowledge and keep the agreed service.",
+            "รับทราบและใช้บริการที่ตกลงไว้"
+          ],
+          [
+            "Repeat the offer until they agree.",
+            "เสนอซ้ำจนยอม"
+          ]
+        ],
+        "answer": 1,
+        "explanation": [
+          "A voluntary choice includes the choice to decline.",
+          "การให้เลือกอย่างสมัครใจรวมถึงสิทธิที่จะปฏิเสธ"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 19,
+    "moduleId": "h4",
+    "kind": "lesson",
+    "title": [
+      "Give a clear team handover",
+      "ส่งต่องานให้ทีมอย่างชัดเจน"
+    ],
+    "objective": [
+      "Report the confirmed request, remaining question and next action.",
+      "รายงานคำขอที่ยืนยัน คำถามที่ค้าง และขั้นตอนถัดไป"
+    ],
+    "review": {
+      "prompt": [
+        "Recall how to acknowledge a declined optional offer.",
+        "ทบทวนการตอบรับเมื่อลูกค้าปฏิเสธตัวเลือกเสริม"
+      ],
+      "model": [
+        "No problem. We will keep the original service and price.",
+        "ไม่มีปัญหา เราจะใช้บริการและราคาเดิม"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Separate confirmed from pending",
+          "แยกสิ่งที่ยืนยันกับสิ่งที่ค้าง"
+        ],
+        "body": [
+          "The guest has confirmed… reports an agreed detail. We still need to check… marks unfinished work. A useful handover includes the service and relevant preferences without unnecessary personal information. Avoid saying everything is ready when a price or choice is still unresolved.",
+          "The guest has confirmed… รายงานสิ่งที่ตกลงแล้ว We still need to check… ระบุสิ่งที่ยังไม่เสร็จ การส่งต่องานควรมีบริการและความต้องการที่จำเป็นโดยไม่เพิ่มข้อมูลส่วนตัวเกินจำเป็น อย่าบอกว่าพร้อมทั้งหมดเมื่อราคาหรือตัวเลือกยังไม่ชัด"
+        ],
+        "example": [
+          "The guest has confirmed short, round nails. We still need to confirm the colour.",
+          "ลูกค้ายืนยันเล็บสั้นทรงมนแล้ว เรายังต้องยืนยันสี"
+        ]
+      },
+      {
+        "title": [
+          "Make ownership clear",
+          "ระบุผู้รับผิดชอบให้ชัด"
+        ],
+        "body": [
+          "Could you check…? requests a colleague’s action. I will… states your own next action. Add a time or point in the workflow when needed, then ask for a read-back. Clear ownership prevents both people assuming the other has completed the task.",
+          "Could you check…? ขอให้เพื่อนร่วมงานทำ ส่วน I will… บอกสิ่งที่คุณจะทำ เพิ่มเวลาหรือจุดในกระบวนการเมื่อจำเป็น แล้วขอให้ทวน การระบุผู้รับผิดชอบป้องกันต่างฝ่ายคิดว่าอีกคนทำแล้ว"
+        ],
+        "example": [
+          "Could you confirm the blow-dry price? I will check the appointment time.",
+          "ช่วยยืนยันราคาเป่าจัดทรงได้ไหม ฉันจะตรวจเวลานัดหมาย"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Staff",
+        "en": "The guest wants a haircut, keeping the length below the shoulders. The price is still pending.",
+        "th": "ลูกค้าต้องการตัดผมโดยให้ยังยาวเลยไหล่ ราคายังรอยืนยัน"
+      },
+      {
+        "speaker": "Colleague",
+        "en": "I will confirm the price before we proceed.",
+        "th": "ฉันจะยืนยันราคาก่อนดำเนินการ"
+      },
+      {
+        "speaker": "Staff",
+        "en": "Thank you. I will update reception.",
+        "th": "ขอบคุณ ฉันจะแจ้งพนักงานต้อนรับ"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Hand over a fictional nail booking with two confirmed details and one pending question.",
+        "ส่งต่อนัดทำเล็บสมมติพร้อมรายละเอียดที่ยืนยันสองอย่างและคำถามค้างหนึ่งข้อ"
+      ],
+      "model": [
+        "The guest has confirmed a manicure at three. We still need the colour choice. Could you check it during consultation?",
+        "ลูกค้ายืนยันทำเล็บมือเวลาสามโมงแล้ว ยังต้องทราบสี ช่วยตรวจสอบตอนปรึกษาได้ไหม"
+      ],
+      "criteria": [
+        [
+          "Label confirmed information.",
+          "ระบุข้อมูลที่ยืนยันแล้ว"
+        ],
+        [
+          "Identify the pending detail.",
+          "ระบุรายละเอียดที่ยังค้าง"
+        ],
+        [
+          "Assign a clear next action.",
+          "ระบุผู้ทำขั้นตอนถัดไป"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "What does still need to check signal?",
+          "Still need to check บอกอะไร"
+        ],
+        "options": [
+          [
+            "A finished task.",
+            "งานที่เสร็จแล้ว"
+          ],
+          [
+            "An unresolved detail.",
+            "รายละเอียดที่ยังไม่ยืนยัน"
+          ],
+          [
+            "An approved discount.",
+            "ส่วนลดที่อนุมัติแล้ว"
+          ]
+        ],
+        "answer": 1,
+        "explanation": [
+          "Still need marks an action that remains to be completed.",
+          "Still need บอกการกระทำที่ยังต้องทำ"
+        ]
+      },
+      {
+        "question": [
+          "Which handover makes responsibility clearest?",
+          "การส่งต่องานใดระบุความรับผิดชอบชัดที่สุด"
+        ],
+        "options": [
+          [
+            "Someone should check something.",
+            "ใครสักคนควรตรวจบางอย่าง"
+          ],
+          [
+            "It should all be fine.",
+            "ทุกอย่างคงเรียบร้อย"
+          ],
+          [
+            "I will confirm the price; could you check the time?",
+            "ฉันจะยืนยันราคา คุณช่วยตรวจเวลาได้ไหม"
+          ]
+        ],
+        "answer": 2,
+        "explanation": [
+          "The first answer names both actions and who will perform them.",
+          "คำตอบแรกระบุการกระทำทั้งสองและผู้รับผิดชอบ"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 20,
+    "moduleId": "h4",
+    "kind": "lesson",
+    "title": [
+      "Tell a real work example",
+      "เล่าตัวอย่างงานจริง"
+    ],
+    "objective": [
+      "Organise an experience answer into situation, action and result.",
+      "จัดคำตอบประสบการณ์เป็นสถานการณ์ การกระทำ และผลลัพธ์"
+    ],
+    "review": {
+      "prompt": [
+        "State one confirmed detail and one pending detail in a handover.",
+        "บอกข้อมูลยืนยันหนึ่งอย่างและข้อมูลค้างหนึ่งอย่างในการส่งต่องาน"
+      ],
+      "model": [
+        "The service is confirmed. We still need to check the price.",
+        "ยืนยันบริการแล้ว เรายังต้องตรวจสอบราคา"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "A short story has three parts",
+          "เรื่องสั้นมีสามส่วน"
+        ],
+        "body": [
+          "For Tell me about a time…, describe one past event. Begin with the situation, explain your own action, then state the observed result. Use I for your contribution and we for a shared action. A training example is acceptable when identified honestly.",
+          "คำถาม Tell me about a time… ต้องการเหตุการณ์ในอดีตหนึ่งเรื่อง เริ่มสถานการณ์ อธิบายสิ่งที่คุณทำ แล้วบอกผลที่สังเกตได้ ใช้ I สำหรับส่วนของคุณและ we สำหรับงานร่วมกัน ใช้ตัวอย่างการฝึกได้ถ้าบอกตามจริง"
+        ],
+        "example": [
+          "During training, a guest request was unclear. I asked about the nail shape. We confirmed the choice.",
+          "ระหว่างฝึก คำขอของลูกค้าไม่ชัด ฉันถามรูปทรงเล็บ แล้วเรายืนยันตัวเลือกได้"
+        ]
+      },
+      {
+        "title": [
+          "Past verbs show the sequence",
+          "กริยาอดีตแสดงลำดับเหตุการณ์"
+        ],
+        "body": [
+          "Use asked, checked and confirmed for completed actions. Then links the next event. Keep the result specific: the booking time was corrected is stronger evidence than everything was perfect. Replace this fictional story with your own experience rather than claiming it happened to you.",
+          "ใช้ asked checked และ confirmed กับการกระทำที่จบแล้ว Then เชื่อมเหตุการณ์ถัดไป ระบุผลให้เฉพาะเจาะจง เช่น แก้เวลาจองแล้ว มีหลักฐานกว่าทุกอย่างสมบูรณ์แบบ แทนเรื่องสมมตินี้ด้วยประสบการณ์ของคุณเอง"
+        ],
+        "example": [
+          "I checked the booking, then confirmed the correct appointment time.",
+          "ฉันตรวจการจอง จากนั้นยืนยันเวลานัดหมายที่ถูกต้อง"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Interviewer",
+        "en": "Tell me about a time you clarified a request.",
+        "th": "เล่าเหตุการณ์ที่คุณถามคำขอให้ชัดเจน"
+      },
+      {
+        "speaker": "Applicant",
+        "en": "During a practice consultation, I heard two different hair lengths. I repeated both options and asked the guest to choose. We recorded the agreed length.",
+        "th": "ระหว่างฝึกปรึกษา ฉันได้ยินความยาวผมสองแบบ ฉันทวนทั้งสองแล้วให้ลูกค้าเลือก เราบันทึกความยาวที่ตกลงกัน"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Tell one real work or training story in three sentences. Label training clearly.",
+        "เล่าเรื่องงานหรือการฝึกจริงสามประโยค ระบุให้ชัดหากเป็นการฝึก"
+      ],
+      "model": [
+        "During training, a booking time was unclear. I asked the guest to repeat it. We confirmed the correct time.",
+        "ระหว่างฝึก เวลาจองไม่ชัด ฉันขอให้ลูกค้าทวน แล้วเรายืนยันเวลาที่ถูกต้องได้"
+      ],
+      "criteria": [
+        [
+          "Identify a specific situation.",
+          "ระบุสถานการณ์เฉพาะ"
+        ],
+        [
+          "Explain your own action.",
+          "อธิบายการกระทำของคุณ"
+        ],
+        [
+          "State an observed result.",
+          "บอกผลที่สังเกตได้"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "What follows the situation in a clear experience answer?",
+          "หลังสถานการณ์ในคำตอบประสบการณ์ควรเป็นอะไร"
+        ],
+        "options": [
+          [
+            "An unrelated career goal.",
+            "เป้าหมายอาชีพที่ไม่เกี่ยวข้อง"
+          ],
+          [
+            "A list of all your courses.",
+            "รายชื่อทุกหลักสูตรที่เคยเรียน"
+          ],
+          [
+            "Your action.",
+            "การกระทำของคุณ"
+          ]
+        ],
+        "answer": 2,
+        "explanation": [
+          "Situation, action and result keep the story focused.",
+          "สถานการณ์ การกระทำ และผลลัพธ์ช่วยให้เรื่องตรงประเด็น"
+        ]
+      },
+      {
+        "question": [
+          "Which result is most specific?",
+          "ผลลัพธ์ใดเฉพาะเจาะจงที่สุด"
+        ],
+        "options": [
+          [
+            "We confirmed the correct appointment time.",
+            "เรายืนยันเวลานัดหมายที่ถูกต้อง"
+          ],
+          [
+            "Everything was amazing.",
+            "ทุกอย่างยอดเยี่ยม"
+          ],
+          [
+            "I am always perfect.",
+            "ฉันสมบูรณ์แบบเสมอ"
+          ]
+        ],
+        "answer": 0,
+        "explanation": [
+          "A confirmed appointment time is an observable outcome.",
+          "เวลานัดหมายที่ยืนยันเป็นผลที่สังเกตได้"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 21,
+    "moduleId": "h4",
+    "kind": "checkpoint",
+    "title": [
+      "Week 3 checkpoint: handle a complete request",
+      "ทบทวนสัปดาห์ที่ 3 จัดการคำขอครบวงจร"
+    ],
+    "objective": [
+      "Handle a booking, changed preference and concern with a clear handover.",
+      "จัดการการจอง การเปลี่ยนความต้องการ และข้อกังวลพร้อมส่งต่องาน"
+    ],
+    "review": {
+      "prompt": [
+        "Recall one booking phrase, one apology and one handover phrase.",
+        "ทบทวนวลีจอง ขอโทษ และส่งต่องานอย่างละหนึ่ง"
+      ],
+      "model": [
+        "Let me check availability. I am sorry about the wait. We still need to confirm the price.",
+        "ขอตรวจเวลาว่างก่อน ขอโทษที่ให้รอ เรายังต้องยืนยันราคา"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Signpost the next step",
+          "บอกลำดับขั้นตอนถัดไป"
+        ],
+        "body": [
+          "First, then and finally help a guest follow a multi-step explanation. Put confirmation before the action it authorises. A sequence is useful only when it reflects what you can actually do; do not promise a specific outcome that requires someone else’s approval.",
+          "First then และ finally ช่วยให้ติดตามคำอธิบายหลายขั้นตอน วางการยืนยันก่อนการกระทำที่ต้องได้รับอนุญาต ลำดับต้องตรงกับสิ่งที่ทำได้จริง อย่ารับรองผลที่ต้องให้คนอื่นอนุมัติ"
+        ],
+        "example": [
+          "First, I will check the booking. Then we can confirm the revised service and total.",
+          "ก่อนอื่นฉันจะตรวจการจอง แล้วเราจึงยืนยันบริการที่ปรับและยอดรวมได้"
+        ]
+      },
+      {
+        "title": [
+          "Report the outcome precisely",
+          "รายงานผลอย่างชัดเจน"
+        ],
+        "body": [
+          "After a conversation, distinguish completed from pending actions. We confirmed… reports an outcome; the supervisor will review… reports a next step. This difference matters when answering an interviewer or passing the request to another colleague.",
+          "หลังสนทนา แยกสิ่งที่เสร็จกับสิ่งที่ยังค้าง We confirmed… รายงานผล ส่วน the supervisor will review… รายงานขั้นตอนต่อไป ความต่างนี้สำคัญในการตอบสัมภาษณ์และส่งงานให้เพื่อนร่วมงาน"
+        ],
+        "example": [
+          "We confirmed the new nail colour. The supervisor will review the guest’s price concern.",
+          "เรายืนยันสีเล็บใหม่แล้ว หัวหน้างานจะตรวจสอบข้อกังวลเรื่องราคา"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Guest",
+        "en": "I want to change my booking, but I am worried about the cost.",
+        "th": "ฉันอยากเปลี่ยนการจองแต่กังวลเรื่องราคา"
+      },
+      {
+        "speaker": "Staff",
+        "en": "I understand. Which service would you prefer? I will check the revised total before you decide.",
+        "th": "เข้าใจ คุณต้องการบริการใด ฉันจะตรวจยอดรวมใหม่ก่อนคุณตัดสินใจ"
+      },
+      {
+        "speaker": "Guest",
+        "en": "A blow-dry instead of a haircut.",
+        "th": "เป่าจัดทรงแทนตัดผม"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Run a three-minute scenario with a changed booking and a concern. Finish with a two-sentence colleague handover.",
+        "จำลองสามนาที มีการเปลี่ยนจองและข้อกังวล จบด้วยส่งต่องานสองประโยค"
+      ],
+      "model": [
+        "The guest prefers a blow-dry instead of a haircut. We still need to confirm the revised total before agreement.",
+        "ลูกค้าต้องการเป่าจัดทรงแทนตัดผม เรายังต้องยืนยันยอดรวมใหม่ก่อนตกลง"
+      ],
+      "criteria": [
+        [
+          "Clarify the changed request.",
+          "ถามคำขอที่เปลี่ยนให้ชัด"
+        ],
+        [
+          "Offer an approved next step.",
+          "เสนอขั้นตอนถัดไปที่อนุมัติ"
+        ],
+        [
+          "Separate agreed and pending details.",
+          "แยกข้อมูลที่ตกลงและที่ค้าง"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "Which sequence supports an informed choice?",
+          "ลำดับใดช่วยให้ตัดสินใจโดยมีข้อมูล"
+        ],
+        "options": [
+          [
+            "Clarify, confirm the total, ask for agreement.",
+            "ถามให้ชัด ยืนยันยอดรวม ขอคำตกลง"
+          ],
+          [
+            "Charge first, explain later.",
+            "คิดเงินก่อน อธิบายทีหลัง"
+          ],
+          [
+            "Assume the service, then ask the name.",
+            "เดาบริการก่อน แล้วถามชื่อ"
+          ]
+        ],
+        "answer": 0,
+        "explanation": [
+          "The guest needs the relevant details before agreeing.",
+          "ลูกค้าต้องทราบรายละเอียดที่เกี่ยวข้องก่อนตกลง"
+        ]
+      },
+      {
+        "question": [
+          "The supervisor has not reviewed the concern yet. Which report is accurate?",
+          "หัวหน้ายังไม่ได้ตรวจข้อกังวล รายงานใดถูกต้อง"
+        ],
+        "options": [
+          [
+            "The supervisor resolved the concern.",
+            "หัวหน้าแก้ข้อกังวลแล้ว"
+          ],
+          [
+            "The supervisor will review the concern.",
+            "หัวหน้าจะตรวจสอบข้อกังวล"
+          ],
+          [
+            "The guest received a refund.",
+            "ลูกค้าได้รับเงินคืนแล้ว"
+          ]
+        ],
+        "answer": 1,
+        "explanation": [
+          "Will review identifies a future action without claiming completion.",
+          "Will review บอกสิ่งที่จะทำโดยไม่อ้างว่าเสร็จแล้ว"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 22,
+    "moduleId": "h5",
+    "kind": "lesson",
+    "title": [
+      "Answer hypothetical interview questions",
+      "ตอบคำถามสถานการณ์สมมติในการสัมภาษณ์"
+    ],
+    "objective": [
+      "Distinguish a real past event from what you would do in a scenario.",
+      "แยกเหตุการณ์จริงในอดีตกับสิ่งที่จะทำในสถานการณ์สมมติ"
+    ],
+    "review": {
+      "prompt": [
+        "Recall the three parts of a real experience answer.",
+        "ทบทวนสามส่วนของคำตอบประสบการณ์จริง"
+      ],
+      "model": [
+        "Situation, action and result: a request was unclear, I asked, and we confirmed it.",
+        "สถานการณ์ การกระทำ และผลลัพธ์ เช่น คำขอไม่ชัด ฉันถาม แล้วเรายืนยันได้"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Would for an imagined response",
+          "Would สำหรับคำตอบสมมติ"
+        ],
+        "body": [
+          "What would you do if…? asks about a possible situation. Answer with I would + base verb. This differs from Tell me about a time…, which asks for a real past event. Keep imagined responses separate from your work history.",
+          "What would you do if…? ถามสถานการณ์ที่อาจเกิดขึ้น ตอบด้วย I would ตามด้วยกริยารูปพื้นฐาน ต่างจาก Tell me about a time… ที่ถามเหตุการณ์จริงในอดีต แยกคำตอบสมมติออกจากประวัติการทำงาน"
+        ],
+        "example": [
+          "I would ask the guest to explain the requested nail shape.",
+          "ฉันจะขอให้ลูกค้าอธิบายรูปทรงเล็บที่ต้องการ"
+        ]
+      },
+      {
+        "title": [
+          "Include a reason and a limit",
+          "บอกเหตุผลและขอบเขต"
+        ],
+        "body": [
+          "Explain your first action, why it helps, and when you would ask for support. I would check… because… shows reasoning. If it is outside my role,… introduces a boundary. An interviewer can hear both your communication and your judgement.",
+          "บอกสิ่งแรกที่จะทำ เหตุผล และเมื่อไรจะขอความช่วยเหลือ I would check… because… แสดงเหตุผล If it is outside my role,… บอกขอบเขต ผู้สัมภาษณ์จึงได้ฟังทั้งการสื่อสารและการตัดสินใจ"
+        ],
+        "example": [
+          "I would confirm the length because I should not guess. I would ask a supervisor if needed.",
+          "ฉันจะยืนยันความยาวเพราะไม่ควรเดา และขอหัวหน้าช่วยเมื่อจำเป็น"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Interviewer",
+        "en": "What would you do if a guest’s request was unclear?",
+        "th": "คุณจะทำอย่างไรถ้าคำขอลูกค้าไม่ชัด"
+      },
+      {
+        "speaker": "Applicant",
+        "en": "I would ask a focused question and repeat the preference before proceeding.",
+        "th": "ฉันจะถามให้เจาะจงและทวนความต้องการก่อนดำเนินการ"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Answer a hypothetical consultation question, then retell a real training example. Use different verb forms.",
+        "ตอบคำถามปรึกษาสมมติ แล้วเล่าตัวอย่างการฝึกจริง ใช้กริยาต่างรูปให้เหมาะสม"
+      ],
+      "model": [
+        "I would check the length first. In training last week, I checked the length with a reference picture.",
+        "ฉันจะตรวจความยาวก่อน ในการฝึกสัปดาห์ที่แล้ว ฉันตรวจความยาวด้วยภาพอ้างอิง"
+      ],
+      "criteria": [
+        [
+          "Recognise the question type.",
+          "แยกประเภทคำถาม"
+        ],
+        [
+          "Use would with a base verb.",
+          "ใช้ would กับกริยารูปพื้นฐาน"
+        ],
+        [
+          "Separate imagined and real events.",
+          "แยกเหตุการณ์สมมติกับจริง"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "Which question asks for an imagined response?",
+          "คำถามใดต้องการคำตอบสมมติ"
+        ],
+        "options": [
+          [
+            "What did you do yesterday?",
+            "เมื่อวานคุณทำอะไร"
+          ],
+          [
+            "What would you do if a guest changed their mind?",
+            "คุณจะทำอย่างไรถ้าลูกค้าเปลี่ยนใจ"
+          ],
+          [
+            "When did you finish training?",
+            "คุณจบการฝึกเมื่อไร"
+          ]
+        ],
+        "answer": 1,
+        "explanation": [
+          "Would signals a hypothetical response here.",
+          "Would ในที่นี้บอกสถานการณ์สมมติ"
+        ]
+      },
+      {
+        "question": [
+          "Which answer uses would correctly?",
+          "คำตอบใดใช้ would ถูกต้อง"
+        ],
+        "options": [
+          [
+            "I would asked for clarification.",
+            "ใช้ would กับ asked ไม่ถูกต้อง"
+          ],
+          [
+            "I would asking for clarification.",
+            "ใช้ would กับ asking ไม่ถูกต้อง"
+          ],
+          [
+            "I would ask for clarification.",
+            "ฉันจะขอความชัดเจน"
+          ]
+        ],
+        "answer": 2,
+        "explanation": [
+          "Would is followed by the base verb ask.",
+          "Would ตามด้วยกริยารูปพื้นฐาน ask"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 23,
+    "moduleId": "h5",
+    "kind": "lesson",
+    "title": [
+      "Answer follow-ups about your CV",
+      "ตอบคำถามต่อเนื่องเกี่ยวกับประวัติย่อ"
+    ],
+    "objective": [
+      "Explain the scope of your experience accurately and consistently.",
+      "อธิบายขอบเขตประสบการณ์ให้ถูกต้องและตรงกัน"
+    ],
+    "review": {
+      "prompt": [
+        "Recall how a hypothetical action differs from a past action.",
+        "ทบทวนความต่างของภาษาสำหรับการกระทำสมมติกับอดีต"
+      ],
+      "model": [
+        "I would check describes a scenario; I checked describes a past action.",
+        "I would check บอกสิ่งที่จะทำในสถานการณ์ ส่วน I checked บอกสิ่งที่ทำแล้ว"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Duration versus dates",
+          "ระยะเวลากับวันที่"
+        ],
+        "body": [
+          "For + length of time gives duration; from…to gives start and end points. I worked there for two years describes a finished period. Keep dates consistent with your CV. If unsure, say you will check the record rather than inventing an exact month.",
+          "For ตามด้วยช่วงเวลาบอกระยะเวลา ส่วน from…to บอกจุดเริ่มและจบ I worked there for two years บอกช่วงงานที่สิ้นสุด ใช้วันที่ให้ตรงกับประวัติย่อ หากไม่แน่ใจให้บอกว่าจะตรวจบันทึก แทนการแต่งเดือน"
+        ],
+        "example": [
+          "I worked at the salon for two years, from 2023 to 2025.",
+          "ฉันเคยทำงานที่ร้านสองปี ตั้งแต่ปี 2023 ถึง 2025"
+        ]
+      },
+      {
+        "title": [
+          "Describe your responsibility",
+          "อธิบายความรับผิดชอบ"
+        ],
+        "body": [
+          "I assisted with… means you supported an activity; I was responsible for… means it was your duty. Under supervision shows someone oversaw your work. These distinctions describe trainee experience without claiming independent responsibility you did not have.",
+          "I assisted with… หมายถึงช่วยงาน ส่วน I was responsible for… หมายถึงเป็นหน้าที่ของคุณ Under supervision บอกว่ามีคนกำกับ ความต่างนี้ช่วยอธิบายการฝึกโดยไม่อ้างว่ารับผิดชอบเองทั้งหมด"
+        ],
+        "example": [
+          "I assisted with nail consultations under supervision. I was responsible for checking appointment names.",
+          "ฉันช่วยปรึกษาทำเล็บภายใต้การกำกับ ฉันรับผิดชอบตรวจชื่อนัดหมาย"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Interviewer",
+        "en": "Did you manage bookings independently?",
+        "th": "คุณจัดการการจองด้วยตนเองหรือไม่"
+      },
+      {
+        "speaker": "Applicant",
+        "en": "I assisted under supervision. My main responsibility was checking names and times.",
+        "th": "ฉันช่วยภายใต้การกำกับ หน้าที่หลักคือการตรวจชื่อและเวลา"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Answer a follow-up about one real CV entry. Explain when, how long and what you personally did.",
+        "ตอบคำถามต่อเนื่องจากประวัติย่อจริงหนึ่งรายการ บอกเมื่อไร นานเท่าไร และคุณทำอะไรเอง"
+      ],
+      "model": [
+        "During my three-month placement, I assisted with reception and checked bookings under supervision.",
+        "ระหว่างฝึกงานสามเดือน ฉันช่วยงานต้อนรับและตรวจการจองภายใต้การกำกับ"
+      ],
+      "criteria": [
+        [
+          "Match your CV dates.",
+          "ใช้วันที่ตรงกับประวัติย่อ"
+        ],
+        [
+          "Distinguish assistance from responsibility.",
+          "แยกการช่วยงานกับความรับผิดชอบ"
+        ],
+        [
+          "Identify supervision honestly.",
+          "ระบุการกำกับตามจริง"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "Which phrase gives duration?",
+          "วลีใดบอกระยะเวลา"
+        ],
+        "options": [
+          [
+            "In June.",
+            "ในเดือนมิถุนายน"
+          ],
+          [
+            "At ten thirty.",
+            "เวลาสิบโมงครึ่ง"
+          ],
+          [
+            "For six months.",
+            "เป็นเวลาหกเดือน"
+          ]
+        ],
+        "answer": 2,
+        "explanation": [
+          "For introduces a length of time.",
+          "For นำหน้าช่วงเวลา"
+        ]
+      },
+      {
+        "question": [
+          "You helped but did not lead the task. Which phrase fits?",
+          "คุณช่วยแต่ไม่ได้รับผิดชอบหลัก ควรใช้วลีใด"
+        ],
+        "options": [
+          [
+            "I assisted with the task.",
+            "ฉันช่วยงานนั้น"
+          ],
+          [
+            "I independently managed the entire task.",
+            "ฉันจัดการงานทั้งหมดอย่างอิสระ"
+          ],
+          [
+            "I trained every supervisor.",
+            "ฉันฝึกหัวหน้าทุกคน"
+          ]
+        ],
+        "answer": 0,
+        "explanation": [
+          "Assisted with describes supporting another person’s work.",
+          "Assisted with อธิบายการช่วยงานของผู้อื่น"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 24,
+    "moduleId": "h5",
+    "kind": "lesson",
+    "title": [
+      "Working with an international team",
+      "การทำงานกับทีมงานนานาชาติ"
+    ],
+    "objective": [
+      "Clarify an unfamiliar instruction and explain how you would adapt to a team.",
+      "ถามคำสั่งที่ไม่คุ้นให้ชัดและอธิบายการปรับตัวเข้ากับทีม"
+    ],
+    "review": {
+      "prompt": [
+        "Describe one task you assisted with and one task you owned.",
+        "บอกงานที่ช่วยและงานที่รับผิดชอบอย่างละหนึ่ง"
+      ],
+      "model": [
+        "I assisted with consultations. I was responsible for checking appointment names.",
+        "ฉันช่วยงานปรึกษา ฉันรับผิดชอบตรวจชื่อนัดหมาย"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Clarify task, place and time",
+          "ถามงาน สถานที่ และเวลาให้ชัด"
+        ],
+        "body": [
+          "An instruction may contain what to do, where and when. Ask about the missing part: Which station? or By what time? Repeat the complete instruction back. This is useful with different accents and unfamiliar salon routines; do not confuse politeness with pretending to understand.",
+          "คำสั่งอาจมีงาน สถานที่ และเวลา ถามส่วนที่ขาด เช่น Which station? หรือ By what time? แล้วทวนให้ครบ ใช้ได้กับสำเนียงต่างกันและงานร้านที่ไม่คุ้น ความสุภาพไม่ใช่การแสร้งว่าเข้าใจ"
+        ],
+        "example": [
+          "Station two, before the three o’clock appointment. Is that correct?",
+          "จุดบริการสอง ก่อนนัดสามโมง ถูกต้องไหม"
+        ]
+      },
+      {
+        "title": [
+          "Check team expectations",
+          "ตรวจสอบความคาดหวังของทีม"
+        ],
+        "body": [
+          "I would first… sets a starting action in an interview answer. Ask where approved procedures and schedules are kept instead of assuming workplaces are identical. Explain how you would report a difficulty early and ask the appropriate person for guidance.",
+          "I would first… บอกสิ่งแรกที่จะทำในคำตอบสัมภาษณ์ ถามว่าเก็บขั้นตอนและตารางที่อนุมัติไว้ที่ไหน แทนการคิดว่าทุกที่เหมือนกัน อธิบายว่าจะรายงานอุปสรรคแต่เนิ่น ๆ และขอคำแนะนำจากผู้รับผิดชอบอย่างไร"
+        ],
+        "example": [
+          "I would first learn the procedures and confirm who to contact for help.",
+          "ฉันจะเรียนรู้ขั้นตอนก่อนและยืนยันว่าควรติดต่อใครเมื่อต้องการความช่วยเหลือ"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Supervisor",
+        "en": "Please prepare the consultation area before the next guest.",
+        "th": "ช่วยเตรียมพื้นที่ปรึกษาก่อนลูกค้าคนถัดไป"
+      },
+      {
+        "speaker": "Staff",
+        "en": "Which area, and what time is the appointment?",
+        "th": "พื้นที่ไหน และนัดกี่โมง"
+      },
+      {
+        "speaker": "Supervisor",
+        "en": "Station two, at three.",
+        "th": "จุดบริการสอง เวลาสามโมง"
+      },
+      {
+        "speaker": "Staff",
+        "en": "Station two before three. Understood.",
+        "th": "จุดบริการสองก่อนสามโมง รับทราบ"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Answer How would you adapt to a new salon team? Include a clarification and a support route.",
+        "ตอบว่าจะปรับตัวกับทีมร้านใหม่อย่างไร รวมการขอความชัดเจนและช่องทางขอความช่วยเหลือ"
+      ],
+      "model": [
+        "I would learn the procedures and repeat unfamiliar instructions. I would ask my supervisor when unsure.",
+        "ฉันจะเรียนรู้ขั้นตอนและทวนคำสั่งที่ไม่คุ้น ฉันจะถามหัวหน้าเมื่อไม่แน่ใจ"
+      ],
+      "criteria": [
+        [
+          "Identify an expectation to check.",
+          "ระบุสิ่งที่ต้องตรวจสอบ"
+        ],
+        [
+          "Ask a specific clarification question.",
+          "ถามขอความชัดเจนอย่างเจาะจง"
+        ],
+        [
+          "Name an appropriate support person.",
+          "ระบุผู้ที่ควรขอความช่วยเหลือ"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "Which question checks a deadline?",
+          "คำถามใดตรวจสอบกำหนดเวลา"
+        ],
+        "options": [
+          [
+            "By what time should it be ready?",
+            "ต้องพร้อมภายในกี่โมง"
+          ],
+          [
+            "Which colour is it?",
+            "เป็นสีไหน"
+          ],
+          [
+            "Who booked the manicure?",
+            "ใครจองทำเล็บมือ"
+          ]
+        ],
+        "answer": 0,
+        "explanation": [
+          "By what time asks when the task must be completed.",
+          "By what time ถามเวลาที่งานต้องเสร็จ"
+        ]
+      },
+      {
+        "question": [
+          "What is useful after an unfamiliar instruction?",
+          "ควรทำอะไรหลังได้รับคำสั่งที่ไม่คุ้น"
+        ],
+        "options": [
+          [
+            "Pretend you understood.",
+            "แสร้งว่าเข้าใจแล้ว"
+          ],
+          [
+            "Clarify and repeat the task, place and time.",
+            "ถามให้ชัดและทวนงาน สถานที่ และเวลา"
+          ],
+          [
+            "Assume previous workplace rules apply.",
+            "คิดว่ากฎจากที่ทำงานเดิมใช้ได้"
+          ]
+        ],
+        "answer": 1,
+        "explanation": [
+          "A complete read-back checks shared understanding.",
+          "การทวนครบถ้วนช่วยตรวจความเข้าใจร่วมกัน"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 25,
+    "moduleId": "h5",
+    "kind": "lesson",
+    "title": [
+      "A consultation under time pressure",
+      "การปรึกษาเมื่อมีเวลาจำกัด"
+    ],
+    "objective": [
+      "Explain an estimate, check a deadline and offer verified options.",
+      "บอกเวลาโดยประมาณ ถามกำหนดเวลา และเสนอทางเลือกที่ตรวจสอบแล้ว"
+    ],
+    "review": {
+      "prompt": [
+        "Recall a question that checks when a task must be finished.",
+        "ทบทวนคำถามเวลาที่งานต้องเสร็จ"
+      ],
+      "model": [
+        "By what time should it be ready?",
+        "ต้องพร้อมภายในกี่โมง"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Ask about the deadline",
+          "ถามเวลาที่ต้องเสร็จ"
+        ],
+        "body": [
+          "What time do you need to leave? identifies the guest’s limit. The service takes about… gives an estimate. Do not turn an estimate into a guarantee because the guest is in a hurry. Check feasibility using the actual schedule and approved service information.",
+          "What time do you need to leave? ถามขอบเขตเวลาของลูกค้า The service takes about… บอกเวลาโดยประมาณ อย่าเปลี่ยนเป็นคำรับรองเพราะลูกค้ารีบ ตรวจสิ่งที่ทำได้จากตารางจริงและข้อมูลบริการที่อนุมัติ"
+        ],
+        "example": [
+          "What time do you need to leave? This service takes about forty minutes.",
+          "คุณต้องออกกี่โมง บริการนี้ใช้เวลาประมาณสี่สิบนาที"
+        ]
+      },
+      {
+        "title": [
+          "Offer an alternative conditionally",
+          "เสนอทางเลือกโดยระบุเงื่อนไข"
+        ],
+        "body": [
+          "If… introduces a condition: If that time does not suit you,… . I can check another appointment offers a next action without promising availability. Let the guest choose after hearing confirmed options; an alternative requires agreement too.",
+          "If… ระบุเงื่อนไข เช่น If that time does not suit you,… I can check another appointment เสนอสิ่งที่จะทำโดยไม่รับรองว่ามีเวลาว่าง ให้ลูกค้าเลือกเมื่อได้ข้อมูลยืนยันแล้ว ทางเลือกใหม่ก็ต้องตกลงเช่นกัน"
+        ],
+        "example": [
+          "If that does not fit your schedule, I can check a later appointment.",
+          "ถ้าเวลาไม่เข้ากับตารางของคุณ ฉันตรวจนัดที่ช้ากว่านี้ให้ได้"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Guest",
+        "en": "Can you finish my manicure in twenty minutes?",
+        "th": "ทำเล็บมือให้เสร็จในยี่สิบนาทีได้ไหม"
+      },
+      {
+        "speaker": "Staff",
+        "en": "The service takes about forty minutes. What time do you need to leave?",
+        "th": "บริการใช้เวลาประมาณสี่สิบนาที คุณต้องออกกี่โมง"
+      },
+      {
+        "speaker": "Guest",
+        "en": "At two thirty.",
+        "th": "สองโมงครึ่ง"
+      },
+      {
+        "speaker": "Staff",
+        "en": "Let me check the available options.",
+        "th": "ขอฉันตรวจทางเลือกที่ทำได้"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Use a fictional schedule where a hair service may not fit. Explain the limit and check an alternative.",
+        "ใช้ตารางสมมติที่บริการผมอาจไม่ทัน อธิบายข้อจำกัดและตรวจทางเลือก"
+      ],
+      "model": [
+        "A blow-dry takes about thirty minutes. I cannot confirm that finish time yet, but I can check another appointment.",
+        "เป่าจัดทรงใช้เวลาประมาณสามสิบนาที ฉันยังยืนยันเวลาเสร็จนั้นไม่ได้ แต่ตรวจนัดอื่นให้ได้"
+      ],
+      "criteria": [
+        [
+          "Ask for the guest’s deadline.",
+          "ถามเวลาที่ลูกค้าต้องเสร็จ"
+        ],
+        [
+          "Separate estimates from promises.",
+          "แยกค่าประมาณจากคำรับรอง"
+        ],
+        [
+          "Offer a verified next action.",
+          "เสนอขั้นตอนถัดไปที่ตรวจสอบได้"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "Which phrase checks the guest’s time limit?",
+          "วลีใดถามขอบเขตเวลาลูกค้า"
+        ],
+        "options": [
+          [
+            "What colour do you prefer?",
+            "คุณชอบสีอะไร"
+          ],
+          [
+            "What time do you need to leave?",
+            "คุณต้องออกกี่โมง"
+          ],
+          [
+            "Where did you train?",
+            "คุณฝึกที่ไหน"
+          ]
+        ],
+        "answer": 1,
+        "explanation": [
+          "Need to leave identifies the relevant deadline.",
+          "Need to leave ระบุกำหนดเวลาที่เกี่ยวข้อง"
+        ]
+      },
+      {
+        "question": [
+          "The estimate exceeds the available time. What should you say?",
+          "เวลาประมาณเกินเวลาที่มี ควรพูดอะไร"
+        ],
+        "options": [
+          [
+            "I guarantee half the usual time.",
+            "ฉันรับรองเวลาเพียงครึ่งหนึ่ง"
+          ],
+          [
+            "The estimate does not matter.",
+            "เวลาประมาณไม่สำคัญ"
+          ],
+          [
+            "Let me check suitable alternatives.",
+            "ขอฉันตรวจทางเลือกที่เหมาะสม"
+          ]
+        ],
+        "answer": 2,
+        "explanation": [
+          "Checking alternatives avoids an unsupported time promise.",
+          "การตรวจทางเลือกหลีกเลี่ยงคำรับรองเวลาที่ไม่มีข้อมูลรองรับ"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 26,
+    "moduleId": "h5",
+    "kind": "lesson",
+    "title": [
+      "Explain your complaint-handling approach",
+      "อธิบายวิธีรับข้อร้องเรียน"
+    ],
+    "objective": [
+      "Give an interview answer supported by a short guest-service demonstration.",
+      "ตอบสัมภาษณ์พร้อมสาธิตการบริการลูกค้าสั้น ๆ"
+    ],
+    "review": {
+      "prompt": [
+        "Recall how to respond when a service may exceed the guest’s deadline.",
+        "ทบทวนการตอบเมื่อบริการอาจเกินเวลาที่ลูกค้ามี"
+      ],
+      "model": [
+        "I will check the available options before you decide.",
+        "ฉันจะตรวจทางเลือกที่ทำได้ก่อนคุณตัดสินใจ"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Describe your approach in order",
+          "อธิบายแนวทางตามลำดับ"
+        ],
+        "body": [
+          "For How would you handle a complaint?, explain a sequence: listen, clarify, acknowledge, then discuss an approved next step. Use would for the scenario. Avoid jumping straight to a refund before understanding the concern or checking your authority.",
+          "คำถาม How would you handle a complaint? ให้ตอบตามลำดับ ฟัง ถามให้ชัด รับทราบ แล้วคุยขั้นตอนที่อนุมัติ ใช้ would สำหรับสถานการณ์สมมติ อย่ารีบรับปากคืนเงินก่อนเข้าใจปัญหาหรือตรวจอำนาจของคุณ"
+        ],
+        "example": [
+          "I would listen first, confirm the concern and explain the next step within my role.",
+          "ฉันจะฟังก่อน ยืนยันข้อกังวล และอธิบายขั้นตอนถัดไปภายในหน้าที่"
+        ]
+      },
+      {
+        "title": [
+          "Demonstrate the exact words",
+          "สาธิตคำพูดที่จะใช้จริง"
+        ],
+        "body": [
+          "I would say… introduces the actual sentence you would use with a guest. Keep it short and calm. A demonstration makes your interview answer concrete. Separate an apology for the experience from an unsupported diagnosis or an unapproved solution.",
+          "I would say… นำเข้าสู่ประโยคที่จะพูดกับลูกค้าจริง ใช้คำสั้นและใจเย็น การสาธิตทำให้คำตอบเป็นรูปธรรม แยกการขอโทษเรื่องประสบการณ์จากการวินิจฉัยที่ไม่มีหลักฐานหรือวิธีแก้ที่ไม่อนุมัติ"
+        ],
+        "example": [
+          "I would say, I am sorry about the wait. Let me check the updated appointment time.",
+          "ฉันจะพูดว่า ขอโทษที่ให้รอ ขอฉันตรวจเวลานัดหมายล่าสุด"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Interviewer",
+        "en": "What would you say if a guest disliked the agreed nail colour?",
+        "th": "คุณจะพูดอย่างไรถ้าลูกค้าไม่ชอบสีเล็บที่ตกลงไว้"
+      },
+      {
+        "speaker": "Applicant",
+        "en": "I would say, Thank you for telling me. What would you prefer? Then I would check the available options with my supervisor.",
+        "th": "ฉันจะพูดว่า ขอบคุณที่บอก คุณชอบแบบไหนมากกว่า แล้วตรวจทางเลือกกับหัวหน้างาน"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Give a 45-second complaint answer, then speak the exact words you would say to the guest.",
+        "ตอบเรื่องข้อร้องเรียน 45 วินาที แล้วพูดประโยคจริงที่จะใช้กับลูกค้า"
+      ],
+      "model": [
+        "I would clarify the concern. I would say, I understand you wanted a different length. Let us review the agreed details.",
+        "ฉันจะถามข้อกังวลให้ชัด ฉันจะพูดว่า ฉันเข้าใจว่าคุณต้องการความยาวต่างจากนี้ มาทบทวนรายละเอียดที่ตกลงกัน"
+      ],
+      "criteria": [
+        [
+          "State an ordered approach.",
+          "บอกแนวทางตามลำดับ"
+        ],
+        [
+          "Demonstrate a calm guest response.",
+          "สาธิตคำตอบลูกค้าอย่างใจเย็น"
+        ],
+        [
+          "Stay within your authority.",
+          "อยู่ภายในอำนาจหน้าที่"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "Which answer demonstrates guest-facing words?",
+          "คำตอบใดสาธิตคำพูดกับลูกค้า"
+        ],
+        "options": [
+          [
+            "Complaints are a service topic.",
+            "ข้อร้องเรียนเป็นเรื่องบริการ"
+          ],
+          [
+            "My answer has several parts.",
+            "คำตอบของฉันมีหลายส่วน"
+          ],
+          [
+            "I would say, I am sorry about the wait.",
+            "ฉันจะพูดว่า ขอโทษที่ให้รอ"
+          ]
+        ],
+        "answer": 2,
+        "explanation": [
+          "I would say introduces a concrete sentence for the guest.",
+          "I would say นำเข้าสู่ประโยคที่ใช้กับลูกค้าได้จริง"
+        ]
+      },
+      {
+        "question": [
+          "What should happen before offering a remedy?",
+          "ควรทำอะไรก่อนเสนอวิธีแก้"
+        ],
+        "options": [
+          [
+            "Understand the concern and check approved options.",
+            "เข้าใจข้อกังวลและตรวจทางเลือกที่อนุมัติ"
+          ],
+          [
+            "Promise whatever the guest asks.",
+            "รับปากทุกอย่างที่ลูกค้าขอ"
+          ],
+          [
+            "Blame the previous colleague.",
+            "โทษเพื่อนร่วมงานคนก่อน"
+          ]
+        ],
+        "answer": 0,
+        "explanation": [
+          "A suitable next step depends on the facts and your authority.",
+          "ขั้นตอนที่เหมาะสมขึ้นอยู่กับข้อเท็จจริงและอำนาจหน้าที่"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 27,
+    "moduleId": "h5",
+    "kind": "lesson",
+    "title": [
+      "Clarify, repair and close an interview",
+      "ถามให้ชัด แก้ไข และจบสัมภาษณ์"
+    ],
+    "objective": [
+      "Recover from a misunderstanding and ask a relevant final question.",
+      "แก้ความเข้าใจผิดและถามคำถามปิดท้ายที่เกี่ยวข้อง"
+    ],
+    "review": {
+      "prompt": [
+        "Recall the opening of a structured complaint answer.",
+        "ทบทวนการเริ่มคำตอบข้อร้องเรียนอย่างมีลำดับ"
+      ],
+      "model": [
+        "I would listen first, confirm the concern and explain an approved next step.",
+        "ฉันจะฟังก่อน ยืนยันข้อกังวล และอธิบายขั้นตอนที่อนุมัติ"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Check what the question means",
+          "ตรวจว่าคำถามหมายถึงอะไร"
+        ],
+        "body": [
+          "Do you mean…? checks your interpretation. Could you rephrase that, please? asks for different wording. These are more useful than repeating a memorised answer that does not fit. After clarification, answer the actual question directly before adding an example.",
+          "Do you mean…? ตรวจความเข้าใจของคุณ Could you rephrase that, please? ขอให้ใช้คำอื่น มีประโยชน์กว่าการท่องคำตอบที่ไม่ตรงคำถาม หลังเข้าใจแล้วให้ตอบตรงประเด็นก่อนเพิ่มตัวอย่าง"
+        ],
+        "example": [
+          "Do you mean my hair-service training or my customer-service experience?",
+          "คุณหมายถึงการฝึกบริการผมหรือประสบการณ์บริการลูกค้าของฉัน"
+        ]
+      },
+      {
+        "title": [
+          "Ask a purposeful final question",
+          "ถามปิดท้ายอย่างมีจุดประสงค์"
+        ],
+        "body": [
+          "Could you tell me about…? invites information politely. Choose a role-related topic such as induction, teamwork or supervised training. Avoid asking for a guarantee of employment. Close with Thank you for your time and a short expression of interest.",
+          "Could you tell me about…? ขอข้อมูลอย่างสุภาพ เลือกเรื่องเกี่ยวกับตำแหน่ง เช่น การปฐมนิเทศ ทีมงาน หรือการฝึกที่มีผู้กำกับ ไม่ขอให้รับรองการได้งาน จบด้วย Thank you for your time และแสดงความสนใจสั้น ๆ"
+        ],
+        "example": [
+          "Could you tell me about the induction for new salon team members?",
+          "ช่วยเล่าเรื่องการปฐมนิเทศสมาชิกทีมร้านเสริมสวยใหม่ได้ไหม"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Interviewer",
+        "en": "How did you support the team?",
+        "th": "คุณช่วยสนับสนุนทีมอย่างไร"
+      },
+      {
+        "speaker": "Applicant",
+        "en": "Do you mean during my training placement?",
+        "th": "หมายถึงระหว่างที่ฉันฝึกงานใช่ไหม"
+      },
+      {
+        "speaker": "Interviewer",
+        "en": "Yes.",
+        "th": "ใช่"
+      },
+      {
+        "speaker": "Applicant",
+        "en": "I checked appointment details and reported missing information to my supervisor.",
+        "th": "ฉันตรวจรายละเอียดนัดหมายและรายงานข้อมูลที่ขาดให้หัวหน้า"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Practise one unclear interview question. Clarify, answer, then ask your own relevant closing question.",
+        "ฝึกคำถามสัมภาษณ์ที่ไม่ชัด ขอความชัดเจน ตอบ แล้วถามปิดท้ายที่เกี่ยวข้อง"
+      ],
+      "model": [
+        "Could you rephrase that, please? Thank you. I assisted with bookings during training. Could you tell me about your team’s induction?",
+        "ช่วยใช้คำอื่นอธิบายได้ไหม ขอบคุณ ฉันช่วยงานจองระหว่างฝึก ช่วยเล่าเรื่องปฐมนิเทศของทีมได้ไหม"
+      ],
+      "criteria": [
+        [
+          "Request clarification precisely.",
+          "ขอความชัดเจนให้ตรงจุด"
+        ],
+        [
+          "Answer the clarified question.",
+          "ตอบคำถามที่ชัดเจนแล้ว"
+        ],
+        [
+          "Ask a relevant closing question.",
+          "ถามปิดท้ายที่เกี่ยวกับงาน"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "You heard the words but do not understand the question. What helps?",
+          "ได้ยินคำแล้วแต่ไม่เข้าใจคำถาม ควรพูดอะไร"
+        ],
+        "options": [
+          [
+            "Could you rephrase that, please?",
+            "ช่วยใช้คำอื่นอธิบายได้ไหม"
+          ],
+          [
+            "I have already answered everything.",
+            "ฉันตอบหมดแล้ว"
+          ],
+          [
+            "Yes to every question.",
+            "ตอบใช่ทุกคำถาม"
+          ]
+        ],
+        "answer": 0,
+        "explanation": [
+          "Rephrase requests different wording to support understanding.",
+          "Rephrase ขอให้เปลี่ยนคำเพื่อช่วยความเข้าใจ"
+        ]
+      },
+      {
+        "question": [
+          "Which closing question is relevant to joining a salon team?",
+          "คำถามปิดท้ายใดเกี่ยวกับการเข้าร่วมทีมร้าน"
+        ],
+        "options": [
+          [
+            "Can you guarantee that I am hired?",
+            "รับรองได้ไหมว่าฉันได้งาน"
+          ],
+          [
+            "Could you tell me about the induction?",
+            "ช่วยเล่าเรื่องปฐมนิเทศได้ไหม"
+          ],
+          [
+            "Why is every guest always happy?",
+            "ทำไมลูกค้าทุกคนจึงมีความสุขเสมอ"
+          ]
+        ],
+        "answer": 1,
+        "explanation": [
+          "Induction is directly related to learning a new role and workplace.",
+          "การปฐมนิเทศเกี่ยวข้องกับการเรียนรู้งานและที่ทำงานใหม่โดยตรง"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 28,
+    "moduleId": "h5",
+    "kind": "checkpoint",
+    "title": [
+      "Week 4 checkpoint: mock interview",
+      "ทบทวนสัปดาห์ที่ 4 สัมภาษณ์จำลอง"
+    ],
+    "objective": [
+      "Combine an introduction, a truthful example and an unscripted scenario answer.",
+      "รวมการแนะนำตัว ตัวอย่างจริง และคำตอบสถานการณ์ที่ไม่ได้เตรียม"
+    ],
+    "review": {
+      "prompt": [
+        "Recall a clarification request and a purposeful final question.",
+        "ทบทวนการขอความชัดเจนและคำถามปิดท้ายที่มีจุดประสงค์"
+      ],
+      "model": [
+        "Could you rephrase that, please? Could you tell me about the induction?",
+        "ช่วยใช้คำอื่นอธิบายได้ไหม ช่วยเล่าเรื่องปฐมนิเทศได้ไหม"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Match the answer to the prompt",
+          "ให้คำตอบตรงชนิดคำถาม"
+        ],
+        "body": [
+          "Tell me about yourself calls for a concise introduction. Tell me about a time calls for a real situation, action and result. What would you do calls for a hypothetical plan. Listen for this signal before deciding which verb form and evidence to use.",
+          "Tell me about yourself ต้องการการแนะนำตัวสั้น ๆ Tell me about a time ต้องการสถานการณ์จริง การกระทำ และผลลัพธ์ What would you do ต้องการแผนสมมติ ฟังคำบอกประเภทก่อนเลือกกริยาและหลักฐาน"
+        ],
+        "example": [
+          "In training, I checked the appointment. In that scenario, I would check it first.",
+          "ตอนฝึกฉันตรวจการนัดหมายแล้ว ส่วนสถานการณ์นั้นฉันจะตรวจเป็นอย่างแรก"
+        ]
+      },
+      {
+        "title": [
+          "Evaluate evidence, not confidence alone",
+          "ประเมินหลักฐาน ไม่ดูแค่ความมั่นใจ"
+        ],
+        "body": [
+          "After the rehearsal, ask your partner to identify one clear answer and one missing detail. Could you give me a specific example? turns vague feedback into a useful correction. Repeat the difficult answer using the feedback; fluency alone does not prove accuracy or suitability.",
+          "หลังฝึก ให้คู่ฝึกระบุคำตอบที่ชัดหนึ่งข้อและรายละเอียดที่ขาดหนึ่งอย่าง Could you give me a specific example? เปลี่ยนคำแนะนำกว้าง ๆ ให้เป็นการแก้ไขที่ใช้ได้ ลองตอบใหม่ตามข้อเสนอแนะ ความคล่องอย่างเดียวไม่พิสูจน์ความถูกต้องหรือความเหมาะสม"
+        ],
+        "example": [
+          "Which part of my answer needed more detail? Could you give me an example?",
+          "ส่วนไหนของคำตอบต้องมีรายละเอียดเพิ่ม ช่วยยกตัวอย่างได้ไหม"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Interviewer",
+        "en": "Tell me about a time you checked a guest request.",
+        "th": "เล่าเหตุการณ์ที่คุณตรวจสอบคำขอลูกค้า"
+      },
+      {
+        "speaker": "Applicant",
+        "en": "During training, the requested nail shape was unclear. I asked about round and square shapes. We confirmed square.",
+        "th": "ระหว่างฝึก รูปทรงเล็บที่ขอไม่ชัด ฉันถามเรื่องทรงมนและเหลี่ยม แล้วเรายืนยันทรงเหลี่ยม"
+      },
+      {
+        "speaker": "Interviewer",
+        "en": "What would you do if the guest changed their mind?",
+        "th": "คุณจะทำอย่างไรถ้าลูกค้าเปลี่ยนใจ"
+      },
+      {
+        "speaker": "Applicant",
+        "en": "I would clarify the new preference and confirm the updated details.",
+        "th": "ฉันจะถามความต้องการใหม่ให้ชัดและยืนยันรายละเอียดที่ปรับ"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Complete a five-minute mock interview with an introduction, real example, scenario and final question. Retry the weakest answer.",
+        "สัมภาษณ์จำลองห้านาที รวมแนะนำตัว ตัวอย่างจริง สถานการณ์ และคำถามปิดท้าย แล้วตอบข้อที่อ่อนที่สุดใหม่"
+      ],
+      "model": [
+        "I would clarify the request, repeat the choice and check any revised cost before agreement.",
+        "ฉันจะถามคำขอให้ชัด ทวนตัวเลือก และตรวจราคาใหม่ก่อนตกลง"
+      ],
+      "criteria": [
+        [
+          "Use accurate personal information.",
+          "ใช้ข้อมูลส่วนตัวถูกต้อง"
+        ],
+        [
+          "Match past and hypothetical answers.",
+          "ตอบอดีตและสมมติให้ตรงกัน"
+        ],
+        [
+          "Revise one answer using specific feedback.",
+          "ปรับหนึ่งคำตอบตามข้อเสนอแนะเฉพาะ"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "Tell me about a time calls for which answer?",
+          "Tell me about a time ต้องการคำตอบใด"
+        ],
+        "options": [
+          [
+            "Only a plan using would.",
+            "แผนที่ใช้ would อย่างเดียว"
+          ],
+          [
+            "A truthful past situation, action and result.",
+            "สถานการณ์ การกระทำ และผลในอดีตตามจริง"
+          ],
+          [
+            "An unrelated service price.",
+            "ราคาบริการที่ไม่เกี่ยวข้อง"
+          ]
+        ],
+        "answer": 1,
+        "explanation": [
+          "The prompt asks for evidence from a real event.",
+          "คำถามต้องการหลักฐานจากเหตุการณ์จริง"
+        ]
+      },
+      {
+        "question": [
+          "Which feedback is most actionable?",
+          "ข้อเสนอแนะใดนำไปปรับปรุงได้ชัดที่สุด"
+        ],
+        "options": [
+          [
+            "Be better at everything.",
+            "เก่งขึ้นทุกอย่าง"
+          ],
+          [
+            "Sound perfect.",
+            "พูดให้สมบูรณ์แบบ"
+          ],
+          [
+            "Explain what you did after checking the booking.",
+            "อธิบายว่าคุณทำอะไรหลังตรวจการจอง"
+          ]
+        ],
+        "answer": 2,
+        "explanation": [
+          "A specific missing action tells you what to add or revise.",
+          "การระบุการกระทำที่ขาดบอกสิ่งที่ต้องเพิ่มหรือแก้"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 29,
+    "moduleId": "h4",
+    "kind": "checkpoint",
+    "title": [
+      "Cumulative rehearsal: the guest journey",
+      "ทบทวนสะสม เส้นทางบริการลูกค้า"
+    ],
+    "objective": [
+      "Connect booking, consultation, a changed choice and a professional handover.",
+      "เชื่อมการจอง การปรึกษา การเปลี่ยนตัวเลือก และการส่งต่องาน"
+    ],
+    "review": {
+      "prompt": [
+        "Without notes, recall one phrase each for booking, permission, a concern and a handover.",
+        "ทบทวนวลีจอง ขออนุญาต ข้อกังวล และส่งต่องานโดยไม่ดูบันทึก"
+      ],
+      "model": [
+        "Let me check availability. May I show you the samples? I understand your concern. We still need to confirm the total.",
+        "ขอตรวจเวลาว่าง ขอให้ดูตัวอย่างได้ไหม ฉันเข้าใจข้อกังวล เรายังต้องยืนยันยอดรวม"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Track the latest agreed version",
+          "ติดตามข้อตกลงล่าสุด"
+        ],
+        "body": [
+          "Originally… but now… contrasts an earlier choice with the current request. Use it in a handover when a guest changes a haircut to a blow-dry or changes a nail finish. State the latest confirmed choice clearly and label any remaining question as pending.",
+          "Originally… but now… เปรียบเทียบตัวเลือกเดิมกับคำขอปัจจุบัน ใช้ส่งต่องานเมื่อลูกค้าเปลี่ยนตัดผมเป็นเป่าจัดทรงหรือเปลี่ยนผิวเล็บ ระบุตัวเลือกล่าสุดที่ยืนยันให้ชัดและบอกสิ่งที่ยังค้าง"
+        ],
+        "example": [
+          "Originally the guest chose matte, but now they prefer glossy. The revised total is still pending.",
+          "เดิมลูกค้าเลือกผิวด้าน แต่ตอนนี้ชอบมันวาว ยอดรวมใหม่ยังรอยืนยัน"
+        ]
+      },
+      {
+        "title": [
+          "Close the communication loop",
+          "ยืนยันว่าการสื่อสารครบถ้วน"
+        ],
+        "body": [
+          "Before ending, summarise what is agreed and who will do the next action. Is there anything else you would like to clarify? gives the guest space to ask. A complete conversation does not mean every issue is resolved; accurately handing over a pending concern is also a clear outcome.",
+          "ก่อนจบ สรุปสิ่งที่ตกลงและใครจะทำขั้นต่อไป Is there anything else you would like to clarify? เปิดให้ถามเพิ่ม การสนทนาครบไม่ได้แปลว่าทุกปัญหาแก้แล้ว การส่งต่อข้อกังวลที่ค้างอย่างถูกต้องก็เป็นผลลัพธ์ที่ชัดเจน"
+        ],
+        "example": [
+          "The appointment time is confirmed. My supervisor will check the price concern with you.",
+          "ยืนยันเวลานัดแล้ว หัวหน้าจะตรวจสอบข้อกังวลเรื่องราคากับคุณ"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Guest",
+        "en": "I want a glossy finish instead, but please check the price first.",
+        "th": "ฉันต้องการผิวมันวาวแทน แต่ช่วยตรวจราคาก่อน"
+      },
+      {
+        "speaker": "Staff",
+        "en": "Of course. Glossy instead of matte. I will confirm the revised total before you decide.",
+        "th": "ได้เลย มันวาวแทนด้าน ฉันจะยืนยันยอดรวมใหม่ก่อนคุณตัดสินใจ"
+      },
+      {
+        "speaker": "Guest",
+        "en": "Thank you.",
+        "th": "ขอบคุณ"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Run one hair and one nail scenario using a fictional menu. Include a change, a price question and a colleague handover.",
+        "จำลองงานผมและเล็บอย่างละหนึ่งจากเมนูสมมติ รวมการเปลี่ยน คำถามราคา และการส่งต่องาน"
+      ],
+      "model": [
+        "The guest now prefers a blow-dry. The time is confirmed, but we still need to check the revised price before agreement.",
+        "ตอนนี้ลูกค้าต้องการเป่าจัดทรง ยืนยันเวลาแล้ว แต่ยังต้องตรวจราคาใหม่ก่อนตกลง"
+      ],
+      "criteria": [
+        [
+          "Track the latest guest choice.",
+          "ติดตามตัวเลือกล่าสุด"
+        ],
+        [
+          "Check cost and permission before proceeding.",
+          "ตรวจราคาและขออนุญาตก่อนดำเนินการ"
+        ],
+        [
+          "Report confirmed and pending details.",
+          "รายงานรายละเอียดที่ยืนยันและที่ค้าง"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "Which phrase contrasts an old and a new choice?",
+          "วลีใดเปรียบเทียบตัวเลือกเดิมกับใหม่"
+        ],
+        "options": [
+          [
+            "Always… every time…",
+            "เสมอ… ทุกครั้ง…"
+          ],
+          [
+            "Yesterday… last year…",
+            "เมื่อวาน… ปีที่แล้ว…"
+          ],
+          [
+            "Originally… but now…",
+            "เดิม… แต่ตอนนี้…"
+          ]
+        ],
+        "answer": 2,
+        "explanation": [
+          "Originally and now distinguish the earlier and current request.",
+          "Originally และ now แยกคำขอก่อนหน้ากับปัจจุบัน"
+        ]
+      },
+      {
+        "question": [
+          "A price concern is pending at handover. What should you report?",
+          "ข้อกังวลราคายังค้างตอนส่งงาน ควรรายงานอะไร"
+        ],
+        "options": [
+          [
+            "The concern is pending and who will check it.",
+            "ข้อกังวลยังค้างและใครจะตรวจ"
+          ],
+          [
+            "Everything has been resolved.",
+            "แก้ไขทุกอย่างแล้ว"
+          ],
+          [
+            "Only the original service choice.",
+            "เฉพาะตัวเลือกบริการเดิม"
+          ]
+        ],
+        "answer": 0,
+        "explanation": [
+          "An accurate handover names unresolved work and the next responsible person.",
+          "ส่งงานอย่างถูกต้องต้องบอกสิ่งที่ค้างและผู้รับผิดชอบถัดไป"
+        ]
+      }
+    ]
+  },
+  {
+    "day": 30,
+    "moduleId": "h5",
+    "kind": "capstone",
+    "title": [
+      "Day 30 capstone: demonstrate your learning",
+      "ภารกิจวันที่ 30 แสดงสิ่งที่เรียนรู้"
+    ],
+    "objective": [
+      "Demonstrate an introduction, a consultation, a workplace response and a specific improvement plan.",
+      "แสดงการแนะนำตัว การปรึกษา การตอบสถานการณ์งาน และแผนพัฒนาที่เจาะจง"
+    ],
+    "review": {
+      "prompt": [
+        "Recall your Day 1 introduction and compare it with what you can now explain.",
+        "ทบทวนการแนะนำตัววันที่ 1 และเทียบกับสิ่งที่อธิบายได้ตอนนี้"
+      ],
+      "model": [
+        "I can name my role, explain a service, confirm preferences and ask for clarification.",
+        "ฉันบอกตำแหน่ง อธิบายบริการ ยืนยันความต้องการ และขอความชัดเจนได้"
+      ]
+    },
+    "teach": [
+      {
+        "title": [
+          "Make progress observable",
+          "ทำให้สังเกตการพัฒนาได้"
+        ],
+        "body": [
+          "I can now… should name an action you demonstrate, such as confirming a booking or explaining an extra charge. Follow it with a real example. Completing thirty days records practice; it does not by itself prove fluency, award a certificate or replace a teacher’s speaking assessment.",
+          "I can now… ควรบอกการกระทำที่สาธิตได้ เช่น ยืนยันการจองหรืออธิบายค่าใช้จ่ายเพิ่ม ตามด้วยตัวอย่างจริง การครบสามสิบวันบันทึกการฝึก แต่ไม่ได้พิสูจน์ความคล่อง ให้ประกาศนียบัตร หรือแทนการประเมินพูดของครู"
+        ],
+        "example": [
+          "I can now confirm a nail shape and finish, then ask the guest to check my summary.",
+          "ตอนนี้ฉันยืนยันรูปทรงและลักษณะผิวเล็บ แล้วให้ลูกค้าตรวจคำสรุปได้"
+        ]
+      },
+      {
+        "title": [
+          "Turn feedback into a next action",
+          "เปลี่ยนข้อเสนอแนะเป็นสิ่งที่จะทำต่อ"
+        ],
+        "body": [
+          "I still need to improve… identifies one gap. I will practise… by… gives a concrete activity and deadline. Use feedback from the actual demonstration, not a general wish to be perfect. Keep the next goal small enough to check by listening to a new recording or repeating the scenario.",
+          "I still need to improve… ระบุจุดที่ขาดหนึ่งอย่าง I will practise… by… ระบุกิจกรรมและกำหนดเวลา ใช้ข้อเสนอแนะจากการสาธิตจริง ไม่ใช่ความหวังว่าจะสมบูรณ์แบบ เลือกเป้าหมายเล็กพอให้ตรวจด้วยเสียงบันทึกใหม่หรือจำลองซ้ำ"
+        ],
+        "example": [
+          "I still need clearer time expressions. I will record five appointment read-backs by Friday.",
+          "ฉันยังต้องบอกเวลาให้ชัดขึ้น ฉันจะบันทึกการทวนนัดห้าครั้งภายในวันศุกร์"
+        ]
+      }
+    ],
+    "dialogue": [
+      {
+        "speaker": "Assessor",
+        "en": "Introduce yourself, then confirm this guest’s changed hair-service request.",
+        "th": "แนะนำตัว แล้วยืนยันคำขอเปลี่ยนบริการผมของลูกค้าคนนี้"
+      },
+      {
+        "speaker": "Learner",
+        "en": "I am a salon trainee. You would like a blow-dry instead of a haircut. Let me check the revised total before you decide.",
+        "th": "ฉันเป็นผู้ฝึกงานร้านเสริมสวย คุณต้องการเป่าจัดทรงแทนตัดผม ขอฉันตรวจยอดรวมใหม่ก่อนคุณตัดสินใจ"
+      },
+      {
+        "speaker": "Assessor",
+        "en": "What will you improve next?",
+        "th": "คุณจะพัฒนาเรื่องใดต่อ"
+      },
+      {
+        "speaker": "Learner",
+        "en": "I will practise confirming times more clearly and record a new example.",
+        "th": "ฉันจะฝึกยืนยันเวลาให้ชัดขึ้นและบันทึกตัวอย่างใหม่"
+      }
+    ],
+    "practice": {
+      "prompt": [
+        "Present your real introduction and one truthful CV or supervised-training example. Then complete this fictional consultation: a guest booked a haircut but now wants a smooth blow-dry. Confirmed training-menu facts: haircut, 40 dollars and about 45 minutes; blow-dry, 30 dollars and about 30 minutes; both totals include all charges, and a 10 a.m. appointment is available. Clarify the new preference, confirm time and total, and obtain agreement. Next answer this workplace scenario: a supervisor asks you to prepare the consultation area before the next guest but omits the station and time; when asked, the supervisor confirms station two before 11 a.m. Finish with a measurable improvement goal. Adapt the model’s fictional identity, training and evidence to your own facts; use verified menu facts for any real workplace rehearsal.",
+        "แนะนำตัวจริงและยกตัวอย่างจากประวัติย่อหรือการฝึกที่มีผู้กำกับตามจริงหนึ่งเรื่อง จากนั้นจำลองการปรึกษานี้ ลูกค้าจองตัดผมแต่เปลี่ยนเป็นเป่าจัดทรงเรียบ ข้อมูลเมนูฝึกสมมติที่ยืนยันแล้วคือ ตัดผม 40 ดอลลาร์ ใช้เวลาประมาณ 45 นาที เป่าจัดทรง 30 ดอลลาร์ ใช้เวลาประมาณ 30 นาที ทั้งสองยอดรวมค่าใช้จ่ายทั้งหมด และมีนัดว่างเวลา 10 โมงเช้า ถามความต้องการใหม่ให้ชัด ยืนยันเวลาและยอดรวม แล้วขอคำตกลง ต่อไปตอบสถานการณ์งาน หัวหน้าขอให้เตรียมพื้นที่ปรึกษาก่อนลูกค้าคนถัดไปแต่ไม่บอกจุดบริการและเวลา เมื่อถาม หัวหน้ายืนยันจุดบริการสองก่อน 11 โมงเช้า จบด้วยเป้าหมายพัฒนาที่วัดได้ แทนชื่อ การฝึก และหลักฐานสมมติในแบบด้วยข้อมูลจริงของคุณ หากฝึกกับงานจริงให้ใช้ข้อมูลเมนูที่ตรวจสอบแล้ว"
+      ],
+      "model": [
+        "Fictional example to adapt truthfully; do not claim this person’s training as your own. Introduction: My name is Mali. I am a salon trainee studying nail care. I assist with reception under supervision. My strength is careful listening, and I would like to support international guests. Training evidence: During a supervised role-play, a guest’s requested nail shape was unclear. I asked whether they wanted round or square, then repeated their choice. My trainer confirmed that my summary matched the guest’s request. Consultation — Guest: I booked a haircut, but I would like a blow-dry instead. Staff: Certainly. How would you like it styled? Guest: Smooth, please. Staff: A smooth blow-dry instead of a haircut, at 10 a.m. It takes about 30 minutes, and the confirmed total is 30 dollars, including all charges. Is that correct, and would you like to proceed? Guest: Yes, please. Workplace scenario: I would ask, Which station should I prepare, and by what time? After the supervisor’s answer, I would say, Station two before 11 a.m. Is that correct? I would follow the approved preparation procedure and report completion. Next goal: I still need clearer time expressions. By Friday, I will record three appointment read-backs, ask a partner to identify every time, and repeat any unclear example.",
+        "ตัวอย่างสมมติสำหรับปรับให้ตรงความจริง อย่าอ้างการฝึกของบุคคลนี้เป็นของคุณ การแนะนำตัว: ฉันชื่อมะลิ เป็นผู้ฝึกงานร้านเสริมสวยที่กำลังเรียนการดูแลเล็บ ฉันช่วยงานต้อนรับภายใต้การกำกับ จุดแข็งคือการฟังอย่างตั้งใจ และฉันอยากช่วยดูแลลูกค้านานาชาติ หลักฐานการฝึก: ระหว่างบทบาทสมมติที่มีผู้กำกับ รูปทรงเล็บที่ลูกค้าขอไม่ชัด ฉันถามว่าต้องการทรงมนหรือเหลี่ยม แล้วทวนตัวเลือก ครูฝึกยืนยันว่าสรุปของฉันตรงกับคำขอลูกค้า การปรึกษา — ลูกค้า: ฉันจองตัดผม แต่ต้องการเป่าจัดทรงแทน พนักงาน: ได้เลย ต้องการจัดทรงแบบไหน ลูกค้า: ทรงเรียบ พนักงาน: เป่าจัดทรงเรียบแทนตัดผม เวลา 10 โมงเช้า ใช้เวลาประมาณ 30 นาที ยอดรวมที่ยืนยันคือ 30 ดอลลาร์ รวมค่าใช้จ่ายทั้งหมด ถูกต้องไหม และต้องการดำเนินการต่อไหม ลูกค้า: ใช่ เริ่มได้เลย สถานการณ์งาน: ฉันจะถามว่า ต้องเตรียมจุดบริการไหน และให้พร้อมภายในกี่โมง หลังหัวหน้าตอบ ฉันจะพูดว่า จุดบริการสองก่อน 11 โมงเช้า ถูกต้องไหม ฉันจะทำตามขั้นตอนเตรียมงานที่อนุมัติและรายงานเมื่อเสร็จ เป้าหมายถัดไป: ฉันยังต้องบอกเวลาให้ชัดขึ้น ภายในวันศุกร์ ฉันจะบันทึกการทวนนัดสามครั้ง ให้คู่ฝึกระบุเวลาทุกครั้ง และฝึกตัวอย่างที่ยังไม่ชัดซ้ำ"
+      ],
+      "criteria": [
+        [
+          "Give truthful personal evidence and answer follow-ups.",
+          "ให้หลักฐานส่วนตัวตามจริงและตอบคำถามต่อเนื่อง"
+        ],
+        [
+          "Confirm service, preferences, cost and agreement.",
+          "ยืนยันบริการ ความต้องการ ราคา และการตกลง"
+        ],
+        [
+          "Use feedback to set one observable next goal.",
+          "ใช้ข้อเสนอแนะตั้งเป้าหมายถัดไปที่สังเกตได้"
+        ]
+      ]
+    },
+    "checks": [
+      {
+        "question": [
+          "Which statement demonstrates a specific learning outcome?",
+          "ข้อความใดแสดงผลการเรียนที่เจาะจง"
+        ],
+        "options": [
+          [
+            "I can confirm a booking and correct an unclear time.",
+            "ฉันยืนยันการจองและแก้เวลาที่ไม่ชัดได้"
+          ],
+          [
+            "I know everything about salons.",
+            "ฉันรู้ทุกอย่างเกี่ยวกับร้านเสริมสวย"
+          ],
+          [
+            "Thirty days automatically proves fluency.",
+            "สามสิบวันพิสูจน์ความคล่องโดยอัตโนมัติ"
+          ]
+        ],
+        "answer": 0,
+        "explanation": [
+          "A specific demonstrated action is evidence of progress.",
+          "การกระทำเฉพาะที่สาธิตได้เป็นหลักฐานการพัฒนา"
+        ]
+      },
+      {
+        "question": [
+          "Which improvement goal is easiest to check?",
+          "เป้าหมายพัฒนาใดตรวจสอบได้ง่ายที่สุด"
+        ],
+        "options": [
+          [
+            "Become perfect at every conversation.",
+            "สมบูรณ์แบบทุกการสนทนา"
+          ],
+          [
+            "Record and review three appointment read-backs by Friday.",
+            "บันทึกและทบทวนการทวนนัดสามครั้งภายในวันศุกร์"
+          ],
+          [
+            "Try harder sometime.",
+            "พยายามมากขึ้นสักวัน"
+          ]
+        ],
+        "answer": 1,
+        "explanation": [
+          "An activity, quantity and deadline make the goal observable.",
+          "กิจกรรม จำนวน และกำหนดเวลาทำให้ตรวจเป้าหมายได้"
+        ]
+      }
+    ]
+  }
+]

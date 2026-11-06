@@ -4,11 +4,13 @@ For the 30-day programme (5 November 2026), run these additional checks:
 
 ```sh
 node tests/course-access.test.js
+python tools/sync_daily_program.py
 node tests/validate_study_plan.cjs
 node tests/validate_learning.cjs
 node --test --test-isolation=none tests/tutorial.test.cjs
 php backend/tests/course_access_test.php
 python backend/tests/admin_integration_test.py
+python backend/tests/default_admin_integration_test.py
 ```
 
 For PHP/MySQL endpoint coverage, see `backend/tests/access_integration_test.py`
@@ -18,6 +20,12 @@ and `backend/README.md`. These checks use isolated test data. On Windows, set
 The admin integration harness covers permissions, CSRF, safe migration,
 student metrics, account creation/editing/suspension, password hashing,
 mandatory password changes, session revocation, and unchanged course periods.
+The default-admin harness checks initial sign-in, required password replacement,
+login throttling, and repeatable setup that preserves existing credentials.
+The study-plan check covers 90 authored daily lessons, every chapter, bilingual
+rendering, completion gates, wrong-answer feedback, saved drafts, and isolated
+course progress. It runs the actual UI handlers and progress code in a DOM stub;
+it does not replace visual browser QA.
 `tests/admin-ui.test.cjs` checks dashboard rendering, escaping, request races
 and temporary-password cleanup with a mocked DOM/transport.
 

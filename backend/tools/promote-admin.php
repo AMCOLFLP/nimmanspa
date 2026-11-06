@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-// Server operator only: never usable as an HTTP endpoint and no default user.
+// Server operator only: promotes an existing email account, never usable over HTTP.
 if (PHP_SAPI !== 'cli') {
     http_response_code(404);
     exit;

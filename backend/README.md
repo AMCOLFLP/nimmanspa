@@ -25,8 +25,9 @@ does not transfer into an account or appear in the admin dashboard.
    ```
    For an **existing installation**, back up the database, then import
    `backend/migrations/20261105_course_access.sql`, followed by
-   `backend/migrations/20261105_admin_dashboard.sql`, **before deploying the updated
-   API and frontend** instead. Both migrations are additive and safe to rerun;
+   `backend/migrations/20261105_admin_dashboard.sql`, then
+   `backend/migrations/20261106_default_admin.sql`, **before deploying the updated
+   API and frontend** instead. These migrations are additive and safe to rerun;
    accounts and saved progress are preserved. Existing learners start their
    first 30-day period when they next explicitly start each course.
 3. Copy `backend/config.example.php` to `backend/config.php` and fill in your
@@ -38,13 +39,22 @@ does not transfer into an account or appear in the admin dashboard.
 5. Upload/deploy the whole repository (front end + `backend/`) to your PHP
    host, keeping the folder layout as-is — the front end calls
    `backend/api/*.php` using relative paths.
-6. Register the intended administrator through the normal sign-up screen, then
-   run this on the server using the exact email of that existing account:
+6. Sign in through the normal **Log in** screen using username `ADMIN` and initial
+   password `admin123`. The schema and default-admin migration create this account
+   with a bcrypt password hash and require a new password before the dashboard
+   opens. Choose at least 10 characters. Later sign-ins use your new password.
+   Reimporting the schema or migration never resets an existing account's password,
+   privileges, or active status. The reserved username occupies the existing
+   `users.email` login-identifier column; public registration still requires an
+   email address and cannot claim `ADMIN`.
+
+   For additional administrators, register an account normally, then run this on
+   the server using the exact email of that existing account:
    ```sh
    php backend/tools/promote-admin.php existing-account@example.com
    ```
-   The command creates no account and has no default password. It can only run
-   from the command line. It enables administrator access, writes an audit event,
+   The promotion command creates no account and does not change its password.
+   It can only run from the command line. It enables administrator access, writes an audit event,
    and ends existing sessions for that account. Sign in again and open the Admin
    dashboard. No account receives admin access automatically from its profession,
    email address, registration fields, or the browser's teacher mode.
@@ -166,6 +176,7 @@ administrator-management UI. Back up this table with accounts and learning data.
 php backend/tests/course_access_test.php
 python backend/tests/access_integration_test.py
 python backend/tests/admin_integration_test.py
+python backend/tests/default_admin_integration_test.py
 ```
 
 The PHP test checks the exact expiry boundary, UTC handling, known course ids,

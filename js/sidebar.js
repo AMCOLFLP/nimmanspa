@@ -66,16 +66,10 @@ const Sidebar = (() => {
 
   /* ----------------------------------------------------------------- data */
 
-  /* Mirrors the home screen: progress is "modules marked studied" for the
-     active course, falling back to nothing when a course has no curriculum
-     modules rather than dividing by zero. */
+  /* Mirror the active course's completed daily lessons. */
   function moduleProgress(){
-    const modules = (typeof CURRICULUM_DATA !== 'undefined' &&
-                     CURRICULUM_DATA.modules[Courses.currentId]) || [];
-    if (!modules.length) return null;
-    const state = Progress.learningState();
-    const studied = modules.filter(m => state.modules[m.id]).length;
-    return { studied, total: modules.length, pct: Math.round(studied / modules.length * 100) };
+    const studied = StudyPlan.completedCount(Courses.currentId,Progress.learningState().days);
+    return { studied, total:30, pct:Math.round(studied/30*100) };
   }
 
   function bar(label, value, max, valueText){

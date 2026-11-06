@@ -521,11 +521,10 @@ const App = (() => {
     document.getElementById('statQuiz').textContent = avg === null ? '—' : avg + '%';
     document.getElementById('statLessons').textContent = Progress.activitiesCompleted();
 
-    const lm=CURRICULUM_DATA.modules[Courses.currentId]||[], ls=Progress.learningState();
-    const studied=lm.filter(m=>ls.modules[m.id]).length;
-    const pct = lm.length?Math.round(studied/lm.length*100):0;
+    const studied=StudyPlan.completedCount(Courses.currentId,Progress.learningState().days);
+    const pct = Math.round(studied/30*100);
     document.getElementById('courseProgressFill').style.setProperty('--pct', pct + '%');
-    document.getElementById('courseProgressLabel').textContent = `${studied}/${lm.length}`;
+    document.getElementById('courseProgressLabel').textContent = `${studied}/30`;
 
     const initial = (user && !user.guest && user.name) ? user.name.trim()[0].toUpperCase() : 'G';
     document.getElementById('avatarBtn').textContent = initial;
@@ -577,12 +576,11 @@ const App = (() => {
       barsRoot.innerHTML = `<p class="access-date">${T('Your saved progress stays with your account. Progress details are available while this course is active and loaded.', 'ความคืบหน้าที่บันทึกไว้ยังอยู่ในบัญชี รายละเอียดจะแสดงเมื่อหลักสูตรยังใช้งานได้และโหลดข้อมูลสำเร็จ')}</p>`;
       return;
     }
-    const modules = CURRICULUM_DATA.modules[Courses.currentId] || [];
-    const studied = modules.filter(m => Progress.learningState().modules[m.id]).length;
+    const studied = StudyPlan.completedCount(Courses.currentId,Progress.learningState().days);
     const bars = [
       { label: I18N.t('statWords'),   value: Progress.knownCount(),           max: VOCAB.length, sage:false },
       { label: I18N.t('statLessons'), value: Progress.activitiesCompleted(),  max: 8,            sage:true  },
-      { label: I18N.t('courseProgress'), value: studied, max: modules.length || 1, sage:false },
+      { label: I18N.t('courseProgress'), value: studied, max: 30, sage:false },
     ];
     document.getElementById('accProgressBars').innerHTML = bars.map(b => {
       const pct = Math.round((b.value / b.max) * 100);

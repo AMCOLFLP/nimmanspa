@@ -540,7 +540,33 @@ const Progress = (() => {
     p.practiceSessions=p.practiceSessions.slice(-50);save();
   }
 
-  function learningState(){const p=load();return {modules:{...(p.learningModules||{})},items:{...(p.learningItems||{})}};}
+  function learningState(){const p=load();return {modules:{...(p.learningModules||{})},items:{...(p.learningItems||{})},days:JSON.parse(JSON.stringify(p.learningDays||{}))};}
+  function updateLearningDay(number,patch={}){
+    if(typeof StudyPlan==='undefined')return false;
+    const lesson=StudyPlan.day(Courses.currentId,number);
+    if(!lesson)return false;
+    const p=load(),key=StudyPlan.dayKey(lesson.day);
+    p.learningDays=p.learningDays||{};
+    const previous=p.learningDays[key]||{},state={...previous};
+    if('learned' in patch)state.learned=patch.learned===true;
+    if('response' in patch){
+      state.response=String(patch.response).slice(0,2000);
+      if(state.response!==previous.response)state.criteria=lesson.practice.criteria.map(()=>false);
+    }
+    if('criteria' in patch)state.criteria=lesson.practice.criteria.map((_,i)=>patch.criteria?.[i]===true);
+    if('answers' in patch)state.answers=lesson.checks.map((q,i)=>Number.isInteger(patch.answers?.[i])&&patch.answers[i]>=0&&patch.answers[i]<q.options.length?patch.answers[i]:null);
+    // Editing work reopens a completed day; it must be checked and finished again.
+    const changed=['learned','response','criteria','answers'].some(k=>k in patch&&JSON.stringify(state[k])!==JSON.stringify(previous[k]));
+    if(changed)delete state.completedAt;
+    if(patch.finish===true&&StudyPlan.ready(lesson,state))state.completedAt=Date.now();
+    p.learningDays[key]=state;
+    const chapterDays=StudyPlan.forModule(Courses.currentId,lesson.moduleId);
+    p.learningModules=p.learningModules||{};
+    if(chapterDays.every(d=>StudyPlan.complete(d,StudyPlan.stateFor(p.learningDays,d.day))))p.learningModules[lesson.moduleId]=Date.now();
+    else delete p.learningModules[lesson.moduleId];
+    save();
+    return StudyPlan.complete(lesson,state);
+  }
   function setLearningModule(id,value){const p=load();p.learningModules=p.learningModules||{};if(value)p.learningModules[id]=Date.now();else delete p.learningModules[id];save();}
   function setLearningItem(id,value){const p=load();p.learningItems=p.learningItems||{};if(value)p.learningItems[id]=Date.now();else delete p.learningItems[id];save();}
   function assessmentPreferences(){return {...(load().assessmentPreferences||{})};}
@@ -558,7 +584,7 @@ const Progress = (() => {
   }
 
   return {
-    learningState,setLearningModule,setLearningItem,assessmentPreferences,setAssessmentPreferences,assessmentHistory,assessmentAttempts,recordAssessmentAttempt,
+    learningState,updateLearningDay,setLearningModule,setLearningItem,assessmentPreferences,setAssessmentPreferences,assessmentHistory,assessmentAttempts,recordAssessmentAttempt,
     get status(){return progressStatus;},
     practiceSettings, setPracticeSettings, practiceHistory, recordPracticeAnswer, recordPracticeSession,
     touchStreak, markWordKnown, knownCount, isKnown,
